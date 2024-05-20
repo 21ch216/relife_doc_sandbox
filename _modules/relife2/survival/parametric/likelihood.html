@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>relife2.survival.parametric.likelihood &#8212; ReLife2 2 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=c5d721c3"></script>
+    <script src="../../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/relife2/survival/parametric/likelihood';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ReLife2 2 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">New to ReLife ?</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/quick_start.html">Quick start</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/data_collect.html">1. Lifetime data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/data.html">2. How to use databook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../get_started/survival.html">3. How to use survival model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributor's guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../customization_guides/data.html">1. How to custom your databook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../customization_guides/survival.html">2. How to custom your survival model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../detailed_doc/data.html">relife2.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../detailed_doc/survival_parametric.html">relife2.survival.parametric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../detailed_doc/survival_semiparametric.html">relife2.survival.semiparametric</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for relife2.survival.parametric.likelihood</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">approx_fprime</span>
+
+<span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">DataBook</span>
+<span class="kn">from</span> <span class="nn">.function</span> <span class="kn">import</span> <span class="n">ParametricDistriFunction</span>
+
+
+<span class="k">class</span> <span class="nc">ParametricLikelihood</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">databook</span><span class="p">:</span> <span class="n">DataBook</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">databook</span><span class="p">,</span> <span class="n">DataBook</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;ParametricLikelihood expects databook instance&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">databook</span> <span class="o">=</span> <span class="n">databook</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">negative_log_likelihood</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">jac_negative_log_likelihood</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">hess_negative_log_likelihood</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="ParametricDistriLikelihood">
+<a class="viewcode-back" href="../../../../detailed_doc/survival_parametric.html#relife2.survival.parametric.ParametricDistriLikelihood">[docs]</a>
+<span class="k">class</span> <span class="nc">ParametricDistriLikelihood</span><span class="p">(</span><span class="n">ParametricLikelihood</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">databook</span><span class="p">:</span> <span class="n">DataBook</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">databook</span><span class="p">)</span>
+        <span class="c1"># relife/parametric.ParametricHazardFunction</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_default_hess_scheme</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="p">(</span>  <span class="c1">#: Default method for evaluating the hessian of the negative log-likelihood.</span>
+            <span class="s2">&quot;cs&quot;</span>
+        <span class="p">)</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># relife/parametric.ParametricHazardFunction</span>
+    <span class="k">def</span> <span class="nf">negative_log_likelihood</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">functions</span><span class="p">:</span> <span class="n">ParametricDistriFunction</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+
+        <span class="n">D_contrib</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">functions</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">databook</span><span class="p">(</span><span class="s2">&quot;complete&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+        <span class="p">)</span>
+        <span class="n">RC_contrib</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+            <span class="n">functions</span><span class="o">.</span><span class="n">chf</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+                    <span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">databook</span><span class="p">(</span><span class="s2">&quot;complete&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">databook</span><span class="p">(</span><span class="s2">&quot;right_censored&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">LC_contrib</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+                <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span>
+                    <span class="o">-</span><span class="n">functions</span><span class="o">.</span><span class="n">chf</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">databook</span><span class="p">(</span><span class="s2">&quot;left_censored&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">LT_contrib</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+            <span class="n">functions</span><span class="o">.</span><span class="n">chf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">databook</span><span class="p">(</span><span class="s2">&quot;left_truncated&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">D_contrib</span> <span class="o">+</span> <span class="n">RC_contrib</span> <span class="o">+</span> <span class="n">LC_contrib</span> <span class="o">+</span> <span class="n">LT_contrib</span>
+
+    <span class="c1"># relife/parametric.ParametricHazardFunction</span>
+    <span class="k">def</span> <span class="nf">jac_negative_log_likelihood</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">functions</span><span class="p">:</span> <span class="n">ParametricDistriFunction</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+
+        <span class="n">jac_D_contrib</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">databook</span><span class="p">(</span><span class="s2">&quot;complete&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">functions</span><span class="p">)</span>
+            <span class="o">/</span> <span class="n">functions</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">databook</span><span class="p">(</span><span class="s2">&quot;complete&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">],</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="c1"># keepdims=True,</span>
+        <span class="p">)</span>
+        <span class="c1"># print(jac_D_contrib.shape)</span>
+        <span class="n">jac_RC_contrib</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">jac_chf</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+                    <span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">databook</span><span class="p">(</span><span class="s2">&quot;complete&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">databook</span><span class="p">(</span><span class="s2">&quot;right_censored&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">),</span>
+                <span class="n">functions</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="c1"># keepdims=True,</span>
+        <span class="p">)</span>
+        <span class="c1"># print(jac_RC_contrib.shape)</span>
+        <span class="c1"># print(</span>
+        <span class="c1">#     np.concatenate(</span>
+        <span class="c1">#         (</span>
+        <span class="c1">#             self.databook(&quot;complete&quot;).values,</span>
+        <span class="c1">#             self.databook(&quot;right_censored&quot;).values,</span>
+        <span class="c1">#         )</span>
+        <span class="c1">#     ).shape</span>
+        <span class="c1"># )</span>
+        <span class="n">jac_LC_contrib</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">databook</span><span class="p">(</span><span class="s2">&quot;left_censored&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">functions</span><span class="p">)</span>
+            <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span>
+                <span class="n">functions</span><span class="o">.</span><span class="n">chf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">databook</span><span class="p">(</span><span class="s2">&quot;left_censored&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+            <span class="p">),</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="c1"># keepdims=True,</span>
+        <span class="p">)</span>
+        <span class="c1"># print(jac_LC_contrib.shape)</span>
+        <span class="c1"># print(</span>
+        <span class="c1">#     &quot;jac_chf :&quot;,</span>
+        <span class="c1">#     self.jac_chf(self.databook(&quot;left_truncated&quot;).values).shape,</span>
+        <span class="c1"># )</span>
+        <span class="n">jac_LT_contrib</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">databook</span><span class="p">(</span><span class="s2">&quot;left_truncated&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">functions</span><span class="p">),</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="c1"># keepdims=True,</span>
+        <span class="p">)</span>
+        <span class="c1"># print(jac_LT_contrib.shape)</span>
+
+        <span class="k">return</span> <span class="n">jac_D_contrib</span> <span class="o">+</span> <span class="n">jac_RC_contrib</span> <span class="o">+</span> <span class="n">jac_LC_contrib</span> <span class="o">+</span> <span class="n">jac_LT_contrib</span>
+
+    <span class="k">def</span> <span class="nf">hess_negative_log_likelihood</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">functions</span><span class="p">:</span> <span class="n">ParametricDistriFunction</span><span class="p">,</span>
+        <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">,</span>
+        <span class="n">scheme</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+
+        <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+        <span class="c1"># print(size)</span>
+        <span class="n">hess</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span>
+        <span class="n">params_values</span> <span class="o">=</span> <span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="k">if</span> <span class="n">scheme</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">scheme</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_hess_scheme</span>
+
+        <span class="k">if</span> <span class="n">scheme</span> <span class="o">==</span> <span class="s2">&quot;cs&quot;</span><span class="p">:</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="n">eps</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+                    <span class="c1"># print(type(u[i]))</span>
+                    <span class="c1"># print(u[i])</span>
+                    <span class="c1"># print(functions.params.values)</span>
+                    <span class="c1"># print(functions.params.values + u[i])</span>
+                    <span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">values</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                    <span class="c1"># print(self.jac_negative_log_likelihood(functions))</span>
+
+                    <span class="n">hess</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">jac_negative_log_likelihood</span><span class="p">(</span><span class="n">functions</span><span class="p">)[</span><span class="n">j</span><span class="p">])</span>
+                        <span class="o">/</span> <span class="n">eps</span>
+                    <span class="p">)</span>
+                    <span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">params_values</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
+                        <span class="n">hess</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">hess</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+
+        <span class="k">elif</span> <span class="n">scheme</span> <span class="o">==</span> <span class="s2">&quot;2-point&quot;</span><span class="p">:</span>
+
+            <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">xk</span><span class="p">,</span> <span class="n">functions</span><span class="p">):</span>
+                <span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">xk</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">jac_negative_log_likelihood</span><span class="p">(</span><span class="n">functions</span><span class="p">)</span>
+
+            <span class="n">xk</span> <span class="o">=</span> <span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">values</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+                <span class="n">hess</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">approx_fprime</span><span class="p">(</span>
+                    <span class="n">xk</span><span class="p">,</span>
+                    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">functions</span><span class="p">)[</span><span class="n">i</span><span class="p">],</span>
+                    <span class="n">eps</span><span class="p">,</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;scheme argument must be &#39;cs&#39; or &#39;2-point&#39;&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">hess</span></div>
+
+
+
+<span class="k">class</span> <span class="nc">ExponentialDistriLikelihood</span><span class="p">(</span><span class="n">ParametricDistriLikelihood</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">databook</span><span class="p">:</span> <span class="n">DataBook</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">databook</span><span class="p">)</span>
+
+    <span class="c1"># relife/distribution.Exponential</span>
+    <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">time</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">functions</span><span class="p">:</span> <span class="n">ParametricDistriFunction</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="c1"># shape : (len(sample), nb_param)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">time</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># relife/distribution.Exponential</span>
+    <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">time</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">functions</span><span class="p">:</span> <span class="n">ParametricDistriFunction</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="c1"># shape : (len(sample), nb_param)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">time</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
+
+
+<span class="k">class</span> <span class="nc">WeibullDistriLikelihood</span><span class="p">(</span><span class="n">ParametricDistriLikelihood</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">databook</span><span class="p">:</span> <span class="n">DataBook</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">databook</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">time</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">functions</span><span class="p">:</span> <span class="n">ParametricDistriFunction</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rate</span>
+                <span class="o">*</span> <span class="p">(</span><span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">])</span>
+                <span class="o">**</span> <span class="p">(</span><span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">c</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="o">*</span> <span class="p">(</span>
+                    <span class="mi">1</span>
+                    <span class="o">+</span> <span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">c</span>
+                    <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">])</span>
+                <span class="p">),</span>
+                <span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span>
+                <span class="o">*</span> <span class="p">(</span><span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">])</span>
+                <span class="o">**</span> <span class="p">(</span><span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">c</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">time</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">functions</span><span class="p">:</span> <span class="n">ParametricDistriFunction</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">])</span>
+                <span class="o">*</span> <span class="p">(</span><span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">])</span>
+                <span class="o">**</span> <span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">c</span><span class="p">,</span>
+                <span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">c</span>
+                <span class="o">*</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
+                <span class="o">*</span> <span class="p">(</span><span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">])</span>
+                <span class="o">**</span> <span class="p">(</span><span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">c</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">GompertzDistriLikelihood</span><span class="p">(</span><span class="n">ParametricDistriLikelihood</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">databook</span><span class="p">:</span> <span class="n">DataBook</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">databook</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">time</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">functions</span><span class="p">:</span> <span class="n">ParametricDistriFunction</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rate</span>
+                <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]),</span>
+                <span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">c</span>
+                <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">])</span>
+                <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]),</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">time</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">functions</span><span class="p">:</span> <span class="n">ParametricDistriFunction</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span><span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]),</span>
+                <span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">c</span>
+                <span class="o">*</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
+                <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">functions</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]),</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By RTE
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, RTE.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

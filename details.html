@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; ReLife2 2 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=1e5e4989"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <p># 1. ReLife2</p>
+<p>![](../img/relife_modules.png)</p>
+<p>ReLife2 is composed of three modules:</p>
+<ul class="simple">
+<li><p><cite>data</cite> : it contains all necessary objects to load data used in ReLife2</p></li>
+<li><p><cite>survival</cite>: it contains all objects used for survival analysis workflow. This module is composed of three submodules <cite>parametric</cite>, <cite>nonparametric</cite> and <cite>semiparametric</cite></p></li>
+<li><p><cite>policy</cite>: it contains all objects used for reliability theory and renewal theory</p></li>
+</ul>
+<p># 2. <cite>data</cite> module</p>
+<p>The <cite>data</cite> module is composed of several objects. For a basic usage, one can only focus on the <cite>SurvivalData</cite> dataclass (see section below). For contributors, please make sure you understand the <cite>LifetimeParser</cite> family section before.</p>
+<p>## <cite>LifetimeParser</cite> family</p>
+<p>To understand how <cite>SurvivalData</cite> dataclass works, it is necessary to know the [<cite>decoder</cite> submodule](../relife2/data/decoder.py). It contains objects that decodes lifetime data. Why ? Survival analysis carries on lifetime data whose format may not be constant. Our <cite>LifetimeParser</cite> objects share the same setup and their role is to extract all necessary information from given lifetime data. Everyone can propose a new decoder if a new lifetime data format is needed. For now, there are three decoder implementations :</p>
+<ul class="simple">
+<li><p>[<cite>BaseCensoredLifetime</cite>](../relife2/data/decoder.py#L59)</p></li>
+<li><p>[<cite>AdvancedCensoredLifetime</cite>](../relife2/data/decoder.py#L117)</p></li>
+<li><p>[<cite>Truncation</cite>](../relife2/data/decoder.py#L171)</p></li>
+</ul>
+<p>![](../img/data_decoder.png)</p>
+<p>As you can see, every <cite>LifetimeParser</cite> implements <cite>get_*_values()</cite> and <cite>get_*_index()</cite> methods. Here <cite>*</cite> means either left, right, interval or regular. It is just getter methods returning either lifetime values or index. The following table describes more precisely what it means for each implemented decoders</p>
+<div class="line-block">
+<div class="line"><a href="#id9"><span class="problematic" id="id10">|`get_*_values`()|`get_*_index`()|</span></a></div>
+</div>
+<p><a href="#id11"><span class="problematic" id="id12">|-|</span></a>-<a href="#id13"><span class="problematic" id="id14">|-|</span></a>
+<a href="#id15"><span class="problematic" id="id16">|`BaseCensoredLifetime`|return left-right-interval censored or regular (observed) lifetime values|return left-right-interval censored or regular (observed) lifetimes index|</span></a>
+<a href="#id17"><span class="problematic" id="id18">|`AdvancedCensoredLifetime`|return left-right-interval censored or regular (observed) lifetime values|return left-right-interval censored or regular (observed) lifetimes index|</span></a>
+<a href="#id19"><span class="problematic" id="id20">|`Truncation`|return left-right-interval truncation values or regular (not truncated) lifetime values|return left-right-interval truncated or regular (not truncated) lifetimes index|</span></a></p>
+<p>Because one user doesn’t want to know all the decoders, their instanciations are handled by two factories :  [<cite>censoredlifetimes_decoder</cite>](../relife2/data/decoder.py#L261) and [<cite>truncations_decoder</cite>](../relife2/data/decoder.py#L278).</p>
+<p><strong>Want to contribute ? :</strong> at this step, you may noticed that this code structure allows every one to add its own <cite>LifetimeParser</cite>. To do so, please make sure that your decoder object inherits from [<cite>LifetimeParser</cite>](../relife2/data/decoder.py#L6). It is necessary that every decoder shares the same structure to be used in our dataclass object (see next section). You might also extend current factories to return your decoder.</p>
+<p>## <cite>SurvivalData</cite> dataclass</p>
+<p>Previous decoder objects serve [<cite>SurvivalData</cite> dataclass](../relife2/data/base.py#L10). They fuel this dataclass attributes. As all decoders share the same structure, the initialization of the dataclass must not change. Only extensions are allowed.</p>
+<p>![](../img/relife_data.png)</p>
+<p><cite>SurvivalData</cite> dataclass proposes three main methods allowing to access rapidly to lifetime information in a more intelligibly manner :</p>
+<ul class="simple">
+<li><p><cite>.observed(return_values=False)</cite> : return observed lifetime index (or values if <cite>return_values=True</cite>).</p></li>
+<li><p><cite>.censored(how=”left”, return_values=False)</cite>: return censored lifetime index (or values if <cite>return_values=True</cite>). <cite>how</cite> can be either left, right and interval.</p></li>
+<li><p><cite>.truncated(how=”left”, return_values=False)</cite>: return truncated lifetime index (or values if <cite>return_values=True</cite>).`how` can be either left, right and interval.</p></li>
+</ul>
+<p><strong>Example:</strong>
+<a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>python
+import numpy as np
+from relife2 import SurvivalData</p>
+<p>time = np.random.randint(10, high=50, size=100)
+event = np.random.randint(0, 2, size=100)
+data = SurvivalData(time, event=event)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><dl>
+<dt>Lifetime data            Counts</dt><dd><blockquote>
+<div><p>Tot.               100</p>
+</div></blockquote>
+<p>Observed                51</p>
+</dd>
+</dl>
+<p>Left censored                49</p>
+</div></blockquote>
+<p>Right censored                 0</p>
+</div></blockquote>
+<dl>
+<dt>Interval censored                 0</dt><dd><blockquote>
+<div><p>Left truncated                 0</p>
+</div></blockquote>
+<p>Right truncated                 0</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>Interval truncated                 0</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">observed</span><span class="p">(</span><span class="n">return_values</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>np.array([30 35 17 10 38 23 26 27 29 21 23 14 21 17 27 19 23 49 46 12 13 49 10 14 …])</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">censored</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">return_values</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>np.array([44 35 22 48 48 23 34 15 16 35 35 38 34 29 24 33 26 20 38 23 13 12 23 ..])
+<a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
+<p>For more examples, take a look at [this notebook](../examples/data_examples.ipynb) in the [examples folder](../examples/)</p>
+<p>## Future developments ?</p>
+<p>With this code structure, one may imagine new decoders, new dataclass and even new modules. An interesting one could be a <cite>reader</cite> module which implements reader objects. Their role would be to read different file formats (.csv, .xml, etc.) containing lifetime values and load their content in <cite>np.ndarray</cite> object. We could create a synergy between <cite>reader</cite> and <cite>decoder</cite> so that a user can load lifetime time values from files and put it in our <cite>SurvivalData</cite> dataclass automatically.</p>
+<p># 3. <cite>survival</cite> module</p>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">ReLife2</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, RTE.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/details.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
