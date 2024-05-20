@@ -1,1 +1,3 @@
-# 21ch216.github.io
+# Documentation
+
+Exemple de documentation générée avec Sphinx
