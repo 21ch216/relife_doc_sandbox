@@ -23,11 +23,15 @@ exclude_patterns = []
 
 html_theme = 'furo'
 html_static_path = ['_static']
+html_title = "ReLife2" # sidebar title
 
 html_theme_options = {
-    "announcement": "<em>beta version</em> ReLife 2 documentation in progress",
+    "announcement": "<em>beta version</em> ReLife 2 documentation in progress", # annoucement bar
     "light_css_variables": {
         "color-brand-primary": "#7C4DFF",
-        "color-brand-content": "#7C4DFF",
+        "color-brand-content": "#7C4DFF", # color of banner
     },
 }
+
+pygments_style = "default" # code color highlight (see from pygments.styles import get_all_styles)
+pygments_dark_style = "monokai"  # code color highlight
