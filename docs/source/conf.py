@@ -11,8 +11,8 @@ import os
 import sys
 
 # for local use only
-# PATH_TO_LIBRARY = "../code/refife"
-# sys.path.insert(0, os.path.abspath(PATH_TO_LIBRARY))
+PATH_TO_LIBRARY = "../code/refife"
+sys.path.insert(0, os.path.abspath(PATH_TO_LIBRARY))
 
 project = 'doc_example'
 copyright = '2024, wgrison'
