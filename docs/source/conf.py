@@ -25,6 +25,9 @@ extensions = [
     "sphinx.ext.autodoc",  # to enable autodoc from docstrings
     "sphinx.ext.napoleon",  # to configure docstring style (use google style by default)
     "sphinx.ext.viewcode",  # to insert source code link next to objects documentation
+    "sphinx.ext.githubpages", # necessary to publish to as github pages
+    # (see : https://www.sphinx-doc.org/en/master/usage/extensions/githubpages.html
+    # and https://stackoverflow.com/questions/62626125/github-pages-with-sphinx-generated-documentation-not-displaying-html-correctly)
     "sphinx_copybutton",  # copy button in code block
 ]
 
