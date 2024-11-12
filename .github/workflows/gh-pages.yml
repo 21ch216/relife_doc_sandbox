@@ -9,12 +9,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Checkout relife repo # to delete in future
-        uses: actions/checkout@v4
+      - name: Clone ReLife2
+        uses: GuillaumeFalourd/clone-github-repo-action@v2.3
         with:
-          repository: rte-france/relife
-          ref: refactoring
-          path: relife2
+          depth: 1
+          branch: 'refactoring'
+          owner: 'rte-france'
+          repository: 'relife'
 
       - name : Install Python
         uses: actions/setup-python@v5
