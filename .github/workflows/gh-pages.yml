@@ -9,6 +9,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Checkout relife repo # to delete in future
+        uses: actions/checkout@v4
+        with:
+          repository: rte-france/relife
+          ref: refactoring
+          path: relife2
+
       - name : Install Python
         uses: actions/setup-python@v5
         with:
