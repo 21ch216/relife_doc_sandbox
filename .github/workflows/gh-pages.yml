@@ -9,6 +9,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name : Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name : Install Python dependencies
+        run: |
+          pip3 install -r requirements.txt
+
       - name: Build Sphinx Doc
         working-directory: ./docs
         run: |
