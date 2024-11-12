@@ -1,0 +1,1005 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>On Numpy dependance &#8212; ReLife2</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contribution/conception';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Contributor’s guide" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content"><em>beta version</em> ReLife 2 documentation in progress</div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ReLife2</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../quick_start.html">
+    Quick start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User’s guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../API/index.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Contributor’s guide
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../quick_start.html">
+    Quick start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../user/index.html">
+    User’s guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../API/index.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Contributor’s guide
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributor's guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">On Numpy dependance</a></li>
+
+
+
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Contributor’s guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">On Numpy dependance</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p>This page aims at providing succint explanations on refactoring
+choices.</p>
+<section id="on-numpy-dependance">
+<h1>On Numpy dependance<a class="headerlink" href="#on-numpy-dependance" title="Link to this heading">#</a></h1>
+<section id="user-knows-numpy">
+<h2>User knows numpy<a class="headerlink" href="#user-knows-numpy" title="Link to this heading">#</a></h2>
+<p>We expect user to know <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and to understanc basics of
+<a class="reference external" href="https://numpy.org/doc/stable/user/basics.broadcasting.html">broadcasting</a>.
+As a consequence, most methods inputs are supposed to be <code class="docutils literal notranslate"><span class="pre">np.array</span></code>
+object and we <strong>did not add control on user inputs nor user inputs
+automatic conversion</strong></p>
+</section>
+<section id="numpy-objects-dim">
+<h2>Numpy objects dim<a class="headerlink" href="#numpy-objects-dim" title="Link to this heading">#</a></h2>
+<p>All numpy objects inputs never have more than 2 dimensions.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0d-array</span></code> : one point of measure</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1d-array</span></code> : <span class="math notranslate nohighlight">\(n\)</span> points of measure on 1 unit, shape
+<span class="math notranslate nohighlight">\((n,)\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2d-array</span></code> : <span class="math notranslate nohighlight">\(n\)</span> points of measure on <span class="math notranslate nohighlight">\(m\)</span> units, shape
+<span class="math notranslate nohighlight">\((m,)\)</span></p></li>
+</ul>
+<p>Subsystems operations are written in numpy meaning <em>broadcastable</em>. So
+we expect user to write correctly its inputs and to know in advance what
+kind of shape is expecting.</p>
+</section>
+</section>
+<section id="models-framework">
+<h1>Models framework<a class="headerlink" href="#models-framework" title="Link to this heading">#</a></h1>
+<p>When a model is composed of several parametric parts, which can
+themselves be other <code class="docutils literal notranslate"><span class="pre">ParametricModel</span></code> objects, it can be challenging
+to create a new model without disrupting the overall logic of the ReLife
+implementations. To assist with the implementation of new statistical
+models, we have implemented <em>framework</em> objects called <code class="docutils literal notranslate"><span class="pre">Parameters</span></code>
+and <code class="docutils literal notranslate"><span class="pre">ParametricComponent</span></code>. These objects provide helpful properties
+and operations to simplify the creation of new parametric models.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> object is used to encode the parameters of a whole
+model while preserving the composition structure of models. It can be
+seen as a tree of parameter sets that follows the tree of model
+composition. Additionally, it provides a set of helper properties and
+operations that make it easier to define and work with the parameters of
+a parametric model.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ParametricComponent</span></code> object, on the other hand, is used to
+represent a single parametric part of a model. It is composed of a
+<code class="docutils literal notranslate"><span class="pre">Parameters</span></code> instance and provides a unified interface for adding new
+components to existing ones, similar to function composition. It can be
+seen as a tree of parametric functions.</p>
+<p>By using these framework objects, it is possible to more easily create
+new parametric models that are composed of multiple parts, without
+having to worry about disrupting the overall logic of the ReLife
+implementations.</p>
+<section id="parameters">
+<h2><code class="docutils literal notranslate"><span class="pre">Parameters</span></code><a class="headerlink" href="#parameters" title="Link to this heading">#</a></h2>
+<p>In previous versions of ReLife, model parameters were encapsulated in a
+varying-sized list of floats, depending on the number of parameters. The
+<code class="docutils literal notranslate"><span class="pre">Parameters</span></code> object is a more powerful alternative to this simple
+list, and it has been implemented to encapsulate the structure and
+values of the parameters. This object is responsible for automatically
+adapting the storage of parameters in a <code class="docutils literal notranslate"><span class="pre">ParametricComponent</span></code> and
+ensuring that parameters follow the structure of model composition. We
+have adapted the <a class="reference external" href="https://en.wikipedia.org/wiki/Composite_pattern">composite
+pattern</a> to encode
+parameters in a tree structure that follows the composition of the
+model. Our <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> objects can be seen as a tree of dictionaries.</p>
+<p>Each node in the tree has:</p>
+<ul class="simple">
+<li><p>A dictionary of parameter names and values</p></li>
+<li><p>All parameter names and values stored in lists (including those from
+the current node and all leaf nodes)</p></li>
+</ul>
+<p>This allows for multiple nodes to have the same parameter names.
+Separating the dictionary of current node parameters and lists of all
+parameters is mainly due to computation constraints. When operations
+modify all parameters of a model, it avoids the need to read the entire
+parameter tree each time.</p>
+<p>Each node can answer several requests, including:</p>
+<ul class="simple">
+<li><p>Getting/setting all parameter values from a node (updating the
+current node’s parameter values and those of its leaves)</p></li>
+<li><p>Getting/setting all parameter names from a node (updating the current
+node’s parameter names and those of its leaves)</p></li>
+<li><p>Getting/setting a parameter from its name at the node level (avoiding
+the ability to call other node parameters by name to prevent naming
+conflicts)</p></li>
+<li><p>Modifying the entire set of parameter names and values, including
+their number (updating the current node’s dictionary of parameters)</p></li>
+</ul>
+<p>I hope this revised text is clear and helpful. Let me know if you have
+any further questions or concerns.</p>
+<p><strong>improvements :</strong> - replace composite by
+<a class="reference external" href="https://docs.python.org/fr/3/library/collections.html#collections.namedtuple">namedtuple</a>
+and do not store all params and all names (not really used)</p>
+</section>
+<section id="parametriccomponent">
+<h2><code class="docutils literal notranslate"><span class="pre">ParametricComponent</span></code><a class="headerlink" href="#parametriccomponent" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">ParametricComponent</span></code> object also follows a tree-like structure,
+as it stores other <code class="docutils literal notranslate"><span class="pre">ParametricComponent</span></code> objects in its <code class="docutils literal notranslate"><span class="pre">leaves</span></code>
+attribute. It benefits from the <code class="docutils literal notranslate"><span class="pre">__getattr__</span></code> and <code class="docutils literal notranslate"><span class="pre">__setattr__</span></code>
+Python magic methods, which create a sort of bridge with the parameters
+data in order to call parameters by their names inside methods.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">ParametricComponent</span></code> object has the following attributes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">params</span></code>: This is composed of a <code class="docutils literal notranslate"><span class="pre">Composite</span></code> object and contains
+the parameters for the current node.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">leaves</span></code>: This is a list of other <code class="docutils literal notranslate"><span class="pre">ParametricComponent</span></code> objects.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">ParametricComponent</span></code> object has the following methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">compose_with</span></code>: This method adds a <code class="docutils literal notranslate"><span class="pre">ParametricComponent</span></code> object
+as a leaf that can be called from the current node.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">new_params</span></code>: This method changes the local parameters structure at
+the node level.</p></li>
+</ul>
+</section>
+<section id="lifetimemodel-baseclass-implementation-control">
+<h2><code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> baseclass : implementation control<a class="headerlink" href="#lifetimemodel-baseclass-implementation-control" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> provides a base interface consisting of survival
+probability functions, and any subclass of <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> must
+implement a minimum set of these functions. The <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> class
+controls the existence of certain probability functions, such as <code class="docutils literal notranslate"><span class="pre">sf</span></code>,
+<code class="docutils literal notranslate"><span class="pre">hf</span></code>, etc., by looking at class attributes. Then, <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code>
+provides base implementations for all common survival probability
+functions.</p>
+<p>One major change in the <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> class is that it no longer
+relies on the <code class="docutils literal notranslate"><span class="pre">ABC</span></code> module. The specific set of concrete method
+implementations needed in a <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> subclass will vary
+depending on which methods have already been implemented. For example,
+if a subclass implements <code class="docutils literal notranslate"><span class="pre">hf</span></code> and <code class="docutils literal notranslate"><span class="pre">pdf</span></code>, it can compute <code class="docutils literal notranslate"><span class="pre">sf</span></code> using
+a specific formula. But if a subclass implements <code class="docutils literal notranslate"><span class="pre">sf</span></code> and <code class="docutils literal notranslate"><span class="pre">pdf</span></code>, it
+will not need to implement <code class="docutils literal notranslate"><span class="pre">hf</span></code>, because it can be computed using a
+different formula. Using <code class="docutils literal notranslate"><span class="pre">abstractmethod</span></code> would not be appropriate in
+this case, because it would require that the minimum set of mandatory
+probability functions remains the same. Instead, we can use the old
+abstract class style and raise a <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> when a
+particular function is needed but has not been implemented. The specific
+probability formula used will depend on which methods are present in the
+<code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> derived class, which can be determined by looking at
+class attributes (e.g., using an <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">…</span> <span class="pre">in</span> <span class="pre">self.__class__.__dict__</span></code>
+condition).</p>
+<p>Additionally, we can prevent the <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> class from being
+instantiated by overriding the <code class="docutils literal notranslate"><span class="pre">__new__</span></code> method. This avoids clumsy
+usage of this class and implementing a metaclass would have been
+cumbersome.</p>
+<p><strong>improvements</strong> :</p>
+<ul class="simple">
+<li><p>with <code class="docutils literal notranslate"><span class="pre">__init_subclass__</span></code> read methods signature recursively in
+order to to parse *args names and to fill args_names and nb_args</p></li>
+</ul>
+</section>
+<section id="variadic-model-args-lifetimemodel-is-generic">
+<h2>Variadic model <code class="docutils literal notranslate"><span class="pre">args</span></code> : <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> is <code class="docutils literal notranslate"><span class="pre">Generic</span></code><a class="headerlink" href="#variadic-model-args-lifetimemodel-is-generic" title="Link to this heading">#</a></h2>
+<p>In previous versions of ReLife, the unpacking operator <code class="docutils literal notranslate"><span class="pre">*</span></code> was used to
+create an infinite number of arguments that could be passed to a
+function. This allowed the <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> interface to be responsive
+to a variadic number of extra arguments in methods signatures when the
+model was composed of other models. The following piece of code
+illustrates this idea in the case of a regression model:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LifetimeModel</span><span class="p">:</span>
+    <span class="o">...</span>
+    <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]):</span><span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">ProportionalHazard</span><span class="p">(</span><span class="n">LifetimeModel</span><span class="p">):</span>
+    <span class="n">baseline</span> <span class="p">:</span> <span class="n">LifetimeModel</span>
+    <span class="o">...</span>
+    <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="n">covar</span> <span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]):</span><span class="o">...</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">covar_effect</span><span class="o">.</span><span class="n">g</span><span class="p">(</span><span class="n">covar</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">baseline</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example, <code class="docutils literal notranslate"><span class="pre">ProportionalHazard</span></code> objects are composed of any
+other <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> instance and inherit the <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code>
+interface in order to reuse the base implementation of probability
+functions if needed. However, <code class="docutils literal notranslate"><span class="pre">ProportionalHazard</span></code> extends the <code class="docutils literal notranslate"><span class="pre">hf</span></code>
+signature with one extra argument named <code class="docutils literal notranslate"><span class="pre">covar</span></code> to explicitly tell
+users that in its case <code class="docutils literal notranslate"><span class="pre">*args</span></code> must have at least one <code class="docutils literal notranslate"><span class="pre">covar</span></code>
+object. The <code class="docutils literal notranslate"><span class="pre">*args</span></code> parameter also allows
+<code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">ProportionalHazard(AFT(AFT(...(Weibull())</span></code> to run, because if
+one wants to request <code class="docutils literal notranslate"><span class="pre">model.hf</span></code>, the number of arguments that must be
+passed varies and is spread recursively in the chain of <code class="docutils literal notranslate"><span class="pre">baseline</span></code>
+composition.</p>
+<p>However, typing rules can be easily fooled or misrespected if one is not
+careful. In the previous example, strictly speaking,
+<code class="docutils literal notranslate"><span class="pre">ProportionalHazard</span></code> overrides the <code class="docutils literal notranslate"><span class="pre">hf</span></code> signature and violates the
+Liskov Substitution Principle (LSP): <code class="docutils literal notranslate"><span class="pre">hf</span></code> expects
+<code class="docutils literal notranslate"><span class="pre">[float,</span> <span class="pre">tuple[float,</span> <span class="pre">...]]</span></code> in <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code>, but
+<code class="docutils literal notranslate"><span class="pre">[float,</span> <span class="pre">float,</span> <span class="pre">tuple[float,</span> <span class="pre">...]]</span></code> in <code class="docutils literal notranslate"><span class="pre">ProportionalHazard</span></code>.</p>
+<p>To handle correct type hinting and avoid issues related to the problem
+explained above, ReLife uses <code class="docutils literal notranslate"><span class="pre">TypeVarTuple</span></code> introduced in Python 3.11.
+This allows <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> to act as a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Template_(C%2B%2B)">template</a>,
+enabling parametric polymorphism and variadic args.</p>
+<p>Here is an example of how this can be implemented using
+<code class="docutils literal notranslate"><span class="pre">TypeVarTuple</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">VariadicArgs</span> <span class="o">=</span> <span class="n">TypeVarTuple</span><span class="p">(</span><span class="s2">&quot;VariadicArgs&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">LifetimeModel</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="o">*</span><span class="n">VariadicArgs</span><span class="p">]):</span>
+    <span class="o">...</span>
+    <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">VariadicArgs</span><span class="p">):</span><span class="o">...</span>
+
+<span class="n">ModelArgs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="o">...</span><span class="p">]</span>
+
+<span class="k">class</span> <span class="nc">ProportionalHazard</span><span class="p">(</span><span class="n">LifetimeModel</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">]):</span>
+    <span class="n">baseline</span> <span class="p">:</span> <span class="n">LifetimeModel</span><span class="p">[</span><span class="o">*</span><span class="n">ModelArgs</span><span class="p">]</span>
+    <span class="o">...</span>
+    <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="n">covar</span> <span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">):</span><span class="o">...</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">covar_effect</span><span class="o">.</span><span class="n">g</span><span class="p">(</span><span class="n">covar</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">baseline</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example, <code class="docutils literal notranslate"><span class="pre">VariadicArgs</span></code> is a type variable that can be any
+<em>tuple</em> of types. Concrete implementation, like <code class="docutils literal notranslate"><span class="pre">ProportionalHazard</span></code>
+can specify the expected <em>tuple</em> of types while still maintaining
+correct type hinting. Here, <code class="docutils literal notranslate"><span class="pre">ProportionalHazard</span></code> expects this tuple of
+types as extra arguments :
+<code class="docutils literal notranslate"><span class="pre">tuple[NDArray[np.float64],</span> <span class="pre">*ModelArgs]</span> <span class="pre">=</span> <span class="pre">tuple[NDArray[np.float64],</span> <span class="pre">*tuple[NDArray[np.float64],</span> <span class="pre">...]]</span></code>
+meaning a tuple consisting of at least one <code class="docutils literal notranslate"><span class="pre">NDArray[np.float64]</span></code> as
+first element followed by zero or more <code class="docutils literal notranslate"><span class="pre">NDArray[np.float64]</span></code>. Note
+that <code class="docutils literal notranslate"><span class="pre">tuple[NDArray[np.float64],</span> <span class="pre">*tuple[NDArray[np.float64],</span> <span class="pre">...]]</span></code>
+cannot be rewritten as <code class="docutils literal notranslate"><span class="pre">tuple[NDArray[np.float64],</span> <span class="pre">...]</span></code> as it would
+mean a tuple consisting of zero or more <code class="docutils literal notranslate"><span class="pre">NDArray[np.float64]</span></code>.</p>
+</section>
+<section id="lifetimedata-factory">
+<h2><code class="docutils literal notranslate"><span class="pre">LifetimeData</span></code> factory<a class="headerlink" href="#lifetimedata-factory" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">ParametricLifetimeModel</span></code> fitting process uses a <code class="docutils literal notranslate"><span class="pre">Likelihood</span></code>
+object to estimate model parameters. In survival analysis, the
+contribution of each observation to the likelihood depends on the type
+of lifetime observation (complete, right censored, etc.) and any
+truncations. Therefore, it is necessary to parse the data provided by
+users and categorize each observation.</p>
+<p>To accomplish this task, we use <code class="docutils literal notranslate"><span class="pre">LifetimeReader</span></code> objects, which are
+responsible for parsing lifetime data. These objects are then used in a
+factory object called <code class="docutils literal notranslate"><span class="pre">lifetime_data_factory</span></code> to construct a
+<code class="docutils literal notranslate"><span class="pre">LifetimeData</span></code> object. This object encapsulates each group of lifetime
+data in an <code class="docutils literal notranslate"><span class="pre">IndexedData</span></code> object, which keeps track of the index of the
+original data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">IndexedData</span></code> can be thought of as a simplified version of
+<code class="docutils literal notranslate"><span class="pre">pandas.Series</span></code> that only allows for the intersection or union of data
+based. For example, you can use: - <code class="docutils literal notranslate"><span class="pre">intersection(*others)</span></code> to get
+observations that are left truncated and complete. - <code class="docutils literal notranslate"><span class="pre">union(*others)</span></code>
+to get observations that are complete or right censored.</p>
+<p>Additionally, all values of lifetime data are stored as 2D arrays, which
+makes probability computations more homogeneous in cases where there are
+covariates.</p>
+<p><strong>Why a factory ?</strong> The advantage of using a factory is that it
+decouples the process of reading data and creating <code class="docutils literal notranslate"><span class="pre">LifetimeData</span></code>
+objects. This makes it much easier to create variations of the reader
+process if needed and isolate code in a cleaner way.</p>
+</section>
+<section id="other-considerations">
+<h2>Other considerations<a class="headerlink" href="#other-considerations" title="Link to this heading">#</a></h2>
+<p>There are a few constraints that must be followed when using the
+<code class="docutils literal notranslate"><span class="pre">ParametricModel</span></code> object:</p>
+<ul class="simple">
+<li><p>At the model level, a user cannot request methods of a model if one
+of the <code class="docutils literal notranslate"><span class="pre">params</span></code> values is <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>. All parameter values must be
+passed at the instantiation or the empty model must be fit before any
+requests are made.</p></li>
+<li><p>At the model level, <code class="docutils literal notranslate"><span class="pre">params</span></code> cannot be set individually or by name.
+The user can only set all param values at once using a single setter.
+If a user wants to control <code class="docutils literal notranslate"><span class="pre">params</span></code> names, they can use the
+<code class="docutils literal notranslate"><span class="pre">params_names</span></code> getter or the string representation of the instance.</p></li>
+</ul>
+</section>
+</section>
+<section id="stochastic-process-sampling">
+<h1>Stochastic process sampling<a class="headerlink" href="#stochastic-process-sampling" title="Link to this heading">#</a></h1>
+<p>Suppose we want to sample lifetimes given an <code class="docutils literal notranslate"><span class="pre">end_time</span></code> and a sampling
+<code class="docutils literal notranslate"><span class="pre">size</span></code>. The first and easiest way to visualize the sampling process is
+to consider one asset :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="n">samples_index</span>
+<span class="o">-----</span>
+<span class="mi">4</span> <span class="mi">2</span> <span class="mi">4</span> <span class="o">-&gt;</span> <span class="n">it</span><span class="mf">.1</span>
+<span class="mi">1</span> <span class="mi">5</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="n">it</span><span class="mf">.2</span>
+<span class="mi">2</span> <span class="mi">4</span> <span class="mi">3</span> <span class="o">-&gt;</span> <span class="n">it</span><span class="mf">.3</span>
+<span class="mi">2</span> <span class="o">.</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="n">it</span><span class="mf">.4</span>
+<span class="mi">3</span> <span class="o">.</span> <span class="o">.</span> <span class="o">-&gt;</span> <span class="n">it</span><span class="mf">.5</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">-&gt;</span> <span class="ne">StopIteration</span>
+</pre></div>
+</div>
+<p>As you can see, the sampling generates a sequence of lifetime values per
+sample index (here <code class="docutils literal notranslate"><span class="pre">size</span></code> = 3). The sequences generated vary in length
+depending on whether the cumulative sum of the durations has reached the
+time limit (here <code class="docutils literal notranslate"><span class="pre">end_time</span></code>=10).</p>
+<p>Sometimes, one wants to generate lifetimes for different assets. In that
+case, the number of sequences equals the <code class="docutils literal notranslate"><span class="pre">size</span> <span class="pre">*</span> <span class="pre">nb_assets</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="n">samples_index</span>
+<span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="n">assets_index</span>
+<span class="o">-----</span>
+<span class="mi">4</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">2</span> <span class="mi">5</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">7</span> <span class="o">-&gt;</span> <span class="n">it</span><span class="mf">.1</span>
+<span class="mi">1</span> <span class="mi">5</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">6</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">5</span> <span class="o">-&gt;</span> <span class="n">it</span><span class="mf">.2</span>
+<span class="mi">2</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">4</span> <span class="o">.</span> <span class="mi">8</span> <span class="mi">2</span> <span class="mi">2</span> <span class="o">.</span> <span class="o">-&gt;</span> <span class="n">it</span><span class="mf">.3</span>
+<span class="mi">2</span> <span class="o">.</span> <span class="mi">2</span> <span class="mi">3</span> <span class="o">.</span> <span class="mi">4</span> <span class="mi">3</span> <span class="o">.</span> <span class="o">.</span> <span class="o">-&gt;</span> <span class="n">it</span><span class="mf">.4</span>
+<span class="mi">3</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="mi">1</span> <span class="o">.</span> <span class="o">.</span> <span class="o">-&gt;</span> <span class="n">it</span><span class="mf">.5</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="mi">5</span> <span class="o">.</span> <span class="o">.</span> <span class="o">-&gt;</span> <span class="n">it</span><span class="mf">.6</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">-&gt;</span> <span class="ne">StopIteration</span>
+</pre></div>
+</div>
+<p>A simple storage of the generated data would be to translate the array
+structure shown above in 2d-array, where missing elements are encoded by
+<code class="docutils literal notranslate"><span class="pre">np.nan</span></code> or masked in <code class="docutils literal notranslate"><span class="pre">MaskArray</span></code>-object. The disadvantage of this
+approach is that it can severely overload memory if the number of masked
+elements generated becomes very large, as in very large sampling. A
+better approach is to store the elements in a compacted 1d-array like
+this :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="n">samples_index</span>
+<span class="o">-----------------------</span>
+<span class="mi">4</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">5</span> <span class="mi">4</span> <span class="mi">4</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="o">...</span> <span class="o">-&gt;</span> <span class="n">samples_index</span>
+<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="o">...</span> <span class="o">-&gt;</span> <span class="n">assets_index</span>
+<span class="o">-----------------------</span>
+<span class="mi">4</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">5</span> <span class="mi">4</span> <span class="mi">4</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">8</span> <span class="mi">4</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>This format is lighter, but requires some index manipulation to easily
+slice on generated data.</p>
+<section id="advantages-of-generator-approach">
+<h2>Advantages of generator approach<a class="headerlink" href="#advantages-of-generator-approach" title="Link to this heading">#</a></h2>
+<p>At a first glimps, used generator approach in ReLife2 only encapsulates
+lifetime generation routine in one objet that keeps in memory previous
+states without recomputing them many times. It is exactly what basic
+while loop did. But, it offers to advantages in comparison to a while
+loop :</p>
+<ul class="simple">
+<li><p>It provides a convenient way to pass other generator routine without
+creating another RenewalProcess class</p></li>
+<li><p>It avoids code duplication (see init_loop and main_loop) : same
+generation, only model changes. First generation has only to send its
+results to main generator</p></li>
+</ul>
+<p><strong>Solutions</strong></p>
+<p>Lifetime generators are first parametrized with : <code class="docutils literal notranslate"><span class="pre">nb_assets</span></code>,
+<code class="docutils literal notranslate"><span class="pre">nb_samples</span></code>, <code class="docutils literal notranslate"><span class="pre">args</span></code>. It allows to keep in memory the expected
+rvs_size depending on <code class="docutils literal notranslate"><span class="pre">nb_assets</span></code>,<code class="docutils literal notranslate"><span class="pre">nb_samples</span></code>, <code class="docutils literal notranslate"><span class="pre">args</span></code>.
+Generators also knows <code class="docutils literal notranslate"><span class="pre">end_time</span></code> in order to slice uppon valid
+lifetime values.</p>
+<p>Generators receive an 1d of times then : - it yields variable number of
+computed data - update data in an object</p>
+<p>one stacks results :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">stacker</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">init</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">init</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">new</span><span class="p">):</span>
+            <span class="n">init</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">init</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">stacker</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">try</span> <span class="p">:</span>
+            <span class="n">lifetime</span> <span class="o">=</span> <span class="n">rvs</span> <span class="o">...</span>
+            <span class="n">assets</span> <span class="o">=</span> <span class="o">...</span>
+            <span class="n">stacker</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">lifetime</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">stacker</span>
+            <span class="n">stacker</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">return</span>
+</pre></div>
+</div>
+</section>
+<section id="events-and-a0">
+<h2><code class="docutils literal notranslate"><span class="pre">events</span></code> and <code class="docutils literal notranslate"><span class="pre">a0</span></code><a class="headerlink" href="#events-and-a0" title="Link to this heading">#</a></h2>
+<p>The current implementation has <code class="docutils literal notranslate"><span class="pre">events</span></code> and <code class="docutils literal notranslate"><span class="pre">a0</span></code> providing data for
+<code class="docutils literal notranslate"><span class="pre">ReplacementPolicyData</span></code>, which are used to construct lifetime data in
+<code class="docutils literal notranslate"><span class="pre">to_lifetime_data</span></code>. However, this introduces cumbersome code in the
+<code class="docutils literal notranslate"><span class="pre">sample</span></code> functionalities.</p>
+<ul class="simple">
+<li><p>if model is <code class="docutils literal notranslate"><span class="pre">LeftTruncated</span></code>, <code class="docutils literal notranslate"><span class="pre">a0</span></code> must be catch for
+<code class="docutils literal notranslate"><span class="pre">delayed_model</span></code> only and added to generated lifetimes as a
+rectification</p></li>
+<li><p>if model is <code class="docutils literal notranslate"><span class="pre">AgeReplacementModel</span></code>, <code class="docutils literal notranslate"><span class="pre">events</span></code> that represents right
+censoring indicators, is conditionned on <code class="docutils literal notranslate"><span class="pre">ar</span></code> values</p></li>
+</ul>
+<p>So, type checking on <code class="docutils literal notranslate"><span class="pre">model</span></code> is made combined with ugly numpy slicing
+to retrieve correct sampled elements. One can propose easier approach
+with generators : why not just writting those data inside the generation
+process and not after it was made ?</p>
+<p><strong>Solution :</strong></p>
+<p>Generation process relies on <code class="docutils literal notranslate"><span class="pre">rvs</span></code> functionnality of <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code>
+objects and <code class="docutils literal notranslate"><span class="pre">a0</span></code> is an <code class="docutils literal notranslate"><span class="pre">args</span></code> of those model type. We can modify the
+<code class="docutils literal notranslate"><span class="pre">rvs</span></code> function to directly generate rectified lifetimes by
+incorporating <code class="docutils literal notranslate"><span class="pre">a0</span></code>: <code class="docutils literal notranslate"><span class="pre">self.baseline(*args,</span> <span class="pre">size=size)</span> <span class="pre">+</span> <span class="pre">a0</span></code>. This
+way, we no longer need to check for the <code class="docutils literal notranslate"><span class="pre">LeftTruncated</span></code> model in the
+<code class="docutils literal notranslate"><span class="pre">sample</span></code> function, as the lifetimes will be correctly generated with
+their final values.</p>
+<p>Next, we can handle <code class="docutils literal notranslate"><span class="pre">events</span></code> more straightforwardly. In the lifetime
+generator routine, we can add a check for the model type and generate
+<code class="docutils literal notranslate"><span class="pre">events</span></code> alongside lifetimes, given the <code class="docutils literal notranslate"><span class="pre">ar</span></code> values. The
+<code class="docutils literal notranslate"><span class="pre">CountData</span></code> can be updated to include <code class="docutils literal notranslate"><span class="pre">events</span></code> data, which is
+consistent with the <code class="docutils literal notranslate"><span class="pre">ReplacementPolicyData</span></code> interface.</p>
+<p>With these modifications, the <code class="docutils literal notranslate"><span class="pre">to_lifetime_data</span></code> function no longer
+needs to be specific for <code class="docutils literal notranslate"><span class="pre">ReplacementPolicyData</span></code> subtypes. Every
+<code class="docutils literal notranslate"><span class="pre">RenewalData</span></code> can have a <code class="docutils literal notranslate"><span class="pre">to_lifetime_data</span></code> method, enhancing
+coherence and consistency. This approach ensures that every <code class="docutils literal notranslate"><span class="pre">sample</span></code>
+method of both <code class="docutils literal notranslate"><span class="pre">RenewalProcess</span></code> and <code class="docutils literal notranslate"><span class="pre">Policy</span></code> returns objects that
+can be converted to lifetime data.</p>
+</section>
+<section id="sample-signature-and-args">
+<h2><code class="docutils literal notranslate"><span class="pre">sample</span></code> signature and <code class="docutils literal notranslate"><span class="pre">args</span></code><a class="headerlink" href="#sample-signature-and-args" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">sample</span></code> methods in both <code class="docutils literal notranslate"><span class="pre">RenewalProcess</span></code> objects and
+<code class="docutils literal notranslate"><span class="pre">Policy</span></code>-like objects (see next example) result in a varying interface
+due to the inclusion of <code class="docutils literal notranslate"><span class="pre">args</span></code>-like parameters. These parameters are
+necessary to customize the associated model, reward, and/or discount. I
+have identified two possible solutions to this problem:</p>
+<ol class="arabic simple">
+<li><p>Keep <code class="docutils literal notranslate"><span class="pre">sample</span></code> as part of the interface, but encapsulate <code class="docutils literal notranslate"><span class="pre">args</span></code>
+values in a dictionary of type <code class="docutils literal notranslate"><span class="pre">Dict[str,</span> <span class="pre">Any]</span></code> during object
+instantiation. The downside of this approach is that users must
+provide each argument value during instantiation, along with
+<code class="docutils literal notranslate"><span class="pre">model</span></code>, <code class="docutils literal notranslate"><span class="pre">reward</span></code>, and/or <code class="docutils literal notranslate"><span class="pre">discount</span></code> instances.</p></li>
+<li><p>Remove <code class="docutils literal notranslate"><span class="pre">sample</span></code> from the interface and make it a standalone
+function (<code class="docutils literal notranslate"><span class="pre">sample(obj,</span> <span class="pre">nb_sample=10,</span> <span class="pre">...)</span></code>) or a method within
+another object, such as <code class="docutils literal notranslate"><span class="pre">Simulator</span></code>.</p></li>
+</ol>
+<p>The second solution, however, still requires varying <code class="docutils literal notranslate"><span class="pre">sample</span></code>
+parametrization depending on the type of object (<code class="docutils literal notranslate"><span class="pre">obj</span></code>) passed as the
+first argument. If <code class="docutils literal notranslate"><span class="pre">obj</span></code> is a <code class="docutils literal notranslate"><span class="pre">RenewalProcess</span></code>, <code class="docutils literal notranslate"><span class="pre">args</span></code> would
+correspond to <code class="docutils literal notranslate"><span class="pre">model_args</span></code> and optionally <code class="docutils literal notranslate"><span class="pre">delayed_model_args</span></code>. If
+<code class="docutils literal notranslate"><span class="pre">obj</span></code> is a <code class="docutils literal notranslate"><span class="pre">RunToFailure</span></code>, <code class="docutils literal notranslate"><span class="pre">args</span></code> would include <code class="docutils literal notranslate"><span class="pre">cp</span></code>, <code class="docutils literal notranslate"><span class="pre">cf</span></code>,
+<code class="docutils literal notranslate"><span class="pre">rate</span></code>, <code class="docutils literal notranslate"><span class="pre">cp1</span></code>, and so on. Although this approach could be
+implemented using single dispatch from <code class="docutils literal notranslate"><span class="pre">functools</span></code>, it may not be
+user-friendly, as understanding the various parametrization options
+would require consulting the documentation.</p>
+<p>The first approach could be implemented using a <code class="docutils literal notranslate"><span class="pre">Protocol</span></code> to define a
+clear and concise <code class="docutils literal notranslate"><span class="pre">Policy</span></code> type.`</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Policy</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">LifetimeModel</span><span class="p">[</span><span class="o">*</span><span class="n">ModelArgs</span><span class="p">],</span>
+    <span class="n">model_args</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="o">*</span><span class="n">ModelArgs</span><span class="p">]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[()]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">reward_args</span> <span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+    <span class="n">nb_assets</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">a0</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">delayed_model</span><span class="p">:</span> <span class="n">LifetimeModel</span><span class="p">[</span><span class="o">*</span><span class="n">DelayedModelArgs</span><span class="p">],</span>
+    <span class="n">delayed_model_args</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="o">*</span><span class="n">DelayedModelArgs</span><span class="p">]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[()]</span> <span class="o">=</span> <span class="p">(),</span>
+
+    <span class="k">def</span> <span class="nf">expected_total_cost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span> <span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span> <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">asymptotic_expected_total_cost</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span> <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">expected_equivalent_annual_cost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span> <span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span> <span class="o">....</span>
+
+    <span class="k">def</span> <span class="nf">asymptotic_expected_equivalent_annual_cost</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span> <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nb_samples</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>The issue of <code class="docutils literal notranslate"><span class="pre">args</span></code> in <code class="docutils literal notranslate"><span class="pre">sample</span></code> has been addressed by storing them
+as a dictionary of values. Every method will retrieve the required arg
+values from this dictionary. From a user’s perspective, every concrete
+<code class="docutils literal notranslate"><span class="pre">Policy</span></code> will explicitly state the names of the <code class="docutils literal notranslate"><span class="pre">args</span></code> needed in
+<code class="docutils literal notranslate"><span class="pre">reward_args</span></code>. Only the core of the constructor will fill the
+dictionary. This attribute could even be a descriptor to automatically
+control and convert filled <code class="docutils literal notranslate"><span class="pre">args</span></code> values with respect to
+<code class="docutils literal notranslate"><span class="pre">nb_assets</span></code>.</p>
+<p>One drawback of solution 2 is that it is more aligned with the
+object-oriented paradigm and may be less appealing to users who prefer
+functional programming. It is true that this approach requires users to
+reinstantiate the <code class="docutils literal notranslate"><span class="pre">Policy</span></code>-like object each time they want to change
+<code class="docutils literal notranslate"><span class="pre">args</span></code>. However, this only adds one additional line of code compared
+to calling <code class="docutils literal notranslate"><span class="pre">sample</span></code> with different arguments. Furthermore, the number
+of given args is significant, and it is likely that users would have
+already stored them in variables. It is merely a matter of copying and
+pasting the relevant variables when reinstantiating the object.</p>
+<p>NB : <code class="docutils literal notranslate"><span class="pre">Policy</span></code> objects do not need nor <code class="docutils literal notranslate"><span class="pre">reward</span></code> or <code class="docutils literal notranslate"><span class="pre">discount</span></code>
+attribute. Discount is always exponential and <code class="docutils literal notranslate"><span class="pre">reward</span></code> is implicit.</p>
+</section>
+</section>
+<section id="lebesgue">
+<h1>Lebesgue<a class="headerlink" href="#lebesgue" title="Link to this heading">#</a></h1>
+<p>Many code blocks depend upon <code class="docutils literal notranslate"><span class="pre">ls_integrate</span></code>, especially in the renewal
+package. This method relies on <code class="docutils literal notranslate"><span class="pre">support_upper_bound</span></code> and
+<code class="docutils literal notranslate"><span class="pre">support_lower_bound</span></code> properties of model. Because these properties
+only exist for <code class="docutils literal notranslate"><span class="pre">ls_instagrate</span></code> operations, the ISP and SRP principles
+tend to delete them from the <code class="docutils literal notranslate"><span class="pre">Model</span></code> interface and delegate their
+usage in <code class="docutils literal notranslate"><span class="pre">ls_integrate</span></code>. As a consequence, <code class="docutils literal notranslate"><span class="pre">mrl</span></code> must also be
+overridden in derived class where <code class="docutils literal notranslate"><span class="pre">support_upper_bound</span></code> is not
+<code class="docutils literal notranslate"><span class="pre">np.inf</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ls_integrate</span></code> implementation might vary from one concrete <code class="docutils literal notranslate"><span class="pre">Model</span></code>
+to another. The obvious question is : should <code class="docutils literal notranslate"><span class="pre">Model</span></code> interfaces
+contain <code class="docutils literal notranslate"><span class="pre">ls_integrate</span></code> method. One can say that this operation is only
+used to make other operations (moment computation, etc.) and would not
+be used by “normal” users. Then, it may be good thing to decouple
+<code class="docutils literal notranslate"><span class="pre">Model</span></code> from <code class="docutils literal notranslate"><span class="pre">ls_integrate</span></code> and make <code class="docutils literal notranslate"><span class="pre">Model</span></code>-objects use
+<code class="docutils literal notranslate"><span class="pre">ls_integrate</span></code>. One can also consider <code class="docutils literal notranslate"><span class="pre">ls_integrate</span></code> as an usefull
+request for advanced mathematical users and no seperate it from
+<code class="docutils literal notranslate"><span class="pre">Model</span></code> interface.</p>
+<p>For now, <code class="docutils literal notranslate"><span class="pre">ls_integrate</span></code> won’t be seperated from <code class="docutils literal notranslate"><span class="pre">Model</span></code> interface
+and its base implementation might be overriden in concrete class.</p>
+<p><strong>``func`` argument is a callable that only expects one ``np.ndarray``
+as input and return ``np.ndarray`` as output. If one wants to add args,
+he must use ``functools.partial``.</strong></p>
+<p>Another problem is that <code class="docutils literal notranslate"><span class="pre">ls_integrate</span></code> relied on <code class="docutils literal notranslate"><span class="pre">ndim</span></code> argument
+which was basically the maximum number of dimension of all array
+variables used in the integrated function. It mainly looks at <code class="docutils literal notranslate"><span class="pre">*args</span></code>
+variables but sometimes <code class="docutils literal notranslate"><span class="pre">time</span></code> is also a variable in the integrand
+(see <code class="docutils literal notranslate"><span class="pre">mrl</span></code>). To avoid having to specify ndim depending on the variable
+shapes at run time, now <code class="docutils literal notranslate"><span class="pre">ls_integrate</span></code> automatically convert all
+variables in 2d and squeeze the result. This feature is permitted
+because variables can’t have more than 2d. Concretely, it uses
+<code class="docutils literal notranslate"><span class="pre">np.atleast_2d</span></code> for both <code class="docutils literal notranslate"><span class="pre">args</span></code> and <code class="docutils literal notranslate"><span class="pre">integrand</span></code> result.</p>
+</section>
+<section id="lectures">
+<h1>Lectures<a class="headerlink" href="#lectures" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://zestedesavoir.com/tutoriels/954/notions-de-python-avancees/1-starters/2-iterables/">Python
+iterator/iterable</a></p></li>
+<li><p><a class="reference external" href="https://python-patterns.guide/gang-of-four/iterator/">Idem</a></p></li>
+<li><p>Can we use descriptor like Validator attribute (limit validation code
+repeatitions) : read <a class="reference external" href="https://docs.python.org/3/howto/descriptor.html#validator-class">validator class
+example</a></p></li>
+<li><p>Primer one python iterators : <a class="reference external" href="https://docs.python.org/3/tutorial/classes.html#iterators">python doc
+iterators</a></p></li>
+<li><p>See functools.reduce to aggregate results of iterator : <a class="reference external" href="https://docs.python.org/dev/howto/functional.html#the-functools-module">python
+functional programming
+style</a></p></li>
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/9884132/what-are-iterator-iterable-and-iteration">On difference between iterator and
+iterable</a>
+and <a class="reference external" href="https://stackoverflow.com/questions/36619152/do-pythons-iterables-really-store-all-values-in-memory">iterable and data
+storage</a></p></li>
+<li><p>Perfect answer on type hinting Iterator <a class="reference external" href="https://stackoverflow.com/questions/73933419/how-to-write-type-hints-for-an-iterable-abstract-base-class">How to write type hinting
+for iterable base
+class</a></p></li>
+<li><p>On functional programming and partial function : <a class="reference external" href="https://chriskiehl.com/article/Cleaner-coding-through-partially-applied-functions">partial functions
+python</a></p></li>
+</ul>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Contributor’s guide</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">On Numpy dependance</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-knows-numpy">User knows numpy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-objects-dim">Numpy objects dim</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#models-framework">Models framework</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters"><code class="docutils literal notranslate"><span class="pre">Parameters</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametriccomponent"><code class="docutils literal notranslate"><span class="pre">ParametricComponent</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lifetimemodel-baseclass-implementation-control"><code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> baseclass : implementation control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variadic-model-args-lifetimemodel-is-generic">Variadic model <code class="docutils literal notranslate"><span class="pre">args</span></code> : <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> is <code class="docutils literal notranslate"><span class="pre">Generic</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lifetimedata-factory"><code class="docutils literal notranslate"><span class="pre">LifetimeData</span></code> factory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-considerations">Other considerations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-process-sampling">Stochastic process sampling</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-generator-approach">Advantages of generator approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#events-and-a0"><code class="docutils literal notranslate"><span class="pre">events</span></code> and <code class="docutils literal notranslate"><span class="pre">a0</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-signature-and-args"><code class="docutils literal notranslate"><span class="pre">sample</span></code> signature and <code class="docutils literal notranslate"><span class="pre">args</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lebesgue">Lebesgue</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lectures">Lectures</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/contribution/conception.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, wgrison.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
