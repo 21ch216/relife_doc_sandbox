@@ -11,7 +11,7 @@ import os
 import sys
 
 # PATH_TO_LIBRARY = "../code/refife"
-PATH_TO_LIBRARY = "../../relife2"
+PATH_TO_LIBRARY = "./relife2"
 
 sys.path.insert(0, os.path.abspath(PATH_TO_LIBRARY))
 
