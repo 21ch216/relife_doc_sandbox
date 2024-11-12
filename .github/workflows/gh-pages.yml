@@ -3,7 +3,9 @@ on: [push]
 permissions:
   contents: write
 jobs:
-  build-and-deploy:
+
+  installation:
+    name: Installation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,11 +30,21 @@ jobs:
           cd relife
           pip3 install . # install relife2
 
+  build:
+    name: Build sphinx
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Build Sphinx Doc
         working-directory: ./docs
         run: |
           sphinx-build -M html ./source ./build -Ea
 
+  deploy:
+    name: Deploy pages
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
