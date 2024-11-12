@@ -15,11 +15,12 @@ To install ReLife2, use pip:
 
    pip install .
 
-
 .. toctree::
    :maxdepth: 3
    :hidden:
    :titlesonly:
 
    quick_start
+   user/index
+   API/index
    contribution/index

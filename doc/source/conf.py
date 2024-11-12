@@ -5,6 +5,14 @@
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+# theme used : https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/index.html
+
+import os
+import sys
+
+PATH_TO_LIBRARY = "../code/refife"
+
+sys.path.insert(0, os.path.abspath(PATH_TO_LIBRARY))
 
 project = 'doc_example'
 copyright = '2024, wgrison'
@@ -13,7 +21,12 @@ author = 'wgrison'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = [
+    "sphinx.ext.autodoc",  # to enable autodoc from docstrings
+    "sphinx.ext.napoleon",  # to configure docstring style (use google style by default)
+    "sphinx.ext.viewcode",  # to insert source code link next to objects documentation
+    "sphinx_copybutton",  # copy button in code block
+]
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -21,17 +34,10 @@ exclude_patterns = []
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'furo'
+html_theme = "pydata_sphinx_theme"
 html_static_path = ['_static']
-html_title = "ReLife2" # sidebar title
+html_title = "ReLife2"  # sidebar title
 
 html_theme_options = {
-    "announcement": "<em>beta version</em> ReLife 2 documentation in progress", # annoucement bar
-    "light_css_variables": {
-        "color-brand-primary": "#7C4DFF",
-        "color-brand-content": "#7C4DFF", # color of banner
-    },
+    "announcement": "<em>beta version</em> ReLife 2 documentation in progress",  # annoucement bar
 }
-
-pygments_style = "default" # code color highlight (see from pygments.styles import get_all_styles)
-pygments_dark_style = "monokai"  # code color highlight
