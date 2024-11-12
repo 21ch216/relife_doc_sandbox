@@ -10,8 +10,7 @@
 import os
 import sys
 
-# PATH_TO_LIBRARY = "../code/refife" # for local use
-PATH_TO_LIBRARY = "../relife2" # for remote use with github actions
+PATH_TO_LIBRARY = "../code/refife" # for local use only
 
 sys.path.insert(0, os.path.abspath(PATH_TO_LIBRARY))
 

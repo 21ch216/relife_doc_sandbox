@@ -9,6 +9,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
       - name: Clone ReLife2
         uses: GuillaumeFalourd/clone-github-repo-action@v2.3
         with:
@@ -17,14 +22,11 @@ jobs:
           owner: 'rte-france'
           repository: 'relife'
 
-      - name : Install Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
       - name : Install Python dependencies
         run: |
-          pip3 install -r requirements.txt
+          pip3 install -r requirements.txt # install sphinx (and extensions)
+          cd relife
+          pip3 install . # install relife2
 
       - name: Build Sphinx Doc
         working-directory: ./docs
