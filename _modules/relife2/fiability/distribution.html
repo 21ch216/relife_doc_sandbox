@@ -396,11 +396,23 @@
 <div class="viewcode-block" id="Exponential.hf">
 <a class="viewcode-back" href="../../../API/distribution.html#relife2.fiability.distribution.Exponential.hf">[docs]</a>
     <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Args:</span>
-<span class="sd">            time (NDArray[np.float64]):</span>
-<span class="sd">        Returns:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cumulative hazard function.</span>
 
+<span class="sd">        The cumulative hazard function of an exponential distribution</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        time : numpy array of floats</span>
+<span class="sd">            Elapsed time.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy array of floats</span>
+<span class="sd">            Cumulative hazard function at each given time.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        `time` and `*args` arrays must be broadcastable</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
 

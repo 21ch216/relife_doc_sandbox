@@ -350,12 +350,21 @@
 <dd><dl class="py method">
 <dt class="sig sig-object py" id="relife2.fiability.distribution.Exponential.hf">
 <span class="sig-name descname"><span class="pre">hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/relife2/fiability/distribution.html#Exponential.hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.fiability.distribution.Exponential.hf" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Cumulative hazard function.</p>
+<p>The cumulative hazard function of an exponential distribution</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>time</strong> (<em>NDArray</em><em>[</em><em>np.float64</em><em>]</em>)</p>
+<dd class="field-odd"><p><strong>time</strong> (<em>numpy array</em><em> of </em><em>floats</em>) – Elapsed time.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Cumulative hazard function at each given time.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy array of floats</p>
 </dd>
 </dl>
-<p>Returns:</p>
+<p class="rubric">Notes</p>
+<p><cite>time</cite> and <cite>*args</cite> arrays must be broadcastable</p>
 </dd></dl>
 
 <dl class="py method">
@@ -365,11 +374,6 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>(</strong><strong>)</strong> (<em>**kwargs</em>)</p></li>
-<li><p><strong>(</strong><strong>)</strong></p></li>
-<li><p><strong>(</strong><strong>)</strong></p></li>
-<li><p><strong>(</strong><strong>)</strong></p></li>
-<li><p><strong>(</strong><strong>)</strong></p></li>
-<li><p><strong>(</strong><strong>)</strong></p></li>
 <li><p><strong>(</strong><strong>)</strong></p></li>
 </ul>
 </dd>
