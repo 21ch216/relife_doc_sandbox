@@ -30,6 +30,7 @@ extensions = [
     # and https://stackoverflow.com/questions/62626125/github-pages-with-sphinx-generated-documentation-not-displaying-html-correctly)
     "sphinx_copybutton",  # copy button in code block
 ]
+autodoc_typehints = "none"
 
 templates_path = ['_templates']
 exclude_patterns = []
