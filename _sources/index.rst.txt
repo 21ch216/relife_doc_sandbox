@@ -22,5 +22,5 @@ To install ReLife2, use pip:
 
    quick_start
    user/index
-   API/index
+   api/index
    contribution/index

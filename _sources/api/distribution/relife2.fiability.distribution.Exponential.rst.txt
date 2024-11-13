@@ -1,0 +1,116 @@
+﻿relife2.fiability.distribution.Exponential
+==========================================
+
+.. currentmodule:: relife2.fiability.distribution
+
+.. autoclass:: Exponential
+    :members:
+    :show-inheritance:
+    :inherited-members:
+
+    
+
+    
+    
+    .. rubric:: Attributes
+
+    .. autosummary::
+        :nosignatures:
+
+    
+        
+            ~Exponential.all_params_set
+        
+        
+            ~Exponential.nb_params
+        
+        
+            ~Exponential.params
+        
+        
+            ~Exponential.params_bounds
+        
+        
+            ~Exponential.params_names
+        
+    
+    
+
+    
+    .. rubric:: Methods
+
+    .. autosummary::
+        :nosignatures:
+    
+        
+        
+            ~Exponential.cdf
+        
+        
+            ~Exponential.chf
+        
+        
+            ~Exponential.compose_with
+        
+        
+            ~Exponential.copy
+        
+        
+            ~Exponential.dhf
+        
+        
+            ~Exponential.fit
+        
+        
+            ~Exponential.hf
+        
+        
+            ~Exponential.ichf
+        
+        
+            ~Exponential.init_params
+        
+        
+            ~Exponential.isf
+        
+        
+            ~Exponential.jac_chf
+        
+        
+            ~Exponential.jac_hf
+        
+        
+            ~Exponential.ls_integrate
+        
+        
+            ~Exponential.mean
+        
+        
+            ~Exponential.median
+        
+        
+            ~Exponential.moment
+        
+        
+            ~Exponential.mrl
+        
+        
+            ~Exponential.new_params
+        
+        
+            ~Exponential.pdf
+        
+        
+            ~Exponential.ppf
+        
+        
+            ~Exponential.rvs
+        
+        
+            ~Exponential.sf
+        
+        
+            ~Exponential.var
+        
+    
+    

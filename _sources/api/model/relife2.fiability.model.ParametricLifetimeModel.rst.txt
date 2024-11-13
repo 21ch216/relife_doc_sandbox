@@ -1,0 +1,52 @@
+﻿relife2.fiability.model.ParametricLifetimeModel
+===============================================
+
+.. currentmodule:: relife2.fiability.model
+
+.. autoclass:: ParametricLifetimeModel
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ParametricLifetimeModel.__init__
+      ~ParametricLifetimeModel.cdf
+      ~ParametricLifetimeModel.chf
+      ~ParametricLifetimeModel.compose_with
+      ~ParametricLifetimeModel.copy
+      ~ParametricLifetimeModel.fit
+      ~ParametricLifetimeModel.hf
+      ~ParametricLifetimeModel.ichf
+      ~ParametricLifetimeModel.init_params
+      ~ParametricLifetimeModel.isf
+      ~ParametricLifetimeModel.ls_integrate
+      ~ParametricLifetimeModel.mean
+      ~ParametricLifetimeModel.median
+      ~ParametricLifetimeModel.moment
+      ~ParametricLifetimeModel.mrl
+      ~ParametricLifetimeModel.new_params
+      ~ParametricLifetimeModel.pdf
+      ~ParametricLifetimeModel.ppf
+      ~ParametricLifetimeModel.rvs
+      ~ParametricLifetimeModel.sf
+      ~ParametricLifetimeModel.var
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ParametricLifetimeModel.all_params_set
+      ~ParametricLifetimeModel.nb_params
+      ~ParametricLifetimeModel.params
+      ~ParametricLifetimeModel.params_bounds
+      ~ParametricLifetimeModel.params_names
+   
+   

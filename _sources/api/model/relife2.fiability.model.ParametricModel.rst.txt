@@ -1,0 +1,37 @@
+﻿relife2.fiability.model.ParametricModel
+=======================================
+
+.. currentmodule:: relife2.fiability.model
+
+.. autoclass:: ParametricModel
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ParametricModel.__init__
+      ~ParametricModel.compose_with
+      ~ParametricModel.copy
+      ~ParametricModel.fit
+      ~ParametricModel.init_params
+      ~ParametricModel.new_params
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ParametricModel.all_params_set
+      ~ParametricModel.nb_params
+      ~ParametricModel.params
+      ~ParametricModel.params_bounds
+      ~ParametricModel.params_names
+   
+   
