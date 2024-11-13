@@ -31,6 +31,7 @@ extensions = [
     "sphinx_copybutton",  # copy button in code block
 ]
 autodoc_typehints = "none"
+napoleon_use_rtype = False
 
 templates_path = ['_templates']
 exclude_patterns = []
