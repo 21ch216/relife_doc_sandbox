@@ -23,6 +23,7 @@ author = 'wgrison'
 
 extensions = [
     "sphinx.ext.autodoc",  # to enable autodoc from docstrings
+    "sphinx.ext.autosummary",
     "sphinx.ext.napoleon",  # to configure docstring style (use google style by default)
     "sphinx.ext.viewcode",  # to insert source code link next to objects documentation
     "sphinx.ext.githubpages", # necessary to publish to as github pages
@@ -30,11 +31,15 @@ extensions = [
     # and https://stackoverflow.com/questions/62626125/github-pages-with-sphinx-generated-documentation-not-displaying-html-correctly)
     "sphinx_copybutton",  # copy button in code block
 ]
+
 autodoc_typehints = "none"
+autosummary_generate = True
+
+napoleon_use_param = True
 napoleon_use_rtype = False
 
-templates_path = ['_templates']
-exclude_patterns = []
+templates_path = ['_templates', '_templates/autosummary']
+exclude_patterns = ['_build', '_templates'] # note to be parsed by compiler
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
@@ -45,4 +50,5 @@ html_title = "ReLife2"  # sidebar title
 
 html_theme_options = {
     "announcement": "<em>beta version</em> ReLife 2 documentation in progress",  # annoucement bar
+    "navigation_with_keys" : False,
 }
