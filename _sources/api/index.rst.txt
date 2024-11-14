@@ -1,8 +1,6 @@
 API
 =============
 
-.. currentmodule:: relife2.fiability
-
 Base models
 ~~~~~~~~~~~
 

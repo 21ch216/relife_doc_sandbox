@@ -1,11 +1,11 @@
 Parametric model
 ~~~~~~~~~~~~~~~~
 
-.. currentmodule:: relife2.fiability.model
+.. currentmodule:: relife2
 
 .. autosummary::
     :toctree:
-    :recursive:
+    :template: parametric-lifetime-model-class.rst
 
     ParametricModel
     ParametricLifetimeModel

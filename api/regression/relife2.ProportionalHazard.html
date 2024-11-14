@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Regressions &#8212; ReLife2</title>
+    <title>relife2.ProportionalHazard &#8212; ReLife2</title>
   
   
   
@@ -44,11 +44,11 @@
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/regression/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/regression/relife2.ProportionalHazard';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="relife2.ProportionalHazard" href="relife2.ProportionalHazard.html" />
-    <link rel="prev" title="relife2.Gompertz" href="../distribution/relife2.Gompertz.html" />
+    <link rel="next" title="relife2.AFT" href="relife2.AFT.html" />
+    <link rel="prev" title="Regressions" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -298,8 +298,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../distribution/relife2.Gompertz.html">relife2.Gompertz</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Regressions</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="relife2.ProportionalHazard.html">relife2.ProportionalHazard</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Regressions</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">relife2.ProportionalHazard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relife2.AFT.html">relife2.AFT</a></li>
 </ul>
 </details></li>
@@ -341,7 +341,10 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">API</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Regressions</span></li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Regressions</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">relife2.ProportionalHazard</span></li>
   </ul>
 </nav>
 </div>
@@ -358,19 +361,161 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="regressions">
-<h1>Regressions<a class="headerlink" href="#regressions" title="Link to this heading">#</a></h1>
+  <section id="relife2-proportionalhazard">
+<h1>relife2.ProportionalHazard<a class="headerlink" href="#relife2-proportionalhazard" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">ProportionalHazard</span></span><a class="reference internal" href="../../_modules/relife2/fiability/regression.html#ProportionalHazard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ProportionalHazard" title="Link to this definition">#</a></dt>
+<dd><section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h2>
+<p class="rubric">Survival functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="relife2.ProportionalHazard.html#relife2.ProportionalHazard" title="relife2.ProportionalHazard"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProportionalHazard</span></code></a></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="relife2.AFT.html#relife2.AFT" title="relife2.AFT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AFT</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.chf" title="relife2.ProportionalHazard.chf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chf</span></code></a></p></td>
+<td><p>Cumulative hazard function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dhf</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.hf" title="relife2.ProportionalHazard.hf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hf</span></code></a></p></td>
+<td><p>Hazard function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ichf</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isf</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_chf</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_hf</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mrl</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sf</span></code></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p class="rubric">Probability functions</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdf</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ppf</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Statistics</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">median</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">moment</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">var</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Other methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rvs</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nb_params</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">params</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_names</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.chf">
+<span class="sig-name descname"><span class="pre">chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/regression.html#ProportionalHazard.chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ProportionalHazard.chf" title="Link to this definition">#</a></dt>
+<dd><p>Cumulative hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> (<em>(N,) or (M,N) np.array of floats</em>) – Elapsed time. If the shape given is (N,), one asset and N points of measure are considered
+To consider M assets with respectively N points of measure, pass an array of shape (M, N).</p></li>
+<li><p><strong>*args</strong> (<em>any other numpy arrays of floats needed</em>) – Extra arguments required in addition of <cite>time</cite> (e.g. covariates). Each argument must be
+broadcastable to <cite>time</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>(N,) or (M,N) np.array of floats</em> – Cumulative hazard function at each given time.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The cumulative hazard function is the integral of the hazard function.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.hf">
+<span class="sig-name descname"><span class="pre">hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/regression.html#ProportionalHazard.hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ProportionalHazard.hf" title="Link to this definition">#</a></dt>
+<dd><p>Hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time</strong> (<em>numpy array of floats</em>) – Elapsed time.</p></li>
+<li><p><strong>*args</strong> (<em>any other numpy arrays of floats needed</em>) – Extra arguments required in addition of <cite>time</cite>. Must be
+broadcastable to <cite>time</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>numpy array of floats</em> – Hazard function at each given time.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The hazard function is the derivative of the cumulative hazard function.</p>
+</dd></dl>
+
+</section>
+</dd></dl>
+
 </section>
 
 
@@ -384,20 +529,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../distribution/relife2.Gompertz.html"
+       href="index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">relife2.Gompertz</p>
+        <p class="prev-next-title">Regressions</p>
       </div>
     </a>
     <a class="right-next"
-       href="relife2.ProportionalHazard.html"
+       href="relife2.AFT.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">relife2.ProportionalHazard</p>
+        <p class="prev-next-title">relife2.AFT</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -413,9 +558,25 @@
 
 
   <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.chf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.chf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.hf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.hf()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../_sources/api/regression/index.rst.txt">
+    <a href="../../_sources/api/regression/relife2.ProportionalHazard.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

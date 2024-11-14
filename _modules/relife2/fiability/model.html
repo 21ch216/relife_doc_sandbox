@@ -326,16 +326,16 @@
                   
   <h1>Source code for relife2.fiability.model</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">copy</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">numpy.typing</span> <span class="kn">import</span> <span class="n">NDArray</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">Bounds</span><span class="p">,</span> <span class="n">minimize</span><span class="p">,</span> <span class="n">newton</span>
 
 <span class="kn">from</span> <span class="nn">relife2.data</span> <span class="kn">import</span> <span class="n">LifetimeData</span><span class="p">,</span> <span class="n">lifetime_data_factory</span>
+<span class="kn">from</span> <span class="nn">relife2.fiability.likelihood</span> <span class="kn">import</span> <span class="n">LikelihoodFromLifetimes</span>
 <span class="kn">from</span> <span class="nn">relife2.maths.integration</span> <span class="kn">import</span> <span class="n">gauss_legendre</span><span class="p">,</span> <span class="n">quad_laguerre</span>
 <span class="kn">from</span> <span class="nn">relife2.typing</span> <span class="kn">import</span> <span class="n">VariadicArgs</span>
 
@@ -463,7 +463,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">update_parents</span><span class="p">()</span>
 
 
-<span class="k">class</span> <span class="nc">ParametricComponent</span><span class="p">:</span>
+<div class="viewcode-block" id="ParametricModel">
+<a class="viewcode-back" href="../../../api/model/relife2.ParametricModel.html#relife2.ParametricModel">[docs]</a>
+<span class="k">class</span> <span class="nc">ParametricModel</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_params</span> <span class="o">=</span> <span class="n">Parameters</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">leaves</span> <span class="o">=</span> <span class="p">{}</span>
@@ -485,10 +487,10 @@
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_params</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">all_params_set</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_all_params_set</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">compose_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwcomponents</span><span class="p">:</span> <span class="s2">&quot;ParametricComponent&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">compose_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwcomponents</span><span class="p">:</span> <span class="s2">&quot;ParametricModel&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;add functions that can be called from node&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">kwcomponents</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_params</span><span class="o">.</span><span class="n">node_data</span><span class="p">:</span>
@@ -529,7 +531,8 @@
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
 
 
 <span class="k">class</span> <span class="nc">LifetimeModel</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="o">*</span><span class="n">VariadicArgs</span><span class="p">]):</span>
@@ -787,53 +790,27 @@
             <span class="p">)</span>
 
 
-<div class="viewcode-block" id="ParametricModel">
-<a class="viewcode-back" href="../../../api/model/relife2.fiability.model.ParametricModel.html#relife2.fiability.model.ParametricModel">[docs]</a>
-<span class="k">class</span> <span class="nc">ParametricModel</span><span class="p">(</span><span class="n">ParametricComponent</span><span class="p">,</span> <span class="n">ABC</span><span class="p">):</span>
-    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">init_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
-
-    <span class="nd">@property</span>
-    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">params_bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bounds</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;BLABLABLA&quot;&quot;&quot;</span>
-
-    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        args :</span>
-<span class="sd">        kwargs :</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-
-<span class="sd">        &quot;&quot;&quot;</span></div>
-
-
-
-<span class="k">class</span> <span class="nc">Likelihood</span><span class="p">(</span><span class="n">ParametricComponent</span><span class="p">,</span> <span class="n">ABC</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">ParametricModel</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">compose_with</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hasjac</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;jac_hf&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;jac_chf&quot;</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">hasjac</span> <span class="o">=</span> <span class="kc">True</span>
-
-    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">negative_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Args:</span>
-<span class="sd">            params ():</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            Negative log likelihood value given a set a parameters values</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="c1"># class ParametricModel(ParametricFunctions, ABC):</span>
+<span class="c1">#     @abstractmethod</span>
+<span class="c1">#     def init_params(self, *args: Any) -&gt; None: ...</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#     @abstractmethod</span>
+<span class="c1">#     def fit(self, *args: Any, **kwargs: Any) -&gt; NDArray[np.float64]:</span>
+<span class="c1">#         &quot;&quot;&quot;</span>
+<span class="c1">#         Parameters</span>
+<span class="c1">#         ----------</span>
+<span class="c1">#         args :</span>
+<span class="c1">#         kwargs :</span>
+<span class="c1">#</span>
+<span class="c1">#         Returns</span>
+<span class="c1">#         -------</span>
+<span class="c1">#</span>
+<span class="c1">#         &quot;&quot;&quot;</span>
 
 
 <div class="viewcode-block" id="ParametricLifetimeModel">
-<a class="viewcode-back" href="../../../api/model/relife2.fiability.model.ParametricLifetimeModel.html#relife2.fiability.model.ParametricLifetimeModel">[docs]</a>
+<a class="viewcode-back" href="../../../api/model/relife2.ParametricLifetimeModel.html#relife2.ParametricLifetimeModel">[docs]</a>
 <span class="k">class</span> <span class="nc">ParametricLifetimeModel</span><span class="p">(</span><span class="n">LifetimeModel</span><span class="p">[</span><span class="o">*</span><span class="n">VariadicArgs</span><span class="p">],</span> <span class="n">ParametricModel</span><span class="p">,</span> <span class="n">ABC</span><span class="p">):</span>
     <span class="c1"># def __init_subclass__(cls, **kwargs):</span>
     <span class="c1">#     &quot;&quot;&quot;</span>
@@ -849,14 +826,22 @@
     <span class="c1"># def nb_args(self):</span>
     <span class="c1">#     return len(self._args)</span>
 
+    <span class="nd">@property</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">params_bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bounds</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;BLABLABLA&quot;&quot;&quot;</span>
+
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">init_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lifetime_data</span><span class="p">:</span> <span class="n">LifetimeData</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">VariadicArgs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize parameters values before fitting</span>
+
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        lifetime_data : LifetimeData object</span>
+<span class="sd">            lalal.</span>
 <span class="sd">        args : tuple of numpy arrays</span>
-
+<span class="sd">            lala.</span>
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 
@@ -920,160 +905,12 @@
             <span class="ow">and</span> <span class="ow">not</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;__&quot;</span><span class="p">)</span>
             <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">LifetimeModel</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
         <span class="p">):</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_params_set</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_all_params_set</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                     <span class="sa">f</span><span class="s2">&quot;Can&#39;t call </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2"> if one model params is not set. Instanciate fully parametrized model or fit it&quot;</span>
                 <span class="p">)</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></div>
 
-
-
-<span class="k">class</span> <span class="nc">LikelihoodFromLifetimes</span><span class="p">(</span><span class="n">Likelihood</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">model</span><span class="p">:</span> <span class="n">ParametricLifetimeModel</span><span class="p">[</span><span class="o">*</span><span class="nb">tuple</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="o">...</span><span class="p">]],</span>
-        <span class="n">lifetime_data</span><span class="p">:</span> <span class="n">LifetimeData</span><span class="p">,</span>
-        <span class="n">model_args</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
-    <span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lifetime_data</span> <span class="o">=</span> <span class="n">lifetime_data</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model_args</span> <span class="o">=</span> <span class="n">model_args</span>
-
-    <span class="k">def</span> <span class="nf">_complete_contribs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lifetime_data</span><span class="p">:</span> <span class="n">LifetimeData</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span>
-                    <span class="n">lifetime_data</span><span class="o">.</span><span class="n">complete</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-                    <span class="o">*</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">complete</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_args</span><span class="p">),</span>
-                <span class="p">)</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_right_censored_contribs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lifetime_data</span><span class="p">:</span> <span class="n">LifetimeData</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">chf</span><span class="p">(</span>
-                <span class="n">lifetime_data</span><span class="o">.</span><span class="n">rc</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-                <span class="o">*</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">rc</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_args</span><span class="p">),</span>
-            <span class="p">),</span>
-            <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_left_censored_contribs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lifetime_data</span><span class="p">:</span> <span class="n">LifetimeData</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
-                <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span>
-                    <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">chf</span><span class="p">(</span>
-                        <span class="n">lifetime_data</span><span class="o">.</span><span class="n">left_censored</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-                        <span class="o">*</span><span class="p">(</span>
-                            <span class="n">args</span><span class="p">[</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">left_censored</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
-                            <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_args</span>
-                        <span class="p">),</span>
-                    <span class="p">)</span>
-                <span class="p">)</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_left_truncations_contribs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lifetime_data</span><span class="p">:</span> <span class="n">LifetimeData</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">chf</span><span class="p">(</span>
-                <span class="n">lifetime_data</span><span class="o">.</span><span class="n">left_truncated</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-                <span class="o">*</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">left_truncated</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_args</span><span class="p">),</span>
-            <span class="p">),</span>
-            <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_jac_complete_contribs</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">lifetime_data</span><span class="p">:</span> <span class="n">LifetimeData</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">jac_hf</span><span class="p">(</span>
-                <span class="n">lifetime_data</span><span class="o">.</span><span class="n">complete</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-                <span class="o">*</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">complete</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_args</span><span class="p">),</span>
-            <span class="p">)</span>
-            <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span>
-                <span class="n">lifetime_data</span><span class="o">.</span><span class="n">complete</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-                <span class="o">*</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">complete</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_args</span><span class="p">),</span>
-            <span class="p">),</span>
-            <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_jac_right_censored_contribs</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">lifetime_data</span><span class="p">:</span> <span class="n">LifetimeData</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">jac_chf</span><span class="p">(</span>
-                <span class="n">lifetime_data</span><span class="o">.</span><span class="n">rc</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-                <span class="o">*</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">rc</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_args</span><span class="p">),</span>
-            <span class="p">),</span>
-            <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_jac_left_censored_contribs</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">lifetime_data</span><span class="p">:</span> <span class="n">LifetimeData</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">jac_chf</span><span class="p">(</span>
-                <span class="n">lifetime_data</span><span class="o">.</span><span class="n">left_censored</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-                <span class="o">*</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">left_censored</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_args</span><span class="p">),</span>
-            <span class="p">)</span>
-            <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">chf</span><span class="p">(</span>
-                    <span class="n">lifetime_data</span><span class="o">.</span><span class="n">left_censored</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-                    <span class="o">*</span><span class="p">(</span>
-                        <span class="n">args</span><span class="p">[</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">left_censored</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
-                        <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_args</span>
-                    <span class="p">),</span>
-                <span class="p">)</span>
-            <span class="p">),</span>
-            <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_jac_left_truncations_contribs</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">lifetime_data</span><span class="p">:</span> <span class="n">LifetimeData</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">jac_chf</span><span class="p">(</span>
-                <span class="n">lifetime_data</span><span class="o">.</span><span class="n">left_truncated</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-                <span class="o">*</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">left_truncated</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_args</span><span class="p">),</span>
-            <span class="p">),</span>
-            <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">negative_log</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">params</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_complete_contribs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lifetime_data</span><span class="p">)</span>
-            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_right_censored_contribs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lifetime_data</span><span class="p">)</span>
-            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_left_censored_contribs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lifetime_data</span><span class="p">)</span>
-            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_left_truncations_contribs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lifetime_data</span><span class="p">)</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">jac_negative_log</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">params</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            params ():</span>
-
-<span class="sd">        Returns:</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">hasjac</span><span class="p">:</span>
-            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Model does not support jac negative likelihood natively&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
-        <span class="k">return</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_jac_complete_contribs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lifetime_data</span><span class="p">)</span>
-            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jac_right_censored_contribs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lifetime_data</span><span class="p">)</span>
-            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jac_left_censored_contribs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lifetime_data</span><span class="p">)</span>
-            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jac_left_truncations_contribs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lifetime_data</span><span class="p">)</span>
-        <span class="p">)</span>
 </pre></div>
 
                 </article>

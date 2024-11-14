@@ -341,13 +341,13 @@
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">Bounds</span>
 
 <span class="kn">from</span> <span class="nn">relife2.data</span> <span class="kn">import</span> <span class="n">LifetimeData</span>
-<span class="kn">from</span> <span class="nn">relife2.fiability.model</span> <span class="kn">import</span> <span class="n">ParametricComponent</span><span class="p">,</span> <span class="n">ParametricLifetimeModel</span>
+<span class="kn">from</span> <span class="nn">relife2.fiability.model</span> <span class="kn">import</span> <span class="n">ParametricModel</span><span class="p">,</span> <span class="n">ParametricLifetimeModel</span>
 <span class="kn">from</span> <span class="nn">relife2.typing</span> <span class="kn">import</span> <span class="n">ModelArgs</span>
 
 <span class="n">Ts</span> <span class="o">=</span> <span class="n">TypeVarTuple</span><span class="p">(</span><span class="s2">&quot;Ts&quot;</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">CovarEffect</span><span class="p">(</span><span class="n">ParametricComponent</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">CovarEffect</span><span class="p">(</span><span class="n">ParametricModel</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coef</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,)):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">new_params</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="sa">f</span><span class="s2">&quot;coef_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">coef</span><span class="p">)})</span>
@@ -525,11 +525,11 @@
 
 
 <div class="viewcode-block" id="ProportionalHazard">
-<a class="viewcode-back" href="../../../api/regression/relife2.fiability.regression.ProportionalHazard.html#relife2.fiability.regression.ProportionalHazard">[docs]</a>
+<a class="viewcode-back" href="../../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard">[docs]</a>
 <span class="k">class</span> <span class="nc">ProportionalHazard</span><span class="p">(</span><span class="n">Regression</span><span class="p">):</span>
 
 <div class="viewcode-block" id="ProportionalHazard.hf">
-<a class="viewcode-back" href="../../../api/regression/relife2.fiability.regression.ProportionalHazard.html#relife2.fiability.regression.ProportionalHazard.hf">[docs]</a>
+<a class="viewcode-back" href="../../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard.hf">[docs]</a>
     <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
@@ -540,7 +540,7 @@
 
 
 <div class="viewcode-block" id="ProportionalHazard.chf">
-<a class="viewcode-back" href="../../../api/regression/relife2.fiability.regression.ProportionalHazard.html#relife2.fiability.regression.ProportionalHazard.chf">[docs]</a>
+<a class="viewcode-back" href="../../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard.chf">[docs]</a>
     <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
@@ -597,11 +597,11 @@
 
 
 <div class="viewcode-block" id="AFT">
-<a class="viewcode-back" href="../../../api/regression/relife2.fiability.regression.AFT.html#relife2.fiability.regression.AFT">[docs]</a>
+<a class="viewcode-back" href="../../../api/regression/relife2.AFT.html#relife2.AFT">[docs]</a>
 <span class="k">class</span> <span class="nc">AFT</span><span class="p">(</span><span class="n">Regression</span><span class="p">):</span>
 
 <div class="viewcode-block" id="AFT.hf">
-<a class="viewcode-back" href="../../../api/regression/relife2.fiability.regression.AFT.html#relife2.fiability.regression.AFT.hf">[docs]</a>
+<a class="viewcode-back" href="../../../api/regression/relife2.AFT.html#relife2.AFT.hf">[docs]</a>
     <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
@@ -613,7 +613,7 @@
 
 
 <div class="viewcode-block" id="AFT.chf">
-<a class="viewcode-back" href="../../../api/regression/relife2.fiability.regression.AFT.html#relife2.fiability.regression.AFT.chf">[docs]</a>
+<a class="viewcode-back" href="../../../api/regression/relife2.AFT.html#relife2.AFT.chf">[docs]</a>
     <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>

@@ -387,13 +387,9 @@
 
 
 <div class="viewcode-block" id="Exponential">
-<a class="viewcode-back" href="../../../api/distribution/relife2.fiability.distribution.Exponential.html#relife2.fiability.distribution.Exponential">[docs]</a>
+<a class="viewcode-back" href="../../../api/distribution/relife2.Exponential.html#relife2.Exponential">[docs]</a>
 <span class="k">class</span> <span class="nc">Exponential</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    see : https://github.com/pandas-dev/pandas/blob/0691c5cf90477d3503834d983f69350f250a6ff7/pandas/core/frame.py#L509-L12664</span>
-<span class="sd">    see : https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame</span>
-
-
 <span class="sd">    Exponential probability distribution</span>
 
 <span class="sd">    Parameters</span>
@@ -405,21 +401,23 @@
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    regression.AFT : AFT regression</span>
-
+<span class="sd">    regression.ProportionalHazard : AFT regression</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    Constructing DataFrame from a dictionary.</span>
+<span class="sd">    Constructing exponential model with rate of 0.75.</span>
 
 <span class="sd">    &gt;&gt;&gt; model = Exponential(0.75)</span>
-<span class="sd">    &gt;&gt;&gt; time = np.arange(0, 10)</span>
-<span class="sd">    &gt;&gt;&gt;</span>
-<span class="sd">    array([1.        , 0.47236655, 0.22313016, 0.10539922, 0.04978707,</span>
-<span class="sd">           0.02351775, 0.011109  , 0.00524752, 0.00247875, 0.00117088])</span>
+<span class="sd">    &gt;&gt;&gt; time = np.linspace(3, 10, num=5)</span>
+<span class="sd">    &gt;&gt;&gt; model.sf(time)</span>
+<span class="sd">    array([0.10539922, 0.02836782, 0.00763509, 0.00205496, 0.00055308]))</span>
 
+<span class="sd">    Notice that only one asset is considered here. To pass another asset using broadcasting, use a 2d time array</span>
 
-<span class="sd">    Notice that only asset is used here. To pass mulitply assets, use 2d time array</span>
-
+<span class="sd">    &gt;&gt;&gt; time = np.linspace([3, 5], [10, 10], num=5, axis=1)</span>
+<span class="sd">    &gt;&gt;&gt; model.sf(time)</span>
+<span class="sd">    array([[0.10539922, 0.02836782, 0.00763509, 0.00205496, 0.00055308],</span>
+<span class="sd">           [0.02351775, 0.00920968, 0.00360656, 0.00141235, 0.00055308]])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
@@ -427,7 +425,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">new_params</span><span class="p">(</span><span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Exponential.hf">
-<a class="viewcode-back" href="../../../api/distribution/relife2.fiability.distribution.Exponential.html#relife2.fiability.distribution.Exponential.hf">[docs]</a>
+<a class="viewcode-back" href="../../../api/distribution/relife2.Exponential.html#relife2.Exponential.hf">[docs]</a>
     <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cumulative hazard function.</span>
 
@@ -451,7 +449,7 @@
 
 
 <div class="viewcode-block" id="Exponential.chf">
-<a class="viewcode-back" href="../../../api/distribution/relife2.fiability.distribution.Exponential.html#relife2.fiability.distribution.Exponential.chf">[docs]</a>
+<a class="viewcode-back" href="../../../api/distribution/relife2.Exponential.html#relife2.Exponential.chf">[docs]</a>
     <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span></div>
 
@@ -480,20 +478,20 @@
 
 
 <div class="viewcode-block" id="Weibull">
-<a class="viewcode-back" href="../../../api/distribution/relife2.fiability.distribution.Weibull.html#relife2.fiability.distribution.Weibull">[docs]</a>
+<a class="viewcode-back" href="../../../api/distribution/relife2.Weibull.html#relife2.Weibull">[docs]</a>
 <span class="k">class</span> <span class="nc">Weibull</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">new_params</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Weibull.hf">
-<a class="viewcode-back" href="../../../api/distribution/relife2.fiability.distribution.Weibull.html#relife2.fiability.distribution.Weibull.hf">[docs]</a>
+<a class="viewcode-back" href="../../../api/distribution/relife2.Weibull.html#relife2.Weibull.hf">[docs]</a>
     <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Weibull.chf">
-<a class="viewcode-back" href="../../../api/distribution/relife2.fiability.distribution.Weibull.html#relife2.fiability.distribution.Weibull.chf">[docs]</a>
+<a class="viewcode-back" href="../../../api/distribution/relife2.Weibull.html#relife2.Weibull.chf">[docs]</a>
     <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
         <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span></div>
 
@@ -547,31 +545,28 @@
 
 
 <div class="viewcode-block" id="Gompertz">
-<a class="viewcode-back" href="../../../api/distribution/relife2.fiability.distribution.Gompertz.html#relife2.fiability.distribution.Gompertz">[docs]</a>
+<a class="viewcode-back" href="../../../api/distribution/relife2.Gompertz.html#relife2.Gompertz">[docs]</a>
 <span class="k">class</span> <span class="nc">Gompertz</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">new_params</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Gompertz.init_params">
-<a class="viewcode-back" href="../../../api/distribution/relife2.fiability.distribution.Gompertz.html#relife2.fiability.distribution.Gompertz.init_params">[docs]</a>
     <span class="k">def</span> <span class="nf">init_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lifetime_data</span><span class="p">:</span> <span class="n">LifetimeData</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">param0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_params</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
         <span class="n">rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">rlc</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
         <span class="n">shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">rate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">rlc</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
         <span class="n">param0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">shape</span>
         <span class="n">param0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">rate</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">param0</span></div>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">param0</span>
 
 <div class="viewcode-block" id="Gompertz.hf">
-<a class="viewcode-back" href="../../../api/distribution/relife2.fiability.distribution.Gompertz.html#relife2.fiability.distribution.Gompertz.hf">[docs]</a>
+<a class="viewcode-back" href="../../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.hf">[docs]</a>
     <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Gompertz.chf">
-<a class="viewcode-back" href="../../../api/distribution/relife2.fiability.distribution.Gompertz.html#relife2.fiability.distribution.Gompertz.chf">[docs]</a>
+<a class="viewcode-back" href="../../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.chf">[docs]</a>
     <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span></div>
 
