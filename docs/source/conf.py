@@ -33,13 +33,15 @@ extensions = [
 ]
 
 autodoc_typehints = "none"
-autosummary_generate = True
+# autosummary_generate = True
 
-napoleon_use_param = True
+napoleon_use_param = False
 napoleon_use_rtype = False
+autodoc_class_signature = "separated"
+
 
 templates_path = ['_templates', '_templates/autosummary']
-exclude_patterns = ['_build', '_templates'] # note to be parsed by compiler
+# exclude_patterns = ['_build', '_templates'] # note to be parsed by compiler
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

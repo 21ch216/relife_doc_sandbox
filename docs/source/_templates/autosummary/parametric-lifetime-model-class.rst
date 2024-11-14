@@ -1,38 +1,73 @@
 {{ fullname | escape | underline}}
 
+{% set survival_functions = ["chf", "hf", "cdf", "dhf", "ichf", "isf", "jac_chf", "jac_hf", "mrl", "sf"] %}
+{% set statistics = ["mean", "var", "moment", "median"] %}
+{% set probability_functions = ["pdf", "ppf", "cdf"] %}
+{% set exclude_methods = ["__init__", "__new__", "compose_with", "new_params", "init_params"] %}
+{% set exclude_attributes = ["params_bounds"] %}
+{% set exclude_members = ", ".join(exclude_methods + exclude_attributes)  %}
+
 .. currentmodule:: {{ module }}
 
 .. autoclass:: {{ objname }}
     :members:
-    :show-inheritance:
     :inherited-members:
+    :exclude-members: {{ exclude_members }}
 
-    {% block methods %}
 
-    {% block attributes %}
-    {% if attributes %}
-    .. rubric:: {{ _('Attributes') }}
+    ==================
+    {{ _('Methods') }}
+    ==================
+
+    .. rubric:: {{ _('Survival functions') }}
 
     .. autosummary::
         :nosignatures:
 
-    {% for item in attributes %}
-        {% if item in members and not item.startswith('_') %}
+    {% for item in methods %}
+        {% if item in survival_functions %}
             ~{{ name }}.{{ item }}
         {% endif %}
     {%- endfor %}
-    {% endif %}
-    {% endblock %}
 
-    {% if methods %}
-    .. rubric:: {{ _('Methods') }}
+    .. rubric:: {{ _('Probability functions') }}
+    .. autosummary::
+        :nosignatures:
 
+    {% for item in methods %}
+        {% if item in probability_functions %}
+            ~{{ name }}.{{ item }}
+        {% endif %}
+    {%- endfor %}
+
+
+    .. rubric:: {{ _('Statistics') }}
+    .. autosummary::
+        :nosignatures:
+
+    {% for item in methods %}
+        {% if item in statistics %}
+            ~{{ name }}.{{ item }}
+        {% endif %}
+    {%- endfor %}
+
+    .. rubric:: {{ _('Other methods') }}
     .. autosummary::
         :nosignatures:
     {% for item in methods %}
-        {% if item in members and (not item.startswith('_') or item in ['__call__']) %}
+        {% if (item not in survival_functions + statistics + probability_functions + exclude_methods) and not item.startswith("_") %}
             ~{{ name }}.{{ item }}
         {% endif %}
     {%- endfor %}
-    {% endif %}
-    {% endblock %}
+
+    ==================
+    {{ _('Attributes') }}
+    ==================
+
+    .. autosummary::
+        :nosignatures:
+    {% for item in attributes %}
+        {% if item not in exclude_attributes and not item.startswith('_') %}
+            ~{{ name }}.{{ item }}
+        {% endif %}
+    {%- endfor %}
