@@ -47,7 +47,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/index';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Parametric model" href="model/index.html" />
+    <link rel="next" title="relife2.Exponential" href="distribution/relife2.Exponential.html" />
     <link rel="prev" title="User’s guide" href="../user/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -285,26 +285,19 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="model/index.html">Parametric model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="model/relife2.ParametricModel.html">relife2.ParametricModel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model/relife2.ParametricLifetimeModel.html">relife2.ParametricLifetimeModel</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="distribution/relife2.Exponential.html">relife2.Exponential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distribution/relife2.Weibull.html">relife2.Weibull</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distribution/relife2.Gompertz.html">relife2.Gompertz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distribution/relife2.Gamma.html">relife2.Gamma</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distribution/relife2.LogLogistic.html">relife2.LogLogistic</a></li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="distribution/index.html">Distributions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="distribution/relife2.Exponential.html">relife2.Exponential</a></li>
-<li class="toctree-l2"><a class="reference internal" href="distribution/relife2.Weibull.html">relife2.Weibull</a></li>
-<li class="toctree-l2"><a class="reference internal" href="distribution/relife2.Gompertz.html">relife2.Gompertz</a></li>
-<li class="toctree-l2"><a class="reference internal" href="distribution/relife2.Gamma.html">relife2.Gamma</a></li>
-<li class="toctree-l2"><a class="reference internal" href="distribution/relife2.LogLogistic.html">relife2.LogLogistic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression/relife2.ProportionalHazard.html">relife2.ProportionalHazard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression/relife2.AFT.html">relife2.AFT</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="regression/index.html">Regressions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="regression/relife2.ProportionalHazard.html">relife2.ProportionalHazard</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regression/relife2.AFT.html">relife2.AFT</a></li>
-</ul>
-</details></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="model/relife2.ParametricModel.html">relife2.ParametricModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model/relife2.ParametricLifetimeModel.html">relife2.ParametricLifetimeModel</a></li>
 </ul>
 </div>
 </nav></div>
@@ -359,21 +352,55 @@
                   
   <section id="api">
 <h1>API<a class="headerlink" href="#api" title="Link to this heading">#</a></h1>
-<section id="base-models">
-<h2>Base models<a class="headerlink" href="#base-models" title="Link to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="model/index.html">Parametric model</a></li>
-</ul>
-</div>
-</section>
 <section id="lifetime-models">
 <h2>Lifetime models<a class="headerlink" href="#lifetime-models" title="Link to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="distribution/index.html">Distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regression/index.html">Regressions</a></li>
-</ul>
+<p class="rubric">Distribution models</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="distribution/relife2.Exponential.html#relife2.Exponential" title="relife2.Exponential"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Exponential</span></code></a>([rate])</p></td>
+<td><p>Exponential probability distribution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="distribution/relife2.Weibull.html#relife2.Weibull" title="relife2.Weibull"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Weibull</span></code></a>([shape, rate])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="distribution/relife2.Gompertz.html#relife2.Gompertz" title="relife2.Gompertz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Gompertz</span></code></a>([shape, rate])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="distribution/relife2.Gamma.html#relife2.Gamma" title="relife2.Gamma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Gamma</span></code></a>([shape, rate])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="distribution/relife2.LogLogistic.html#relife2.LogLogistic" title="relife2.LogLogistic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LogLogistic</span></code></a>([shape, rate])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Regression models</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard" title="relife2.ProportionalHazard"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProportionalHazard</span></code></a>(baseline[, coef])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="regression/relife2.AFT.html#relife2.AFT" title="relife2.AFT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AFT</span></code></a>(baseline[, coef])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="base-models">
+<h2>Base models<a class="headerlink" href="#base-models" title="Link to this heading">#</a></h2>
+<p class="rubric">Parametric models</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="model/relife2.ParametricModel.html#relife2.ParametricModel" title="relife2.ParametricModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParametricModel</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="model/relife2.ParametricLifetimeModel.html#relife2.ParametricLifetimeModel" title="relife2.ParametricLifetimeModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParametricLifetimeModel</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 </section>
@@ -398,11 +425,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="model/index.html"
+       href="distribution/relife2.Exponential.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Parametric model</p>
+        <p class="prev-next-title">relife2.Exponential</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -425,8 +452,10 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lifetime-models">Lifetime models</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-models">Base models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lifetime-models">Lifetime models</a></li>
 </ul>
   </nav></div>
 
