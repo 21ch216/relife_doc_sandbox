@@ -40,7 +40,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
@@ -463,8 +463,8 @@
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nb_params</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">params</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Weibull.params" title="relife2.Weibull.params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params</span></code></a></p></td>
+<td><p>Returns parameters values of the model.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_names</span></code></p></td>
 <td><p></p></td>
@@ -478,15 +478,20 @@
 <dd><p>Cumulative hazard function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>time</strong> (<em>(N,) or (M,N) np.array of floats</em>) – Elapsed time. If the shape given is (N,), one asset and N points of measure are considered
-To consider M assets with respectively N points of measure, pass an array of shape (M, N).</p></li>
-<li><p><strong>*args</strong> (<em>any other numpy arrays of floats needed</em>) – Extra arguments required in addition of <cite>time</cite> (e.g. covariates). Each argument must be
-broadcastable to <cite>time</cite>.</p></li>
-</ul>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">(N,) or (M,N) np.array of floats</span></dt><dd><p>Elapsed time. If the shape given is (N,), one asset and N points of measure are considered
+To consider M assets with respectively N points of measure, pass an array of shape (M, N).</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">any other numpy arrays of floats needed</span></dt><dd><p>Extra arguments required in addition of <cite>time</cite> (e.g. covariates). Each argument must be
+broadcastable to <cite>time</cite>.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>(N,) or (M,N) np.array of floats</em> – Cumulative hazard function at each given time.</p>
+<dd class="field-even"><dl class="simple">
+<dt>(N,) or (M,N) np.array of floats</dt><dd><p>Cumulative hazard function at each given time.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -499,18 +504,37 @@ broadcastable to <cite>time</cite>.</p></li>
 <dd><p>Hazard function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>time</strong> (<em>numpy array of floats</em>) – Elapsed time.</p></li>
-<li><p><strong>*args</strong> (<em>any other numpy arrays of floats needed</em>) – Extra arguments required in addition of <cite>time</cite>. Must be
-broadcastable to <cite>time</cite>.</p></li>
-</ul>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">numpy array of floats</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">any other numpy arrays of floats needed</span></dt><dd><p>Extra arguments required in addition of <cite>time</cite>. Must be
+broadcastable to <cite>time</cite>.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>numpy array of floats</em> – Hazard function at each given time.</p>
+<dd class="field-even"><dl class="simple">
+<dt>numpy array of floats</dt><dd><p>Hazard function at each given time.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
 <p>The hazard function is the derivative of the cumulative hazard function.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="relife2.Weibull.params">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">params</span></span><a class="headerlink" href="#relife2.Weibull.params" title="Link to this definition">#</a></dt>
+<dd><p>Returns parameters values of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">numpy array of floats</span></dt><dd><p>Parameters values</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -568,6 +592,7 @@ broadcastable to <cite>time</cite>.</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Weibull"><code class="docutils literal notranslate"><span class="pre">Weibull</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Weibull.chf"><code class="docutils literal notranslate"><span class="pre">Weibull.chf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Weibull.hf"><code class="docutils literal notranslate"><span class="pre">Weibull.hf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Weibull.params"><code class="docutils literal notranslate"><span class="pre">Weibull.params</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -616,7 +641,7 @@ broadcastable to <cite>time</cite>.</p></li>
         <div class="footer-item">
 
   <p class="sphinx-version">
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     <br/>
   </p>
 </div>
