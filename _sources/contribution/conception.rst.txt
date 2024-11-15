@@ -125,38 +125,64 @@ The ``ParametricComponent`` object has the following methods:
 -  ``new_params``: This method changes the local parameters structure at
    the node level.
 
-``LifetimeModel`` baseclass : implementation control
-----------------------------------------------------
+``LifetimeModel`` abstract baseclass : implementation control
+-------------------------------------------------------------
 
-``LifetimeModel`` provides a base interface consisting of survival
-probability functions, and any subclass of ``LifetimeModel`` must
-implement a minimum set of these functions. The ``LifetimeModel`` class
-controls the existence of certain probability functions, such as ``sf``,
-``hf``, etc., by looking at class attributes. Then, ``LifetimeModel``
-provides base implementations for all common survival probability
-functions.
+``LifetimeModel`` provides an abstract base interface consisting of survival
+probability functions. At this level, ``sf``, ``hf``, ``chf``, ``pdf`` are flagged
+as abstractmethod, meaning that they must exists in any derived class. One may notice
+that these abstractmethods have a default implementation conditionnaly based on the existence
+of other methods. For example, if a derived class implements ``hf`` and ``pdf``,
+instead of implementing a concrete formula for ``sf``, on can use ``super`` mecanism to call
+default implementation.
 
-One major change in the ``LifetimeModel`` class is that it no longer
-relies on the ``ABC`` module. The specific set of concrete method
-implementations needed in a ``LifetimeModel`` subclass will vary
-depending on which methods have already been implemented. For example,
-if a subclass implements ``hf`` and ``pdf``, it can compute ``sf`` using
-a specific formula. But if a subclass implements ``sf`` and ``pdf``, it
-will not need to implement ``hf``, because it can be computed using a
-different formula. Using ``abstractmethod`` would not be appropriate in
-this case, because it would require that the minimum set of mandatory
-probability functions remains the same. Instead, we can use the old
-abstract class style and raise a ``NotImplementedError`` when a
-particular function is needed but has not been implemented. The specific
-probability formula used will depend on which methods are present in the
-``LifetimeModel`` derived class, which can be determined by looking at
-class attributes (e.g., using an ``if … in self.__class__.__dict__``
-condition).
+For those who are new to Python, one can argue that it is a little cumbersome to rewrite
+a method that already has a default implementation and just call ``super`` in it. That's partially true because,
+one can also notice that a new contributor only has to read the derived to know all the interface of its instances.
+In OOP, this is even more important as it is more explicit. Besides, in this case, ``LifetimeModel`` is a variadic
+generic abstract class where concrete methods can have variadic parametrization. Thus, docstring used to document
+object interface must be specified in each case.
 
-Additionally, we can prevent the ``LifetimeModel`` class from being
-instantiated by overriding the ``__new__`` method. This avoids clumsy
-usage of this class and implementing a metaclass would have been
-cumbersome.
+Here, a workaround to implement a ``LifetimeModel`` derived class could be to only call ``super`` for each abstractmethod.
+It works at compile time as all abstractmethod are implemented in the code but you will receive a nasty ``RecursionError``
+at run time if you call one of this method. One may think that it could be better to rely on another Python tool like
+metaclass to add more control on these class. For now on, we think that metaclass would not be a could idea as it
+complexifies a lot the code while ``abc`` is a well known module.
+
+As a final point, when looking at ``LifetimeModel`` derived class, one may notice that some methods are tagged with
+the ``override`` decorator. This decorator is only used for static type checking tool (mypy) as it is safer to control
+that overriden method does not change base signature and just propose another implementation. Thus it is used each time
+a non-abstractmethod is overriden either for documentation purpose or to propose a more adapted/straitforward implementation
+
+
+
+
+
+The ``LifetimeModel`` class provides an abstract base interface consisting of survival probability functions.
+At this level, the methods ``sf``, ``hf``, ``chf``, and ``pdf`` are marked as abstract methods, meaning
+they must be implemented in any derived class. It is worth noting that these abstract methods have a default implementation
+that is conditionally based on the existence of other methods. For example, if a derived class implements ``hf`` and ``pdf``,
+it can use the ``super`` mechanism to call the default implementation of ``sf`` instead of providing a concrete formula.
+
+For those who are new to Python, it may seem cumbersome to rewrite a method that already has a default implementation and
+simply call ``super`` within it. This is partially true. It is also important to recognize that a new contributor only needs
+to read the derived class to understand the entire interface of its instances. In object-oriented programming (OOP), this explicitness
+is particularly valuable. Additionally, in this case, ``LifetimeModel`` is a **variadic** generic abstract class,
+where concrete methods can have variadic parameterization. Therefore, the docstring used to document the object interface
+must be specified in each case.
+
+A potential workaround for implementing a derived class of ``LifetimeModel`` could involve calling ``super`` for each abstract method.
+This approach works at compile time since all abstract methods are implemented in the code; however, it will result
+in a ``RecursionError`` at runtime if any of these methods are called.
+One might consider using another Python feature, such as metaclasses, to exert more control over these classes.
+However, we believe that using metaclasses would complicate the code significantly, while the `abc` module is a well-known
+and established solution.
+
+Finally, when examining a derived class of ``LifetimeModel``, one may notice that some methods are tagged with the
+`override` decorator. This decorator is used solely for static type checking tools (such as mypy) to ensure that the overridden
+method does not alter the base signature and simply provides an alternative implementation.
+Thus, it is applied whenever a non-abstract method is overridden, either for documentation purposes
+or to offer a more suitable or straightforward implementation.
 
 **improvements** :
 

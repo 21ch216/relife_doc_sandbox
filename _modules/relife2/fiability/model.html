@@ -337,7 +337,7 @@
 <span class="kn">from</span> <span class="nn">relife2.data</span> <span class="kn">import</span> <span class="n">LifetimeData</span><span class="p">,</span> <span class="n">lifetime_data_factory</span>
 <span class="kn">from</span> <span class="nn">relife2.fiability.likelihood</span> <span class="kn">import</span> <span class="n">LikelihoodFromLifetimes</span>
 <span class="kn">from</span> <span class="nn">relife2.maths.integration</span> <span class="kn">import</span> <span class="n">gauss_legendre</span><span class="p">,</span> <span class="n">quad_laguerre</span>
-<span class="kn">from</span> <span class="nn">relife2.typing</span> <span class="kn">import</span> <span class="n">VariadicArgs</span>
+<span class="kn">from</span> <span class="nn">relife2.types</span> <span class="kn">import</span> <span class="n">VariadicArgs</span>
 
 
 <span class="k">class</span> <span class="nc">Parameters</span><span class="p">:</span>
@@ -543,7 +543,7 @@
 
 
 
-<span class="k">class</span> <span class="nc">LifetimeModel</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="o">*</span><span class="n">VariadicArgs</span><span class="p">]):</span>
+<span class="k">class</span> <span class="nc">LifetimeModel</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="o">*</span><span class="n">VariadicArgs</span><span class="p">],</span> <span class="n">ABC</span><span class="p">):</span>
     <span class="c1"># def __init_subclass__(cls, **kwargs):</span>
     <span class="c1">#     &quot;&quot;&quot;</span>
     <span class="c1">#     TODO : something to parse *args names and to fill args_names and nb_args</span>
@@ -558,39 +558,13 @@
     <span class="c1"># def nb_args(self):</span>
     <span class="c1">#     return len(self._args)</span>
 
-    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="n">LifetimeModel</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Can&#39;t instantiate class LifetimeModel, only subclass of LifetimeModel can&quot;</span>
-            <span class="p">)</span>
-        <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
-
+    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">VariadicArgs</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Hazard function.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        time : numpy array of floats</span>
-<span class="sd">            Elapsed time.</span>
-<span class="sd">        *args : any other numpy arrays of floats needed</span>
-<span class="sd">            Extra arguments required in addition of `time`. Must be</span>
-<span class="sd">            broadcastable to `time`.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        numpy array of floats</span>
-<span class="sd">            Hazard function at each given time.</span>
-
-<span class="sd">        Notes</span>
-<span class="sd">        -----</span>
-<span class="sd">        The hazard function is the derivative of the cumulative hazard function.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="s2">&quot;pdf&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="s2">&quot;sf&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;pdf&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;sf&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s2">&quot;sf&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;sf&quot;</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
 <span class="w">                </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">                ReLife does not implement hf as the derivate of chf yet. Consider adding it in future versions</span>
@@ -601,71 +575,52 @@
         <span class="n">class_name</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">            </span><span class="si">{</span><span class="n">class_name</span><span class="si">}</span><span class="s2"> must implement hf function</span>
+<span class="s2">            </span><span class="si">{</span><span class="n">class_name</span><span class="si">}</span><span class="s2"> must implement concrete hf function</span>
 <span class="s2">            &quot;&quot;&quot;</span>
         <span class="p">)</span>
 
+    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">VariadicArgs</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cumulative hazard function.</span>
 
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        time : (N,) or (M,N) np.array of floats</span>
-<span class="sd">            Elapsed time. If the shape given is (N,), one asset and N points of measure are considered</span>
-<span class="sd">            To consider M assets with respectively N points of measure, pass an array of shape (M, N).</span>
-<span class="sd">        *args : any other numpy arrays of floats needed</span>
-<span class="sd">            Extra arguments required in addition of `time` (e.g. covariates). Each argument must be</span>
-<span class="sd">            broadcastable to `time`.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        (N,) or (M,N) np.array of floats</span>
-<span class="sd">            Cumulative hazard function at each given time.</span>
-
-<span class="sd">        Notes</span>
-<span class="sd">        -----</span>
-<span class="sd">        The cumulative hazard function is the integral of the hazard function.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="s2">&quot;sf&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;sf&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">))</span>
-        <span class="k">if</span> <span class="s2">&quot;pdf&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="s2">&quot;hf&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;pdf&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;hf&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">))</span>
-        <span class="k">if</span> <span class="s2">&quot;hf&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;hf&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ls_integrate</span><span class="p">(</span>
                 <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span>
             <span class="p">)</span>
         <span class="n">class_name</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        </span><span class="si">{</span><span class="n">class_name</span><span class="si">}</span><span class="s2"> must implement chf or at least hf function</span>
+<span class="s2">        </span><span class="si">{</span><span class="n">class_name</span><span class="si">}</span><span class="s2"> must implement concrete chf or at least concrete hf function</span>
 <span class="s2">        &quot;&quot;&quot;</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">VariadicArgs</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
-
+    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">sf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">VariadicArgs</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-        <span class="k">if</span> <span class="s2">&quot;chf&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;chf&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span>
                 <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">chf</span><span class="p">(</span>
                     <span class="n">time</span><span class="p">,</span>
                     <span class="o">*</span><span class="n">args</span><span class="p">,</span>
                 <span class="p">)</span>
             <span class="p">)</span>
-        <span class="k">if</span> <span class="s2">&quot;pdf&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="s2">&quot;hf&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;pdf&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;hf&quot;</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
 
         <span class="n">class_name</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        </span><span class="si">{</span><span class="n">class_name</span><span class="si">}</span><span class="s2"> must implement sf function</span>
+<span class="s2">        </span><span class="si">{</span><span class="n">class_name</span><span class="si">}</span><span class="s2"> must implement concrete sf function</span>
 <span class="s2">        &quot;&quot;&quot;</span>
         <span class="p">)</span>
 
+    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">pdf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">VariadicArgs</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
