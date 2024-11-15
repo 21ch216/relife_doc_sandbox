@@ -462,28 +462,6 @@ the node level.</p></li>
 </section>
 <section id="lifetimemodel-abstract-baseclass-implementation-control">
 <h2><code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> abstract baseclass : implementation control<a class="headerlink" href="#lifetimemodel-abstract-baseclass-implementation-control" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> provides an abstract base interface consisting of survival
-probability functions. At this level, <code class="docutils literal notranslate"><span class="pre">sf</span></code>, <code class="docutils literal notranslate"><span class="pre">hf</span></code>, <code class="docutils literal notranslate"><span class="pre">chf</span></code>, <code class="docutils literal notranslate"><span class="pre">pdf</span></code> are flagged
-as abstractmethod, meaning that they must exists in any derived class. One may notice
-that these abstractmethods have a default implementation conditionnaly based on the existence
-of other methods. For example, if a derived class implements <code class="docutils literal notranslate"><span class="pre">hf</span></code> and <code class="docutils literal notranslate"><span class="pre">pdf</span></code>,
-instead of implementing a concrete formula for <code class="docutils literal notranslate"><span class="pre">sf</span></code>, on can use <code class="docutils literal notranslate"><span class="pre">super</span></code> mecanism to call
-default implementation.</p>
-<p>For those who are new to Python, one can argue that it is a little cumbersome to rewrite
-a method that already has a default implementation and just call <code class="docutils literal notranslate"><span class="pre">super</span></code> in it. That’s partially true because,
-one can also notice that a new contributor only has to read the derived to know all the interface of its instances.
-In OOP, this is even more important as it is more explicit. Besides, in this case, <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> is a variadic
-generic abstract class where concrete methods can have variadic parametrization. Thus, docstring used to document
-object interface must be specified in each case.</p>
-<p>Here, a workaround to implement a <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> derived class could be to only call <code class="docutils literal notranslate"><span class="pre">super</span></code> for each abstractmethod.
-It works at compile time as all abstractmethod are implemented in the code but you will receive a nasty <code class="docutils literal notranslate"><span class="pre">RecursionError</span></code>
-at run time if you call one of this method. One may think that it could be better to rely on another Python tool like
-metaclass to add more control on these class. For now on, we think that metaclass would not be a could idea as it
-complexifies a lot the code while <code class="docutils literal notranslate"><span class="pre">abc</span></code> is a well known module.</p>
-<p>As a final point, when looking at <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> derived class, one may notice that some methods are tagged with
-the <code class="docutils literal notranslate"><span class="pre">override</span></code> decorator. This decorator is only used for static type checking tool (mypy) as it is safer to control
-that overriden method does not change base signature and just propose another implementation. Thus it is used each time
-a non-abstractmethod is overriden either for documentation purpose or to propose a more adapted/straitforward implementation</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code> class provides an abstract base interface consisting of survival probability functions.
 At this level, the methods <code class="docutils literal notranslate"><span class="pre">sf</span></code>, <code class="docutils literal notranslate"><span class="pre">hf</span></code>, <code class="docutils literal notranslate"><span class="pre">chf</span></code>, and <code class="docutils literal notranslate"><span class="pre">pdf</span></code> are marked as abstract methods, meaning
 they must be implemented in any derived class. It is worth noting that these abstract methods have a default implementation
