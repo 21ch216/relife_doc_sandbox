@@ -538,13 +538,36 @@
 <a class="viewcode-back" href="../../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard">[docs]</a>
 <span class="k">class</span> <span class="nc">ProportionalHazard</span><span class="p">(</span><span class="n">Regression</span><span class="p">):</span>
 
+<div class="viewcode-block" id="ProportionalHazard.hf">
+<a class="viewcode-back" href="../../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard.hf">[docs]</a>
     <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">covar_effect</span><span class="o">.</span><span class="n">g</span><span class="p">(</span><span class="n">covar</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">baseline</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Hazard function.</span>
+
+<span class="sd">        The hazard function of the regression</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        time : numpy array of floats</span>
+<span class="sd">            Elapsed time.</span>
+<span class="sd">        covar : numpy array of floats</span>
+<span class="sd">            Covariates values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        numpy array of floats</span>
+<span class="sd">            Hazard values at each given time.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        `time`, `covar` and any `*args` arrays must be broadcastable</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">covar_effect</span><span class="o">.</span><span class="n">g</span><span class="p">(</span><span class="n">covar</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">baseline</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
+
 
     <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
