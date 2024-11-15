@@ -24,12 +24,12 @@ author = 'wgrison'
 extensions = [
     "sphinx.ext.autodoc",  # to enable autodoc from docstrings
     "sphinx.ext.autosummary",
+    "numpydoc",  # if used, get rid of napoleon
     "sphinx.ext.viewcode",  # to insert source code link next to objects documentation
     "sphinx.ext.githubpages", # necessary to publish to as github pages
     # (see : https://www.sphinx-doc.org/en/master/usage/extensions/githubpages.html
     # and https://stackoverflow.com/questions/62626125/github-pages-with-sphinx-generated-documentation-not-displaying-html-correctly)
     "sphinx_copybutton",  # copy button in code block
-    "numpydoc", # if used, get rid of napoleon
 ]
 
 autodoc_typehints = "none"
@@ -37,7 +37,7 @@ autodoc_typehints = "none"
 
 # napoleon_use_param = False
 # napoleon_use_rtype = False
-autodoc_class_signature = "separated" # remove Class(*args, **kwargs)
+# autodoc_class_signature = "separated" # remove Class(*args, **kwargs)
 
 # copied from sklearn
 #########################################################################################
