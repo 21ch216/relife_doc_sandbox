@@ -10,3 +10,5 @@ Distributions
     Exponential
     Weibull
     Gompertz
+    Gamma
+    LogLogistic
