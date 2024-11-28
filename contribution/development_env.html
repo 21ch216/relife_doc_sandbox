@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>API &#8212; ReLife2</title>
+    <title>Developement environment &#8212; ReLife2</title>
   
   
   
@@ -44,11 +44,11 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contribution/development_env';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="relife2.Exponential" href="distribution/relife2.Exponential.html" />
-    <link rel="prev" title="User’s guide" href="../user/index.html" />
+    <link rel="next" title="About numpy" href="about_numpy.html" />
+    <link rel="prev" title="What is your profile ?" href="your_profile.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -144,15 +144,15 @@
 </li>
 
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
     API
   </a>
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../contribution/index.html">
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
     Contributor’s guide
   </a>
 </li>
@@ -244,15 +244,15 @@
 </li>
 
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
     API
   </a>
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../contribution/index.html">
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
     Contributor’s guide
   </a>
 </li>
@@ -284,23 +284,21 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Lifetime distribution models</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="distribution/relife2.Exponential.html">relife2.Exponential</a></li>
-<li class="toctree-l1"><a class="reference internal" href="distribution/relife2.Weibull.html">relife2.Weibull</a></li>
-<li class="toctree-l1"><a class="reference internal" href="distribution/relife2.Gompertz.html">relife2.Gompertz</a></li>
-<li class="toctree-l1"><a class="reference internal" href="distribution/relife2.Gamma.html">relife2.Gamma</a></li>
-<li class="toctree-l1"><a class="reference internal" href="distribution/relife2.LogLogistic.html">relife2.LogLogistic</a></li>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">First time contribution</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="your_profile.html">What is your profile ?</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Developement environment</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lifetime regression models</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Conception of ReLife2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="regression/relife2.ProportionalHazard.html">relife2.ProportionalHazard</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regression/relife2.AFT.html">relife2.AFT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_numpy.html">About numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_lifetime_models.html">About lifetime models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_integration.html">About integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_stochastic_process.html">Stochastic process sampling</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Base models</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python resources</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="model/relife2.ParametricModel.html">relife2.ParametricModel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="model/relife2.ParametricLifetimeModel.html">relife2.ParametricLifetimeModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional_lectures.html">Lectures</a></li>
 </ul>
 </div>
 </nav></div>
@@ -336,7 +334,10 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">API</span></li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Contributor’s guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Developement environment</span></li>
   </ul>
 </nav>
 </div>
@@ -353,59 +354,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="api">
-<h1>API<a class="headerlink" href="#api" title="Link to this heading">#</a></h1>
-<section id="lifetime-models">
-<h2>Lifetime models<a class="headerlink" href="#lifetime-models" title="Link to this heading">#</a></h2>
-<p class="rubric">Distribution models</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="distribution/relife2.Exponential.html#relife2.Exponential" title="relife2.Exponential"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Exponential</span></code></a>([rate])</p></td>
-<td><p>Exponential lifetime distribution.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="distribution/relife2.Weibull.html#relife2.Weibull" title="relife2.Weibull"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Weibull</span></code></a>([shape, rate])</p></td>
-<td><p>Weibull lifetime distribution.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="distribution/relife2.Gompertz.html#relife2.Gompertz" title="relife2.Gompertz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Gompertz</span></code></a>([shape, rate])</p></td>
-<td><p>Gompertz lifetime distribution.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="distribution/relife2.Gamma.html#relife2.Gamma" title="relife2.Gamma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Gamma</span></code></a>([shape, rate])</p></td>
-<td><p>Gamma lifetime distribution.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="distribution/relife2.LogLogistic.html#relife2.LogLogistic" title="relife2.LogLogistic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LogLogistic</span></code></a>([shape, rate])</p></td>
-<td><p>Log-logistic probability distribution.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p class="rubric">Regression models</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard" title="relife2.ProportionalHazard"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProportionalHazard</span></code></a>(baseline[, coef])</p></td>
-<td><p>Proportional hazard regression.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="regression/relife2.AFT.html#relife2.AFT" title="relife2.AFT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AFT</span></code></a>(baseline[, coef])</p></td>
-<td><p>Accelerated failure time regression.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="base-models">
-<h2>Base models<a class="headerlink" href="#base-models" title="Link to this heading">#</a></h2>
-<p class="rubric">Parametric models</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="model/relife2.ParametricModel.html#relife2.ParametricModel" title="relife2.ParametricModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParametricModel</span></code></a>()</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="model/relife2.ParametricLifetimeModel.html#relife2.ParametricLifetimeModel" title="relife2.ParametricLifetimeModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParametricLifetimeModel</span></code></a>()</p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
+  <section id="developement-environment">
+<h1>Developement environment<a class="headerlink" href="#developement-environment" title="Link to this heading">#</a></h1>
+<p>Advices about development environments, set ups to do before contributing to ReLife</p>
 </section>
 
 
@@ -419,20 +370,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../user/index.html"
+       href="your_profile.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">User’s guide</p>
+        <p class="prev-next-title">What is your profile ?</p>
       </div>
     </a>
     <a class="right-next"
-       href="distribution/relife2.Exponential.html"
+       href="about_numpy.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">relife2.Exponential</p>
+        <p class="prev-next-title">About numpy</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -448,24 +399,9 @@
 
 
   <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lifetime-models">Lifetime models</a><ul class="nav section-nav flex-column">
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-models">Base models</a></li>
-</ul>
-  </nav></div>
-
-  <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/api/index.rst.txt">
+    <a href="../_sources/contribution/development_env.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
