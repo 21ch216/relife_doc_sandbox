@@ -529,6 +529,21 @@
 <div class="viewcode-block" id="ProportionalHazard">
 <a class="viewcode-back" href="../../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard">[docs]</a>
 <span class="k">class</span> <span class="nc">ProportionalHazard</span><span class="p">(</span><span class="n">Regression</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Proportional hazard regression.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    baseline : ParametricLifetimeModel</span>
+<span class="sd">        Any parametric lifetime model</span>
+<span class="sd">    coef : tuple of floats (values can be none), optional</span>
+<span class="sd">        Coefficients values of the covariates effect</span>
+
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    regression.AFT : AFT regression</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="ProportionalHazard.hf">
 <a class="viewcode-back" href="../../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard.hf">[docs]</a>
@@ -619,6 +634,21 @@
 <div class="viewcode-block" id="AFT">
 <a class="viewcode-back" href="../../../api/regression/relife2.AFT.html#relife2.AFT">[docs]</a>
 <span class="k">class</span> <span class="nc">AFT</span><span class="p">(</span><span class="n">Regression</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Accelerated failure time regression.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    baseline : ParametricLifetimeModel</span>
+<span class="sd">        Any parametric lifetime model</span>
+<span class="sd">    coef : tuple of floats (values can be none), optional</span>
+<span class="sd">        Coefficients values of the covariates effect</span>
+
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    regression.AFT : AFT regression</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>

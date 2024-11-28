@@ -432,11 +432,11 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Exponential.cdf" title="relife2.Exponential.cdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></a></p></td>
 <td><p>Cumulative distribution function.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Exponential.pdf" title="relife2.Exponential.pdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdf</span></code></a></p></td>
+<td><p>Probability density function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ppf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Exponential.ppf" title="relife2.Exponential.ppf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ppf</span></code></a></p></td>
+<td><p>Percent point function.</p></td>
 </tr>
 </tbody>
 </table>
@@ -447,11 +447,11 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Exponential.mean" title="relife2.Exponential.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a></p></td>
 <td><p>Mean of the distribution.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">median</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Exponential.median" title="relife2.Exponential.median"><code class="xref py py-obj docutils literal notranslate"><span class="pre">median</span></code></a></p></td>
+<td><p>Median of the distribution.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">moment</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Exponential.moment" title="relife2.Exponential.moment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moment</span></code></a></p></td>
+<td><p>n-th order moment of the distribution.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#relife2.Exponential.var" title="relife2.Exponential.var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">var</span></code></a></p></td>
 <td><p>Variance of the distribution.</p></td>
@@ -719,6 +719,40 @@ pass an array of shape (m, n).</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="relife2.Exponential.median">
+<span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#relife2.Exponential.median" title="Link to this definition">#</a></dt>
+<dd><p>Median of the distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ndarray of shape (0,)</dt><dd><p>Median value.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Exponential.moment">
+<span class="sig-name descname"><span class="pre">moment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.Exponential.moment" title="Link to this definition">#</a></dt>
+<dd><p>n-th order moment of the distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>n</strong><span class="classifier">int</span></dt><dd><p>Order of the moment, at least 1.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (0, )</dt><dd><p>n-th order moment of the distribution.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="relife2.Exponential.mrl">
 <span class="sig-name descname"><span class="pre">mrl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Exponential.mrl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Exponential.mrl" title="Link to this definition">#</a></dt>
 <dd><p>Mean residual life.</p>
@@ -748,6 +782,53 @@ pass an array of shape (m, n).</p>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>params</strong><span class="classifier">numpy array of floats</span></dt><dd><p>Parameters values</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Exponential.pdf">
+<span class="sig-name descname"><span class="pre">pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.Exponential.pdf" title="Link to this definition">#</a></dt>
+<dd><p>Probability density function.</p>
+<p>The probability density function of the distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>The probability density function evaluated at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Exponential.ppf">
+<span class="sig-name descname"><span class="pre">ppf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.Exponential.ppf" title="Link to this definition">#</a></dt>
+<dd><p>Percent point function.</p>
+<p>The percent point function of the distribution. It corresponds to the inverse of
+the cumulative distribution function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>probability</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Probability values. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Quantile corresponding to probability.</p>
 </dd>
 </dl>
 </dd>
@@ -854,8 +935,12 @@ pass an array of shape (m, n).</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.jac_hf"><code class="docutils literal notranslate"><span class="pre">Exponential.jac_hf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.ls_integrate"><code class="docutils literal notranslate"><span class="pre">Exponential.ls_integrate()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.mean"><code class="docutils literal notranslate"><span class="pre">Exponential.mean()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.median"><code class="docutils literal notranslate"><span class="pre">Exponential.median()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.moment"><code class="docutils literal notranslate"><span class="pre">Exponential.moment()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.mrl"><code class="docutils literal notranslate"><span class="pre">Exponential.mrl()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.params"><code class="docutils literal notranslate"><span class="pre">Exponential.params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.pdf"><code class="docutils literal notranslate"><span class="pre">Exponential.pdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.ppf"><code class="docutils literal notranslate"><span class="pre">Exponential.ppf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.sf"><code class="docutils literal notranslate"><span class="pre">Exponential.sf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.var"><code class="docutils literal notranslate"><span class="pre">Exponential.var()</span></code></a></li>
 </ul>
