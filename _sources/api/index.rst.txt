@@ -12,6 +12,7 @@ Lifetime models
 .. autosummary::
     :toctree: distribution
     :template: parametric-lifetime-model-class.rst
+    :caption: Lifetime distribution models
 
     Exponential
     Weibull
@@ -25,6 +26,7 @@ Lifetime models
 .. autosummary::
     :toctree: regression
     :template: parametric-lifetime-model-class.rst
+    :caption: Lifetime regression models
 
     ProportionalHazard
     AFT
@@ -37,6 +39,7 @@ Base models
 .. autosummary::
     :toctree: model
     :template: parametric-lifetime-model-class.rst
+    :caption: Base models
 
     ParametricModel
     ParametricLifetimeModel
