@@ -28,8 +28,6 @@
     
         
         
-            ~ParametricLifetimeModel.cdf
-        
         
             ~ParametricLifetimeModel.chf
         
@@ -38,6 +36,9 @@
         
         
             ~ParametricLifetimeModel.hf
+        
+        
+            ~ParametricLifetimeModel.ichf
         
         
         
@@ -82,6 +83,7 @@
         
         
         
+        
             ~ParametricLifetimeModel.pdf
         
         
@@ -97,6 +99,7 @@
         :nosignatures:
 
     
+        
         
         
         
@@ -139,6 +142,7 @@
         
         
             ~ParametricLifetimeModel.fit
+        
         
         
         

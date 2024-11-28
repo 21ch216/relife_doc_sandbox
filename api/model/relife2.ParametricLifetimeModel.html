@@ -363,13 +363,13 @@
 <p class="rubric">Survival functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">chf</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">chf</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hf</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hf</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ichf</span></code></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isf</span></code></p></td>
@@ -426,8 +426,12 @@
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ParametricLifetimeModel.ls_integrate" title="relife2.ParametricLifetimeModel.ls_integrate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rvs</span></code></p></td>
 <td><p></p></td>
@@ -452,6 +456,29 @@
 </tbody>
 </table>
 </div>
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ParametricLifetimeModel.ls_integrate">
+<span class="sig-name descname"><span class="pre">ls_integrate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ParametricLifetimeModel.ls_integrate" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ndim</strong></dt><dd></dd>
+<dt><strong>func</strong></dt><dd></dd>
+<dt><strong>a</strong></dt><dd></dd>
+<dt><strong>b</strong></dt><dd></dd>
+<dt><strong>args</strong></dt><dd></dd>
+<dt><strong>deg</strong></dt><dd></dd>
+<dt><strong>ndim</strong><span class="classifier">optional, desired output array dim (&lt;= 2)</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>2d array (by default). broadcast_to to squeeze and broadcast to another shape</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="relife2.ParametricLifetimeModel.params">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">params</span></span><a class="headerlink" href="#relife2.ParametricLifetimeModel.params" title="Link to this definition">#</a></dt>
@@ -519,6 +546,7 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ParametricLifetimeModel"><code class="docutils literal notranslate"><span class="pre">ParametricLifetimeModel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ParametricLifetimeModel.ls_integrate"><code class="docutils literal notranslate"><span class="pre">ParametricLifetimeModel.ls_integrate()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ParametricLifetimeModel.params"><code class="docutils literal notranslate"><span class="pre">ParametricLifetimeModel.params</span></code></a></li>
 </ul>
 </li>

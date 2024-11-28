@@ -28,8 +28,6 @@
     
         
         
-            ~Weibull.cdf
-        
         
             ~Weibull.chf
         

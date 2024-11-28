@@ -348,26 +348,63 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">sf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        blablal.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Survival function.</span>
+
+<span class="sd">        The survival function of the distribution</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time :</span>
+<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Survival function values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 
     <span class="nd">@override</span>
     <span class="k">def</span> <span class="nf">isf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probability</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Inverse survival function.</span>
+
+<span class="sd">        The survival function of the distribution</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        probability : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Complement quantile corresponding to probability.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cumulative_hazard_rate</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">probability</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ichf</span><span class="p">(</span><span class="n">cumulative_hazard_rate</span><span class="p">)</span>
 
     <span class="nd">@override</span>
     <span class="k">def</span> <span class="nf">cdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cumulative distribution function.</span>
+
+<span class="sd">        The survival function of the distribution</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Cumulative distribution function values at each given time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -398,12 +435,6 @@
         <span class="p">)</span>
 
     <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span> <span class="o">...</span>
-
-    <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
@@ -426,7 +457,7 @@
 <a class="viewcode-back" href="../../../api/distribution/relife2.Exponential.html#relife2.Exponential">[docs]</a>
 <span class="k">class</span> <span class="nc">Exponential</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Exponential probability distribution.</span>
+<span class="sd">    Exponential lifetime distribution.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -448,7 +479,7 @@
 <span class="sd">    &gt;&gt;&gt; model.sf(time)</span>
 <span class="sd">    array([0.10539922, 0.02836782, 0.00763509, 0.00205496, 0.00055308]))</span>
 
-<span class="sd">    Notice that only one asset is considered here. To pass another asset using broadcasting, use a 2d time array</span>
+<span class="sd">    Notice that only one asset is considered here. To pass another asset, use a 2d time array</span>
 
 <span class="sd">    &gt;&gt;&gt; time = np.linspace([3, 5], [10, 10], num=5, axis=1)</span>
 <span class="sd">    &gt;&gt;&gt; model.sf(time)</span>
@@ -565,23 +596,109 @@
         <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="Exponential.ichf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Exponential.html#relife2.Exponential.ichf">[docs]</a>
+    <span class="nd">@override</span>
     <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="n">cumulative_hazard_rate</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Inverse cumulative hazard function.</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Cumulative hazard rate : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Cumulative hazard rate values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Inverse cumulative hazard values, i.e. time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">cumulative_hazard_rate</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span></div>
+
+
+<div class="viewcode-block" id="Exponential.jac_hf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Exponential.html#relife2.Exponential.jac_hf">[docs]</a>
     <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">time</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the hazard function.</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Jacobian values, here gradient values at each given time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">time</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Exponential.jac_chf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Exponential.html#relife2.Exponential.jac_chf">[docs]</a>
     <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">time</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">time</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the cumulative hazard function.</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Jacobian values, here gradient values at each given time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">time</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">time</span></div>
+
+
+<div class="viewcode-block" id="Exponential.dhf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Exponential.html#relife2.Exponential.dhf">[docs]</a>
     <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Derivative of the hazard function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Derivative values with respect to time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
+</div>
 
 
 
 <div class="viewcode-block" id="Weibull">
 <a class="viewcode-back" href="../../../api/distribution/relife2.Weibull.html#relife2.Weibull">[docs]</a>
 <span class="k">class</span> <span class="nc">Weibull</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Weibull lifetime distribution.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    shape : float, optional</span>
+<span class="sd">        shape parameter</span>
+<span class="sd">    rate : float, optional</span>
+<span class="sd">        rate parameter</span>
+
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    regression.AFT : AFT regression</span>
+<span class="sd">    regression.ProportionalHazard : AFT regression</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">new_params</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">)</span>
@@ -692,11 +809,44 @@
         <span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="Weibull.ichf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Weibull.html#relife2.Weibull.ichf">[docs]</a>
+    <span class="nd">@override</span>
     <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="n">cumulative_hazard_rate</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Inverse cumulative hazard function.</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Cumulative hazard rate : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Cumulative hazard rate values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Inverse cumulative hazard values, i.e. time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">cumulative_hazard_rate</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span></div>
+
+
+<div class="viewcode-block" id="Weibull.jac_hf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Weibull.html#relife2.Weibull.jac_hf">[docs]</a>
     <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the hazard function.</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Jacobian values, here gradient values at each given time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
             <span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rate</span>
@@ -704,29 +854,81 @@
                 <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)),</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
             <span class="p">)</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="Weibull.jac_chf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Weibull.html#relife2.Weibull.jac_chf">[docs]</a>
     <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the cumulative hazard function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Jacobian values, here gradient values at each given time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
             <span class="p">(</span>
                 <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">*</span> <span class="n">time</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
             <span class="p">)</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="Weibull.dhf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Weibull.html#relife2.Weibull.dhf">[docs]</a>
     <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Derivative of the hazard function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Derivative values with respect to time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">shape</span>
             <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
             <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="o">**</span><span class="mi">2</span>
             <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
         <span class="p">)</span></div>
+</div>
 
 
 
 <div class="viewcode-block" id="Gompertz">
 <a class="viewcode-back" href="../../../api/distribution/relife2.Gompertz.html#relife2.Gompertz">[docs]</a>
 <span class="k">class</span> <span class="nc">Gompertz</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gompertz lifetime distribution.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    shape : float, optional</span>
+<span class="sd">        shape parameter</span>
+<span class="sd">    rate : float, optional</span>
+<span class="sd">        rate parameter</span>
+
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    regression.AFT : AFT regression</span>
+<span class="sd">    regression.ProportionalHazard : AFT regression</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">new_params</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">)</span>
@@ -839,33 +1041,119 @@
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="n">exp1</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span></div>
 
 
+<div class="viewcode-block" id="Gompertz.ichf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.ichf">[docs]</a>
+    <span class="nd">@override</span>
     <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">cumulative_hazard_rate</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Inverse cumulative hazard function.</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Cumulative hazard rate : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Cumulative hazard rate values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Inverse cumulative hazard values, i.e. time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">cumulative_hazard_rate</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Gompertz.jac_hf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.jac_hf">[docs]</a>
     <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the hazard function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Jacobian values, here gradient values at each given time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
             <span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">),</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">),</span>
             <span class="p">)</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="Gompertz.jac_chf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.jac_chf">[docs]</a>
     <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the cumulative hazard function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Jacobian values, here gradient values at each given time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
             <span class="p">(</span>
                 <span class="n">np</span><span class="o">.</span><span class="n">expm1</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">),</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">*</span> <span class="n">time</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">),</span>
             <span class="p">)</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="Gompertz.dhf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.dhf">[docs]</a>
     <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Derivative of the hazard function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Derivative values with respect to time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span></div>
+</div>
 
 
 
 <div class="viewcode-block" id="Gamma">
 <a class="viewcode-back" href="../../../api/distribution/relife2.Gamma.html#relife2.Gamma">[docs]</a>
 <span class="k">class</span> <span class="nc">Gamma</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gamma lifetime distribution.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    shape : float, optional</span>
+<span class="sd">        shape parameter</span>
+<span class="sd">    rate : float, optional</span>
+<span class="sd">        rate parameter</span>
+
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    regression.AFT : AFT regression</span>
+<span class="sd">    regression.ProportionalHazard : AFT regression</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">new_params</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">)</span>
@@ -960,11 +1248,44 @@
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span></div>
 
 
+<div class="viewcode-block" id="Gamma.ichf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Gamma.html#relife2.Gamma.ichf">[docs]</a>
+    <span class="nd">@override</span>
     <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">gammainccinv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">cumulative_hazard_rate</span><span class="p">))</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Inverse cumulative hazard function.</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Cumulative hazard rate : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Cumulative hazard rate values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Inverse cumulative hazard values, i.e. time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">gammainccinv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">cumulative_hazard_rate</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Gamma.jac_hf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Gamma.html#relife2.Gamma.jac_hf">[docs]</a>
     <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the hazard function.</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Jacobian values, here gradient values at each given time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="n">x</span> <span class="o">**</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
@@ -977,12 +1298,29 @@
                     <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_uppergamma</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">),</span>
                 <span class="p">)</span>
             <span class="p">)</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="Gamma.jac_chf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Gamma.html#relife2.Gamma.jac_chf">[docs]</a>
     <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the cumulative hazard function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Jacobian values, here gradient values at each given time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
             <span class="p">(</span>
@@ -990,10 +1328,28 @@
                 <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jac_uppergamma_shape</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_uppergamma</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
                 <span class="n">x</span> <span class="o">**</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">time</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_uppergamma</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
             <span class="p">)</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="Gamma.dhf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.Gamma.html#relife2.Gamma.dhf">[docs]</a>
     <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">time</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="n">time</span><span class="p">))</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Derivative of the hazard function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Derivative values with respect to time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">time</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="n">time</span><span class="p">))</span></div>
+
 
 <div class="viewcode-block" id="Gamma.mrl">
 <a class="viewcode-back" href="../../../api/distribution/relife2.Gamma.html#relife2.Gamma.mrl">[docs]</a>
@@ -1021,6 +1377,23 @@
 <div class="viewcode-block" id="LogLogistic">
 <a class="viewcode-back" href="../../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic">[docs]</a>
 <span class="k">class</span> <span class="nc">LogLogistic</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Log-logistic probability distribution.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    shape : float, optional</span>
+<span class="sd">        shape parameter</span>
+<span class="sd">    rate : float, optional</span>
+<span class="sd">        rate parameter</span>
+
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    regression.AFT : AFT regression</span>
+<span class="sd">    regression.ProportionalHazard : AFT regression</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">new_params</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">)</span>
@@ -1117,10 +1490,44 @@
         <span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="LogLogistic.ichf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.ichf">[docs]</a>
+    <span class="nd">@override</span>
     <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">cumulative_hazard_rate</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Inverse cumulative hazard function.</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Cumulative hazard rate : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Cumulative hazard rate values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Inverse cumulative hazard values, i.e. time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">cumulative_hazard_rate</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span></div>
+
+
+<div class="viewcode-block" id="LogLogistic.jac_hf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.jac_hf">[docs]</a>
     <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the hazard function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Jacobian values, here gradient values at each given time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
             <span class="p">(</span>
@@ -1129,18 +1536,52 @@
                 <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">x</span> <span class="o">**</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
                 <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="p">),</span>
             <span class="p">)</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="LogLogistic.jac_chf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.jac_chf">[docs]</a>
     <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the cumulative hazard function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Jacobian values, here gradient values at each given time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
             <span class="p">(</span>
                 <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">),</span>
                 <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="p">),</span>
             <span class="p">)</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="LogLogistic.dhf">
+<a class="viewcode-back" href="../../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.dhf">[docs]</a>
     <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Derivative of the hazard function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
+<span class="sd">            To consider m assets with respectively n points of measure,</span>
+<span class="sd">            pass an array of shape (m, n).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">            Derivative values with respect to time.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">shape</span>
@@ -1148,7 +1589,8 @@
             <span class="o">*</span> <span class="n">x</span> <span class="o">**</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
             <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
             <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
-        <span class="p">)</span>
+        <span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="LogLogistic.mrl">
 <a class="viewcode-back" href="../../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.mrl">[docs]</a>

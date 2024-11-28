@@ -358,7 +358,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="relife2.Exponential">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">Exponential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Exponential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Exponential" title="Link to this definition">#</a></dt>
-<dd><p>Exponential probability distribution.</p>
+<dd><p>Exponential lifetime distribution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -384,7 +384,7 @@
 <span class="go">array([0.10539922, 0.02836782, 0.00763509, 0.00205496, 0.00055308]))</span>
 </pre></div>
 </div>
-<p>Notice that only one asset is considered here. To pass another asset using broadcasting, use a 2d time array</p>
+<p>Notice that only one asset is considered here. To pass another asset, use a 2d time array</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">num</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 <span class="go">array([[0.10539922, 0.02836782, 0.00763509, 0.00205496, 0.00055308],</span>
@@ -396,35 +396,32 @@
 <p class="rubric">Survival functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Exponential.chf" title="relife2.Exponential.chf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chf</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Exponential.chf" title="relife2.Exponential.chf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chf</span></code></a></p></td>
 <td><p>Cumulative hazard function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dhf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Exponential.dhf" title="relife2.Exponential.dhf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dhf</span></code></a></p></td>
+<td><p>Derivative of the hazard function.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Exponential.hf" title="relife2.Exponential.hf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hf</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Exponential.hf" title="relife2.Exponential.hf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hf</span></code></a></p></td>
 <td><p>Hazard function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ichf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Exponential.ichf" title="relife2.Exponential.ichf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ichf</span></code></a></p></td>
+<td><p>Inverse cumulative hazard function.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Exponential.isf" title="relife2.Exponential.isf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isf</span></code></a></p></td>
+<td><p>Inverse survival function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_chf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Exponential.jac_chf" title="relife2.Exponential.jac_chf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_chf</span></code></a></p></td>
+<td><p>Jacobian of the cumulative hazard function.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_hf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Exponential.jac_hf" title="relife2.Exponential.jac_hf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_hf</span></code></a></p></td>
+<td><p>Jacobian of the hazard function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Exponential.mrl" title="relife2.Exponential.mrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mrl</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Exponential.mrl" title="relife2.Exponential.mrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mrl</span></code></a></p></td>
 <td><p>Mean residual life.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Exponential.sf" title="relife2.Exponential.sf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sf</span></code></a></p></td>
-<td><p>blablal.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Exponential.sf" title="relife2.Exponential.sf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sf</span></code></a></p></td>
+<td><p>Survival function.</p></td>
 </tr>
 </tbody>
 </table>
@@ -432,8 +429,8 @@
 <p class="rubric">Probability functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Exponential.cdf" title="relife2.Exponential.cdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></a></p></td>
+<td><p>Cumulative distribution function.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdf</span></code></p></td>
 <td><p></p></td>
@@ -471,8 +468,12 @@
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Exponential.ls_integrate" title="relife2.Exponential.ls_integrate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rvs</span></code></p></td>
 <td><p></p></td>
@@ -498,6 +499,29 @@
 </table>
 </div>
 <dl class="py method">
+<dt class="sig sig-object py" id="relife2.Exponential.cdf">
+<span class="sig-name descname"><span class="pre">cdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.Exponential.cdf" title="Link to this definition">#</a></dt>
+<dd><p>Cumulative distribution function.</p>
+<p>The survival function of the distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Cumulative distribution function values at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="relife2.Exponential.chf">
 <span class="sig-name descname"><span class="pre">chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Exponential.chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Exponential.chf" title="Link to this definition">#</a></dt>
 <dd><p>Cumulative hazard function.</p>
@@ -522,6 +546,28 @@ pass an array of shape (m, n).</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="relife2.Exponential.dhf">
+<span class="sig-name descname"><span class="pre">dhf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Exponential.dhf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Exponential.dhf" title="Link to this definition">#</a></dt>
+<dd><p>Derivative of the hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Derivative values with respect to time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="relife2.Exponential.hf">
 <span class="sig-name descname"><span class="pre">hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Exponential.hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Exponential.hf" title="Link to this definition">#</a></dt>
 <dd><p>Hazard function.</p>
@@ -539,6 +585,118 @@ pass an array of shape (m, n).</p>
 <dd class="field-even"><dl class="simple">
 <dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Hazard values at each given time.</p>
 </dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Exponential.ichf">
+<span class="sig-name descname"><span class="pre">ichf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cumulative_hazard_rate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Exponential.ichf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Exponential.ichf" title="Link to this definition">#</a></dt>
+<dd><p>Inverse cumulative hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Cumulative hazard rate</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Cumulative hazard rate values. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Inverse cumulative hazard values, i.e. time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Exponential.isf">
+<span class="sig-name descname"><span class="pre">isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.Exponential.isf" title="Link to this definition">#</a></dt>
+<dd><p>Inverse survival function.</p>
+<p>The survival function of the distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>probability</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Probability values. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Complement quantile corresponding to probability.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Exponential.jac_chf">
+<span class="sig-name descname"><span class="pre">jac_chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Exponential.jac_chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Exponential.jac_chf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the cumulative hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Elapsed time</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Probability values. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Jacobian values, here gradient values at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Exponential.jac_hf">
+<span class="sig-name descname"><span class="pre">jac_hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Exponential.jac_hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Exponential.jac_hf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Elapsed time</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Probability values. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Jacobian values, here gradient values at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Exponential.ls_integrate">
+<span class="sig-name descname"><span class="pre">ls_integrate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.Exponential.ls_integrate" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ndim</strong></dt><dd></dd>
+<dt><strong>func</strong></dt><dd></dd>
+<dt><strong>a</strong></dt><dd></dd>
+<dt><strong>b</strong></dt><dd></dd>
+<dt><strong>args</strong></dt><dd></dd>
+<dt><strong>deg</strong></dt><dd></dd>
+<dt><strong>ndim</strong><span class="classifier">optional, desired output array dim (&lt;= 2)</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>2d array (by default). broadcast_to to squeeze and broadcast to another shape</dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -599,15 +757,23 @@ pass an array of shape (m, n).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.Exponential.sf">
 <span class="sig-name descname"><span class="pre">sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.Exponential.sf" title="Link to this definition">#</a></dt>
-<dd><p>blablal.</p>
+<dd><p>Survival function.</p>
+<p>The survival function of the distribution</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong></dt><dd></dd>
+<dt><strong>time</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"></dd>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Survival function values at each given time.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </dd></dl>
 
@@ -678,8 +844,15 @@ pass an array of shape (m, n).</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential"><code class="docutils literal notranslate"><span class="pre">Exponential</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.cdf"><code class="docutils literal notranslate"><span class="pre">Exponential.cdf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.chf"><code class="docutils literal notranslate"><span class="pre">Exponential.chf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.dhf"><code class="docutils literal notranslate"><span class="pre">Exponential.dhf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.hf"><code class="docutils literal notranslate"><span class="pre">Exponential.hf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.ichf"><code class="docutils literal notranslate"><span class="pre">Exponential.ichf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.isf"><code class="docutils literal notranslate"><span class="pre">Exponential.isf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.jac_chf"><code class="docutils literal notranslate"><span class="pre">Exponential.jac_chf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.jac_hf"><code class="docutils literal notranslate"><span class="pre">Exponential.jac_hf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.ls_integrate"><code class="docutils literal notranslate"><span class="pre">Exponential.ls_integrate()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.mean"><code class="docutils literal notranslate"><span class="pre">Exponential.mean()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.mrl"><code class="docutils literal notranslate"><span class="pre">Exponential.mrl()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.params"><code class="docutils literal notranslate"><span class="pre">Exponential.params</span></code></a></li>

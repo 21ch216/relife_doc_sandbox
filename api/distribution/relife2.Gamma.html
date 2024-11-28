@@ -358,40 +358,57 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="relife2.Gamma">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">Gamma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gamma"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gamma" title="Link to this definition">#</a></dt>
-<dd><section id="methods">
+<dd><p>Gamma lifetime distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>shape</strong><span class="classifier">float, optional</span></dt><dd><p>shape parameter</p>
+</dd>
+<dt><strong>rate</strong><span class="classifier">float, optional</span></dt><dd><p>rate parameter</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">regression.AFT</span></code></dt><dd><p>AFT regression</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">regression.ProportionalHazard</span></code></dt><dd><p>AFT regression</p>
+</dd>
+</dl>
+</div>
+<section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h2>
 <p class="rubric">Survival functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Gamma.chf" title="relife2.Gamma.chf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chf</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Gamma.chf" title="relife2.Gamma.chf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chf</span></code></a></p></td>
 <td><p>Cumulative hazard function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dhf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Gamma.dhf" title="relife2.Gamma.dhf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dhf</span></code></a></p></td>
+<td><p>Derivative of the hazard function.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Gamma.hf" title="relife2.Gamma.hf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hf</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Gamma.hf" title="relife2.Gamma.hf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hf</span></code></a></p></td>
 <td><p>Hazard function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ichf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Gamma.ichf" title="relife2.Gamma.ichf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ichf</span></code></a></p></td>
+<td><p>Inverse cumulative hazard function.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Gamma.isf" title="relife2.Gamma.isf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isf</span></code></a></p></td>
+<td><p>Inverse survival function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_chf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Gamma.jac_chf" title="relife2.Gamma.jac_chf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_chf</span></code></a></p></td>
+<td><p>Jacobian of the cumulative hazard function.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_hf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Gamma.jac_hf" title="relife2.Gamma.jac_hf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_hf</span></code></a></p></td>
+<td><p>Jacobian of the hazard function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Gamma.mrl" title="relife2.Gamma.mrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mrl</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Gamma.mrl" title="relife2.Gamma.mrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mrl</span></code></a></p></td>
 <td><p>Mean residual life.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Gamma.sf" title="relife2.Gamma.sf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sf</span></code></a></p></td>
-<td><p>blablal.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Gamma.sf" title="relife2.Gamma.sf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sf</span></code></a></p></td>
+<td><p>Survival function.</p></td>
 </tr>
 </tbody>
 </table>
@@ -399,8 +416,8 @@
 <p class="rubric">Probability functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Gamma.cdf" title="relife2.Gamma.cdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></a></p></td>
+<td><p>Cumulative distribution function.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdf</span></code></p></td>
 <td><p></p></td>
@@ -438,8 +455,12 @@
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Gamma.ls_integrate" title="relife2.Gamma.ls_integrate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></a></p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rvs</span></code></p></td>
 <td><p></p></td>
@@ -465,6 +486,29 @@
 </table>
 </div>
 <dl class="py method">
+<dt class="sig sig-object py" id="relife2.Gamma.cdf">
+<span class="sig-name descname"><span class="pre">cdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.Gamma.cdf" title="Link to this definition">#</a></dt>
+<dd><p>Cumulative distribution function.</p>
+<p>The survival function of the distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Cumulative distribution function values at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="relife2.Gamma.chf">
 <span class="sig-name descname"><span class="pre">chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gamma.chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gamma.chf" title="Link to this definition">#</a></dt>
 <dd><p>Cumulative hazard function.</p>
@@ -489,6 +533,28 @@ pass an array of shape (m, n).</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="relife2.Gamma.dhf">
+<span class="sig-name descname"><span class="pre">dhf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gamma.dhf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gamma.dhf" title="Link to this definition">#</a></dt>
+<dd><p>Derivative of the hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Derivative values with respect to time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="relife2.Gamma.hf">
 <span class="sig-name descname"><span class="pre">hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gamma.hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gamma.hf" title="Link to this definition">#</a></dt>
 <dd><p>Hazard function.</p>
@@ -506,6 +572,118 @@ pass an array of shape (m, n).</p>
 <dd class="field-even"><dl class="simple">
 <dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Hazard values at each given time.</p>
 </dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Gamma.ichf">
+<span class="sig-name descname"><span class="pre">ichf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cumulative_hazard_rate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gamma.ichf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gamma.ichf" title="Link to this definition">#</a></dt>
+<dd><p>Inverse cumulative hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Cumulative hazard rate</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Cumulative hazard rate values. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Inverse cumulative hazard values, i.e. time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Gamma.isf">
+<span class="sig-name descname"><span class="pre">isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.Gamma.isf" title="Link to this definition">#</a></dt>
+<dd><p>Inverse survival function.</p>
+<p>The survival function of the distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>probability</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Probability values. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Complement quantile corresponding to probability.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Gamma.jac_chf">
+<span class="sig-name descname"><span class="pre">jac_chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gamma.jac_chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gamma.jac_chf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the cumulative hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Elapsed time</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Probability values. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Jacobian values, here gradient values at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Gamma.jac_hf">
+<span class="sig-name descname"><span class="pre">jac_hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gamma.jac_hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gamma.jac_hf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Elapsed time</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Probability values. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Jacobian values, here gradient values at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Gamma.ls_integrate">
+<span class="sig-name descname"><span class="pre">ls_integrate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.Gamma.ls_integrate" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>ndim</strong></dt><dd></dd>
+<dt><strong>func</strong></dt><dd></dd>
+<dt><strong>a</strong></dt><dd></dd>
+<dt><strong>b</strong></dt><dd></dd>
+<dt><strong>args</strong></dt><dd></dd>
+<dt><strong>deg</strong></dt><dd></dd>
+<dt><strong>ndim</strong><span class="classifier">optional, desired output array dim (&lt;= 2)</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>2d array (by default). broadcast_to to squeeze and broadcast to another shape</dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -566,15 +744,23 @@ pass an array of shape (m, n).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.Gamma.sf">
 <span class="sig-name descname"><span class="pre">sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.Gamma.sf" title="Link to this definition">#</a></dt>
-<dd><p>blablal.</p>
+<dd><p>Survival function.</p>
+<p>The survival function of the distribution</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong></dt><dd></dd>
+<dt><strong>time</strong><span class="classifier">ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered
+To consider m assets with respectively n points of measure,
+pass an array of shape (m, n).</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"></dd>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of shape (n, ) or (m, n)</dt><dd><p>Survival function values at each given time.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </dd></dl>
 
@@ -645,8 +831,15 @@ pass an array of shape (m, n).</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gamma"><code class="docutils literal notranslate"><span class="pre">Gamma</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gamma.cdf"><code class="docutils literal notranslate"><span class="pre">Gamma.cdf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gamma.chf"><code class="docutils literal notranslate"><span class="pre">Gamma.chf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gamma.dhf"><code class="docutils literal notranslate"><span class="pre">Gamma.dhf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gamma.hf"><code class="docutils literal notranslate"><span class="pre">Gamma.hf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gamma.ichf"><code class="docutils literal notranslate"><span class="pre">Gamma.ichf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gamma.isf"><code class="docutils literal notranslate"><span class="pre">Gamma.isf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gamma.jac_chf"><code class="docutils literal notranslate"><span class="pre">Gamma.jac_chf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gamma.jac_hf"><code class="docutils literal notranslate"><span class="pre">Gamma.jac_hf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gamma.ls_integrate"><code class="docutils literal notranslate"><span class="pre">Gamma.ls_integrate()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gamma.mean"><code class="docutils literal notranslate"><span class="pre">Gamma.mean()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gamma.mrl"><code class="docutils literal notranslate"><span class="pre">Gamma.mrl()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gamma.params"><code class="docutils literal notranslate"><span class="pre">Gamma.params</span></code></a></li>

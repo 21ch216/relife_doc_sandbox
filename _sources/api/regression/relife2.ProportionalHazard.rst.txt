@@ -28,8 +28,6 @@
     
         
         
-            ~ProportionalHazard.cdf
-        
         
             ~ProportionalHazard.chf
         

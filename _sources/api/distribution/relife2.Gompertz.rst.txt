@@ -28,8 +28,6 @@
     
         
         
-            ~Gompertz.cdf
-        
         
             ~Gompertz.chf
         

@@ -28,8 +28,6 @@
     
         
         
-            ~LogLogistic.cdf
-        
         
             ~LogLogistic.chf
         

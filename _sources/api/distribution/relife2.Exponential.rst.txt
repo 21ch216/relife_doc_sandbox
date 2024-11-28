@@ -28,8 +28,6 @@
     
         
         
-            ~Exponential.cdf
-        
         
             ~Exponential.chf
         

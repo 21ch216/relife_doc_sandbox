@@ -28,8 +28,6 @@
     
         
         
-            ~Gamma.cdf
-        
         
             ~Gamma.chf
         

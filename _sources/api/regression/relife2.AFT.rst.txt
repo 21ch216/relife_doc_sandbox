@@ -28,8 +28,6 @@
     
         
         
-            ~AFT.cdf
-        
         
             ~AFT.chf
         
