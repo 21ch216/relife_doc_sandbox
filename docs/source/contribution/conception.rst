@@ -1,5 +1,4 @@
-This page aims at providing succint explanations on refactoring
-choices.
+
 
 On Numpy dependance
 ===================

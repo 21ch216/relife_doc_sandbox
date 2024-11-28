@@ -15,7 +15,7 @@ PATH_TO_LIBRARY = "../code/refife"
 sys.path.insert(0, os.path.abspath(PATH_TO_LIBRARY))
 
 project = 'doc_example'
-copyright = '2024, wgrison'
+copyright = '2024, RTE'
 author = 'wgrison'
 
 # -- General configuration ---------------------------------------------------
