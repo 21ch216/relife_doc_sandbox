@@ -1,6 +1,6 @@
 {{ fullname | escape | underline}}
 
-{% set survival_functions = ["chf", "hf", "cdf", "dhf", "ichf", "isf", "jac_chf", "jac_hf", "mrl", "sf"] %}
+{% set survival_functions = ["chf", "hf", "dhf", "ichf", "isf", "jac_chf", "jac_hf", "mrl", "sf"] %}
 {% set statistics = ["mean", "var", "moment", "median"] %}
 {% set probability_functions = ["pdf", "ppf", "cdf"] %}
 {% set exclude_methods = ["__init__", "__new__", "compose_with", "new_params", "init_params"] %}
