@@ -473,12 +473,19 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns parameters values of the model.</span>
+<span class="sd">        Parameters values.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        params : numpy array of floats</span>
-<span class="sd">            Parameters values</span>
+<span class="sd">        ndarray of float</span>
+<span class="sd">            Parameters values of the model</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        If parameter values are not set, they are encoded as `np.nan` value.</span>
+
+<span class="sd">        Parameters can be set with `params` setter, fitting the model if `fit` exists or specifying</span>
+<span class="sd">        all parameters values when the model object is initialized.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_params</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 
@@ -488,10 +495,32 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">params_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters names.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of str</span>
+<span class="sd">            Parameters names</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Parameters can be get by their name at instance level.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_params</span><span class="o">.</span><span class="n">names</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">nb_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Number of parameters.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        int</span>
+<span class="sd">            Number of parameters</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_params</span><span class="p">)</span>
 
     <span class="nd">@property</span>
@@ -538,8 +567,18 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
+<div class="viewcode-block" id="ParametricModel.copy">
+<a class="viewcode-back" href="../../../api/model/relife2.ParametricModel.html#relife2.ParametricModel.copy">[docs]</a>
     <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Copy object.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            A independant copied instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+</div>
 
 
 
@@ -732,7 +771,7 @@
         <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">rvs</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">VariadicArgs</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">VariadicArgs</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
         <span class="n">generator</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
         <span class="n">probability</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
@@ -753,23 +792,38 @@
         <span class="n">b</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">VariadicArgs</span><span class="p">,</span>
         <span class="n">deg</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
-        <span class="c1"># broadcast_to: Optional[tuple[int, int]] = None,</span>
-        <span class="c1"># ndim: Optional[int] = None,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Lebesgue-Stieltjes integration.</span>
+
+<span class="sd">        The Lebesgue-Stieljes intregration of a function with respect to the lifetime model</span>
+<span class="sd">        taking into account the probability density function and jumps</span>
+
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        ndim :</span>
-<span class="sd">        func :</span>
-<span class="sd">        a :</span>
-<span class="sd">        b :</span>
-<span class="sd">        args :</span>
-<span class="sd">        deg :</span>
-<span class="sd">        ndim : optional, desired output array dim (&lt;= 2)</span>
+<span class="sd">        func : callable (in : 1 ndarray, out : 1 ndarray)</span>
+<span class="sd">            The callable must have only one ndarray object as argument and returns one ndarray object</span>
+<span class="sd">        a : ndarray (max dim of 2)</span>
+<span class="sd">            Lower bound(s) of integration.</span>
+<span class="sd">        b : ndarray (max dim of 2)</span>
+<span class="sd">            Upper bound(s) of integration. If lower bound(s) is infinite, use np.inf as value.</span>
+<span class="sd">        args : ndarray (max dim of 2)</span>
+<span class="sd">            Other arguments needed by the lifetime model (eg. covariates)</span>
+<span class="sd">        deg : int, default 100</span>
+<span class="sd">            Degree of the polynomials interpolation</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">            2d array (by default). broadcast_to to squeeze and broadcast to another shape</span>
+<span class="sd">        2d ndarray</span>
+<span class="sd">             The numerical integration of `func` from `a` to `b`</span>
+
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        `ls_integrate` operations rely on arguments number of dimensions passed in `a`, `b`, `*args` or</span>
+<span class="sd">        any other variable referenced in `func`. Because `func` callable is not easy to inspect, either one must specify</span>
+<span class="sd">        the maximum number of dimensions used (0, 1 or 2), or `ls_integrate` converts all these objects to 2d-array.</span>
+<span class="sd">        Currently, the second option is prefered. That&#39;s why, returns are always 2d-array.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
@@ -865,6 +919,8 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
+<div class="viewcode-block" id="ParametricLifetimeModel.fit">
+<a class="viewcode-back" href="../../../api/model/relife2.ParametricLifetimeModel.html#relife2.ParametricLifetimeModel.fit">[docs]</a>
     <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
@@ -875,6 +931,46 @@
         <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Estimation of lifetime model parameters with respect to lifetime data.</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        time : ndarray (1d or 2d)</span>
+<span class="sd">            Observed lifetime values.</span>
+<span class="sd">        event : ndarray of boolean values (1d), default is None</span>
+<span class="sd">            Boolean indicators tagging lifetime values as right censored or complete.</span>
+<span class="sd">        entry : ndarray of float (1d), default is None</span>
+<span class="sd">            Left truncations applied to lifetime values.</span>
+<span class="sd">        departure : ndarray of float (1d), default is None</span>
+<span class="sd">            Right truncations applied to lifetime values.</span>
+<span class="sd">        model_args : tuple of ndarray, default is None</span>
+<span class="sd">            Other arguments needed by the lifetime model.</span>
+<span class="sd">        inplace : boolean, default is True</span>
+<span class="sd">            If true, parameters of the lifetime model will be replaced by estimated paramters.</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            Extra arguments used by `scipy.minimize`. Default values are:</span>
+<span class="sd">                - `method` : `&quot;L-BFGS-B&quot;`</span>
+<span class="sd">                - `contraints` : `()`</span>
+<span class="sd">                - `tol` : `None`</span>
+<span class="sd">                - `callback` : `None`</span>
+<span class="sd">                - `options` : `None`</span>
+<span class="sd">                - `bounds` : `self.params_bounds`</span>
+<span class="sd">                - `x0` : `self.init_params`</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray of float</span>
+<span class="sd">            Estimated parameters.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Supported lifetime observations format is either 1d-array or 2d-array. 2d-array is more advanced</span>
+<span class="sd">        format that allows to pass other information as left-censored or interval-censored values. In this case,</span>
+<span class="sd">        `event` is not needed as 2d-array encodes right-censored values by itself.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">lifetime_data</span> <span class="o">=</span> <span class="n">lifetime_data_factory</span><span class="p">(</span>
             <span class="n">time</span><span class="p">,</span>
@@ -913,7 +1009,8 @@
             <span class="c1"># or just self.init_params(observed_lifetimes, *model_args)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">likelihood</span><span class="o">.</span><span class="n">params</span>
 
-        <span class="k">return</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">x</span>
+        <span class="k">return</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">x</span></div>
+
 
     <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;control if params are set&quot;&quot;&quot;</span>

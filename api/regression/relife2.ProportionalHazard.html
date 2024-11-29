@@ -450,18 +450,14 @@
 <p class="rubric">Other methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.copy" title="relife2.ProportionalHazard.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a></p></td>
+<td><p>Copy object.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.fit" title="relife2.ProportionalHazard.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a></p></td>
+<td><p>Estimation of lifetime model parameters with respect to lifetime data.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.ls_integrate" title="relife2.ProportionalHazard.ls_integrate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></a></p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<td><p>Lebesgue-Stieltjes integration.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rvs</span></code></p></td>
 <td><p></p></td>
@@ -474,18 +470,78 @@
 <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nb_params</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.nb_params" title="relife2.ProportionalHazard.nb_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nb_params</span></code></a></p></td>
+<td><p>Number of parameters.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.params" title="relife2.ProportionalHazard.params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params</span></code></a></p></td>
-<td><p>Returns parameters values of the model.</p></td>
+<td><p>Parameters values.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_names</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.params_names" title="relife2.ProportionalHazard.params_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_names</span></code></a></p></td>
+<td><p>Parameters names.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.copy" title="Link to this definition">#</a></dt>
+<dd><p>Copy object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>A independant copied instance.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">departure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.fit" title="Link to this definition">#</a></dt>
+<dd><p>Estimation of lifetime model parameters with respect to lifetime data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">ndarray (1d or 2d)</span></dt><dd><p>Observed lifetime values.</p>
+</dd>
+<dt><strong>event</strong><span class="classifier">ndarray of boolean values (1d), default is None</span></dt><dd><p>Boolean indicators tagging lifetime values as right censored or complete.</p>
+</dd>
+<dt><strong>entry</strong><span class="classifier">ndarray of float (1d), default is None</span></dt><dd><p>Left truncations applied to lifetime values.</p>
+</dd>
+<dt><strong>departure</strong><span class="classifier">ndarray of float (1d), default is None</span></dt><dd><p>Right truncations applied to lifetime values.</p>
+</dd>
+<dt><strong>model_args</strong><span class="classifier">tuple of ndarray, default is None</span></dt><dd><p>Other arguments needed by the lifetime model.</p>
+</dd>
+<dt><strong>inplace</strong><span class="classifier">boolean, default is True</span></dt><dd><p>If true, parameters of the lifetime model will be replaced by estimated paramters.</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><dl class="simple">
+<dt>Extra arguments used by <cite>scipy.minimize</cite>. Default values are:</dt><dd><ul class="simple">
+<li><p><cite>method</cite> : <cite>“L-BFGS-B”</cite></p></li>
+<li><p><cite>contraints</cite> : <cite>()</cite></p></li>
+<li><p><cite>tol</cite> : <cite>None</cite></p></li>
+<li><p><cite>callback</cite> : <cite>None</cite></p></li>
+<li><p><cite>options</cite> : <cite>None</cite></p></li>
+<li><p><cite>bounds</cite> : <cite>self.params_bounds</cite></p></li>
+<li><p><cite>x0</cite> : <cite>self.init_params</cite></p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray of float</dt><dd><p>Estimated parameters.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Supported lifetime observations format is either 1d-array or 2d-array. 2d-array is more advanced
+format that allows to pass other information as left-censored or interval-censored values. In this case,
+<cite>event</cite> is not needed as 2d-array encodes right-censored values by itself.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.ProportionalHazard.hf">
 <span class="sig-name descname"><span class="pre">hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/regression.html#ProportionalHazard.hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ProportionalHazard.hf" title="Link to this definition">#</a></dt>
@@ -514,21 +570,47 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.ProportionalHazard.ls_integrate">
 <span class="sig-name descname"><span class="pre">ls_integrate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.ls_integrate" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Lebesgue-Stieltjes integration.</p>
+<p>The Lebesgue-Stieljes intregration of a function with respect to the lifetime model
+taking into account the probability density function and jumps</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>ndim</strong></dt><dd></dd>
-<dt><strong>func</strong></dt><dd></dd>
-<dt><strong>a</strong></dt><dd></dd>
-<dt><strong>b</strong></dt><dd></dd>
-<dt><strong>args</strong></dt><dd></dd>
-<dt><strong>deg</strong></dt><dd></dd>
-<dt><strong>ndim</strong><span class="classifier">optional, desired output array dim (&lt;= 2)</span></dt><dd></dd>
+<dt><strong>func</strong><span class="classifier">callable (in</span><span class="classifier">1 ndarray, out</span><span class="classifier">1 ndarray)</span></dt><dd><p>The callable must have only one ndarray object as argument and returns one ndarray object</p>
+</dd>
+<dt><strong>a</strong><span class="classifier">ndarray (max dim of 2)</span></dt><dd><p>Lower bound(s) of integration.</p>
+</dd>
+<dt><strong>b</strong><span class="classifier">ndarray (max dim of 2)</span></dt><dd><p>Upper bound(s) of integration. If lower bound(s) is infinite, use np.inf as value.</p>
+</dd>
+<dt><strong>args</strong><span class="classifier">ndarray (max dim of 2)</span></dt><dd><p>Other arguments needed by the lifetime model (eg. covariates)</p>
+</dd>
+<dt><strong>deg</strong><span class="classifier">int, default 100</span></dt><dd><p>Degree of the polynomials interpolation</p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>2d array (by default). broadcast_to to squeeze and broadcast to another shape</dt><dd></dd>
+<dt>2d ndarray</dt><dd><p>The numerical integration of <cite>func</cite> from <cite>a</cite> to <cite>b</cite></p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p><cite>ls_integrate</cite> operations rely on arguments number of dimensions passed in <cite>a</cite>, <cite>b</cite>, <cite>*args</cite> or
+any other variable referenced in <cite>func</cite>. Because <cite>func</cite> callable is not easy to inspect, either one must specify
+the maximum number of dimensions used (0, 1 or 2), or <cite>ls_integrate</cite> converts all these objects to 2d-array.
+Currently, the second option is prefered. That’s why, returns are always 2d-array.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.nb_params">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nb_params</span></span><a class="headerlink" href="#relife2.ProportionalHazard.nb_params" title="Link to this definition">#</a></dt>
+<dd><p>Number of parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>int</dt><dd><p>Number of parameters</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -537,15 +619,35 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="relife2.ProportionalHazard.params">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">params</span></span><a class="headerlink" href="#relife2.ProportionalHazard.params" title="Link to this definition">#</a></dt>
-<dd><p>Returns parameters values of the model.</p>
+<dd><p>Parameters values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>params</strong><span class="classifier">numpy array of floats</span></dt><dd><p>Parameters values</p>
+<dt>ndarray of float</dt><dd><p>Parameters values of the model</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>If parameter values are not set, they are encoded as <cite>np.nan</cite> value.</p>
+<p>Parameters can be set with <cite>params</cite> setter, fitting the model if <cite>fit</cite> exists or specifying
+all parameters values when the model object is initialized.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.params_names">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">params_names</span></span><a class="headerlink" href="#relife2.ProportionalHazard.params_names" title="Link to this definition">#</a></dt>
+<dd><p>Parameters names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>list of str</dt><dd><p>Parameters names</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Parameters can be get by their name at instance level.</p>
 </dd></dl>
 
 </section>
@@ -601,9 +703,13 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.copy"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.copy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.fit"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.fit()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.hf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.hf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.ls_integrate"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.ls_integrate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.nb_params"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.nb_params</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.params"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.params_names"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.params_names</span></code></a></li>
 </ul>
 </li>
 </ul>

@@ -384,8 +384,8 @@
 <p class="rubric">Other methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ParametricModel.copy" title="relife2.ParametricModel.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a></p></td>
+<td><p>Copy object.</p></td>
 </tr>
 </tbody>
 </table>
@@ -395,30 +395,77 @@
 <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nb_params</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ParametricModel.nb_params" title="relife2.ParametricModel.nb_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nb_params</span></code></a></p></td>
+<td><p>Number of parameters.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#relife2.ParametricModel.params" title="relife2.ParametricModel.params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params</span></code></a></p></td>
-<td><p>Returns parameters values of the model.</p></td>
+<td><p>Parameters values.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_names</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ParametricModel.params_names" title="relife2.ParametricModel.params_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_names</span></code></a></p></td>
+<td><p>Parameters names.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<dl class="py property">
-<dt class="sig sig-object py" id="relife2.ParametricModel.params">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">params</span></span><a class="headerlink" href="#relife2.ParametricModel.params" title="Link to this definition">#</a></dt>
-<dd><p>Returns parameters values of the model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ParametricModel.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#ParametricModel.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ParametricModel.copy" title="Link to this definition">#</a></dt>
+<dd><p>Copy object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>params</strong><span class="classifier">numpy array of floats</span></dt><dd><p>Parameters values</p>
+<dt>A independant copied instance.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="relife2.ParametricModel.nb_params">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">nb_params</span></span><a class="headerlink" href="#relife2.ParametricModel.nb_params" title="Link to this definition">#</a></dt>
+<dd><p>Number of parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>int</dt><dd><p>Number of parameters</p>
 </dd>
 </dl>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="relife2.ParametricModel.params">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">params</span></span><a class="headerlink" href="#relife2.ParametricModel.params" title="Link to this definition">#</a></dt>
+<dd><p>Parameters values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ndarray of float</dt><dd><p>Parameters values of the model</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If parameter values are not set, they are encoded as <cite>np.nan</cite> value.</p>
+<p>Parameters can be set with <cite>params</cite> setter, fitting the model if <cite>fit</cite> exists or specifying
+all parameters values when the model object is initialized.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="relife2.ParametricModel.params_names">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">params_names</span></span><a class="headerlink" href="#relife2.ParametricModel.params_names" title="Link to this definition">#</a></dt>
+<dd><p>Parameters names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>list of str</dt><dd><p>Parameters names</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Parameters can be get by their name at instance level.</p>
 </dd></dl>
 
 </section>
@@ -474,7 +521,10 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ParametricModel"><code class="docutils literal notranslate"><span class="pre">ParametricModel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ParametricModel.copy"><code class="docutils literal notranslate"><span class="pre">ParametricModel.copy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ParametricModel.nb_params"><code class="docutils literal notranslate"><span class="pre">ParametricModel.nb_params</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ParametricModel.params"><code class="docutils literal notranslate"><span class="pre">ParametricModel.params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ParametricModel.params_names"><code class="docutils literal notranslate"><span class="pre">ParametricModel.params_names</span></code></a></li>
 </ul>
 </li>
 </ul>
