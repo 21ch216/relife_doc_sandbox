@@ -48,10 +48,13 @@
             ~ProportionalHazard.isf
         
         
+        
             ~ProportionalHazard.jac_chf
         
         
             ~ProportionalHazard.jac_hf
+        
+        
         
         
         
@@ -96,6 +99,9 @@
         
         
         
+        
+        
+        
             ~ProportionalHazard.pdf
         
         
@@ -111,6 +117,9 @@
         :nosignatures:
 
     
+        
+        
+        
         
         
         
@@ -164,6 +173,15 @@
         
         
         
+            ~ProportionalHazard.jac_cdf
+        
+        
+        
+        
+            ~ProportionalHazard.jac_pdf
+        
+        
+            ~ProportionalHazard.jac_sf
         
         
             ~ProportionalHazard.ls_integrate
@@ -197,4 +215,10 @@
         
         
             ~ProportionalHazard.params_names
+        
+        
+            ~ProportionalHazard.plot
+        
+        
+            ~ProportionalHazard.fitting_results
         

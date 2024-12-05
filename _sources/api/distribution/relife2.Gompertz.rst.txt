@@ -48,10 +48,13 @@
             ~Gompertz.isf
         
         
+        
             ~Gompertz.jac_chf
         
         
             ~Gompertz.jac_hf
+        
+        
         
         
         
@@ -96,6 +99,9 @@
         
         
         
+        
+        
+        
             ~Gompertz.pdf
         
         
@@ -111,6 +117,9 @@
         :nosignatures:
 
     
+        
+        
+        
         
         
         
@@ -164,6 +173,15 @@
         
         
         
+            ~Gompertz.jac_cdf
+        
+        
+        
+        
+            ~Gompertz.jac_pdf
+        
+        
+            ~Gompertz.jac_sf
         
         
             ~Gompertz.ls_integrate
@@ -197,4 +215,10 @@
         
         
             ~Gompertz.params_names
+        
+        
+            ~Gompertz.plot
+        
+        
+            ~Gompertz.fitting_results
         

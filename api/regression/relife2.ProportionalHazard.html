@@ -297,6 +297,13 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">relife2.ProportionalHazard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="relife2.AFT.html">relife2.AFT</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Non parametric lifetime estimators</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.ECDF.html">relife2.ECDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.KaplanMeier.html">relife2.KaplanMeier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.NelsonAalen.html">relife2.NelsonAalen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.Turnbull.html">relife2.Turnbull</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Base models</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../model/relife2.ParametricModel.html">relife2.ParametricModel</a></li>
@@ -360,22 +367,12 @@
 <h1>relife2.ProportionalHazard<a class="headerlink" href="#relife2-proportionalhazard" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="relife2.ProportionalHazard">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">ProportionalHazard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">baseline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coef</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(None,)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/regression.html#ProportionalHazard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ProportionalHazard" title="Link to this definition">#</a></dt>
-<dd><p>Proportional hazard regression.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>baseline</strong><span class="classifier">ParametricLifetimeModel</span></dt><dd><p>Any parametric lifetime model</p>
-</dd>
-<dt><strong>coef</strong><span class="classifier">tuple of floats (values can be none), optional</span></dt><dd><p>Coefficients values of the covariates effect</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">ProportionalHazard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">baseline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coef</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(None,)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/regression.html#ProportionalHazard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ProportionalHazard" title="Link to this definition">#</a></dt>
+<dd><p>Proportional Hazard regression model.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">regression.AFT</span></code></dt><dd><p>AFT regression</p>
+<dt><a class="reference internal" href="relife2.AFT.html#relife2.AFT" title="relife2.regression.AFT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regression.AFT</span></code></a></dt><dd><p>AFT regression</p>
 </dd>
 </dl>
 </div>
@@ -384,32 +381,32 @@
 <p class="rubric">Survival functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">chf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.chf" title="relife2.ProportionalHazard.chf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chf</span></code></a></p></td>
+<td><p>Cumulative hazard function.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dhf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.dhf" title="relife2.ProportionalHazard.dhf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dhf</span></code></a></p></td>
+<td><p>Derivative of the hazard function.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.hf" title="relife2.ProportionalHazard.hf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hf</span></code></a></p></td>
 <td><p>Hazard function.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ichf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.ichf" title="relife2.ProportionalHazard.ichf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ichf</span></code></a></p></td>
+<td><p>Inverse cumulative hazard function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.isf" title="relife2.ProportionalHazard.isf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isf</span></code></a></p></td>
+<td><p>Inverse survival function.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_chf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.jac_chf" title="relife2.ProportionalHazard.jac_chf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_chf</span></code></a></p></td>
+<td><p>Jacobian of the cumulative hazard function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_hf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.jac_hf" title="relife2.ProportionalHazard.jac_hf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_hf</span></code></a></p></td>
+<td><p>Jacobian of the hazard function.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mrl</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.mrl" title="relife2.ProportionalHazard.mrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mrl</span></code></a></p></td>
+<td><p>Mean residual life.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.sf" title="relife2.ProportionalHazard.sf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sf</span></code></a></p></td>
+<td><p>Survival function.</p></td>
 </tr>
 </tbody>
 </table>
@@ -417,14 +414,14 @@
 <p class="rubric">Probability functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.cdf" title="relife2.ProportionalHazard.cdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></a></p></td>
+<td><p>Cumulative distribution function.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.pdf" title="relife2.ProportionalHazard.pdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdf</span></code></a></p></td>
+<td><p>Probability density function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ppf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.ppf" title="relife2.ProportionalHazard.ppf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ppf</span></code></a></p></td>
+<td><p>Percent point function (inverse of cdf).</p></td>
 </tr>
 </tbody>
 </table>
@@ -432,17 +429,17 @@
 <p class="rubric">Statistics</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.mean" title="relife2.ProportionalHazard.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a></p></td>
+<td><p>Mean of the distribution.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">median</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.median" title="relife2.ProportionalHazard.median"><code class="xref py py-obj docutils literal notranslate"><span class="pre">median</span></code></a></p></td>
+<td><p>Median of the distribution.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">moment</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">var</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.var" title="relife2.ProportionalHazard.var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">var</span></code></a></p></td>
+<td><p>Variance of the distribution.</p></td>
 </tr>
 </tbody>
 </table>
@@ -456,11 +453,20 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.fit" title="relife2.ProportionalHazard.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a></p></td>
 <td><p>Estimation of lifetime model parameters with respect to lifetime data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.ls_integrate" title="relife2.ProportionalHazard.ls_integrate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.jac_cdf" title="relife2.ProportionalHazard.jac_cdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_cdf</span></code></a></p></td>
+<td><p>Jacobian of the cumulative distribution function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.jac_pdf" title="relife2.ProportionalHazard.jac_pdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_pdf</span></code></a></p></td>
+<td><p>Jacobian of the probability density function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.jac_sf" title="relife2.ProportionalHazard.jac_sf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_sf</span></code></a></p></td>
+<td><p>Jacobian of the survival function</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.ls_integrate" title="relife2.ProportionalHazard.ls_integrate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></a></p></td>
 <td><p>Lebesgue-Stieltjes integration.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rvs</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.rvs" title="relife2.ProportionalHazard.rvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rvs</span></code></a></p></td>
+<td><p>Random variates.</p></td>
 </tr>
 </tbody>
 </table>
@@ -479,9 +485,63 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ProportionalHazard.params_names" title="relife2.ProportionalHazard.params_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_names</span></code></a></p></td>
 <td><p>Parameters names.</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fitting_results</span></code></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </div>
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.cdf">
+<span class="sig-name descname"><span class="pre">cdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.cdf" title="Link to this definition">#</a></dt>
+<dd><p>Cumulative distribution function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Cumulative probabilities at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.chf">
+<span class="sig-name descname"><span class="pre">chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/regression.html#ProportionalHazard.chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ProportionalHazard.chf" title="Link to this definition">#</a></dt>
+<dd><p>Cumulative hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Cumulative hazard values at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.ProportionalHazard.copy">
 <span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.copy" title="Link to this definition">#</a></dt>
@@ -490,6 +550,30 @@
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>A independant copied instance.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.dhf">
+<span class="sig-name descname"><span class="pre">dhf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/regression.html#ProportionalHazard.dhf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ProportionalHazard.dhf" title="Link to this definition">#</a></dt>
+<dd><p>Derivative of the hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Derivative values with respect to time.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -544,15 +628,17 @@ format that allows to pass other information as left-censored or interval-censor
 
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.ProportionalHazard.hf">
-<span class="sig-name descname"><span class="pre">hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/regression.html#ProportionalHazard.hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ProportionalHazard.hf" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/regression.html#ProportionalHazard.hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ProportionalHazard.hf" title="Link to this definition">#</a></dt>
 <dd><p>Hazard function.</p>
 <p>The hazard function of the regression</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong><span class="classifier">numpy array of floats</span></dt><dd><p>Elapsed time.</p>
+<dt><strong>time</strong><span class="classifier">np.darray</span></dt><dd><p>Elapsed time.</p>
 </dd>
-<dt><strong>covar</strong><span class="classifier">numpy array of floats</span></dt><dd><p>Covariates values.</p>
+<dt><strong>covar</strong><span class="classifier">np.darray</span></dt><dd><p>Covariates values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.darray</span></dt><dd><p>Any other variables needed by the model</p>
 </dd>
 </dl>
 </dd>
@@ -565,6 +651,177 @@ format that allows to pass other information as left-censored or interval-censor
 </dl>
 <p class="rubric">Notes</p>
 <p><cite>time</cite>, <cite>covar</cite> and any <cite>*args</cite> arrays must be broadcastable</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.ichf">
+<span class="sig-name descname"><span class="pre">ichf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cumulative_hazard_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/regression.html#ProportionalHazard.ichf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ProportionalHazard.ichf" title="Link to this definition">#</a></dt>
+<dd><p>Inverse cumulative hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>cumulative_hazard_rate</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Cumulative hazard rate values.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Inverse cumulative hazard values, i.e., time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.isf">
+<span class="sig-name descname"><span class="pre">isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.isf" title="Link to this definition">#</a></dt>
+<dd><p>Inverse survival function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>probability</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Survival probabilities.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Time values corresponding to the given survival probabilities.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.jac_cdf">
+<span class="sig-name descname"><span class="pre">jac_cdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.jac_cdf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the cumulative distribution function.</p>
+<p>Jacobian with respect to model parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.darray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.darray of shape (k, ) or (m, k)</span></dt><dd><p>Covariates values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.darray</span></dt><dd><p>Any other variables needed by the model</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, nb_params) or (m, n, nb_params)</dt><dd><p>The values of the jacobian at each n points (eventually for m assets).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.jac_chf">
+<span class="sig-name descname"><span class="pre">jac_chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/regression.html#ProportionalHazard.jac_chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ProportionalHazard.jac_chf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the cumulative hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, nb_params) or (m, n, nb_params)</dt><dd><p>The values of the Jacobian at each n points (eventually for m assets).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.jac_hf">
+<span class="sig-name descname"><span class="pre">jac_hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/regression.html#ProportionalHazard.jac_hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ProportionalHazard.jac_hf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, nb_params) or (m, n, nb_params)</dt><dd><p>The values of the Jacobian at each n points (eventually for m assets).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.jac_pdf">
+<span class="sig-name descname"><span class="pre">jac_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.jac_pdf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the probability density function.</p>
+<p>Jacobian with respect to model parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.darray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.darray of shape (k, ) or (m, k)</span></dt><dd><p>Covariates values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.darray</span></dt><dd><p>Any other variables needed by the model</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, nb_params) or (m, n, nb_params)</dt><dd><p>The values of the jacobian at each n points (eventually for m assets).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.jac_sf">
+<span class="sig-name descname"><span class="pre">jac_sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.jac_sf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the survival function</p>
+<p>Jacobian with respect to model parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.darray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.darray of shape (k, ) or (m, k)</span></dt><dd><p>Covariates values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.darray</span></dt><dd><p>Any other variables needed by the model</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, nb_params) or (m, n, nb_params)</dt><dd><p>The values of the jacobian at each n points (eventually for m assets).</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -600,6 +857,74 @@ taking into account the probability density function and jumps</p>
 any other variable referenced in <cite>func</cite>. Because <cite>func</cite> callable is not easy to inspect, either one must specify
 the maximum number of dimensions used (0, 1 or 2), or <cite>ls_integrate</cite> converts all these objects to 2d-array.
 Currently, the second option is prefered. That’s why, returns are always 2d-array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.mean">
+<span class="sig-name descname"><span class="pre">mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.mean" title="Link to this definition">#</a></dt>
+<dd><p>Mean of the distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray</dt><dd><p>Mean values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.median">
+<span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.median" title="Link to this definition">#</a></dt>
+<dd><p>Median of the distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray</dt><dd><p>Median values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.mrl">
+<span class="sig-name descname"><span class="pre">mrl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.mrl" title="Link to this definition">#</a></dt>
+<dd><p>Mean residual life.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Mean residual life values at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py property">
@@ -648,6 +973,126 @@ all parameters values when the model object is initialized.</p>
 </dl>
 <p class="rubric">Notes</p>
 <p>Parameters can be get by their name at instance level.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.pdf">
+<span class="sig-name descname"><span class="pre">pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.pdf" title="Link to this definition">#</a></dt>
+<dd><p>Probability density function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Probability densities at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.ppf">
+<span class="sig-name descname"><span class="pre">ppf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.ppf" title="Link to this definition">#</a></dt>
+<dd><p>Percent point function (inverse of cdf).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>probability</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Cumulative probabilities.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Time values corresponding to the given cumulative probabilities.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.rvs">
+<span class="sig-name descname"><span class="pre">rvs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.rvs" title="Link to this definition">#</a></dt>
+<dd><p>Random variates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">int, optional</span></dt><dd><p>Number of random variates to generate.</p>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int, optional</span></dt><dd><p>Seed for random number generator.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray</dt><dd><p>Random variates.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.sf">
+<span class="sig-name descname"><span class="pre">sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.sf" title="Link to this definition">#</a></dt>
+<dd><p>Survival function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Survival probabilities at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ProportionalHazard.var">
+<span class="sig-name descname"><span class="pre">var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.ProportionalHazard.var" title="Link to this definition">#</a></dt>
+<dd><p>Variance of the distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray</dt><dd><p>Variance values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -703,13 +1148,31 @@ all parameters values when the model object is initialized.</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.cdf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.cdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.chf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.chf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.copy"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.copy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.dhf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.dhf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.fit"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.fit()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.hf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.hf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.ichf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.ichf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.isf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.isf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.jac_cdf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.jac_cdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.jac_chf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.jac_chf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.jac_hf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.jac_hf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.jac_pdf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.jac_pdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.jac_sf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.jac_sf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.ls_integrate"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.ls_integrate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.mean"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.mean()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.median"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.median()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.mrl"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.mrl()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.nb_params"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.nb_params</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.params"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.params</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.params_names"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.params_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.pdf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.pdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.ppf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.ppf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.rvs"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.rvs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.sf"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.sf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ProportionalHazard.var"><code class="docutils literal notranslate"><span class="pre">ProportionalHazard.var()</span></code></a></li>
 </ul>
 </li>
 </ul>

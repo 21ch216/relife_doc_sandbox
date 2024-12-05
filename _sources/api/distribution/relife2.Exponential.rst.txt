@@ -48,10 +48,13 @@
             ~Exponential.isf
         
         
+        
             ~Exponential.jac_chf
         
         
             ~Exponential.jac_hf
+        
+        
         
         
         
@@ -96,6 +99,9 @@
         
         
         
+        
+        
+        
             ~Exponential.pdf
         
         
@@ -111,6 +117,9 @@
         :nosignatures:
 
     
+        
+        
+        
         
         
         
@@ -164,6 +173,15 @@
         
         
         
+            ~Exponential.jac_cdf
+        
+        
+        
+        
+            ~Exponential.jac_pdf
+        
+        
+            ~Exponential.jac_sf
         
         
             ~Exponential.ls_integrate
@@ -197,4 +215,10 @@
         
         
             ~Exponential.params_names
+        
+        
+            ~Exponential.plot
+        
+        
+            ~Exponential.fitting_results
         

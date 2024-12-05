@@ -47,7 +47,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/regression/relife2.AFT';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="relife2.ParametricModel" href="../model/relife2.ParametricModel.html" />
+    <link rel="next" title="relife2.ECDF" href="../nonparametric/relife2.ECDF.html" />
     <link rel="prev" title="relife2.ProportionalHazard" href="relife2.ProportionalHazard.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -297,6 +297,13 @@
 <li class="toctree-l1"><a class="reference internal" href="relife2.ProportionalHazard.html">relife2.ProportionalHazard</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">relife2.AFT</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Non parametric lifetime estimators</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.ECDF.html">relife2.ECDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.KaplanMeier.html">relife2.KaplanMeier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.NelsonAalen.html">relife2.NelsonAalen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.Turnbull.html">relife2.Turnbull</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Base models</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../model/relife2.ParametricModel.html">relife2.ParametricModel</a></li>
@@ -360,56 +367,39 @@
 <h1>relife2.AFT<a class="headerlink" href="#relife2-aft" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="relife2.AFT">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">AFT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">baseline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coef</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(None,)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/regression.html#AFT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.AFT" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">AFT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">baseline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coef</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(None,)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/regression.html#AFT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.AFT" title="Link to this definition">#</a></dt>
 <dd><p>Accelerated failure time regression.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>baseline</strong><span class="classifier">ParametricLifetimeModel</span></dt><dd><p>Any parametric lifetime model</p>
-</dd>
-<dt><strong>coef</strong><span class="classifier">tuple of floats (values can be none), optional</span></dt><dd><p>Coefficients values of the covariates effect</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">regression.AFT</span></code></dt><dd><p>AFT regression</p>
-</dd>
-</dl>
-</div>
 <section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h2>
 <p class="rubric">Survival functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">chf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.AFT.chf" title="relife2.AFT.chf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chf</span></code></a></p></td>
+<td><p>Cumulative hazard function.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dhf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.AFT.dhf" title="relife2.AFT.dhf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dhf</span></code></a></p></td>
+<td><p>Derivative of the hazard function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">hf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.AFT.hf" title="relife2.AFT.hf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hf</span></code></a></p></td>
+<td><p>Hazard function.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ichf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.AFT.ichf" title="relife2.AFT.ichf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ichf</span></code></a></p></td>
+<td><p>Inverse cumulative hazard function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">isf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.AFT.isf" title="relife2.AFT.isf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isf</span></code></a></p></td>
+<td><p>Inverse survival function.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_chf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.AFT.jac_chf" title="relife2.AFT.jac_chf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_chf</span></code></a></p></td>
+<td><p>Jacobian of the cumulative hazard function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_hf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.AFT.jac_hf" title="relife2.AFT.jac_hf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_hf</span></code></a></p></td>
+<td><p>Jacobian of the hazard function.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mrl</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.AFT.mrl" title="relife2.AFT.mrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mrl</span></code></a></p></td>
+<td><p>Mean residual life.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.AFT.sf" title="relife2.AFT.sf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sf</span></code></a></p></td>
+<td><p>Survival function.</p></td>
 </tr>
 </tbody>
 </table>
@@ -417,14 +407,14 @@
 <p class="rubric">Probability functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.AFT.cdf" title="relife2.AFT.cdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></a></p></td>
+<td><p>Cumulative distribution function.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.AFT.pdf" title="relife2.AFT.pdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdf</span></code></a></p></td>
+<td><p>Probability density function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ppf</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.AFT.ppf" title="relife2.AFT.ppf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ppf</span></code></a></p></td>
+<td><p>Percent point function (inverse of cdf).</p></td>
 </tr>
 </tbody>
 </table>
@@ -432,17 +422,17 @@
 <p class="rubric">Statistics</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.AFT.mean" title="relife2.AFT.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a></p></td>
+<td><p>Mean of the distribution.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">median</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.AFT.median" title="relife2.AFT.median"><code class="xref py py-obj docutils literal notranslate"><span class="pre">median</span></code></a></p></td>
+<td><p>Median of the distribution.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">moment</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">var</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.AFT.var" title="relife2.AFT.var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">var</span></code></a></p></td>
+<td><p>Variance of the distribution.</p></td>
 </tr>
 </tbody>
 </table>
@@ -456,11 +446,20 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#relife2.AFT.fit" title="relife2.AFT.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a></p></td>
 <td><p>Estimation of lifetime model parameters with respect to lifetime data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.AFT.ls_integrate" title="relife2.AFT.ls_integrate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.AFT.jac_cdf" title="relife2.AFT.jac_cdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_cdf</span></code></a></p></td>
+<td><p>Jacobian of the cumulative distribution function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.AFT.jac_pdf" title="relife2.AFT.jac_pdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_pdf</span></code></a></p></td>
+<td><p>Jacobian of the probability density function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.AFT.jac_sf" title="relife2.AFT.jac_sf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_sf</span></code></a></p></td>
+<td><p>Jacobian of the survival function</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.AFT.ls_integrate" title="relife2.AFT.ls_integrate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></a></p></td>
 <td><p>Lebesgue-Stieltjes integration.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">rvs</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.AFT.rvs" title="relife2.AFT.rvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rvs</span></code></a></p></td>
+<td><p>Random variates.</p></td>
 </tr>
 </tbody>
 </table>
@@ -479,9 +478,63 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#relife2.AFT.params_names" title="relife2.AFT.params_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_names</span></code></a></p></td>
 <td><p>Parameters names.</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fitting_results</span></code></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </div>
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.cdf">
+<span class="sig-name descname"><span class="pre">cdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.AFT.cdf" title="Link to this definition">#</a></dt>
+<dd><p>Cumulative distribution function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Cumulative probabilities at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.chf">
+<span class="sig-name descname"><span class="pre">chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/regression.html#AFT.chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.AFT.chf" title="Link to this definition">#</a></dt>
+<dd><p>Cumulative hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Cumulative hazard values at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.AFT.copy">
 <span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#relife2.AFT.copy" title="Link to this definition">#</a></dt>
@@ -490,6 +543,30 @@
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt>A independant copied instance.</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.dhf">
+<span class="sig-name descname"><span class="pre">dhf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/regression.html#AFT.dhf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.AFT.dhf" title="Link to this definition">#</a></dt>
+<dd><p>Derivative of the hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Derivative values with respect to time.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -543,6 +620,204 @@ format that allows to pass other information as left-censored or interval-censor
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.hf">
+<span class="sig-name descname"><span class="pre">hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/regression.html#AFT.hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.AFT.hf" title="Link to this definition">#</a></dt>
+<dd><p>Hazard function.</p>
+<p>The hazard function of the regression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Hazard values at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p><cite>time</cite>, <cite>covar</cite>, and any <cite>*args</cite> arrays must be broadcastable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.ichf">
+<span class="sig-name descname"><span class="pre">ichf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cumulative_hazard_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/regression.html#AFT.ichf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.AFT.ichf" title="Link to this definition">#</a></dt>
+<dd><p>Inverse cumulative hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>cumulative_hazard_rate</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Cumulative hazard rate values.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Inverse cumulative hazard values, i.e., time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.isf">
+<span class="sig-name descname"><span class="pre">isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.AFT.isf" title="Link to this definition">#</a></dt>
+<dd><p>Inverse survival function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>probability</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Survival probabilities.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Time values corresponding to the given survival probabilities.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.jac_cdf">
+<span class="sig-name descname"><span class="pre">jac_cdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.AFT.jac_cdf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the cumulative distribution function.</p>
+<p>Jacobian with respect to model parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.darray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.darray of shape (k, ) or (m, k)</span></dt><dd><p>Covariates values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.darray</span></dt><dd><p>Any other variables needed by the model</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, nb_params) or (m, n, nb_params)</dt><dd><p>The values of the jacobian at each n points (eventually for m assets).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.jac_chf">
+<span class="sig-name descname"><span class="pre">jac_chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/regression.html#AFT.jac_chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.AFT.jac_chf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the cumulative hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, nb_params) or (m, n, nb_params)</dt><dd><p>The values of the Jacobian at each n points (eventually for m assets).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.jac_hf">
+<span class="sig-name descname"><span class="pre">jac_hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/regression.html#AFT.jac_hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.AFT.jac_hf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the hazard function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, nb_params) or (m, n, nb_params)</dt><dd><p>The values of the Jacobian at each n points (eventually for m assets).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.jac_pdf">
+<span class="sig-name descname"><span class="pre">jac_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.AFT.jac_pdf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the probability density function.</p>
+<p>Jacobian with respect to model parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.darray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.darray of shape (k, ) or (m, k)</span></dt><dd><p>Covariates values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.darray</span></dt><dd><p>Any other variables needed by the model</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, nb_params) or (m, n, nb_params)</dt><dd><p>The values of the jacobian at each n points (eventually for m assets).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.jac_sf">
+<span class="sig-name descname"><span class="pre">jac_sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.AFT.jac_sf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the survival function</p>
+<p>Jacobian with respect to model parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.darray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.darray of shape (k, ) or (m, k)</span></dt><dd><p>Covariates values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.darray</span></dt><dd><p>Any other variables needed by the model</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, nb_params) or (m, n, nb_params)</dt><dd><p>The values of the jacobian at each n points (eventually for m assets).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="relife2.AFT.ls_integrate">
 <span class="sig-name descname"><span class="pre">ls_integrate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.AFT.ls_integrate" title="Link to this definition">#</a></dt>
 <dd><p>Lebesgue-Stieltjes integration.</p>
@@ -575,6 +850,74 @@ taking into account the probability density function and jumps</p>
 any other variable referenced in <cite>func</cite>. Because <cite>func</cite> callable is not easy to inspect, either one must specify
 the maximum number of dimensions used (0, 1 or 2), or <cite>ls_integrate</cite> converts all these objects to 2d-array.
 Currently, the second option is prefered. That’s why, returns are always 2d-array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.mean">
+<span class="sig-name descname"><span class="pre">mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.AFT.mean" title="Link to this definition">#</a></dt>
+<dd><p>Mean of the distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray</dt><dd><p>Mean values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.median">
+<span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.AFT.median" title="Link to this definition">#</a></dt>
+<dd><p>Median of the distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray</dt><dd><p>Median values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.mrl">
+<span class="sig-name descname"><span class="pre">mrl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.AFT.mrl" title="Link to this definition">#</a></dt>
+<dd><p>Mean residual life.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Mean residual life values at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py property">
@@ -625,6 +968,126 @@ all parameters values when the model object is initialized.</p>
 <p>Parameters can be get by their name at instance level.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.pdf">
+<span class="sig-name descname"><span class="pre">pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.AFT.pdf" title="Link to this definition">#</a></dt>
+<dd><p>Probability density function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Probability densities at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.ppf">
+<span class="sig-name descname"><span class="pre">ppf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.AFT.ppf" title="Link to this definition">#</a></dt>
+<dd><p>Percent point function (inverse of cdf).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>probability</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Cumulative probabilities.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Time values corresponding to the given cumulative probabilities.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.rvs">
+<span class="sig-name descname"><span class="pre">rvs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.AFT.rvs" title="Link to this definition">#</a></dt>
+<dd><p>Random variates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">int, optional</span></dt><dd><p>Number of random variates to generate.</p>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int, optional</span></dt><dd><p>Seed for random number generator.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray</dt><dd><p>Random variates.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.sf">
+<span class="sig-name descname"><span class="pre">sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.AFT.sf" title="Link to this definition">#</a></dt>
+<dd><p>Survival function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+</dd>
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Survival probabilities at each given time.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.AFT.var">
+<span class="sig-name descname"><span class="pre">var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">covar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.AFT.var" title="Link to this definition">#</a></dt>
+<dd><p>Variance of the distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
+</dd>
+<dt><strong>*args</strong><span class="classifier">variable number of np.ndarray</span></dt><dd><p>Any other variables needed by the model.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>np.ndarray</dt><dd><p>Variance values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </dd></dl>
 
@@ -650,11 +1113,11 @@ all parameters values when the model object is initialized.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../model/relife2.ParametricModel.html"
+       href="../nonparametric/relife2.ECDF.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">relife2.ParametricModel</p>
+        <p class="prev-next-title">relife2.ECDF</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -678,12 +1141,31 @@ all parameters values when the model object is initialized.</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT"><code class="docutils literal notranslate"><span class="pre">AFT</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.cdf"><code class="docutils literal notranslate"><span class="pre">AFT.cdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.chf"><code class="docutils literal notranslate"><span class="pre">AFT.chf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.copy"><code class="docutils literal notranslate"><span class="pre">AFT.copy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.dhf"><code class="docutils literal notranslate"><span class="pre">AFT.dhf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.fit"><code class="docutils literal notranslate"><span class="pre">AFT.fit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.hf"><code class="docutils literal notranslate"><span class="pre">AFT.hf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.ichf"><code class="docutils literal notranslate"><span class="pre">AFT.ichf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.isf"><code class="docutils literal notranslate"><span class="pre">AFT.isf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.jac_cdf"><code class="docutils literal notranslate"><span class="pre">AFT.jac_cdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.jac_chf"><code class="docutils literal notranslate"><span class="pre">AFT.jac_chf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.jac_hf"><code class="docutils literal notranslate"><span class="pre">AFT.jac_hf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.jac_pdf"><code class="docutils literal notranslate"><span class="pre">AFT.jac_pdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.jac_sf"><code class="docutils literal notranslate"><span class="pre">AFT.jac_sf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.ls_integrate"><code class="docutils literal notranslate"><span class="pre">AFT.ls_integrate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.mean"><code class="docutils literal notranslate"><span class="pre">AFT.mean()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.median"><code class="docutils literal notranslate"><span class="pre">AFT.median()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.mrl"><code class="docutils literal notranslate"><span class="pre">AFT.mrl()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.nb_params"><code class="docutils literal notranslate"><span class="pre">AFT.nb_params</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.params"><code class="docutils literal notranslate"><span class="pre">AFT.params</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.params_names"><code class="docutils literal notranslate"><span class="pre">AFT.params_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.pdf"><code class="docutils literal notranslate"><span class="pre">AFT.pdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.ppf"><code class="docutils literal notranslate"><span class="pre">AFT.ppf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.rvs"><code class="docutils literal notranslate"><span class="pre">AFT.rvs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.sf"><code class="docutils literal notranslate"><span class="pre">AFT.sf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.AFT.var"><code class="docutils literal notranslate"><span class="pre">AFT.var()</span></code></a></li>
 </ul>
 </li>
 </ul>

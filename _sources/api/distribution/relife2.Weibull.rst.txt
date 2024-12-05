@@ -48,10 +48,13 @@
             ~Weibull.isf
         
         
+        
             ~Weibull.jac_chf
         
         
             ~Weibull.jac_hf
+        
+        
         
         
         
@@ -96,6 +99,9 @@
         
         
         
+        
+        
+        
             ~Weibull.pdf
         
         
@@ -111,6 +117,9 @@
         :nosignatures:
 
     
+        
+        
+        
         
         
         
@@ -164,6 +173,15 @@
         
         
         
+            ~Weibull.jac_cdf
+        
+        
+        
+        
+            ~Weibull.jac_pdf
+        
+        
+            ~Weibull.jac_sf
         
         
             ~Weibull.ls_integrate
@@ -197,4 +215,10 @@
         
         
             ~Weibull.params_names
+        
+        
+            ~Weibull.plot
+        
+        
+            ~Weibull.fitting_results
         

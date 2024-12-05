@@ -48,10 +48,13 @@
             ~AFT.isf
         
         
+        
             ~AFT.jac_chf
         
         
             ~AFT.jac_hf
+        
+        
         
         
         
@@ -96,6 +99,9 @@
         
         
         
+        
+        
+        
             ~AFT.pdf
         
         
@@ -111,6 +117,9 @@
         :nosignatures:
 
     
+        
+        
+        
         
         
         
@@ -164,6 +173,15 @@
         
         
         
+            ~AFT.jac_cdf
+        
+        
+        
+        
+            ~AFT.jac_pdf
+        
+        
+            ~AFT.jac_sf
         
         
             ~AFT.ls_integrate
@@ -197,4 +215,10 @@
         
         
             ~AFT.params_names
+        
+        
+            ~AFT.plot
+        
+        
+            ~AFT.fitting_results
         

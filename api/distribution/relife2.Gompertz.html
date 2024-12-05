@@ -297,6 +297,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../regression/relife2.ProportionalHazard.html">relife2.ProportionalHazard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../regression/relife2.AFT.html">relife2.AFT</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Non parametric lifetime estimators</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.ECDF.html">relife2.ECDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.KaplanMeier.html">relife2.KaplanMeier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.NelsonAalen.html">relife2.NelsonAalen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.Turnbull.html">relife2.Turnbull</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Base models</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../model/relife2.ParametricModel.html">relife2.ParametricModel</a></li>
@@ -360,7 +367,7 @@
 <h1>relife2.Gompertz<a class="headerlink" href="#relife2-gompertz" title="Link to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="relife2.Gompertz">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">Gompertz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gompertz"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">Gompertz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/distribution.html#Gompertz"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz" title="Link to this definition">#</a></dt>
 <dd><p>Gompertz lifetime distribution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -375,9 +382,9 @@
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">regression.AFT</span></code></dt><dd><p>AFT regression</p>
+<dt><a class="reference internal" href="../regression/relife2.AFT.html#relife2.AFT" title="relife2.regression.AFT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regression.AFT</span></code></a></dt><dd><p>AFT regression</p>
 </dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">regression.ProportionalHazard</span></code></dt><dd><p>AFT regression</p>
+<dt><a class="reference internal" href="../regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard" title="relife2.regression.ProportionalHazard"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regression.ProportionalHazard</span></code></a></dt><dd><p>AFT regression</p>
 </dd>
 </dl>
 </div>
@@ -458,10 +465,19 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#relife2.Gompertz.fit" title="relife2.Gompertz.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a></p></td>
 <td><p>Estimation of lifetime model parameters with respect to lifetime data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Gompertz.ls_integrate" title="relife2.Gompertz.ls_integrate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Gompertz.jac_cdf" title="relife2.Gompertz.jac_cdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_cdf</span></code></a></p></td>
+<td><p>Jacobian of the parametric cumulative distribution function with respect to params.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Gompertz.jac_pdf" title="relife2.Gompertz.jac_pdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_pdf</span></code></a></p></td>
+<td><p>Jacobian of the parametric probability density function with respect to params.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Gompertz.jac_sf" title="relife2.Gompertz.jac_sf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_sf</span></code></a></p></td>
+<td><p>Jacobian of the parametric survival function with respect to params.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Gompertz.ls_integrate" title="relife2.Gompertz.ls_integrate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></a></p></td>
 <td><p>Lebesgue-Stieltjes integration.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Gompertz.rvs" title="relife2.Gompertz.rvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rvs</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Gompertz.rvs" title="relife2.Gompertz.rvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rvs</span></code></a></p></td>
 <td><p>Random variable sampling.</p></td>
 </tr>
 </tbody>
@@ -480,6 +496,12 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Gompertz.params_names" title="relife2.Gompertz.params_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_names</span></code></a></p></td>
 <td><p>Parameters names.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">fitting_results</span></code></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -509,7 +531,7 @@ pass an array of shape (m, n).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.Gompertz.chf">
-<span class="sig-name descname"><span class="pre">chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gompertz.chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.chf" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/distribution.html#Gompertz.chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.chf" title="Link to this definition">#</a></dt>
 <dd><p>Cumulative hazard function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -546,7 +568,7 @@ pass an array of shape (m, n).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.Gompertz.dhf">
-<span class="sig-name descname"><span class="pre">dhf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gompertz.dhf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.dhf" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">dhf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/distribution.html#Gompertz.dhf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.dhf" title="Link to this definition">#</a></dt>
 <dd><p>Derivative of the hazard function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -615,7 +637,7 @@ format that allows to pass other information as left-censored or interval-censor
 
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.Gompertz.hf">
-<span class="sig-name descname"><span class="pre">hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gompertz.hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.hf" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/distribution.html#Gompertz.hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.hf" title="Link to this definition">#</a></dt>
 <dd><p>Hazard function.</p>
 <p>The hazard function of the distribution</p>
 <dl class="field-list simple">
@@ -638,7 +660,7 @@ pass an array of shape (m, n).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.Gompertz.ichf">
-<span class="sig-name descname"><span class="pre">ichf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cumulative_hazard_rate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gompertz.ichf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.ichf" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">ichf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cumulative_hazard_rate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/distribution.html#Gompertz.ichf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.ichf" title="Link to this definition">#</a></dt>
 <dd><p>Inverse cumulative hazard function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -682,8 +704,15 @@ pass an array of shape (m, n).</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="relife2.Gompertz.jac_cdf">
+<span class="sig-name descname"><span class="pre">jac_cdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.Gompertz.jac_cdf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the parametric cumulative distribution function with
+respect to params.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="relife2.Gompertz.jac_chf">
-<span class="sig-name descname"><span class="pre">jac_chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gompertz.jac_chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.jac_chf" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">jac_chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/distribution.html#Gompertz.jac_chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.jac_chf" title="Link to this definition">#</a></dt>
 <dd><p>Jacobian of the cumulative hazard function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -705,7 +734,7 @@ pass an array of shape (m, n).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.Gompertz.jac_hf">
-<span class="sig-name descname"><span class="pre">jac_hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gompertz.jac_hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.jac_hf" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">jac_hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/distribution.html#Gompertz.jac_hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.jac_hf" title="Link to this definition">#</a></dt>
 <dd><p>Jacobian of the hazard function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -723,6 +752,19 @@ pass an array of shape (m, n).</p>
 </dl>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Gompertz.jac_pdf">
+<span class="sig-name descname"><span class="pre">jac_pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.Gompertz.jac_pdf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the parametric probability density function with respect to
+params.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Gompertz.jac_sf">
+<span class="sig-name descname"><span class="pre">jac_sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.Gompertz.jac_sf" title="Link to this definition">#</a></dt>
+<dd><p>Jacobian of the parametric survival function with respect to params.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -762,7 +804,7 @@ Currently, the second option is prefered. That’s why, returns are always 2d-ar
 
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.Gompertz.mean">
-<span class="sig-name descname"><span class="pre">mean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gompertz.mean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.mean" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">mean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/distribution.html#Gompertz.mean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.mean" title="Link to this definition">#</a></dt>
 <dd><p>Mean of the distribution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -812,7 +854,7 @@ Currently, the second option is prefered. That’s why, returns are always 2d-ar
 
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.Gompertz.mrl">
-<span class="sig-name descname"><span class="pre">mrl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gompertz.mrl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.mrl" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">mrl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/distribution.html#Gompertz.mrl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.mrl" title="Link to this definition">#</a></dt>
 <dd><p>Mean residual life.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -974,7 +1016,7 @@ pass an array of shape (m, n).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.Gompertz.var">
-<span class="sig-name descname"><span class="pre">var</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/distribution.html#Gompertz.var"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.var" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">var</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/distribution.html#Gompertz.var"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Gompertz.var" title="Link to this definition">#</a></dt>
 <dd><p>Variance of the distribution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1047,8 +1089,11 @@ pass an array of shape (m, n).</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gompertz.hf"><code class="docutils literal notranslate"><span class="pre">Gompertz.hf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gompertz.ichf"><code class="docutils literal notranslate"><span class="pre">Gompertz.ichf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gompertz.isf"><code class="docutils literal notranslate"><span class="pre">Gompertz.isf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gompertz.jac_cdf"><code class="docutils literal notranslate"><span class="pre">Gompertz.jac_cdf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gompertz.jac_chf"><code class="docutils literal notranslate"><span class="pre">Gompertz.jac_chf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gompertz.jac_hf"><code class="docutils literal notranslate"><span class="pre">Gompertz.jac_hf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gompertz.jac_pdf"><code class="docutils literal notranslate"><span class="pre">Gompertz.jac_pdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gompertz.jac_sf"><code class="docutils literal notranslate"><span class="pre">Gompertz.jac_sf()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gompertz.ls_integrate"><code class="docutils literal notranslate"><span class="pre">Gompertz.ls_integrate()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gompertz.mean"><code class="docutils literal notranslate"><span class="pre">Gompertz.mean()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Gompertz.median"><code class="docutils literal notranslate"><span class="pre">Gompertz.median()</span></code></a></li>

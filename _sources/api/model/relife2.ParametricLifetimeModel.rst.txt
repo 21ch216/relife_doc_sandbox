@@ -180,3 +180,9 @@
         
             ~ParametricLifetimeModel.params_names
         
+        
+            ~ParametricLifetimeModel.plot
+        
+        
+            ~ParametricLifetimeModel.fitting_results
+        

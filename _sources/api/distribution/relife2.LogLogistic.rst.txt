@@ -48,10 +48,13 @@
             ~LogLogistic.isf
         
         
+        
             ~LogLogistic.jac_chf
         
         
             ~LogLogistic.jac_hf
+        
+        
         
         
         
@@ -96,6 +99,9 @@
         
         
         
+        
+        
+        
             ~LogLogistic.pdf
         
         
@@ -111,6 +117,9 @@
         :nosignatures:
 
     
+        
+        
+        
         
         
         
@@ -164,6 +173,15 @@
         
         
         
+            ~LogLogistic.jac_cdf
+        
+        
+        
+        
+            ~LogLogistic.jac_pdf
+        
+        
+            ~LogLogistic.jac_sf
         
         
             ~LogLogistic.ls_integrate
@@ -197,4 +215,10 @@
         
         
             ~LogLogistic.params_names
+        
+        
+            ~LogLogistic.plot
+        
+        
+            ~LogLogistic.fitting_results
         

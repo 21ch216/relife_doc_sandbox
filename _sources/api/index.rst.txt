@@ -31,6 +31,20 @@ Lifetime models
     ProportionalHazard
     AFT
 
+Non-parametric estimators
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. autosummary::
+    :toctree: nonparametric
+    :template: parametric-lifetime-model-class.rst
+    :caption: Non parametric lifetime estimators
+
+    ECDF
+    KaplanMeier
+    NelsonAalen
+    Turnbull
+
+
 Base models
 ~~~~~~~~~~~
 
