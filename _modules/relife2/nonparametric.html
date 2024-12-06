@@ -43,6 +43,7 @@
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/relife2/nonparametric';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -325,16 +326,16 @@
                 <article class="bd-article">
                   
   <h1>Source code for relife2.nonparametric</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">abstractmethod</span>
-<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">TypedDict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Self</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">numpy.typing</span> <span class="kn">import</span> <span class="n">NDArray</span>
 
 <span class="kn">from</span> <span class="nn">relife2.nhpp</span> <span class="kn">import</span> <span class="n">nhpp_data_factory</span>
 <span class="kn">from</span> <span class="nn">relife2.utils.data</span> <span class="kn">import</span> <span class="n">LifetimeData</span><span class="p">,</span> <span class="n">lifetime_data_factory</span>
+<span class="kn">from</span> <span class="nn">relife2.utils.plot</span> <span class="kn">import</span> <span class="n">PlotSurvivalFunc</span>
 
 
 <span class="nd">@dataclass</span>
@@ -370,7 +371,9 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">se</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Incompatible timeline, values and se in Estimates&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">nearest_1dinterp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">nearest_1dinterp</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns x nearest interpolation based on timeline and values data points</span>
 <span class="sd">        timeline has to be monotonically increasing</span>
 
@@ -382,27 +385,24 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">spacing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">timeline</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
         <span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">spacing</span><span class="p">,</span> <span class="n">spacing</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeline</span>
-        <span class="n">yp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">]])</span>
-        <span class="k">return</span> <span class="n">yp</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">))]</span>
+        <span class="n">values_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">]])</span>
+        <span class="n">se_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">se</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">se</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">]])</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">values_p</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">))],</span>
+            <span class="n">se_p</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">))],</span>
+        <span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">Estimations</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Typed dictionary for storing different types of estimates.</span>
+<span class="k">def</span> <span class="nf">estimated</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="kc">None</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimates</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">return</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> instance has not been fitted yet, call fit first&quot;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="sd">    Attributes</span>
-<span class="sd">    ----------</span>
-<span class="sd">    sf : Estimates, optional</span>
-<span class="sd">        Survival function estimates.</span>
-<span class="sd">    chf : Estimates, optional</span>
-<span class="sd">        Cumulative hazard function estimates.</span>
-<span class="sd">    cdf : Estimates, optional</span>
-<span class="sd">        Cumulative distribution function estimates.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">sf</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Estimates</span><span class="p">]</span>
-    <span class="n">chf</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Estimates</span><span class="p">]</span>
-    <span class="n">cdf</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Estimates</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
 
 
 <span class="k">class</span> <span class="nc">NonParametricLifetimeEstimator</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
@@ -411,20 +411,36 @@
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    estimations : Estimations</span>
+<span class="sd">    estimates : Estimations</span>
 <span class="sd">        The estimations produced when fitting the estimator.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">estimations</span><span class="p">:</span> <span class="n">Estimations</span>
+    <span class="n">estimates</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Estimates</span><span class="p">]]</span>
 
-    <span class="nd">@abstractmethod</span>
+    <span class="nd">@property</span>
+    <span class="nd">@estimated</span>
+    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">PlotSurvivalFunc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ECDF">
+<a class="viewcode-back" href="../../api/nonparametric/relife2.ECDF.html#relife2.ECDF">[docs]</a>
+<span class="k">class</span> <span class="nc">ECDF</span><span class="p">(</span><span class="n">NonParametricLifetimeEstimator</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">estimates</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sf&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;cdf&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+
+<div class="viewcode-block" id="ECDF.fit">
+<a class="viewcode-back" href="../../api/nonparametric/relife2.ECDF.html#relife2.ECDF.fit">[docs]</a>
     <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">event</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">entry</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">departure</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Self</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute the non-parametric estimations with respect to lifetime data.</span>
 
@@ -441,41 +457,6 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
-
-<span class="k">def</span> <span class="nf">estimated</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
-    <span class="nd">@wraps</span><span class="p">(</span><span class="n">method</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimations</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">method</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> instance has not been fitted yet, call fit first&quot;</span>
-            <span class="p">)</span>
-        <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">wrapper</span>
-
-
-<div class="viewcode-block" id="ECDF">
-<a class="viewcode-back" href="../../api/nonparametric/relife2.ECDF.html#relife2.ECDF">[docs]</a>
-<span class="k">class</span> <span class="nc">ECDF</span><span class="p">(</span><span class="n">NonParametricLifetimeEstimator</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">estimations</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sf&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;cdf&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
-
-<div class="viewcode-block" id="ECDF.fit">
-<a class="viewcode-back" href="../../api/nonparametric/relife2.ECDF.html#relife2.ECDF.fit">[docs]</a>
-    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
-        <span class="n">event</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">entry</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">departure</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;_summary_</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            FloatArray: _description_&quot;&quot;&quot;</span>
-
         <span class="n">lifetime_data</span> <span class="o">=</span> <span class="n">lifetime_data_factory</span><span class="p">(</span>
             <span class="n">time</span><span class="p">,</span>
             <span class="n">event</span><span class="p">,</span>
@@ -489,8 +470,14 @@
         <span class="n">sf</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">cdf</span>
         <span class="n">se</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">cdf</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">cdf</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">rlc</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">estimations</span><span class="p">[</span><span class="s2">&quot;sf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Estimates</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">sf</span><span class="p">,</span> <span class="n">se</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">estimations</span><span class="p">[</span><span class="s2">&quot;cdf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Estimates</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">cdf</span><span class="p">,</span> <span class="n">se</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;sf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Estimates</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">sf</span><span class="p">,</span> <span class="n">se</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;cdf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Estimates</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">cdf</span><span class="p">,</span> <span class="n">se</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">return_obj</span> <span class="o">=</span> <span class="n">ECDF</span><span class="p">()</span>
+            <span class="n">return_obj</span><span class="o">.</span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;sf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Estimates</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">sf</span><span class="p">,</span> <span class="n">se</span><span class="p">)</span>
+            <span class="n">return_obj</span><span class="o">.</span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;cdf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Estimates</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">cdf</span><span class="p">,</span> <span class="n">se</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">return_obj</span></div>
 
 
 <div class="viewcode-block" id="ECDF.sf">
@@ -509,7 +496,7 @@
 <span class="sd">        np.ndarray of shape (n, )</span>
 <span class="sd">            The estimated survival probabilities at each time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimations</span><span class="p">[</span><span class="s2">&quot;sf&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nearest_1dinterp</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;sf&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nearest_1dinterp</span><span class="p">(</span><span class="n">time</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="ECDF.cdf">
@@ -528,7 +515,7 @@
 <span class="sd">        np.ndarray of shape (n, )</span>
 <span class="sd">            The estimated cumulative hazard values at each time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimations</span><span class="p">[</span><span class="s2">&quot;cdf&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nearest_1dinterp</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;cdf&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nearest_1dinterp</span><span class="p">(</span><span class="n">time</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
 </div>
 
 
@@ -539,7 +526,7 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">estimations</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sf&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">estimates</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sf&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
 
 <div class="viewcode-block" id="KaplanMeier.fit">
 <a class="viewcode-back" href="../../api/nonparametric/relife2.KaplanMeier.html#relife2.KaplanMeier.fit">[docs]</a>
@@ -549,11 +536,23 @@
         <span class="n">event</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">entry</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">departure</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+        <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Self</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute the non-parametric estimations with respect to lifetime data.</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">            FloatArray: _description_&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        time : ndarray (1d or 2d)</span>
+<span class="sd">            Observed lifetime values.</span>
+<span class="sd">        event : ndarray of boolean values (1d), default is None</span>
+<span class="sd">            Boolean indicators tagging lifetime values as right censored or complete.</span>
+<span class="sd">        entry : ndarray of float (1d), default is None</span>
+<span class="sd">            Left truncations applied to lifetime values.</span>
+<span class="sd">        departure : ndarray of float (1d), default is None</span>
+<span class="sd">            Right truncations applied to lifetime values.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">lifetime_data</span> <span class="o">=</span> <span class="n">lifetime_data_factory</span><span class="p">(</span>
             <span class="n">time</span><span class="p">,</span>
@@ -606,7 +605,13 @@
         <span class="n">se</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 
         <span class="n">timeline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">estimations</span><span class="p">[</span><span class="s2">&quot;sf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Estimates</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">sf</span><span class="p">,</span> <span class="n">se</span><span class="p">)</span></div>
+
+        <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;sf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Estimates</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">sf</span><span class="p">,</span> <span class="n">se</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">return_obj</span> <span class="o">=</span> <span class="n">KaplanMeier</span><span class="p">()</span>
+            <span class="n">return_obj</span><span class="o">.</span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;sf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Estimates</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">sf</span><span class="p">,</span> <span class="n">se</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">return_obj</span></div>
 
 
 <div class="viewcode-block" id="KaplanMeier.sf">
@@ -625,7 +630,7 @@
 <span class="sd">        np.ndarray of shape (n, )</span>
 <span class="sd">            The estimated survival probabilities at each time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimations</span><span class="p">[</span><span class="s2">&quot;sf&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nearest_1dinterp</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;sf&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nearest_1dinterp</span><span class="p">(</span><span class="n">time</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
 </div>
 
 
@@ -636,7 +641,7 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">estimations</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;chf&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">estimates</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;chf&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
 
 <div class="viewcode-block" id="NelsonAalen.fit">
 <a class="viewcode-back" href="../../api/nonparametric/relife2.NelsonAalen.html#relife2.NelsonAalen.fit">[docs]</a>
@@ -646,11 +651,23 @@
         <span class="n">event</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">entry</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">departure</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+        <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Self</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute the non-parametric estimations with respect to lifetime data.</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">            FloatArray: _description_&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        time : ndarray (1d or 2d)</span>
+<span class="sd">            Observed lifetime values.</span>
+<span class="sd">        event : ndarray of boolean values (1d), default is None</span>
+<span class="sd">            Boolean indicators tagging lifetime values as right censored or complete.</span>
+<span class="sd">        entry : ndarray of float (1d), default is None</span>
+<span class="sd">            Left truncations applied to lifetime values.</span>
+<span class="sd">        departure : ndarray of float (1d), default is None</span>
+<span class="sd">            Right truncations applied to lifetime values.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">lifetime_data</span> <span class="o">=</span> <span class="n">lifetime_data_factory</span><span class="p">(</span>
             <span class="n">time</span><span class="p">,</span>
@@ -694,7 +711,13 @@
         <span class="n">chf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="n">se</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
         <span class="n">timeline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">estimations</span><span class="p">[</span><span class="s2">&quot;chf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Estimates</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">chf</span><span class="p">,</span> <span class="n">se</span><span class="p">)</span></div>
+
+        <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;chf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Estimates</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">chf</span><span class="p">,</span> <span class="n">se</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">return_obj</span> <span class="o">=</span> <span class="n">NelsonAalen</span><span class="p">()</span>
+            <span class="n">return_obj</span><span class="o">.</span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;chf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Estimates</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">chf</span><span class="p">,</span> <span class="n">se</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">return_obj</span></div>
 
 
 <div class="viewcode-block" id="NelsonAalen.chf">
@@ -713,7 +736,7 @@
 <span class="sd">        np.ndarray of shape (n, )</span>
 <span class="sd">            The estimated cumulative hazard values at each time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimations</span><span class="p">[</span><span class="s2">&quot;chf&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nearest_1dinterp</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;chf&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nearest_1dinterp</span><span class="p">(</span><span class="n">time</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
 </div>
 
 
@@ -728,7 +751,7 @@
         <span class="n">lowmem</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">estimations</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sf&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">estimates</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;sf&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tol</span> <span class="o">=</span> <span class="n">tol</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lowmem</span> <span class="o">=</span> <span class="n">lowmem</span>
 
@@ -740,7 +763,8 @@
         <span class="n">event</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">entry</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">departure</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Self</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;_summary_</span>
 
 <span class="sd">        Returns:</span>
@@ -806,7 +830,13 @@
         <span class="n">ind_del</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">timeline_temp</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
         <span class="n">sf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">ind_del</span><span class="p">)</span>
         <span class="n">timeline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">timeline_temp</span><span class="p">,</span> <span class="n">ind_del</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">estimations</span><span class="p">[</span><span class="s2">&quot;sf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Estimates</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">sf</span><span class="p">)</span></div>
+
+        <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;sf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Estimates</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">sf</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">return_obj</span> <span class="o">=</span> <span class="n">Turnbull</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tol</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lowmem</span><span class="p">)</span>
+            <span class="n">return_obj</span><span class="o">.</span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;sf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Estimates</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="n">sf</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">return_obj</span></div>
 
 
     <span class="k">def</span> <span class="nf">_estimate_with_low_memory</span><span class="p">(</span>
@@ -928,7 +958,7 @@
 <span class="sd">        np.ndarray of shape (n, )</span>
 <span class="sd">            The estimated survival probabilities at each time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimations</span><span class="p">[</span><span class="s2">&quot;sf&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nearest_1dinterp</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;sf&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nearest_1dinterp</span><span class="p">(</span><span class="n">time</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
 </div>
 
 

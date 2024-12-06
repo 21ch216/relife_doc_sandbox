@@ -75,5 +75,8 @@
         :nosignatures:
     
         
-            ~ECDF.estimations
+            ~ECDF.plot
+        
+        
+            ~ECDF.estimates
         

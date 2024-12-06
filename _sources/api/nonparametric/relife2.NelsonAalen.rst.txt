@@ -69,5 +69,8 @@
         :nosignatures:
     
         
-            ~NelsonAalen.estimations
+            ~NelsonAalen.plot
+        
+        
+            ~NelsonAalen.estimates
         

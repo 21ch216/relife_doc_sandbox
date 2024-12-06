@@ -69,5 +69,8 @@
         :nosignatures:
     
         
-            ~KaplanMeier.estimations
+            ~KaplanMeier.plot
+        
+        
+            ~KaplanMeier.estimates
         

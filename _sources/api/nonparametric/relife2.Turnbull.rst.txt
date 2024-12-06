@@ -69,5 +69,8 @@
         :nosignatures:
     
         
-            ~Turnbull.estimations
+            ~Turnbull.plot
+        
+        
+            ~Turnbull.estimates
         
