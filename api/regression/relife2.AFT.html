@@ -494,7 +494,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+<dt><strong>time</strong><span class="classifier">float or ndarray, shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
 </dd>
 <dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
 </dd>
@@ -504,7 +504,7 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Cumulative probabilities at each given time.</p>
+<dt>ndarray of shape (), (n, ) or (m, n)</dt><dd><p>Cumulative probabilities at each given time.</p>
 </dd>
 </dl>
 </dd>
@@ -518,7 +518,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+<dt><strong>time</strong><span class="classifier">float or ndarray, shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
 </dd>
 <dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
 </dd>
@@ -528,7 +528,7 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Cumulative hazard values at each given time.</p>
+<dt>ndarray of shape (), (n, ) or (m, n)</dt><dd><p>Cumulative hazard values at each given time.</p>
 </dd>
 </dl>
 </dd>
@@ -555,7 +555,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+<dt><strong>time</strong><span class="classifier">float or ndarray, shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
 </dd>
 <dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
 </dd>
@@ -565,7 +565,7 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Derivative values with respect to time.</p>
+<dt>ndarray of shape (), (n, ) or (m, n)</dt><dd><p>Derivative values with respect to time.</p>
 </dd>
 </dl>
 </dd>
@@ -627,7 +627,7 @@ format that allows to pass other information as left-censored or interval-censor
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+<dt><strong>time</strong><span class="classifier">float or ndarray, shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
 </dd>
 <dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
 </dd>
@@ -637,7 +637,7 @@ format that allows to pass other information as left-censored or interval-censor
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Hazard values at each given time.</p>
+<dt>ndarray of shape (), (n, ) or (m, n)</dt><dd><p>Hazard values at each given time.</p>
 </dd>
 </dl>
 </dd>
@@ -653,7 +653,7 @@ format that allows to pass other information as left-censored or interval-censor
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>cumulative_hazard_rate</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Cumulative hazard rate values.</p>
+<dt><strong>cumulative_hazard_rate</strong><span class="classifier">float or ndarray, shape (n, ) or (m, n)</span></dt><dd><p>Cumulative hazard rate values.</p>
 </dd>
 <dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
 </dd>
@@ -663,7 +663,7 @@ format that allows to pass other information as left-censored or interval-censor
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Inverse cumulative hazard values, i.e., time.</p>
+<dt>ndarray of shape (), (n, ) or (m, n)</dt><dd><p>Inverse cumulative hazard values, i.e., time.</p>
 </dd>
 </dl>
 </dd>
@@ -677,7 +677,7 @@ format that allows to pass other information as left-censored or interval-censor
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>probability</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Survival probabilities.</p>
+<dt><strong>probability</strong><span class="classifier">float or ndarray, shape (n, ) or (m, n)</span></dt><dd><p>Survival probabilities.</p>
 </dd>
 <dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
 </dd>
@@ -687,7 +687,7 @@ format that allows to pass other information as left-censored or interval-censor
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Time values corresponding to the given survival probabilities.</p>
+<dt>ndarray of shape (), (n, ) or (m, n)</dt><dd><p>Time values corresponding to the given survival probabilities.</p>
 </dd>
 </dl>
 </dd>
@@ -726,7 +726,7 @@ format that allows to pass other information as left-censored or interval-censor
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+<dt><strong>time</strong><span class="classifier">float or ndarray, shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
 </dd>
 <dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
 </dd>
@@ -750,7 +750,7 @@ format that allows to pass other information as left-censored or interval-censor
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+<dt><strong>time</strong><span class="classifier">float or ndarray, shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
 </dd>
 <dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
 </dd>
@@ -903,7 +903,7 @@ Currently, the second option is prefered. That’s why, returns are always 2d-ar
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+<dt><strong>time</strong><span class="classifier">float or ndarray, shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
 </dd>
 <dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
 </dd>
@@ -913,7 +913,7 @@ Currently, the second option is prefered. That’s why, returns are always 2d-ar
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Mean residual life values at each given time.</p>
+<dt>ndarray of shape (), (n, ) or (m, n)</dt><dd><p>Mean residual life values at each given time.</p>
 </dd>
 </dl>
 </dd>
@@ -975,7 +975,7 @@ all parameters values when the model object is initialized.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+<dt><strong>time</strong><span class="classifier">float or ndarray, shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
 </dd>
 <dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
 </dd>
@@ -985,7 +985,7 @@ all parameters values when the model object is initialized.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Probability densities at each given time.</p>
+<dt>ndarray of shape (), (n, ) or (m, n)</dt><dd><p>Probability densities at each given time.</p>
 </dd>
 </dl>
 </dd>
@@ -999,7 +999,7 @@ all parameters values when the model object is initialized.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>probability</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Cumulative probabilities.</p>
+<dt><strong>probability</strong><span class="classifier">float or ndarray, shape (n, ) or (m, n)</span></dt><dd><p>Cumulative probabilities.</p>
 </dd>
 <dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
 </dd>
@@ -1009,7 +1009,7 @@ all parameters values when the model object is initialized.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Time values corresponding to the given cumulative probabilities.</p>
+<dt>ndarray of shape (), (n, ) or (m, n)</dt><dd><p>Time values corresponding to the given cumulative probabilities.</p>
 </dd>
 </dl>
 </dd>
@@ -1049,7 +1049,7 @@ all parameters values when the model object is initialized.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
+<dt><strong>time</strong><span class="classifier">float or ndarray, shape (n, ) or (m, n)</span></dt><dd><p>Elapsed time.</p>
 </dd>
 <dt><strong>covar</strong><span class="classifier">np.ndarray of shape (k, ) or (m, k)</span></dt><dd><p>Covariate values.</p>
 </dd>
@@ -1059,7 +1059,7 @@ all parameters values when the model object is initialized.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>np.ndarray of shape (n, ) or (m, n)</dt><dd><p>Survival probabilities at each given time.</p>
+<dt>ndarray of shape (), (n, ) or (m, n)</dt><dd><p>Survival probabilities at each given time.</p>
 </dd>
 </dl>
 </dd>

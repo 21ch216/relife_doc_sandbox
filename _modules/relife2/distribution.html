@@ -347,87 +347,87 @@
 <span class="sd">    Base class of distribution model.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">sf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">sf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Survival function.</span>
 
 <span class="sd">        The survival function of the distribution</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Survival function values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 
     <span class="nd">@override</span>
-    <span class="k">def</span> <span class="nf">isf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probability</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">isf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probability</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Inverse survival function.</span>
 
 <span class="sd">        The survival function of the distribution</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        probability : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        probability : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Complement quantile corresponding to probability.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cumulative_hazard_rate</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">probability</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ichf</span><span class="p">(</span><span class="n">cumulative_hazard_rate</span><span class="p">)</span>
 
     <span class="nd">@override</span>
-    <span class="k">def</span> <span class="nf">cdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">cdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cumulative distribution function.</span>
 
 <span class="sd">        The survival function of the distribution</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Cumulative distribution function values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Probability density function.</span>
 
 <span class="sd">        The probability density function of the distribution</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            The probability density function evaluated at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 
     <span class="nd">@override</span>
-    <span class="k">def</span> <span class="nf">ppf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probability</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">ppf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">probability</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Percent point function.</span>
 
 <span class="sd">        The percent point function of the distribution. It corresponds to the inverse of</span>
@@ -435,14 +435,14 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        probability : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        probability : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Quantile corresponding to probability.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">probability</span><span class="p">)</span>
@@ -512,31 +512,31 @@
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span> <span class="o">...</span>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span> <span class="o">...</span>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span> <span class="o">...</span>
 
-    <span class="k">def</span> <span class="nf">jac_sf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">jac_sf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the parametric survival function with respect to params.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">jac_chf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">jac_cdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">jac_cdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the parametric cumulative distribution function with</span>
 <span class="sd">        respect to params.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">jac_sf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">jac_pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">jac_pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the parametric probability density function with respect to</span>
 <span class="sd">        params.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">jac_hf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">jac_sf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
@@ -588,21 +588,21 @@
 
 <div class="viewcode-block" id="Exponential.hf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.hf">[docs]</a>
-    <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Hazard function.</span>
 
 <span class="sd">        The hazard function of the distribution</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Hazard values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
@@ -610,19 +610,19 @@
 
 <div class="viewcode-block" id="Exponential.chf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.chf">[docs]</a>
-    <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cumulative hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Cumulative hazard values at each given time.</span>
 
 <span class="sd">        Notes</span>
@@ -667,19 +667,19 @@
 <div class="viewcode-block" id="Exponential.mrl">
 <a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.mrl">[docs]</a>
     <span class="nd">@override</span>
-    <span class="k">def</span> <span class="nf">mrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">mrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mean residual life.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Mean residual life values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
@@ -688,19 +688,21 @@
 <div class="viewcode-block" id="Exponential.ichf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.ichf">[docs]</a>
     <span class="nd">@override</span>
-    <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Inverse cumulative hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Cumulative hazard rate : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        Cumulative hazard rate : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Cumulative hazard rate values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Inverse cumulative hazard values, i.e. time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">cumulative_hazard_rate</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span></div>
@@ -708,19 +710,19 @@
 
 <div class="viewcode-block" id="Exponential.jac_hf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.jac_hf">[docs]</a>
-    <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        Elapsed time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Jacobian values, here gradient values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">time</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span></div>
@@ -728,19 +730,19 @@
 
 <div class="viewcode-block" id="Exponential.jac_chf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.jac_chf">[docs]</a>
-    <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the cumulative hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        Elapsed time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Jacobian values, here gradient values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">time</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">time</span></div>
@@ -748,19 +750,19 @@
 
 <div class="viewcode-block" id="Exponential.dhf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.dhf">[docs]</a>
-    <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Derivative of the hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Derivative values with respect to time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
@@ -794,21 +796,21 @@
 
 <div class="viewcode-block" id="Weibull.hf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.hf">[docs]</a>
-    <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Hazard function.</span>
 
 <span class="sd">        The hazard function of the distribution</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Hazard values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
@@ -816,19 +818,19 @@
 
 <div class="viewcode-block" id="Weibull.chf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.chf">[docs]</a>
-    <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cumulative hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Cumulative hazard values at each given time.</span>
 
 <span class="sd">        Notes</span>
@@ -873,19 +875,19 @@
 <div class="viewcode-block" id="Weibull.mrl">
 <a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.mrl">[docs]</a>
     <span class="nd">@override</span>
-    <span class="k">def</span> <span class="nf">mrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">mrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mean residual life.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Mean residual life values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">(</span>
@@ -901,19 +903,21 @@
 <div class="viewcode-block" id="Weibull.ichf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.ichf">[docs]</a>
     <span class="nd">@override</span>
-    <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Inverse cumulative hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Cumulative hazard rate : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        Cumulative hazard rate : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Cumulative hazard rate values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Inverse cumulative hazard values, i.e. time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">cumulative_hazard_rate</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span></div>
@@ -921,19 +925,19 @@
 
 <div class="viewcode-block" id="Weibull.jac_hf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.jac_hf">[docs]</a>
-    <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        Elapsed time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Jacobian values, here gradient values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
@@ -948,19 +952,19 @@
 
 <div class="viewcode-block" id="Weibull.jac_chf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.jac_chf">[docs]</a>
-    <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the cumulative hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        Elapsed time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Jacobian values, here gradient values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
@@ -973,19 +977,19 @@
 
 <div class="viewcode-block" id="Weibull.dhf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.dhf">[docs]</a>
-    <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Derivative of the hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Derivative values with respect to time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">(</span>
@@ -1032,21 +1036,21 @@
 
 <div class="viewcode-block" id="Gompertz.hf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.hf">[docs]</a>
-    <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Hazard function.</span>
 
 <span class="sd">        The hazard function of the distribution</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Hazard values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span></div>
@@ -1054,19 +1058,19 @@
 
 <div class="viewcode-block" id="Gompertz.chf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.chf">[docs]</a>
-    <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cumulative hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Cumulative hazard values at each given time.</span>
 
 <span class="sd">        Notes</span>
@@ -1111,19 +1115,19 @@
 <div class="viewcode-block" id="Gompertz.mrl">
 <a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.mrl">[docs]</a>
     <span class="nd">@override</span>
-    <span class="k">def</span> <span class="nf">mrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">mrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mean residual life.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Mean residual life values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span>
@@ -1133,19 +1137,21 @@
 <div class="viewcode-block" id="Gompertz.ichf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.ichf">[docs]</a>
     <span class="nd">@override</span>
-    <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Inverse cumulative hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Cumulative hazard rate : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        Cumulative hazard rate : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Cumulative hazard rate values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Inverse cumulative hazard values, i.e. time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">cumulative_hazard_rate</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span></div>
@@ -1153,19 +1159,19 @@
 
 <div class="viewcode-block" id="Gompertz.jac_hf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.jac_hf">[docs]</a>
-    <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        Elapsed time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Jacobian values, here gradient values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
@@ -1178,19 +1184,19 @@
 
 <div class="viewcode-block" id="Gompertz.jac_chf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.jac_chf">[docs]</a>
-    <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the cumulative hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        Elapsed time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Jacobian values, here gradient values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
@@ -1203,19 +1209,19 @@
 
 <div class="viewcode-block" id="Gompertz.dhf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.dhf">[docs]</a>
-    <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Derivative of the hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Derivative values with respect to time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span></div>
@@ -1264,21 +1270,21 @@
 
 <div class="viewcode-block" id="Gamma.hf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.hf">[docs]</a>
-    <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Hazard function.</span>
 
 <span class="sd">        The hazard function of the distribution</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Hazard values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span>
@@ -1287,19 +1293,19 @@
 
 <div class="viewcode-block" id="Gamma.chf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.chf">[docs]</a>
-    <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cumulative hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Cumulative hazard values at each given time.</span>
 
 <span class="sd">        Notes</span>
@@ -1345,19 +1351,21 @@
 <div class="viewcode-block" id="Gamma.ichf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.ichf">[docs]</a>
     <span class="nd">@override</span>
-    <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Inverse cumulative hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Cumulative hazard rate : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        Cumulative hazard rate : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Cumulative hazard rate values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Inverse cumulative hazard values, i.e. time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">gammainccinv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">cumulative_hazard_rate</span><span class="p">))</span></div>
@@ -1365,19 +1373,19 @@
 
 <div class="viewcode-block" id="Gamma.jac_hf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.jac_hf">[docs]</a>
-    <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        Elapsed time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Jacobian values, here gradient values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span>
@@ -1399,20 +1407,20 @@
 <a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.jac_chf">[docs]</a>
     <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the cumulative hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        Elapsed time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Jacobian values, here gradient values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span>
@@ -1427,19 +1435,19 @@
 
 <div class="viewcode-block" id="Gamma.dhf">
 <a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.dhf">[docs]</a>
-    <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Derivative of the hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Derivative values with respect to time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">time</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">hf</span><span class="p">(</span><span class="n">time</span><span class="p">))</span></div>
@@ -1448,19 +1456,19 @@
 <div class="viewcode-block" id="Gamma.mrl">
 <a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.mrl">[docs]</a>
     <span class="nd">@override</span>
-    <span class="k">def</span> <span class="nf">mrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">mrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mean residual life.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Mean residual life values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">mrl</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>
@@ -1494,21 +1502,21 @@
 
 <div class="viewcode-block" id="LogLogistic.hf">
 <a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.hf">[docs]</a>
-    <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Hazard function.</span>
 
 <span class="sd">        The hazard function of the distribution</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Hazard values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span>
@@ -1517,19 +1525,19 @@
 
 <div class="viewcode-block" id="LogLogistic.chf">
 <a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.chf">[docs]</a>
-    <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cumulative hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Cumulative hazard values at each given time.</span>
 
 <span class="sd">        Notes</span>
@@ -1587,19 +1595,21 @@
 <div class="viewcode-block" id="LogLogistic.ichf">
 <a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.ichf">[docs]</a>
     <span class="nd">@override</span>
-    <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Inverse cumulative hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Cumulative hazard rate : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        Cumulative hazard rate : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Cumulative hazard rate values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Inverse cumulative hazard values, i.e. time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">cumulative_hazard_rate</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span></div>
@@ -1607,19 +1617,19 @@
 
 <div class="viewcode-block" id="LogLogistic.jac_hf">
 <a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.jac_hf">[docs]</a>
-    <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        Elapsed time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Jacobian values, here gradient values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span>
@@ -1635,19 +1645,19 @@
 
 <div class="viewcode-block" id="LogLogistic.jac_chf">
 <a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.jac_chf">[docs]</a>
-    <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the cumulative hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        Elapsed time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        Elapsed time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Probability values. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Jacobian values, here gradient values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span>
@@ -1661,19 +1671,19 @@
 
 <div class="viewcode-block" id="LogLogistic.dhf">
 <a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.dhf">[docs]</a>
-    <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Derivative of the hazard function.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Derivative values with respect to time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">*</span> <span class="n">time</span>
@@ -1689,19 +1699,19 @@
 <div class="viewcode-block" id="LogLogistic.mrl">
 <a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.mrl">[docs]</a>
     <span class="nd">@override</span>
-    <span class="k">def</span> <span class="nf">mrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">mrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mean residual life.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time. If the given shape is (n, ), one asset and n points of measure are considered</span>
 <span class="sd">            To consider m assets with respectively n points of measure,</span>
 <span class="sd">            pass an array of shape (m, n).</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Mean residual life values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">mrl</span><span class="p">(</span><span class="n">time</span><span class="p">)</span></div>

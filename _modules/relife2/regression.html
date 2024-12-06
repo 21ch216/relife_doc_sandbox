@@ -488,7 +488,7 @@
     <span class="nd">@override</span>
     <span class="k">def</span> <span class="nf">sf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -497,7 +497,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -506,7 +506,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Survival probabilities at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">covar</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
@@ -514,7 +514,7 @@
     <span class="nd">@override</span>
     <span class="k">def</span> <span class="nf">isf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">probability</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">probability</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -523,7 +523,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        probability : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        probability : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Survival probabilities.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -532,7 +532,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Time values corresponding to the given survival probabilities.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cumulative_hazard_rate</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">probability</span><span class="p">)</span>
@@ -541,7 +541,7 @@
     <span class="nd">@override</span>
     <span class="k">def</span> <span class="nf">cdf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -550,7 +550,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -559,14 +559,14 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Cumulative probabilities at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">covar</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">pdf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -575,7 +575,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -584,7 +584,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Probability densities at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">covar</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
@@ -592,7 +592,7 @@
     <span class="nd">@override</span>
     <span class="k">def</span> <span class="nf">ppf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">probability</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">probability</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -601,7 +601,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        probability : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        probability : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Cumulative probabilities.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -610,7 +610,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Time values corresponding to the given cumulative probabilities.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">probability</span><span class="p">,</span> <span class="n">covar</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
@@ -618,7 +618,7 @@
     <span class="nd">@override</span>
     <span class="k">def</span> <span class="nf">mrl</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -627,7 +627,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -636,7 +636,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Mean residual life values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">mrl</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">covar</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
@@ -734,7 +734,7 @@
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -743,7 +743,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -759,7 +759,7 @@
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -784,7 +784,7 @@
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -793,7 +793,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -802,13 +802,13 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Derivative values with respect to time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">jac_sf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -835,7 +835,7 @@
 
     <span class="k">def</span> <span class="nf">jac_cdf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -861,7 +861,7 @@
 
     <span class="k">def</span> <span class="nf">jac_pdf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -904,7 +904,7 @@
 <a class="viewcode-back" href="../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard.hf">[docs]</a>
     <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -938,7 +938,7 @@
 <a class="viewcode-back" href="../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard.chf">[docs]</a>
     <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -946,7 +946,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -955,7 +955,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Cumulative hazard values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">covar_effect</span><span class="o">.</span><span class="n">g</span><span class="p">(</span><span class="n">covar</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">baseline</span><span class="o">.</span><span class="n">chf</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
@@ -966,7 +966,7 @@
     <span class="nd">@override</span>
     <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -974,7 +974,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        cumulative_hazard_rate : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        cumulative_hazard_rate : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Cumulative hazard rate values.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -983,7 +983,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Inverse cumulative hazard values, i.e., time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">baseline</span><span class="o">.</span><span class="n">ichf</span><span class="p">(</span>
@@ -995,7 +995,7 @@
 <a class="viewcode-back" href="../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard.jac_hf">[docs]</a>
     <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -1011,7 +1011,7 @@
 <a class="viewcode-back" href="../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard.jac_chf">[docs]</a>
     <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -1027,7 +1027,7 @@
 <a class="viewcode-back" href="../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard.dhf">[docs]</a>
     <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -1047,7 +1047,7 @@
 <a class="viewcode-back" href="../../api/regression/relife2.AFT.html#relife2.AFT.hf">[docs]</a>
     <span class="k">def</span> <span class="nf">hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -1057,7 +1057,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -1066,7 +1066,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Hazard values at each given time.</span>
 
 <span class="sd">        Notes</span>
@@ -1081,7 +1081,7 @@
 <a class="viewcode-back" href="../../api/regression/relife2.AFT.html#relife2.AFT.chf">[docs]</a>
     <span class="k">def</span> <span class="nf">chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -1089,7 +1089,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -1098,7 +1098,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Cumulative hazard values at each given time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">covar_effect</span><span class="o">.</span><span class="n">g</span><span class="p">(</span><span class="n">covar</span><span class="p">)</span>
@@ -1110,7 +1110,7 @@
     <span class="nd">@override</span>
     <span class="k">def</span> <span class="nf">ichf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -1118,7 +1118,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        cumulative_hazard_rate : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        cumulative_hazard_rate : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Cumulative hazard rate values.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -1127,7 +1127,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Inverse cumulative hazard values, i.e., time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">covar_effect</span><span class="o">.</span><span class="n">g</span><span class="p">(</span><span class="n">covar</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">baseline</span><span class="o">.</span><span class="n">ichf</span><span class="p">(</span>
@@ -1139,7 +1139,7 @@
 <a class="viewcode-back" href="../../api/regression/relife2.AFT.html#relife2.AFT.jac_hf">[docs]</a>
     <span class="k">def</span> <span class="nf">jac_hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -1147,7 +1147,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -1174,7 +1174,7 @@
 <a class="viewcode-back" href="../../api/regression/relife2.AFT.html#relife2.AFT.jac_chf">[docs]</a>
     <span class="k">def</span> <span class="nf">jac_chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -1182,7 +1182,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -1210,7 +1210,7 @@
 <a class="viewcode-back" href="../../api/regression/relife2.AFT.html#relife2.AFT.dhf">[docs]</a>
     <span class="k">def</span> <span class="nf">dhf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">covar</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="o">*</span><span class="n">ModelArgs</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
@@ -1218,7 +1218,7 @@
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        time : np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        time : float or ndarray, shape (n, ) or (m, n)</span>
 <span class="sd">            Elapsed time.</span>
 <span class="sd">        covar : np.ndarray of shape (k, ) or (m, k)</span>
 <span class="sd">            Covariate values.</span>
@@ -1227,7 +1227,7 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        np.ndarray of shape (n, ) or (m, n)</span>
+<span class="sd">        ndarray of shape (), (n, ) or (m, n)</span>
 <span class="sd">            Derivative values with respect to time.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">covar_effect</span><span class="o">.</span><span class="n">g</span><span class="p">(</span><span class="n">covar</span><span class="p">)</span>
