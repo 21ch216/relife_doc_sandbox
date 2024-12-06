@@ -14,6 +14,11 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install Pandoc
+        uses: r-lib/actions/setup-pandoc@v1
+        with:
+          pandoc-version: '2.9.2'
+
       - name: Clone ReLife2
         uses: GuillaumeFalourd/clone-github-repo-action@v2.3
         with:
