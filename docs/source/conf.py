@@ -30,6 +30,7 @@ extensions = [
     # (see : https://www.sphinx-doc.org/en/master/usage/extensions/githubpages.html
     # and https://stackoverflow.com/questions/62626125/github-pages-with-sphinx-generated-documentation-not-displaying-html-correctly)
     "sphinx_copybutton",  # copy button in code block
+    "nbsphinx", # to insert notebook
 ]
 
 autodoc_typehints = "none"

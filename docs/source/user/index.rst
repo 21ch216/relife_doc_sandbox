@@ -2,4 +2,7 @@ User's guide
 =============
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 2
+
+    demo_distribution.ipynb
+    demo_nonparametric.ipynb
