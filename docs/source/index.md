@@ -22,13 +22,46 @@ ReLife is coded in Python and was designed to be accessible for user from any pr
 :::
 ::::
 
-## Installation
 
-To install ReLife, use pip:
+## They support us
 
-```{code-block} console
-    pip install . 
-```
+::::{card-carousel} 3
+
+:::{card}
+:img-background: _static/RTE_logo.png
+:link: https://www.rte-france.com/
+:class-card: sd-border-0
+:width: 25%
+:shadow: none
+:margin: 4
+:::
+
+:::{card}
+:class-card: sd-border-0
+:shadow: none
+:margin: 4
+:::
+
+:::{card}
+:class-card: sd-border-0
+:shadow: none
+:margin: 4
+:::
+
+:::{card}
+:class-card: sd-border-0
+:shadow: none
+:margin: 4
+:::
+
+:::{card}
+:class-card: sd-border-0
+:shadow: none
+:margin: 4
+:::
+
+::::
+
 
 ## Get started
 
