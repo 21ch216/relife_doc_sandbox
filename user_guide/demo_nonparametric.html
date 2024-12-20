@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Developement environment &#8212; ReLife2</title>
+    <title>Non parametric estimators &#8212; ReLife</title>
   
   
   
@@ -32,6 +32,8 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -44,12 +46,16 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'contribution/development_env';</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/demo_nonparametric';</script>
+    <script src="../_static/custom-icon.js?v=74687d30"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="About numpy" href="about_numpy.html" />
-    <link rel="prev" title="What is your profile ?" href="your_profile.html" />
+    <link rel="next" title="Learn" href="../learn/index.html" />
+    <link rel="prev" title="Distribution model" href="demo_distribution.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -91,7 +97,7 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 <aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content"><em>beta version</em> ReLife 2 documentation in progress</div>
+  <div class="bd-header-announcement__content"><em>beta version</em> New ReLife documentation in progress</div>
 </aside>
 
   
@@ -116,8 +122,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="ReLife - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="ReLife - Home"/>
   
-    <p class="title logo__title">ReLife2</p>
   
 </a></div>
     
@@ -132,32 +144,47 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../quick_start.html">
-    Quick start
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../user/index.html">
-    User’s guide
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../api/index.html">
-    API
+  <a class="nav-link nav-internal" href="../get_started.html">
+    Get started
   </a>
 </li>
 
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="index.html">
+    User’s guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../learn/index.html">
+    Learn
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../api/index.html">
+    API
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../contributor_guide/index.html">
     Contributor’s guide
   </a>
 </li>
 
+                </ul>
+            </li>
+            
   </ul>
 </nav></div>
       
@@ -184,6 +211,34 @@
   <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/rte-france/relife/tree/refactoring" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/relife/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-custom fa-pypi fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
       
     </div>
     
@@ -232,15 +287,22 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../quick_start.html">
-    Quick start
+  <a class="nav-link nav-internal" href="../get_started.html">
+    Get started
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User’s guide
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../user/index.html">
-    User’s guide
+  <a class="nav-link nav-internal" href="../learn/index.html">
+    Learn
   </a>
 </li>
 
@@ -252,8 +314,8 @@
 </li>
 
 
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="index.html">
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributor_guide/index.html">
     Contributor’s guide
   </a>
 </li>
@@ -276,6 +338,34 @@
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
         
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/rte-france/relife/tree/refactoring" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/relife/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-custom fa-pypi fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
       </div>
     
   </div>
@@ -285,21 +375,9 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">First time contribution</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="your_profile.html">What is your profile ?</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Developement environment</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Conception of ReLife2</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="about_numpy.html">About numpy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about_lifetime_models.html">About lifetime models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about_integration.html">About integrations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about_stochastic_process.html">Stochastic process sampling</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python resources</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="additional_lectures.html">Lectures</a></li>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="demo_distribution.html">Distribution model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Non parametric estimators</a></li>
 </ul>
 </div>
 </nav></div>
@@ -336,9 +414,9 @@
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Contributor’s guide</a></li>
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">User’s guide</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Developement environment</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Non parametric estimators</span></li>
   </ul>
 </nav>
 </div>
@@ -355,9 +433,59 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="developement-environment">
-<h1>Developement environment<a class="headerlink" href="#developement-environment" title="Link to this heading">#</a></h1>
-<p>Advices about development environments, set ups to do before contributing to ReLife</p>
+  <section id="Non-parametric-estimators">
+<h1>Non parametric estimators<a class="headerlink" href="#Non-parametric-estimators" title="Link to this heading">#</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
+from relife2 import KaplanMeier
+from relife2.utils.dataset import load_circuit_breaker
+</pre></div>
+</div>
+</div>
+<section id="Basics">
+<h2>Basics<a class="headerlink" href="#Basics" title="Link to this heading">#</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>time, event, entry = load_circuit_breaker()
+
+km = KaplanMeier().fit(time, event, entry)
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Plots">
+<h2>Plots<a class="headerlink" href="#Plots" title="Link to this heading">#</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>km.plot.sf()
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Axes: &gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/user_guide_demo_nonparametric_5_1.png" src="../_images/user_guide_demo_nonparametric_5_1.png" />
+</div>
+</div>
+</section>
 </section>
 
 
@@ -371,20 +499,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="your_profile.html"
+       href="demo_distribution.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">What is your profile ?</p>
+        <p class="prev-next-title">Distribution model</p>
       </div>
     </a>
     <a class="right-next"
-       href="about_numpy.html"
+       href="../learn/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">About numpy</p>
+        <p class="prev-next-title">Learn</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -400,9 +528,22 @@
 
 
   <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Basics">Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Plots">Plots</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../_sources/contribution/development_env.rst.txt">
+    <a href="../_sources/user_guide/demo_nonparametric.ipynb.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

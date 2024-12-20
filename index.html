@@ -7,8 +7,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Top-level documentation for pydata-sphinx theme, with links to the rest of the site.. " lang="en" name="description" xml:lang="en" />
 
-    <title>Welcome to ReLife2’s documentation! &#8212; ReLife2</title>
+    <title>ReLife &#8212; ReLife</title>
   
   
   
@@ -32,6 +33,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -44,11 +46,13 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <script src="_static/custom-icon.js?v=74687d30"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Quick start" href="quick_start.html" />
+    <link rel="next" title="Get started" href="get_started.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -90,7 +94,7 @@
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 <aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content"><em>beta version</em> ReLife 2 documentation in progress</div>
+  <div class="bd-header-announcement__content"><em>beta version</em> New ReLife documentation in progress</div>
 </aside>
 
   
@@ -115,8 +119,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="ReLife - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="ReLife - Home"/>
   
-    <p class="title logo__title">ReLife2</p>
   
 </a></div>
     
@@ -131,32 +141,47 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="quick_start.html">
-    Quick start
+  <a class="nav-link nav-internal" href="get_started.html">
+    Get started
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="user/index.html">
+  <a class="nav-link nav-internal" href="user_guide/index.html">
     User’s guide
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="api/index.html">
+  <a class="nav-link nav-internal" href="learn/index.html">
+    Learn
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="api/index.html">
     API
   </a>
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="contribution/index.html">
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="contributor_guide/index.html">
     Contributor’s guide
   </a>
 </li>
 
+                </ul>
+            </li>
+            
   </ul>
 </nav></div>
       
@@ -184,6 +209,34 @@
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
       
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/rte-france/relife/tree/refactoring" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/relife/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-custom fa-pypi fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
     </div>
     
   </div>
@@ -199,10 +252,6 @@
     </div>
   
 
-  
-    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
-      <span class="fa-solid fa-outdent"></span>
-    </button>
   
 </div>
 
@@ -233,15 +282,22 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="quick_start.html">
-    Quick start
+  <a class="nav-link nav-internal" href="get_started.html">
+    Get started
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="user/index.html">
+  <a class="nav-link nav-internal" href="user_guide/index.html">
     User’s guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="learn/index.html">
+    Learn
   </a>
 </li>
 
@@ -254,7 +310,7 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="contribution/index.html">
+  <a class="nav-link nav-internal" href="contributor_guide/index.html">
     Contributor’s guide
   </a>
 </li>
@@ -276,6 +332,34 @@
   <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/rte-france/relife/tree/refactoring" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/relife/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-custom fa-pypi fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
         
       </div>
     
@@ -304,21 +388,119 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="welcome-to-relife2-s-documentation">
-<h1>Welcome to ReLife2’s documentation!<a class="headerlink" href="#welcome-to-relife2-s-documentation" title="Link to this heading">#</a></h1>
-<p><strong>Date</strong>: Dec 06, 2024 <strong>Version</strong>: </p>
-<p>ReLife is an open source Python library for asset management based on reliability theory and lifetime data analysis.</p>
-<ul class="simple">
-<li><p><strong>Survival analysis</strong>: non-parametric estimator (Kaplan-Meier), parametric estimator (Maximum Likelihood) and regression models (Accelerated Failure Time and Parametric Proportional Hazards) on left-truncated, right-censored and left-censored lifetime data.</p></li>
-<li><p><strong>Reliability theory</strong>: optimal age of replacement for time-based mainteance policy for one-cycle or infinite number of cycles, with exponential discounting.</p></li>
-<li><p><strong>Renewal theory</strong>: expected number of events, expected total costs or expected number of replacements for run-to-failures or age replacement policies.</p></li>
-</ul>
-<p>To install ReLife2, use pip:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install .</span>
+  <section id="relife">
+<h1>ReLife<a class="headerlink" href="#relife" title="Link to this heading">#</a></h1>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Asset management</div>
+<p class="sd-card-text">ReLife was created at RTE for asset management based on fiability and renewal theory.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Open science</div>
+<p class="sd-card-text">ReLife is open source and tries to gather both statistical knowledge and pratical examples to conduct appropriate risk analysis for asset.
+management</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Easy to use</div>
+<p class="sd-card-text">ReLife is coded in Python and was designed to be accessible for user from any programming background or experience level.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>To install ReLife, use pip:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">    pip install . </span>
 </pre></div>
 </div>
+</section>
+<section id="get-started">
+<h2>Get started<a class="headerlink" href="#get-started" title="Link to this heading">#</a></h2>
+<p>Information about installation and examples of basic functionnalities.</p>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">Get started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="get_started.html#installation-guide">Installation guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="get_started.html#your-first-statistical-model">Your first statistical model</a></li>
+</ul>
+</li>
+</ul>
 </div>
+</section>
+<section id="user-guide">
+<h2>User Guide<a class="headerlink" href="#user-guide" title="Link to this heading">#</a></h2>
+<p>Practical tutorials that shows how to use ReLife functionalities in-depth.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide/index.html">User’s guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/index.html#base-concepts">Base concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide/index.html#practical-tutorials">Practical tutorials</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="learn">
+<h2>Learn<a class="headerlink" href="#learn" title="Link to this heading">#</a></h2>
+<p>If you’re new to fiability and renewal theory but you have some maths knowledge, try to learn more about this field
+of statistics.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="learn/index.html">Learn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="learn/index.html#fiability-theory">Fiability theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learn/index.html#renewal-theory">Renewal theory</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="api">
+<h2>API<a class="headerlink" href="#api" title="Link to this heading">#</a></h2>
+<p>The content of the exposed ReLife API.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/index.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#lifetime-models">Lifetime models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#non-parametric-estimators">Non-parametric estimators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/index.html#base-models">Base models</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="contributor-s-guide">
+<h2>Contributor’s guide<a class="headerlink" href="#contributor-s-guide" title="Link to this heading">#</a></h2>
+<p>Information about the conception of ReLife and how to contribute.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributor_guide/index.html">Contributor’s guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributor_guide/your_profile.html">What is your profile ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributor_guide/development_env.html">Developement environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributor_guide/about_numpy.html">About numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributor_guide/about_lifetime_models.html">About lifetime models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributor_guide/about_integration.html">About integrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributor_guide/about_stochastic_process.html">Stochastic process sampling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributor_guide/additional_lectures.html">Lectures</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
 </section>
 
 
@@ -332,11 +514,11 @@
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="quick_start.html"
+       href="get_started.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Quick start</p>
+        <p class="prev-next-title">Get started</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -346,21 +528,6 @@
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-
-  <div class="tocsection sourcelink">
-    <a href="_sources/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
-</div></div>
               
             
           </div>
