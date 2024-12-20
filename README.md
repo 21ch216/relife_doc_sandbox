@@ -7,7 +7,9 @@ It allows to keep, build and publish an independant version of this new document
 
 **this is not ReLife repo** : used code can be found at https://github.com/rte-france/relife/tree/refactoring
 
-# Original copyright
+# Credits
 
 The documentation uses [pydata-sphinx-theme](https://github.com/pydata/pydata-sphinx-theme) project. Original license
 is [here](LICENSE.txt)
+
+The logo was made by [Freepik](https://www.freepik.com) from [Flaticon](<https://www.flaticon.com>)

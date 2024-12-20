@@ -26,12 +26,16 @@ extensions = [
     "sphinx.ext.autosummary",
     "numpydoc",  # if used, get rid of napoleon
     "sphinx.ext.viewcode",  # to insert source code link next to objects documentation
-    "sphinx.ext.githubpages", # necessary to publish to as github pages
+    "sphinx.ext.githubpages",  # necessary to publish to as github pages
     # (see : https://www.sphinx-doc.org/en/master/usage/extensions/githubpages.html
     # and https://stackoverflow.com/questions/62626125/github-pages-with-sphinx-generated-documentation-not-displaying-html-correctly)
     "sphinx_copybutton",  # copy button in code block
-    "nbsphinx", # to insert notebook
+    "nbsphinx",  # to insert notebook
+    "sphinx_design",  # advanced design tools
+    "myst_parser",  # to use markdown pages
 ]
+
+myst_enable_extensions = ["colon_fence"]  # required by sphinx design with myst-parser
 
 autodoc_typehints = "none"
 # autosummary_generate = True
@@ -48,7 +52,6 @@ numpydoc_show_class_members = False
 numpydoc_show_inherited_class_members = False
 # We want in-page toc of class members instead of a separate page for each entry
 numpydoc_class_members_toctree = False
-
 
 # For maths, use mathjax by default and svg if NO_MATHJAX env variable is set
 # (useful for viewing the doc offline)
@@ -69,9 +72,34 @@ templates_path = ['_templates', '_templates/autosummary']
 
 html_theme = "pydata_sphinx_theme"
 html_static_path = ['_static']
-html_title = "ReLife2"  # sidebar title
+html_title = "ReLife"  # sidebar title
+html_logo = "_static/logo.png"
+html_js_files = ["custom-icon.js"]
+
 
 html_theme_options = {
-    "announcement": "<em>beta version</em> ReLife 2 documentation in progress",  # annoucement bar
-    "navigation_with_keys" : False,
+    "announcement": "<em>beta version</em> New ReLife documentation in progress",  # annoucement bar
+    "navigation_with_keys": False,
+    "header_links_before_dropdown": 3,
+
+    "icon_links": [
+        {
+            # Label for this link
+            "name": "GitHub",
+            # URL where the link will redirect
+            "url": "https://github.com/rte-france/relife/tree/refactoring",  # required
+            # Icon class (if "type": "fontawesome"), or path to local image (if "type": "local")
+            "icon": "fa-brands fa-square-github",
+            # The type of image to be used (see below for details)
+            "type": "fontawesome",
+        },
+        {
+            # Label for this link
+            "name": "PyPI",
+            # URL where the link will redirect
+            "url": "https://pypi.org/project/relife/",  # required
+            # Icon class (if "type": "fontawesome"), or path to local image (if "type": "local")
+            "icon": "fa-custom fa-pypi",
+        }
+    ]
 }
