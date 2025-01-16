@@ -1,7 +1,4 @@
-﻿relife2.Exponential
-===================
-
-
+﻿
 
 
 
@@ -15,12 +12,9 @@
     :inherited-members:
     :exclude-members: __init__, __new__, compose_with, new_params, init_params, params_bounds
 
+    .. rubric:: Methods
 
-    ==================
-    Methods
-    ==================
-
-    .. rubric:: Survival functions
+    **Survival functions**
 
     .. autosummary::
         :nosignatures:
@@ -72,7 +66,6 @@
         
         
 
-    .. rubric:: Probability functions
     .. autosummary::
         :nosignatures:
 
@@ -111,8 +104,8 @@
         
         
 
+    **Statistics**
 
-    .. rubric:: Statistics
     .. autosummary::
         :nosignatures:
 
@@ -153,9 +146,11 @@
             ~Exponential.var
         
 
-    .. rubric:: Other methods
+    **Other methods**
+
     .. autosummary::
         :nosignatures:
+
     
         
         
@@ -199,12 +194,11 @@
         
         
 
-    ==================
-    Attributes
-    ==================
+    .. rubric:: Attributes
 
     .. autosummary::
         :nosignatures:
+
     
         
             ~Exponential.nb_params

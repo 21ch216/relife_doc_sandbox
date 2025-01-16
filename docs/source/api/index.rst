@@ -1,6 +1,8 @@
 API
 =============
 
+The content of the exposed ReLife API.
+
 .. currentmodule:: relife2
 
 Lifetime models
@@ -13,6 +15,7 @@ Lifetime models
     :toctree: distribution
     :template: parametric-lifetime-model-class.rst
     :caption: Lifetime distribution models
+    :nosignatures:
 
     Exponential
     Weibull
@@ -27,6 +30,7 @@ Lifetime models
     :toctree: regression
     :template: parametric-lifetime-model-class.rst
     :caption: Lifetime regression models
+    :nosignatures:
 
     ProportionalHazard
     AFT
@@ -36,14 +40,29 @@ Non-parametric estimators
 
 .. autosummary::
     :toctree: nonparametric
-    :template: parametric-lifetime-model-class.rst
+    :template: default.rst
     :caption: Non parametric lifetime estimators
+    :nosignatures:
 
     ECDF
     KaplanMeier
     NelsonAalen
     Turnbull
 
+
+Renewal policies
+~~~~~~~~~~~~~~~~
+
+.. autosummary::
+    :toctree: renewalpolicy
+    :template: default.rst
+    :caption: Renewal policies
+    :nosignatures:
+
+    OneCycleAgeReplacementPolicy
+    OneCycleRunToFailure
+    RunToFailure
+    AgeReplacementPolicy
 
 Likelihoods
 ~~~~~~~~~~~
@@ -52,6 +71,7 @@ Likelihoods
     :toctree: likelihood
     :template: base-class.rst
     :caption: Likelihoods
+    :nosignatures:
 
     LikelihoodFromLifetimes
 
@@ -70,6 +90,8 @@ think of them as `engines` that empower objects with special functionalities to 
     :toctree: base_class
     :template: base-class.rst
     :caption: Base class
+    :nosignatures:
+
 
     LifetimeModel
 
@@ -78,6 +100,7 @@ think of them as `engines` that empower objects with special functionalities to 
 .. autosummary::
     :toctree: base_class
     :template: base-class.rst
+    :nosignatures:
 
 
     Parameters

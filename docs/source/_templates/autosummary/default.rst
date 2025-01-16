@@ -11,7 +11,6 @@
 
     .. rubric:: {{ _('Methods') }}
 
-
     .. autosummary::
         :nosignatures:
 

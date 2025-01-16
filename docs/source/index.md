@@ -22,70 +22,59 @@ ReLife is coded in Python and was designed to be accessible for user from any pr
 :::
 ::::
 
-## Installation
+The documentation is organized in the following sections :
 
-First things firts, how to install ReLife on your machine ?
+* **Installation** : First things firts, how to install ReLife on your machine ?
+* **Get started** : Information about installation and examples of basic functionnalities.
+* **User's guide** : Practical tutorials that shows how to use ReLife functionalities in-depth.
+* **API** : The content of the exposed ReLife API.
+* **Learn** : if you're new to fiability and renewal theory but you have some maths knowledge, try to learn more about this field
+of statistics.
+* **Contributor's guide** : information about the conception of ReLife and how to contribute.
+* **Future improvements** : information about the conception of ReLife and how to contribute.
+
 
 ```{toctree}
 :maxdepth: 2
+:hidden:
 installation/index
 ```
 
-## Get started
-
-Information about installation and examples of basic functionnalities.
-
 ```{toctree}
 :maxdepth: 2
+:hidden:
 get_started
 ```
 
-## User Guide
-
-Practical tutorials that shows how to use ReLife functionalities in-depth.
-
 ```{toctree}
 :maxdepth: 2
+:hidden:
 user_guide/index
 ```
 
-## API
-
-The content of the exposed ReLife API.
-
 ```{toctree}
 :maxdepth: 2
+:hidden:
 api/index
 ```
 
-## Learn
-
-If you're new to fiability and renewal theory but you have some maths knowledge, try to learn more about this field
-of statistics.
-
 ```{toctree}
 :maxdepth: 2
+:hidden:
 learn/index
 ```
 
-## Contributor's guide
-
-Information about the conception of ReLife and how to contribute.
-
 ```{toctree}
 :maxdepth: 2
+:hidden:
 contributor_guide/index
 ```
 
-## Future improvements
-
-Information about the conception of ReLife and how to contribute.
-
 ```{toctree}
+:hidden:
 :maxdepth: 2
 future/index
 ```
-
 
 ## Supported by
 

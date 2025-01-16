@@ -1,11 +1,4 @@
-﻿relife2.Turnbull
-================
-
-
-
-
-
-
+﻿
 
 
 .. currentmodule:: relife2
@@ -13,60 +6,28 @@
 .. autoclass:: Turnbull
     :members:
     :inherited-members:
-    :exclude-members: __init__, __new__, compose_with, new_params, init_params, params_bounds
+    :exclude-members: __init__, __new__
 
 
-    ==================
-    Methods
-    ==================
-
-    .. rubric:: Survival functions
+    .. rubric:: Methods
 
     .. autosummary::
         :nosignatures:
 
-    
-        
-        
-        
-            ~Turnbull.sf
-        
-
-    .. rubric:: Probability functions
-    .. autosummary::
-        :nosignatures:
-
-    
-        
-        
-        
-
-
-    .. rubric:: Statistics
-    .. autosummary::
-        :nosignatures:
-
-    
-        
-        
-        
-
-    .. rubric:: Other methods
-    .. autosummary::
-        :nosignatures:
     
         
         
             ~Turnbull.fit
         
         
+            ~Turnbull.sf
+        
 
-    ==================
-    Attributes
-    ==================
+    .. rubric:: Attributes
 
     .. autosummary::
         :nosignatures:
+
     
         
             ~Turnbull.plot

@@ -1,5 +1,3 @@
-{{ fullname | escape | underline}}
-
 {% set survival_functions = ["chf", "hf", "dhf", "ichf", "isf", "jac_chf", "jac_hf", "mrl", "sf"] %}
 {% set statistics = ["mean", "var", "moment", "median"] %}
 {% set probability_functions = ["pdf", "ppf", "cdf"] %}
@@ -14,12 +12,9 @@
     :inherited-members:
     :exclude-members: {{ exclude_members }}
 
+    .. rubric:: {{ _('Methods') }}
 
-    ==================
-    {{ _('Methods') }}
-    ==================
-
-    .. rubric:: {{ _('Survival functions') }}
+    **{{ _('Survival functions') }}**
 
     .. autosummary::
         :nosignatures:
@@ -30,7 +25,6 @@
         {% endif %}
     {%- endfor %}
 
-    .. rubric:: {{ _('Probability functions') }}
     .. autosummary::
         :nosignatures:
 
@@ -40,8 +34,8 @@
         {% endif %}
     {%- endfor %}
 
+    **{{ _('Statistics') }}**
 
-    .. rubric:: {{ _('Statistics') }}
     .. autosummary::
         :nosignatures:
 
@@ -51,21 +45,22 @@
         {% endif %}
     {%- endfor %}
 
-    .. rubric:: {{ _('Other methods') }}
+    **{{ _('Other methods') }}**
+
     .. autosummary::
         :nosignatures:
+
     {% for item in methods %}
         {% if (item not in survival_functions + statistics + probability_functions + exclude_methods) and not item.startswith("_") %}
             ~{{ name }}.{{ item }}
         {% endif %}
     {%- endfor %}
 
-    ==================
-    {{ _('Attributes') }}
-    ==================
+    .. rubric:: {{ _('Attributes') }}
 
     .. autosummary::
         :nosignatures:
+
     {% for item in attributes %}
         {% if item not in exclude_attributes and not item.startswith('_') %}
             ~{{ name }}.{{ item }}

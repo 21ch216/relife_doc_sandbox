@@ -1,6 +1,8 @@
 User's guide
 =============
 
+Practical tutorials that shows how to use ReLife functionalities in-depth.
+
 Base concepts
 ~~~~~~~~~~~~~
 
