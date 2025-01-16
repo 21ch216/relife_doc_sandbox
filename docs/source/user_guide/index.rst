@@ -1,16 +1,6 @@
 User's guide
 =============
 
-Installation
-~~~~~~~~~~~~~
-
-To install ReLife, use pip:
-
-.. code-block:: console
-
-    pip install .
-
-
 Base concepts
 ~~~~~~~~~~~~~
 

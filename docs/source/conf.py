@@ -80,8 +80,8 @@ html_js_files = ["custom-icon.js"]
 html_theme_options = {
     "announcement": "<em>beta version</em> New ReLife documentation in progress",  # annoucement bar
     "navigation_with_keys": False,
-    "header_links_before_dropdown": 3,
-
+    "header_links_before_dropdown": 4, # control the number of section displayed in the header bar
+    "show_nav_level": 0, # control the collapse level of sidebar titles
     "icon_links": [
         {
             # Label for this link

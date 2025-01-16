@@ -45,15 +45,41 @@ Non-parametric estimators
     Turnbull
 
 
-Base models
+Likelihoods
 ~~~~~~~~~~~
+
+.. autosummary::
+    :toctree: likelihood
+    :template: base-class.rst
+    :caption: Likelihoods
+
+    LikelihoodFromLifetimes
+
+Base class
+~~~~~~~~~~~
+
+What we call `base class` are objects (in Python class are objects) used at the core of ReLife subsystems.
+For beginners, it is not necessary to know them. If you start to inspect ReLife code, you will encounter them regularly
+in inheritance hierarchy. In fact, most objects created for fiability theory inherits from one of those objects. One can
+think of them as `engines` that empower objects with special functionalities to make ReLife model creation easier.
+
+
+.. rubric:: Models
+
+.. autosummary::
+    :toctree: base_class
+    :template: base-class.rst
+    :caption: Base class
+
+    LifetimeModel
 
 .. rubric:: Parametric models
 
 .. autosummary::
-    :toctree: model
-    :template: parametric-lifetime-model-class.rst
-    :caption: Base models
+    :toctree: base_class
+    :template: base-class.rst
 
+
+    Parameters
     ParametricModel
     ParametricLifetimeModel
