@@ -1,6 +1,8 @@
 Installation
 ============
 
+First things firts, how to install ReLife on your machine ?
+
 Pip
 ~~~
 

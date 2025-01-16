@@ -1,7 +1,4 @@
-﻿relife2.Parameters
-==================
-
-
+﻿
 
 
 .. currentmodule:: relife2
@@ -11,9 +8,9 @@
     :inherited-members:
     :exclude-members: __init__, __new__
 
-    ==================
-    Methods
-    ==================
+
+    .. rubric:: Methods
+
 
     .. autosummary::
         :nosignatures:
@@ -51,9 +48,7 @@
             ~Parameters.update_parents
         
 
-    ==================
-    Attributes
-    ==================
+    .. rubric:: Attributes
 
     .. autosummary::
         :nosignatures:

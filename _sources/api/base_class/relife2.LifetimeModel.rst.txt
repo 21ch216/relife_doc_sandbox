@@ -1,7 +1,4 @@
-﻿relife2.LifetimeModel
-=====================
-
-
+﻿
 
 
 .. currentmodule:: relife2
@@ -11,9 +8,9 @@
     :inherited-members:
     :exclude-members: __init__, __new__
 
-    ==================
-    Methods
-    ==================
+
+    .. rubric:: Methods
+
 
     .. autosummary::
         :nosignatures:
@@ -66,9 +63,7 @@
             ~LifetimeModel.var
         
 
-    ==================
-    Attributes
-    ==================
+    .. rubric:: Attributes
 
     .. autosummary::
         :nosignatures:

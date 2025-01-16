@@ -32,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=d6b467a0" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -102,7 +103,7 @@
   </button>
   
   
-  <div class="col-lg-3 navbar-header-items__start">
+  <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
@@ -129,7 +130,7 @@
     
   </div>
   
-  <div class="col-lg-9 navbar-header-items">
+  <div class=" navbar-header-items">
     
     <div class="me-auto navbar-header-items__center">
       
@@ -541,6 +542,9 @@
 <div class="viewcode-block" id="ECDF">
 <a class="viewcode-back" href="../../api/nonparametric/relife2.ECDF.html#relife2.ECDF">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ECDF</span><span class="p">(</span><span class="n">NonParametricLifetimeEstimator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Empirical Cumulative Distribution Function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -569,7 +573,8 @@
 <span class="sd">            Left truncations applied to lifetime values.</span>
 <span class="sd">        departure : ndarray of float (1d), default is None</span>
 <span class="sd">            Right truncations applied to lifetime values.</span>
-
+<span class="sd">        inplace : boolean, default is True</span>
+<span class="sd">            If true, estimations are stored in the object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">lifetime_data</span> <span class="o">=</span> <span class="n">lifetime_data_factory</span><span class="p">(</span>
@@ -638,6 +643,42 @@
 <div class="viewcode-block" id="KaplanMeier">
 <a class="viewcode-back" href="../../api/nonparametric/relife2.KaplanMeier.html#relife2.KaplanMeier">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">KaplanMeier</span><span class="p">(</span><span class="n">NonParametricLifetimeEstimator</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Kaplan-Meier estimator.</span>
+
+<span class="sd">    Compute the non-parametric Kaplan-Meier estimator (also known as the product</span>
+<span class="sd">    limit estimator) of the survival function from lifetime data.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    For a given time instant :math:`t` and :math:`n` total observations, this</span>
+<span class="sd">    estimator is defined as:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \hat{S}(t) = \prod_{i: t_i \leq t} \left( 1 - \frac{d_i}{n_i}\right)</span>
+
+<span class="sd">    where :math:`d_i` is the number of failures until :math:`t_i` and</span>
+<span class="sd">    :math:`n_i` is the number of assets at risk just prior to :math:`t_i`.</span>
+
+<span class="sd">    The variance estimation is obtained by:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \widehat{Var}[\hat{S}(t)] = \hat{S}(t)^2 \sum_{i: t_i \leq t}</span>
+<span class="sd">        \frac{d_i}{n_i(n_i - d_i)}</span>
+
+<span class="sd">    which is often referred to as Greenwood&#39;s formula.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Lawless, J. F. (2011). Statistical models and methods for lifetime</span>
+<span class="sd">        data. John Wiley &amp; Sons.</span>
+
+<span class="sd">    .. [2] Kaplan, E. L., &amp; Meier, P. (1958). Nonparametric estimation from</span>
+<span class="sd">        incomplete observations. Journal of the American statistical</span>
+<span class="sd">        association, 53(282), 457-481.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -666,7 +707,8 @@
 <span class="sd">            Left truncations applied to lifetime values.</span>
 <span class="sd">        departure : ndarray of float (1d), default is None</span>
 <span class="sd">            Right truncations applied to lifetime values.</span>
-
+<span class="sd">        inplace : boolean, default is True</span>
+<span class="sd">            If true, estimations are stored in the object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">lifetime_data</span> <span class="o">=</span> <span class="n">lifetime_data_factory</span><span class="p">(</span>
@@ -753,6 +795,42 @@
 <div class="viewcode-block" id="NelsonAalen">
 <a class="viewcode-back" href="../../api/nonparametric/relife2.NelsonAalen.html#relife2.NelsonAalen">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">NelsonAalen</span><span class="p">(</span><span class="n">NonParametricLifetimeEstimator</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Nelson-Aalen estimator.</span>
+
+<span class="sd">    Compute the non-parametric Nelson-Aalen estimator of the cumulative hazard</span>
+<span class="sd">    function from lifetime data.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    For a given time instant :math:`t` and :math:`n` total observations, this</span>
+<span class="sd">    estimator is defined as:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \hat{H}(t) = \sum_{i: t_i \leq t} \frac{d_i}{n_i}</span>
+
+<span class="sd">    where :math:`d_i` is the number of failures until :math:`t_i` and</span>
+<span class="sd">    :math:`n_i` is the number of assets at risk just prior to :math:`t_i`.</span>
+
+<span class="sd">    The variance estimation is obtained by:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \widehat{Var}[\hat{H}(t)] = \sum_{i: t_i \leq t} \frac{d_i}{n_i^2}</span>
+
+<span class="sd">    Note that the alternative survivor function estimate:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \tilde{S}(t) = \exp{(-\hat{H}(t))}</span>
+
+<span class="sd">    is sometimes suggested for the continuous-time case.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Lawless, J. F. (2011). Statistical models and methods for lifetime</span>
+<span class="sd">        data. John Wiley &amp; Sons.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -781,7 +859,8 @@
 <span class="sd">            Left truncations applied to lifetime values.</span>
 <span class="sd">        departure : ndarray of float (1d), default is None</span>
 <span class="sd">            Right truncations applied to lifetime values.</span>
-
+<span class="sd">        inplace : boolean, default is True</span>
+<span class="sd">            If true, estimations are stored in the object</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">lifetime_data</span> <span class="o">=</span> <span class="n">lifetime_data_factory</span><span class="p">(</span>
@@ -859,6 +938,7 @@
 <div class="viewcode-block" id="Turnbull">
 <a class="viewcode-back" href="../../api/nonparametric/relife2.Turnbull.html#relife2.Turnbull">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Turnbull</span><span class="p">(</span><span class="n">NonParametricLifetimeEstimator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Turnbull estimator&quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -880,10 +960,22 @@
         <span class="n">departure</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Self</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;_summary_</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute the non-parametric estimations with respect to lifetime data.</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">            FloatArray: _description_&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        time : ndarray (1d or 2d)</span>
+<span class="sd">            Observed lifetime values.</span>
+<span class="sd">        event : ndarray of boolean values (1d), default is None</span>
+<span class="sd">            Boolean indicators tagging lifetime values as right censored or complete.</span>
+<span class="sd">        entry : ndarray of float (1d), default is None</span>
+<span class="sd">            Left truncations applied to lifetime values.</span>
+<span class="sd">        departure : ndarray of float (1d), default is None</span>
+<span class="sd">            Right truncations applied to lifetime values.</span>
+<span class="sd">        inplace : boolean, default is True</span>
+<span class="sd">            If true, estimations are stored in the object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">lifetime_data</span> <span class="o">=</span> <span class="n">lifetime_data_factory</span><span class="p">(</span>
             <span class="n">time</span><span class="p">,</span>

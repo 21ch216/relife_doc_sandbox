@@ -1,7 +1,4 @@
-﻿relife2.ParametricLifetimeModel
-===============================
-
-
+﻿
 
 
 .. currentmodule:: relife2
@@ -11,9 +8,9 @@
     :inherited-members:
     :exclude-members: __init__, __new__
 
-    ==================
-    Methods
-    ==================
+
+    .. rubric:: Methods
+
 
     .. autosummary::
         :nosignatures:
@@ -81,9 +78,7 @@
             ~ParametricLifetimeModel.var
         
 
-    ==================
-    Attributes
-    ==================
+    .. rubric:: Attributes
 
     .. autosummary::
         :nosignatures:

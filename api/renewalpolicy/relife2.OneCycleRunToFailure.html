@@ -48,14 +48,12 @@
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/nonparametric/relife2.NelsonAalen';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/renewalpolicy/relife2.OneCycleRunToFailure';</script>
     <script src="../../_static/custom-icon.js?v=74687d30"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="relife2.Turnbull.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="relife2.KaplanMeier.html" />
+    <link rel="next" title="&lt;no title&gt;" href="relife2.RunToFailure.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="relife2.OneCycleAgeReplacementPolicy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -417,18 +415,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../regression/relife2.AFT.html"><code class="docutils literal notranslate"><span class="pre">AFT</span></code></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Non parametric lifetime estimators</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="relife2.ECDF.html"><code class="docutils literal notranslate"><span class="pre">ECDF</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="relife2.KaplanMeier.html"><code class="docutils literal notranslate"><span class="pre">KaplanMeier</span></code></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">NelsonAalen</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="relife2.Turnbull.html"><code class="docutils literal notranslate"><span class="pre">Turnbull</span></code></a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.ECDF.html"><code class="docutils literal notranslate"><span class="pre">ECDF</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.KaplanMeier.html"><code class="docutils literal notranslate"><span class="pre">KaplanMeier</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.NelsonAalen.html"><code class="docutils literal notranslate"><span class="pre">NelsonAalen</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.Turnbull.html"><code class="docutils literal notranslate"><span class="pre">Turnbull</span></code></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Renewal policies</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../renewalpolicy/relife2.OneCycleAgeReplacementPolicy.html"><code class="docutils literal notranslate"><span class="pre">OneCycleAgeReplacementPolicy</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../renewalpolicy/relife2.OneCycleRunToFailure.html"><code class="docutils literal notranslate"><span class="pre">OneCycleRunToFailure</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../renewalpolicy/relife2.RunToFailure.html"><code class="docutils literal notranslate"><span class="pre">RunToFailure</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../renewalpolicy/relife2.AgeReplacementPolicy.html"><code class="docutils literal notranslate"><span class="pre">AgeReplacementPolicy</span></code></a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="relife2.OneCycleAgeReplacementPolicy.html"><code class="docutils literal notranslate"><span class="pre">OneCycleAgeReplacementPolicy</span></code></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">OneCycleRunToFailure</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="relife2.RunToFailure.html"><code class="docutils literal notranslate"><span class="pre">RunToFailure</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="relife2.AgeReplacementPolicy.html"><code class="docutils literal notranslate"><span class="pre">AgeReplacementPolicy</span></code></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Likelihoods</span></p>
 <ul class="nav bd-sidenav">
@@ -498,41 +496,55 @@
                 <article class="bd-article">
                   
   <dl class="py class">
-<dt class="sig sig-object py" id="relife2.NelsonAalen">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">NelsonAalen</span></span><a class="reference internal" href="../../_modules/relife2/nonparametric.html#NelsonAalen"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.NelsonAalen" title="Link to this definition">#</a></dt>
-<dd><p>Nelson-Aalen estimator.</p>
-<p>Compute the non-parametric Nelson-Aalen estimator of the cumulative hazard
-function from lifetime data.</p>
-<p class="rubric">Notes</p>
-<p>For a given time instant <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(n\)</span> total observations, this
-estimator is defined as:</p>
-<div class="math notranslate nohighlight">
-\[\hat{H}(t) = \sum_{i: t_i \leq t} \frac{d_i}{n_i}\]</div>
-<p>where <span class="math notranslate nohighlight">\(d_i\)</span> is the number of failures until <span class="math notranslate nohighlight">\(t_i\)</span> and
-<span class="math notranslate nohighlight">\(n_i\)</span> is the number of assets at risk just prior to <span class="math notranslate nohighlight">\(t_i\)</span>.</p>
-<p>The variance estimation is obtained by:</p>
-<div class="math notranslate nohighlight">
-\[\widehat{Var}[\hat{H}(t)] = \sum_{i: t_i \leq t} \frac{d_i}{n_i^2}\]</div>
-<p>Note that the alternative survivor function estimate:</p>
-<div class="math notranslate nohighlight">
-\[\tilde{S}(t) = \exp{(-\hat{H}(t))}\]</div>
-<p>is sometimes suggested for the continuous-time case.</p>
+<dt class="sig sig-object py" id="relife2.OneCycleRunToFailure">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">OneCycleRunToFailure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nb_assets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/policy.html#OneCycleRunToFailure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.OneCycleRunToFailure" title="Link to this definition">#</a></dt>
+<dd><p>One cyle run-to-failure policy</p>
+<p>A policy for running assets to failure within one cycle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>model</strong><span class="classifier">LifetimeModel</span></dt><dd><p>The lifetime model of the assets.</p>
+</dd>
+<dt><strong>cf</strong><span class="classifier">np.ndarray of shape</span></dt><dd><p>The cost function array.</p>
+</dd>
+<dt><strong>discount_rate</strong><span class="classifier">NDArray[np.float64]</span></dt><dd><p>The discount rate array.</p>
+</dd>
+<dt><strong>model_args</strong><span class="classifier">ModelArgs, optional</span></dt><dd><p>Additional arguments for the model.</p>
+</dd>
+<dt><strong>nb_assets</strong><span class="classifier">int, optional</span></dt><dd><p>Number of assets (default is 1).</p>
+</dd>
+<dt><strong>a0</strong><span class="classifier">Optional[NDArray[np.float64]], optional</span></dt><dd><p>Initial condition array (default is None).</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <p class="rubric">References</p>
 <div role="list" class="citation-list">
-<div class="citation" id="re93c3f48c895-1" role="doc-biblioentry">
+<div class="citation" id="r684903bfe21e-1" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<p>Lawless, J. F. (2011). Statistical models and methods for lifetime
-data. John Wiley &amp; Sons.</p>
+<p>Coolen-Schrijner, P., &amp; Coolen, F. P. A. (2006). On optimality
+criteria for age replacement. Proceedings of the Institution of
+Mechanical Engineers, Part O: Journal of Risk and Reliability,
+220(1), 21-29</p>
 </div>
 </div>
 <p class="rubric">Methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.NelsonAalen.chf" title="relife2.NelsonAalen.chf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chf</span></code></a></p></td>
-<td><p>Cumulative hazard function.</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">asymptotic_expected_equivalent_annual_cost</span></code></p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#relife2.NelsonAalen.fit" title="relife2.NelsonAalen.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a></p></td>
-<td><p>Compute the non-parametric estimations with respect to lifetime data.</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">asymptotic_expected_total_cost</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">expected_equivalent_annual_cost</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.OneCycleRunToFailure.expected_total_cost" title="relife2.OneCycleRunToFailure.expected_total_cost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expected_total_cost</span></code></a></p></td>
+<td><p>warning: tf &gt; 0, period &gt; 0, dt is deduced from period and is &lt; 0.5</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample</span></code></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -540,55 +552,22 @@ data. John Wiley &amp; Sons.</p>
 <p class="rubric">Attributes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">discount</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimates</span></code></p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">model1</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reward</span></code></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.NelsonAalen.chf">
-<span class="sig-name descname"><span class="pre">chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/nonparametric.html#NelsonAalen.chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.NelsonAalen.chf" title="Link to this definition">#</a></dt>
-<dd><p>Cumulative hazard function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, )</span></dt><dd><p>The times at which to estimate the cumulative hazard function.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>np.ndarray of shape (n, )</dt><dd><p>The estimated cumulative hazard values at each time.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="relife2.NelsonAalen.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">departure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/nonparametric.html#NelsonAalen.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.NelsonAalen.fit" title="Link to this definition">#</a></dt>
-<dd><p>Compute the non-parametric estimations with respect to lifetime data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong><span class="classifier">ndarray (1d or 2d)</span></dt><dd><p>Observed lifetime values.</p>
-</dd>
-<dt><strong>event</strong><span class="classifier">ndarray of boolean values (1d), default is None</span></dt><dd><p>Boolean indicators tagging lifetime values as right censored or complete.</p>
-</dd>
-<dt><strong>entry</strong><span class="classifier">ndarray of float (1d), default is None</span></dt><dd><p>Left truncations applied to lifetime values.</p>
-</dd>
-<dt><strong>departure</strong><span class="classifier">ndarray of float (1d), default is None</span></dt><dd><p>Right truncations applied to lifetime values.</p>
-</dd>
-<dt><strong>inplace</strong><span class="classifier">boolean, default is True</span></dt><dd><p>If true, estimations are stored in the object</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="relife2.OneCycleRunToFailure.expected_total_cost">
+<span class="sig-name descname"><span class="pre">expected_total_cost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/policy.html#OneCycleRunToFailure.expected_total_cost"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.OneCycleRunToFailure.expected_total_cost" title="Link to this definition">#</a></dt>
+<dd><p>warning: tf &gt; 0, period &gt; 0, dt is deduced from period and is &lt; 0.5</p>
 </dd></dl>
 
 </dd></dl>
@@ -605,7 +584,7 @@ data. John Wiley &amp; Sons.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="relife2.KaplanMeier.html"
+       href="relife2.OneCycleAgeReplacementPolicy.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -614,7 +593,7 @@ data. John Wiley &amp; Sons.</p>
       </div>
     </a>
     <a class="right-next"
-       href="relife2.Turnbull.html"
+       href="relife2.RunToFailure.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -636,7 +615,7 @@ data. John Wiley &amp; Sons.</p>
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../_sources/api/nonparametric/relife2.NelsonAalen.rst.txt">
+    <a href="../../_sources/api/renewalpolicy/relife2.OneCycleRunToFailure.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>
@@ -650,8 +629,7 @@ data. John Wiley &amp; Sons.</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.NelsonAalen.chf"><code class="docutils literal notranslate"><span class="pre">NelsonAalen.chf()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.NelsonAalen.fit"><code class="docutils literal notranslate"><span class="pre">NelsonAalen.fit()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.OneCycleRunToFailure.expected_total_cost"><code class="docutils literal notranslate"><span class="pre">OneCycleRunToFailure.expected_total_cost()</span></code></a></li>
 </ul>
   </nav></div>
 

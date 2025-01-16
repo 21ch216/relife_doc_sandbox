@@ -1,6 +1,8 @@
 Future improvements
 ===================
 
+Information about the conception of ReLife and how to contribute.
+
 Work in progress
 ~~~~~~~~~~~~~~~~
 

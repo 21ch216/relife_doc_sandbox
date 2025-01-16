@@ -1,6 +1,8 @@
 Contributor's guide
 ===================
 
+Information about the conception of ReLife and how to contribute.
+
 Saw a typo in the documentation? Want to improve
 existing functionalities? The contributing guidelines will guide
 you through the process of improving ReLife.
