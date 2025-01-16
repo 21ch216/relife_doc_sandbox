@@ -1,0 +1,46 @@
+﻿relife2.LikelihoodFromLifetimes
+===============================
+
+
+
+
+.. currentmodule:: relife2
+
+.. autoclass:: LikelihoodFromLifetimes
+    :members:
+    :inherited-members:
+    :exclude-members: __init__, __new__
+
+    ==================
+    Methods
+    ==================
+
+    .. autosummary::
+        :nosignatures:
+
+    
+        
+        
+            ~LikelihoodFromLifetimes.jac_negative_log
+        
+        
+            ~LikelihoodFromLifetimes.negative_log
+        
+
+    ==================
+    Attributes
+    ==================
+
+    .. autosummary::
+        :nosignatures:
+
+    
+        
+            ~LikelihoodFromLifetimes.hasjac
+        
+        
+            ~LikelihoodFromLifetimes.params
+        
+        
+            ~LikelihoodFromLifetimes.model
+        

@@ -1,0 +1,79 @@
+﻿relife2.LifetimeModel
+=====================
+
+
+
+
+.. currentmodule:: relife2
+
+.. autoclass:: LifetimeModel
+    :members:
+    :inherited-members:
+    :exclude-members: __init__, __new__
+
+    ==================
+    Methods
+    ==================
+
+    .. autosummary::
+        :nosignatures:
+
+    
+        
+        
+            ~LifetimeModel.cdf
+        
+        
+            ~LifetimeModel.chf
+        
+        
+            ~LifetimeModel.hf
+        
+        
+            ~LifetimeModel.ichf
+        
+        
+            ~LifetimeModel.isf
+        
+        
+            ~LifetimeModel.ls_integrate
+        
+        
+            ~LifetimeModel.mean
+        
+        
+            ~LifetimeModel.median
+        
+        
+            ~LifetimeModel.moment
+        
+        
+            ~LifetimeModel.mrl
+        
+        
+            ~LifetimeModel.pdf
+        
+        
+            ~LifetimeModel.ppf
+        
+        
+            ~LifetimeModel.rvs
+        
+        
+            ~LifetimeModel.sf
+        
+        
+            ~LifetimeModel.var
+        
+
+    ==================
+    Attributes
+    ==================
+
+    .. autosummary::
+        :nosignatures:
+
+    
+        
+            ~LifetimeModel.plot
+        

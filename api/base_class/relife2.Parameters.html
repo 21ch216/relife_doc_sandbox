@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>relife2.KaplanMeier &#8212; ReLife</title>
+    <title>relife2.Parameters &#8212; ReLife</title>
   
   
   
@@ -47,12 +47,12 @@
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/nonparametric/relife2.KaplanMeier';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/base_class/relife2.Parameters';</script>
     <script src="../../_static/custom-icon.js?v=74687d30"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="relife2.NelsonAalen" href="relife2.NelsonAalen.html" />
-    <link rel="prev" title="relife2.ECDF" href="relife2.ECDF.html" />
+    <link rel="next" title="relife2.ParametricModel" href="relife2.ParametricModel.html" />
+    <link rel="prev" title="relife2.LifetimeModel" href="relife2.LifetimeModel.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -409,15 +409,15 @@
 </ul></details></li><li class="toctree-l0 has-children"><details><summary><p aria-level="2" class="caption" role="heading"><span class="caption-text">Lifetime regression models</span></p><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../regression/relife2.ProportionalHazard.html">relife2.ProportionalHazard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../regression/relife2.AFT.html">relife2.AFT</a></li>
-</ul></details></li><li class="toctree-l0 has-children"><details open><summary><p aria-level="2" class="caption" role="heading"><span class="caption-text">Non parametric lifetime estimators</span></p><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="relife2.ECDF.html">relife2.ECDF</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">relife2.KaplanMeier</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relife2.NelsonAalen.html">relife2.NelsonAalen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relife2.Turnbull.html">relife2.Turnbull</a></li>
+</ul></details></li><li class="toctree-l0 has-children"><details><summary><p aria-level="2" class="caption" role="heading"><span class="caption-text">Non parametric lifetime estimators</span></p><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.ECDF.html">relife2.ECDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.KaplanMeier.html">relife2.KaplanMeier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.NelsonAalen.html">relife2.NelsonAalen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.Turnbull.html">relife2.Turnbull</a></li>
 </ul></details></li><li class="toctree-l0 has-children"><details><summary><p aria-level="2" class="caption" role="heading"><span class="caption-text">Likelihoods</span></p><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../likelihood/relife2.LikelihoodFromLifetimes.html">relife2.LikelihoodFromLifetimes</a></li>
 </ul></details></li><li class="toctree-l0 has-children"><details><summary><p aria-level="2" class="caption" role="heading"><span class="caption-text">Base class</span></p><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../base_class/relife2.LifetimeModel.html">relife2.LifetimeModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relife2.LifetimeModel.html">relife2.LifetimeModel</a></li>
 </ul></details></li></ul></div>
 </nav></div>
     </div>
@@ -455,7 +455,7 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">API</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">relife2.KaplanMeier</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">relife2.Parameters</span></li>
   </ul>
 </nav>
 </div>
@@ -472,39 +472,46 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="relife2-kaplanmeier">
-<h1>relife2.KaplanMeier<a class="headerlink" href="#relife2-kaplanmeier" title="Link to this heading">#</a></h1>
+  <section id="relife2-parameters">
+<h1>relife2.Parameters<a class="headerlink" href="#relife2-parameters" title="Link to this heading">#</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="relife2.KaplanMeier">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">KaplanMeier</span></span><a class="reference internal" href="../../_modules/relife2/nonparametric.html#KaplanMeier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.KaplanMeier" title="Link to this definition">#</a></dt>
-<dd><section id="methods">
+<dt class="sig sig-object py" id="relife2.Parameters">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">Parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#Parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Parameters" title="Link to this definition">#</a></dt>
+<dd><p>Tree-structured parameters.</p>
+<p>Every <code class="docutils literal notranslate"><span class="pre">ParametricModel</span></code> are composed of <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> instance.</p>
+<section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h2>
-<p class="rubric">Survival functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.KaplanMeier.sf" title="relife2.KaplanMeier.sf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sf</span></code></a></p></td>
-<td><p>Survival function.</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_items</span></code></p></td>
+<td><p></p></td>
 </tr>
-</tbody>
-</table>
-</div>
-<p class="rubric">Probability functions</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-</tbody>
-</table>
-</div>
-<p class="rubric">Statistics</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-</tbody>
-</table>
-</div>
-<p class="rubric">Other methods</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.KaplanMeier.fit" title="relife2.KaplanMeier.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a></p></td>
-<td><p>Compute the non-parametric estimations with respect to lifetime data.</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">del_leaf</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_leaf</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Parameters.items_walk" title="relife2.Parameters.items_walk"><code class="xref py py-obj docutils literal notranslate"><span class="pre">items_walk</span></code></a></p></td>
+<td><p>parallel walk through key value pairs</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_leaf</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_names</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_values</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Parameters.update" title="relife2.Parameters.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a></p></td>
+<td><p>update names and values of current and parent nodes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Parameters.update_items" title="relife2.Parameters.update_items"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_items</span></code></a></p></td>
+<td><p>parallel iterations : faster than update_value followed by update_keys</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_parents</span></code></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -514,53 +521,52 @@
 <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Parameters.names" title="relife2.Parameters.names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">names</span></code></a></p></td>
+<td><p>keys of current and leaf nodes as list</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimates</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.Parameters.node_data" title="relife2.Parameters.node_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_data</span></code></a></p></td>
+<td><p>data of current node as dict</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.Parameters.values" title="relife2.Parameters.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a></p></td>
+<td><p>values of current and leaf nodes as list</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.KaplanMeier.fit">
-<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">departure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/nonparametric.html#KaplanMeier.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.KaplanMeier.fit" title="Link to this definition">#</a></dt>
-<dd><p>Compute the non-parametric estimations with respect to lifetime data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong><span class="classifier">ndarray (1d or 2d)</span></dt><dd><p>Observed lifetime values.</p>
-</dd>
-<dt><strong>event</strong><span class="classifier">ndarray of boolean values (1d), default is None</span></dt><dd><p>Boolean indicators tagging lifetime values as right censored or complete.</p>
-</dd>
-<dt><strong>entry</strong><span class="classifier">ndarray of float (1d), default is None</span></dt><dd><p>Left truncations applied to lifetime values.</p>
-</dd>
-<dt><strong>departure</strong><span class="classifier">ndarray of float (1d), default is None</span></dt><dd><p>Right truncations applied to lifetime values.</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="relife2.Parameters.items_walk">
+<span class="sig-name descname"><span class="pre">items_walk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#Parameters.items_walk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Parameters.items_walk" title="Link to this definition">#</a></dt>
+<dd><p>parallel walk through key value pairs</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="relife2.Parameters.names">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">names</span></span><a class="headerlink" href="#relife2.Parameters.names" title="Link to this definition">#</a></dt>
+<dd><p>keys of current and leaf nodes as list</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="relife2.Parameters.node_data">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">node_data</span></span><a class="headerlink" href="#relife2.Parameters.node_data" title="Link to this definition">#</a></dt>
+<dd><p>data of current node as dict</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.KaplanMeier.sf">
-<span class="sig-name descname"><span class="pre">sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/nonparametric.html#KaplanMeier.sf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.KaplanMeier.sf" title="Link to this definition">#</a></dt>
-<dd><p>Survival function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>time</strong><span class="classifier">np.ndarray of shape (n, )</span></dt><dd><p>The times at which to estimate the survival function.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>np.ndarray of shape (n, )</dt><dd><p>The estimated survival probabilities at each time.</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="relife2.Parameters.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#Parameters.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Parameters.update" title="Link to this definition">#</a></dt>
+<dd><p>update names and values of current and parent nodes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.Parameters.update_items">
+<span class="sig-name descname"><span class="pre">update_items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#Parameters.update_items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.Parameters.update_items" title="Link to this definition">#</a></dt>
+<dd><p>parallel iterations : faster than update_value followed by update_keys</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="relife2.Parameters.values">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">values</span></span><a class="headerlink" href="#relife2.Parameters.values" title="Link to this definition">#</a></dt>
+<dd><p>values of current and leaf nodes as list</p>
 </dd></dl>
 
 </section>
@@ -579,20 +585,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="relife2.ECDF.html"
+       href="relife2.LifetimeModel.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">relife2.ECDF</p>
+        <p class="prev-next-title">relife2.LifetimeModel</p>
       </div>
     </a>
     <a class="right-next"
-       href="relife2.NelsonAalen.html"
+       href="relife2.ParametricModel.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">relife2.NelsonAalen</p>
+        <p class="prev-next-title">relife2.ParametricModel</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -615,9 +621,13 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.KaplanMeier"><code class="docutils literal notranslate"><span class="pre">KaplanMeier</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.KaplanMeier.fit"><code class="docutils literal notranslate"><span class="pre">KaplanMeier.fit()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.KaplanMeier.sf"><code class="docutils literal notranslate"><span class="pre">KaplanMeier.sf()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Parameters"><code class="docutils literal notranslate"><span class="pre">Parameters</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Parameters.items_walk"><code class="docutils literal notranslate"><span class="pre">Parameters.items_walk()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Parameters.names"><code class="docutils literal notranslate"><span class="pre">Parameters.names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Parameters.node_data"><code class="docutils literal notranslate"><span class="pre">Parameters.node_data</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Parameters.update"><code class="docutils literal notranslate"><span class="pre">Parameters.update()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Parameters.update_items"><code class="docutils literal notranslate"><span class="pre">Parameters.update_items()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Parameters.values"><code class="docutils literal notranslate"><span class="pre">Parameters.values</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -626,7 +636,7 @@
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../_sources/api/nonparametric/relife2.KaplanMeier.rst.txt">
+    <a href="../../_sources/api/base_class/relife2.Parameters.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

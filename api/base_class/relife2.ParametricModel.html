@@ -30,7 +30,7 @@
   <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -47,12 +47,12 @@
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/model/relife2.ParametricModel';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/base_class/relife2.ParametricModel';</script>
     <script src="../../_static/custom-icon.js?v=74687d30"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="relife2.ParametricLifetimeModel" href="relife2.ParametricLifetimeModel.html" />
-    <link rel="prev" title="relife2.Turnbull" href="../nonparametric/relife2.Turnbull.html" />
+    <link rel="prev" title="relife2.Parameters" href="relife2.Parameters.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -141,6 +141,13 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../installation/index.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../get_started.html">
     Get started
   </a>
@@ -154,9 +161,9 @@
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../learn/index.html">
-    Learn
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API
   </a>
 </li>
 
@@ -166,9 +173,9 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-<li class=" current active">
-  <a class="nav-link dropdown-item nav-internal" href="../index.html">
-    API
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../learn/index.html">
+    Learn
   </a>
 </li>
 
@@ -176,6 +183,13 @@
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../contributor_guide/index.html">
     Contributor’s guide
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../future/index.html">
+    Future improvements
   </a>
 </li>
 
@@ -284,6 +298,13 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../installation/index.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../get_started.html">
     Get started
   </a>
@@ -297,13 +318,6 @@
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../learn/index.html">
-    Learn
-  </a>
-</li>
-
-
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="../index.html">
     API
@@ -312,8 +326,22 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../learn/index.html">
+    Learn
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../contributor_guide/index.html">
     Contributor’s guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../future/index.html">
+    Future improvements
   </a>
 </li>
 
@@ -372,32 +400,25 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Lifetime distribution models</span></p>
-<ul class="nav bd-sidenav">
+  <div class="bd-toc-item navbar-nav"><ul class="list-caption"><li class="toctree-l0 has-children"><details><summary><p aria-level="2" class="caption" role="heading"><span class="caption-text">Lifetime distribution models</span></p><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../distribution/relife2.Exponential.html">relife2.Exponential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../distribution/relife2.Weibull.html">relife2.Weibull</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../distribution/relife2.Gompertz.html">relife2.Gompertz</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../distribution/relife2.Gamma.html">relife2.Gamma</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../distribution/relife2.LogLogistic.html">relife2.LogLogistic</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lifetime regression models</span></p>
-<ul class="nav bd-sidenav">
+</ul></details></li><li class="toctree-l0 has-children"><details><summary><p aria-level="2" class="caption" role="heading"><span class="caption-text">Lifetime regression models</span></p><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../regression/relife2.ProportionalHazard.html">relife2.ProportionalHazard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../regression/relife2.AFT.html">relife2.AFT</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Non parametric lifetime estimators</span></p>
-<ul class="nav bd-sidenav">
+</ul></details></li><li class="toctree-l0 has-children"><details><summary><p aria-level="2" class="caption" role="heading"><span class="caption-text">Non parametric lifetime estimators</span></p><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.ECDF.html">relife2.ECDF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.KaplanMeier.html">relife2.KaplanMeier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.NelsonAalen.html">relife2.NelsonAalen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../nonparametric/relife2.Turnbull.html">relife2.Turnbull</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Base models</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">relife2.ParametricModel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relife2.ParametricLifetimeModel.html">relife2.ParametricLifetimeModel</a></li>
-</ul>
-</div>
+</ul></details></li><li class="toctree-l0 has-children"><details><summary><p aria-level="2" class="caption" role="heading"><span class="caption-text">Likelihoods</span></p><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../likelihood/relife2.LikelihoodFromLifetimes.html">relife2.LikelihoodFromLifetimes</a></li>
+</ul></details></li><li class="toctree-l0 has-children"><details><summary><p aria-level="2" class="caption" role="heading"><span class="caption-text">Base class</span></p><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="relife2.LifetimeModel.html">relife2.LifetimeModel</a></li>
+</ul></details></li></ul></div>
 </nav></div>
     </div>
   
@@ -456,31 +477,20 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="relife2.ParametricModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">ParametricModel</span></span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#ParametricModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ParametricModel" title="Link to this definition">#</a></dt>
-<dd><section id="methods">
+<dd><p>Base class to create a parametric model.</p>
+<p>Any parametric model must inherit from <cite>ParametricModel</cite>.</p>
+<section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h2>
-<p class="rubric">Survival functions</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-</tbody>
-</table>
-</div>
-<p class="rubric">Probability functions</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-</tbody>
-</table>
-</div>
-<p class="rubric">Statistics</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-</tbody>
-</table>
-</div>
-<p class="rubric">Other methods</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ParametricModel.copy" title="relife2.ParametricModel.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a></p></td>
-<td><p>Copy object.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ParametricModel.compose_with" title="relife2.ParametricModel.compose_with"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compose_with</span></code></a></p></td>
+<td><p>Compose with new <code class="docutils literal notranslate"><span class="pre">ParametricModel</span></code> instance(s).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.ParametricModel.copy" title="relife2.ParametricModel.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a></p></td>
+<td><p>Copy current instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.ParametricModel.new_params" title="relife2.ParametricModel.new_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">new_params</span></code></a></p></td>
+<td><p>Change local parameters structure.</p></td>
 </tr>
 </tbody>
 </table>
@@ -503,13 +513,40 @@
 </table>
 </div>
 <dl class="py method">
+<dt class="sig sig-object py" id="relife2.ParametricModel.compose_with">
+<span class="sig-name descname"><span class="pre">compose_with</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwcomponents</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#ParametricModel.compose_with"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ParametricModel.compose_with" title="Link to this definition">#</a></dt>
+<dd><p>Compose with new <code class="docutils literal notranslate"><span class="pre">ParametricModel</span></code> instance(s).</p>
+<p>This method must be seen as standard function composition exept that objects are not
+functions but group of functions (as object encapsulates functions). When you
+compose your <code class="docutils literal notranslate"><span class="pre">ParametricModel</span></code> instance with new one(s), the followings happen :</p>
+<ul class="simple">
+<li><p>each new parameters are added to the current <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> instance</p></li>
+<li><p>each new <cite>ParametricModel</cite> instance is accessible as a standard attribute</p></li>
+</ul>
+<p>Like so, you can request new <cite>ParametricModel</cite> components in current <cite>ParametricModel</cite>
+instance while setting and getting all parameters. This is usefull when <cite>ParametricModel</cite>
+can be seen as a nested function (see <cite>Regression</cite>).</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>**kwcomponents</strong><span class="classifier">variadic named <code class="docutils literal notranslate"><span class="pre">ParametricModel</span></code> instance</span></dt><dd><p>Instance names (keys) are followed by the instances themself (values).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If one wants to pass a <cite>dict</cite> of key-value, make sure to unpack the dict
+with <cite>**</cite> operator or you will get a nasty <cite>TypeError</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="relife2.ParametricModel.copy">
 <span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#ParametricModel.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ParametricModel.copy" title="Link to this definition">#</a></dt>
-<dd><p>Copy object.</p>
+<dd><p>Copy current instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>A independant copied instance.</dt><dd></dd>
+<dt>An independant copied instance.</dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -522,11 +559,32 @@
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>int</dt><dd><p>Number of parameters</p>
+<dt>int</dt><dd><p>Number of parameters.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.ParametricModel.new_params">
+<span class="sig-name descname"><span class="pre">new_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwparams</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#ParametricModel.new_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.ParametricModel.new_params" title="Link to this definition">#</a></dt>
+<dd><p>Change local parameters structure.</p>
+<p>This method only affects <strong>local</strong> parameters. <cite>ParametricModel</cite> components are not
+affected. This is usefull when one wants to change model parameters for any reason. For
+instance <cite>Regression</cite> models use <cite>new_params</cite> to change number of regression coefficients
+depending on the number of covariates that are passed to the <cite>fit</cite> method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**kwparams</strong><span class="classifier">variadic named floats corresponding to new parameters</span></dt><dd><p>Float names (keys) are followed by float instances (values).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If one wants to pass a <cite>dict</cite> of key-value, make sure to unpack the dict
+with <cite>**</cite> operator or you will get a nasty <cite>TypeError</cite>.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -536,15 +594,15 @@
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt>ndarray of float</dt><dd><p>Parameters values of the model</p>
+<dt>ndarray</dt><dd><p>Parameters values of the model</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
 <p>If parameter values are not set, they are encoded as <cite>np.nan</cite> value.</p>
-<p>Parameters can be set with <cite>params</cite> setter, fitting the model if <cite>fit</cite> exists or specifying
-all parameters values when the model object is initialized.</p>
+<p>Parameters can be by manually setting`params` through its setter, fitting the model if <cite>fit</cite> exists or
+by specifying all parameters values when the model object is initialized.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -560,7 +618,7 @@ all parameters values when the model object is initialized.</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>Parameters can be get by their name at instance level.</p>
+<p>Parameters values can be requested (a.k.a. get) by their name at instance level.</p>
 </dd></dl>
 
 </section>
@@ -579,12 +637,12 @@ all parameters values when the model object is initialized.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../nonparametric/relife2.Turnbull.html"
+       href="relife2.Parameters.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">relife2.Turnbull</p>
+        <p class="prev-next-title">relife2.Parameters</p>
       </div>
     </a>
     <a class="right-next"
@@ -616,8 +674,10 @@ all parameters values when the model object is initialized.</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ParametricModel"><code class="docutils literal notranslate"><span class="pre">ParametricModel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ParametricModel.compose_with"><code class="docutils literal notranslate"><span class="pre">ParametricModel.compose_with()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ParametricModel.copy"><code class="docutils literal notranslate"><span class="pre">ParametricModel.copy()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ParametricModel.nb_params"><code class="docutils literal notranslate"><span class="pre">ParametricModel.nb_params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ParametricModel.new_params"><code class="docutils literal notranslate"><span class="pre">ParametricModel.new_params()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ParametricModel.params"><code class="docutils literal notranslate"><span class="pre">ParametricModel.params</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.ParametricModel.params_names"><code class="docutils literal notranslate"><span class="pre">ParametricModel.params_names</span></code></a></li>
 </ul>
@@ -628,7 +688,7 @@ all parameters values when the model object is initialized.</p>
   <div class="sidebar-secondary-item">
 
   <div class="tocsection sourcelink">
-    <a href="../../_sources/api/model/relife2.ParametricModel.rst.txt">
+    <a href="../../_sources/api/base_class/relife2.ParametricModel.rst.txt">
       <i class="fa-solid fa-file-lines"></i> Show Source
     </a>
   </div>

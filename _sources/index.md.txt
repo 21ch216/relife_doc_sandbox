@@ -22,14 +22,76 @@ ReLife is coded in Python and was designed to be accessible for user from any pr
 :::
 ::::
 
+## Installation
 
-## They support us
+First things firts, how to install ReLife on your machine ?
+
+```{toctree}
+:maxdepth: 2
+installation/index
+```
+
+## Get started
+
+Information about installation and examples of basic functionnalities.
+
+```{toctree}
+:maxdepth: 2
+get_started
+```
+
+## User Guide
+
+Practical tutorials that shows how to use ReLife functionalities in-depth.
+
+```{toctree}
+:maxdepth: 2
+user_guide/index
+```
+
+## API
+
+The content of the exposed ReLife API.
+
+```{toctree}
+:maxdepth: 2
+api/index
+```
+
+## Learn
+
+If you're new to fiability and renewal theory but you have some maths knowledge, try to learn more about this field
+of statistics.
+
+```{toctree}
+:maxdepth: 2
+learn/index
+```
+
+## Contributor's guide
+
+Information about the conception of ReLife and how to contribute.
+
+```{toctree}
+:maxdepth: 2
+contributor_guide/index
+```
+
+## Future improvements
+
+Information about the conception of ReLife and how to contribute.
+
+```{toctree}
+:maxdepth: 2
+future/index
+```
+
+
+## Supported by
 
 ::::{card-carousel} 3
 
 :::{card}
-:img-background: _static/RTE_logo.png
-:link: https://www.rte-france.com/
 :class-card: sd-border-0
 :width: 25%
 :shadow: none
@@ -61,50 +123,3 @@ ReLife is coded in Python and was designed to be accessible for user from any pr
 :::
 
 ::::
-
-
-## Get started
-
-Information about installation and examples of basic functionnalities.
-
-```{toctree}
-:maxdepth: 2
-get_started
-```
-
-## User Guide
-
-Practical tutorials that shows how to use ReLife functionalities in-depth.
-
-```{toctree}
-:maxdepth: 2
-user_guide/index
-```
-
-## Learn
-
-If you're new to fiability and renewal theory but you have some maths knowledge, try to learn more about this field
-of statistics.
-
-```{toctree}
-:maxdepth: 2
-learn/index
-```
-
-## API
-
-The content of the exposed ReLife API.
-
-```{toctree}
-:maxdepth: 2
-api/index
-```
-
-## Contributor's guide
-
-Information about the conception of ReLife and how to contribute.
-
-```{toctree}
-:maxdepth: 2
-contributor_guide/index
-```
