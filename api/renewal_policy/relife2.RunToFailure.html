@@ -538,11 +538,11 @@ the Engineering and Informational Sciences, 22(1), 53-74.</p>
 <p class="rubric">Methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">asymptotic_expected_equivalent_annual_cost</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.RunToFailure.asymptotic_expected_equivalent_annual_cost" title="relife2.RunToFailure.asymptotic_expected_equivalent_annual_cost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asymptotic_expected_equivalent_annual_cost</span></code></a></p></td>
+<td><p>The asymptotic expected equivalent annual cost.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">asymptotic_expected_total_cost</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.RunToFailure.asymptotic_expected_total_cost" title="relife2.RunToFailure.asymptotic_expected_total_cost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">asymptotic_expected_total_cost</span></code></a></p></td>
+<td><p>The asymptotic expected total cost.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#relife2.RunToFailure.expected_equivalent_annual_cost" title="relife2.RunToFailure.expected_equivalent_annual_cost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expected_equivalent_annual_cost</span></code></a></p></td>
 <td><p>The expected equivalent annual cost.</p></td>
@@ -557,7 +557,7 @@ the Engineering and Informational Sciences, 22(1), 53-74.</p>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#relife2.RunToFailure.expected_total_cost" title="relife2.RunToFailure.expected_total_cost"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expected_total_cost</span></code></a></p></td>
-<td><p>The expected total discounted cost.</p></td>
+<td><p>The expected total cost.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#relife2.RunToFailure.sample" title="relife2.RunToFailure.sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample</span></code></a></p></td>
 <td><p>Sample simulation .</p></td>
@@ -578,6 +578,34 @@ the Engineering and Informational Sciences, 22(1), 53-74.</p>
 </table>
 </div>
 <dl class="py method">
+<dt class="sig sig-object py" id="relife2.RunToFailure.asymptotic_expected_equivalent_annual_cost">
+<span class="sig-name descname"><span class="pre">asymptotic_expected_equivalent_annual_cost</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/policy.html#RunToFailure.asymptotic_expected_equivalent_annual_cost"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.RunToFailure.asymptotic_expected_equivalent_annual_cost" title="Link to this definition">#</a></dt>
+<dd><p>The asymptotic expected equivalent annual cost.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ndarray</dt><dd><p>The asymptotic expected equivalent annual cost.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relife2.RunToFailure.asymptotic_expected_total_cost">
+<span class="sig-name descname"><span class="pre">asymptotic_expected_total_cost</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/policy.html#RunToFailure.asymptotic_expected_total_cost"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.RunToFailure.asymptotic_expected_total_cost" title="Link to this definition">#</a></dt>
+<dd><p>The asymptotic expected total cost.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ndarray</dt><dd><p>The asymptotic expected total cost for each asset.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="relife2.RunToFailure.expected_equivalent_annual_cost">
 <span class="sig-name descname"><span class="pre">expected_equivalent_annual_cost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/policy.html#RunToFailure.expected_equivalent_annual_cost"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.RunToFailure.expected_equivalent_annual_cost" title="Link to this definition">#</a></dt>
 <dd><p>The expected equivalent annual cost.</p>
@@ -590,7 +618,7 @@ the Engineering and Informational Sciences, 22(1), 53-74.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>ndarray</dt><dd><p>Expected values along the timeline</p>
+<dt>ndarray</dt><dd><p>The expected equivalent annual cost until each time point</p>
 </dd>
 </dl>
 </dd>
@@ -600,8 +628,7 @@ the Engineering and Informational Sciences, 22(1), 53-74.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.RunToFailure.expected_total_cost">
 <span class="sig-name descname"><span class="pre">expected_total_cost</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeline</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/policy.html#RunToFailure.expected_total_cost"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.RunToFailure.expected_total_cost" title="Link to this definition">#</a></dt>
-<dd><p>The expected total discounted cost.</p>
-<p>It is computed bu solving the renewal equation.</p>
+<dd><p>The expected total cost.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -611,8 +638,7 @@ the Engineering and Informational Sciences, 22(1), 53-74.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>ndarray</dt><dd><p>Expected values along the timeline</p>
-</dd>
+<dt>The expected total cost for each asset along the timeline</dt><dd></dd>
 </dl>
 </dd>
 </dl>
