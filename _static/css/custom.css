@@ -62,6 +62,7 @@ html[data-theme="light"] {
     // links
     --pst-color-link: var(--pst-color-primary);
     --pst-color-link-hover: var(--pst-color-secondary);
+    --pst-color-table-row-hover: var(--pst-color-secondary);
 
     // inline code
     --pst-color-inline-code: rgb(232, 62, 140);
