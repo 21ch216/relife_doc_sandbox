@@ -16,23 +16,6 @@ a {
     text-decoration: none;
 }
 
-
-/* remove hover color on tables, see https://github.com/pydata/pydata-sphinx-theme/issues/1855 */
-table.indextable.genindextable {
-    border: none !important;
-}
-
-table.indextable.genindextable td {
-    border-left: none !important;
-}
-
-table.indextable.genindextable tr {
-    background-color: inherit !important;
-}
-
-
-
-
 /*******************************************************************************
 * light theme
 *
