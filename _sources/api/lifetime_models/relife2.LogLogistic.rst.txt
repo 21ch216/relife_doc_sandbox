@@ -5,6 +5,9 @@
 
 
 
+LogLogistic
+===========
+
 .. currentmodule:: relife2
 
 .. autoclass:: LogLogistic

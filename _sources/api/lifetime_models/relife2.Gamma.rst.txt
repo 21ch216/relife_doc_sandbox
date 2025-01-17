@@ -5,9 +5,12 @@
 
 
 
+Gamma
+=====
+
 .. currentmodule:: relife2
 
-.. autoclass:: ProportionalHazard
+.. autoclass:: Gamma
     :members:
     :inherited-members:
     :exclude-members: __init__, __new__, compose_with, new_params, init_params, params_bounds
@@ -23,46 +26,46 @@
         
         
         
-            ~ProportionalHazard.chf
+            ~Gamma.chf
         
         
         
         
-            ~ProportionalHazard.dhf
+            ~Gamma.dhf
         
         
         
-            ~ProportionalHazard.hf
+            ~Gamma.hf
         
         
-            ~ProportionalHazard.ichf
-        
-        
-        
-            ~ProportionalHazard.isf
+            ~Gamma.ichf
         
         
         
-            ~ProportionalHazard.jac_chf
-        
-        
-            ~ProportionalHazard.jac_hf
+            ~Gamma.isf
         
         
         
+            ~Gamma.jac_chf
         
         
-        
-        
-        
-            ~ProportionalHazard.mrl
+            ~Gamma.jac_hf
         
         
         
         
         
         
-            ~ProportionalHazard.sf
+        
+        
+            ~Gamma.mrl
+        
+        
+        
+        
+        
+        
+            ~Gamma.sf
         
         
 
@@ -72,7 +75,7 @@
     
         
         
-            ~ProportionalHazard.cdf
+            ~Gamma.cdf
         
         
         
@@ -95,10 +98,10 @@
         
         
         
-            ~ProportionalHazard.pdf
+            ~Gamma.pdf
         
         
-            ~ProportionalHazard.ppf
+            ~Gamma.ppf
         
         
         
@@ -128,22 +131,22 @@
         
         
         
-            ~ProportionalHazard.mean
+            ~Gamma.mean
         
         
-            ~ProportionalHazard.median
+            ~Gamma.median
         
         
-            ~ProportionalHazard.moment
-        
-        
-        
+            ~Gamma.moment
         
         
         
         
         
-            ~ProportionalHazard.var
+        
+        
+        
+            ~Gamma.var
         
 
     **Other methods**
@@ -157,39 +160,39 @@
         
         
         
-            ~ProportionalHazard.copy
+            ~Gamma.copy
         
         
         
-            ~ProportionalHazard.fit
-        
-        
-        
-        
-        
-        
-            ~ProportionalHazard.jac_cdf
-        
-        
-        
-        
-            ~ProportionalHazard.jac_pdf
-        
-        
-            ~ProportionalHazard.jac_sf
-        
-        
-            ~ProportionalHazard.ls_integrate
+            ~Gamma.fit
         
         
         
         
         
         
+            ~Gamma.jac_cdf
         
         
         
-            ~ProportionalHazard.rvs
+        
+            ~Gamma.jac_pdf
+        
+        
+            ~Gamma.jac_sf
+        
+        
+            ~Gamma.ls_integrate
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            ~Gamma.rvs
         
         
         
@@ -201,18 +204,18 @@
 
     
         
-            ~ProportionalHazard.nb_params
+            ~Gamma.nb_params
         
         
-            ~ProportionalHazard.params
+            ~Gamma.params
         
         
         
-            ~ProportionalHazard.params_names
+            ~Gamma.params_names
         
         
-            ~ProportionalHazard.plot
+            ~Gamma.plot
         
         
-            ~ProportionalHazard.fitting_results
+            ~Gamma.fitting_results
         

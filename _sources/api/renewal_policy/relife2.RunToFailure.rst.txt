@@ -1,6 +1,9 @@
 ﻿
 
 
+RunToFailure
+============
+
 .. currentmodule:: relife2
 
 .. autoclass:: RunToFailure

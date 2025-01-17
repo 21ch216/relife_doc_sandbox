@@ -1,6 +1,9 @@
 ﻿
 
 
+Parameters
+==========
+
 .. currentmodule:: relife2
 
 .. autoclass:: Parameters

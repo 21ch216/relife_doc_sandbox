@@ -5,9 +5,12 @@
 
 
 
+AFT
+===
+
 .. currentmodule:: relife2
 
-.. autoclass:: Gamma
+.. autoclass:: AFT
     :members:
     :inherited-members:
     :exclude-members: __init__, __new__, compose_with, new_params, init_params, params_bounds
@@ -23,46 +26,46 @@
         
         
         
-            ~Gamma.chf
+            ~AFT.chf
         
         
         
         
-            ~Gamma.dhf
+            ~AFT.dhf
         
         
         
-            ~Gamma.hf
+            ~AFT.hf
         
         
-            ~Gamma.ichf
-        
-        
-        
-            ~Gamma.isf
+            ~AFT.ichf
         
         
         
-            ~Gamma.jac_chf
-        
-        
-            ~Gamma.jac_hf
+            ~AFT.isf
         
         
         
+            ~AFT.jac_chf
         
         
-        
-        
-        
-            ~Gamma.mrl
+            ~AFT.jac_hf
         
         
         
         
         
         
-            ~Gamma.sf
+        
+        
+            ~AFT.mrl
+        
+        
+        
+        
+        
+        
+            ~AFT.sf
         
         
 
@@ -72,7 +75,7 @@
     
         
         
-            ~Gamma.cdf
+            ~AFT.cdf
         
         
         
@@ -95,10 +98,10 @@
         
         
         
-            ~Gamma.pdf
+            ~AFT.pdf
         
         
-            ~Gamma.ppf
+            ~AFT.ppf
         
         
         
@@ -128,22 +131,22 @@
         
         
         
-            ~Gamma.mean
+            ~AFT.mean
         
         
-            ~Gamma.median
+            ~AFT.median
         
         
-            ~Gamma.moment
-        
-        
-        
+            ~AFT.moment
         
         
         
         
         
-            ~Gamma.var
+        
+        
+        
+            ~AFT.var
         
 
     **Other methods**
@@ -157,39 +160,39 @@
         
         
         
-            ~Gamma.copy
+            ~AFT.copy
         
         
         
-            ~Gamma.fit
-        
-        
-        
-        
-        
-        
-            ~Gamma.jac_cdf
-        
-        
-        
-        
-            ~Gamma.jac_pdf
-        
-        
-            ~Gamma.jac_sf
-        
-        
-            ~Gamma.ls_integrate
+            ~AFT.fit
         
         
         
         
         
         
+            ~AFT.jac_cdf
         
         
         
-            ~Gamma.rvs
+        
+            ~AFT.jac_pdf
+        
+        
+            ~AFT.jac_sf
+        
+        
+            ~AFT.ls_integrate
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            ~AFT.rvs
         
         
         
@@ -201,18 +204,18 @@
 
     
         
-            ~Gamma.nb_params
+            ~AFT.nb_params
         
         
-            ~Gamma.params
+            ~AFT.params
         
         
         
-            ~Gamma.params_names
+            ~AFT.params_names
         
         
-            ~Gamma.plot
+            ~AFT.plot
         
         
-            ~Gamma.fitting_results
+            ~AFT.fitting_results
         

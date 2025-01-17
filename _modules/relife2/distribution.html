@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=d6b467a0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=4c74dcfe" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -91,9 +91,6 @@
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
-<aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content"><em>beta version</em> New ReLife documentation in progress</div>
-</aside>
 
   
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
@@ -659,7 +656,7 @@
 
 
 <div class="viewcode-block" id="Exponential">
-<a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Exponential.html#relife2.Exponential">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Exponential</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Exponential lifetime distribution.</span>
@@ -703,7 +700,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">new_params</span><span class="p">(</span><span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Exponential.hf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.hf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Exponential.html#relife2.Exponential.hf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Hazard function.</span>
 
@@ -725,7 +722,7 @@
 
 
 <div class="viewcode-block" id="Exponential.chf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.chf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Exponential.html#relife2.Exponential.chf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cumulative hazard function.</span>
 
@@ -749,7 +746,7 @@
 
 
 <div class="viewcode-block" id="Exponential.mean">
-<a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.mean">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Exponential.html#relife2.Exponential.mean">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mean of the distribution.</span>
@@ -767,7 +764,7 @@
 
 
 <div class="viewcode-block" id="Exponential.var">
-<a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.var">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Exponential.html#relife2.Exponential.var">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Variance of the distribution.</span>
@@ -781,7 +778,7 @@
 
 
 <div class="viewcode-block" id="Exponential.mrl">
-<a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.mrl">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Exponential.html#relife2.Exponential.mrl">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">mrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mean residual life.</span>
@@ -802,7 +799,7 @@
 
 
 <div class="viewcode-block" id="Exponential.ichf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.ichf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Exponential.html#relife2.Exponential.ichf">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">ichf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
@@ -825,7 +822,7 @@
 
 
 <div class="viewcode-block" id="Exponential.jac_hf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.jac_hf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Exponential.html#relife2.Exponential.jac_hf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the hazard function.</span>
 
@@ -845,7 +842,7 @@
 
 
 <div class="viewcode-block" id="Exponential.jac_chf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.jac_chf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Exponential.html#relife2.Exponential.jac_chf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the cumulative hazard function.</span>
 
@@ -865,7 +862,7 @@
 
 
 <div class="viewcode-block" id="Exponential.dhf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Exponential.html#relife2.Exponential.dhf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Exponential.html#relife2.Exponential.dhf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Derivative of the hazard function.</span>
 
@@ -887,7 +884,7 @@
 
 
 <div class="viewcode-block" id="Weibull">
-<a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Weibull.html#relife2.Weibull">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Weibull</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Weibull lifetime distribution.</span>
@@ -911,7 +908,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">new_params</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Weibull.hf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.hf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Weibull.html#relife2.Weibull.hf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Hazard function.</span>
 
@@ -933,7 +930,7 @@
 
 
 <div class="viewcode-block" id="Weibull.chf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.chf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Weibull.html#relife2.Weibull.chf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cumulative hazard function.</span>
 
@@ -957,7 +954,7 @@
 
 
 <div class="viewcode-block" id="Weibull.mean">
-<a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.mean">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Weibull.html#relife2.Weibull.mean">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mean of the distribution.</span>
@@ -975,7 +972,7 @@
 
 
 <div class="viewcode-block" id="Weibull.var">
-<a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.var">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Weibull.html#relife2.Weibull.var">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Variance of the distribution.</span>
@@ -989,7 +986,7 @@
 
 
 <div class="viewcode-block" id="Weibull.mrl">
-<a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.mrl">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Weibull.html#relife2.Weibull.mrl">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">mrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mean residual life.</span>
@@ -1017,7 +1014,7 @@
 
 
 <div class="viewcode-block" id="Weibull.ichf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.ichf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Weibull.html#relife2.Weibull.ichf">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">ichf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
@@ -1040,7 +1037,7 @@
 
 
 <div class="viewcode-block" id="Weibull.jac_hf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.jac_hf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Weibull.html#relife2.Weibull.jac_hf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the hazard function.</span>
 
@@ -1067,7 +1064,7 @@
 
 
 <div class="viewcode-block" id="Weibull.jac_chf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.jac_chf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Weibull.html#relife2.Weibull.jac_chf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the cumulative hazard function.</span>
 
@@ -1092,7 +1089,7 @@
 
 
 <div class="viewcode-block" id="Weibull.dhf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Weibull.html#relife2.Weibull.dhf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Weibull.html#relife2.Weibull.dhf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Derivative of the hazard function.</span>
 
@@ -1119,7 +1116,7 @@
 
 
 <div class="viewcode-block" id="Gompertz">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gompertz.html#relife2.Gompertz">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Gompertz</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gompertz lifetime distribution.</span>
@@ -1151,7 +1148,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">param0</span>
 
 <div class="viewcode-block" id="Gompertz.hf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.hf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gompertz.html#relife2.Gompertz.hf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Hazard function.</span>
 
@@ -1173,7 +1170,7 @@
 
 
 <div class="viewcode-block" id="Gompertz.chf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.chf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gompertz.html#relife2.Gompertz.chf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cumulative hazard function.</span>
 
@@ -1197,7 +1194,7 @@
 
 
 <div class="viewcode-block" id="Gompertz.mean">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.mean">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gompertz.html#relife2.Gompertz.mean">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mean of the distribution.</span>
@@ -1226,7 +1223,7 @@
     <span class="c1">#     return np.array(polygamma(1, 1).item() / self.rate**2)</span>
 
 <div class="viewcode-block" id="Gompertz.mrl">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.mrl">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gompertz.html#relife2.Gompertz.mrl">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">mrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mean residual life.</span>
@@ -1248,7 +1245,7 @@
 
 
 <div class="viewcode-block" id="Gompertz.ichf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.ichf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gompertz.html#relife2.Gompertz.ichf">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">ichf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
@@ -1271,7 +1268,7 @@
 
 
 <div class="viewcode-block" id="Gompertz.jac_hf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.jac_hf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gompertz.html#relife2.Gompertz.jac_hf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the hazard function.</span>
 
@@ -1296,7 +1293,7 @@
 
 
 <div class="viewcode-block" id="Gompertz.jac_chf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.jac_chf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gompertz.html#relife2.Gompertz.jac_chf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the cumulative hazard function.</span>
 
@@ -1321,7 +1318,7 @@
 
 
 <div class="viewcode-block" id="Gompertz.dhf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gompertz.html#relife2.Gompertz.dhf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gompertz.html#relife2.Gompertz.dhf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Derivative of the hazard function.</span>
 
@@ -1343,7 +1340,7 @@
 
 
 <div class="viewcode-block" id="Gamma">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gamma.html#relife2.Gamma">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Gamma</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gamma lifetime distribution.</span>
@@ -1382,7 +1379,7 @@
         <span class="k">return</span> <span class="s2">&quot;2-point&quot;</span>
 
 <div class="viewcode-block" id="Gamma.hf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.hf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gamma.html#relife2.Gamma.hf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Hazard function.</span>
 
@@ -1405,7 +1402,7 @@
 
 
 <div class="viewcode-block" id="Gamma.chf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.chf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gamma.html#relife2.Gamma.chf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cumulative hazard function.</span>
 
@@ -1430,7 +1427,7 @@
 
 
 <div class="viewcode-block" id="Gamma.mean">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.mean">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gamma.html#relife2.Gamma.mean">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mean of the distribution.</span>
@@ -1448,7 +1445,7 @@
 
 
 <div class="viewcode-block" id="Gamma.var">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.var">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gamma.html#relife2.Gamma.var">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Variance of the distribution.</span>
@@ -1462,7 +1459,7 @@
 
 
 <div class="viewcode-block" id="Gamma.ichf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.ichf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gamma.html#relife2.Gamma.ichf">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">ichf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
@@ -1485,7 +1482,7 @@
 
 
 <div class="viewcode-block" id="Gamma.jac_hf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.jac_hf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gamma.html#relife2.Gamma.jac_hf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the hazard function.</span>
 
@@ -1517,7 +1514,7 @@
 
 
 <div class="viewcode-block" id="Gamma.jac_chf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.jac_chf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gamma.html#relife2.Gamma.jac_chf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">jac_chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
@@ -1547,7 +1544,7 @@
 
 
 <div class="viewcode-block" id="Gamma.dhf">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.dhf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gamma.html#relife2.Gamma.dhf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Derivative of the hazard function.</span>
 
@@ -1567,7 +1564,7 @@
 
 
 <div class="viewcode-block" id="Gamma.mrl">
-<a class="viewcode-back" href="../../api/distribution/relife2.Gamma.html#relife2.Gamma.mrl">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.Gamma.html#relife2.Gamma.mrl">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">mrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mean residual life.</span>
@@ -1590,7 +1587,7 @@
 
 
 <div class="viewcode-block" id="LogLogistic">
-<a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.LogLogistic.html#relife2.LogLogistic">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">LogLogistic</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Log-logistic probability distribution.</span>
@@ -1614,7 +1611,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">new_params</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">)</span>
 
 <div class="viewcode-block" id="LogLogistic.hf">
-<a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.hf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.LogLogistic.html#relife2.LogLogistic.hf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Hazard function.</span>
 
@@ -1637,7 +1634,7 @@
 
 
 <div class="viewcode-block" id="LogLogistic.chf">
-<a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.chf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.LogLogistic.html#relife2.LogLogistic.chf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Cumulative hazard function.</span>
 
@@ -1662,7 +1659,7 @@
 
 
 <div class="viewcode-block" id="LogLogistic.mean">
-<a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.mean">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.LogLogistic.html#relife2.LogLogistic.mean">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mean of the distribution.</span>
@@ -1685,7 +1682,7 @@
 
 
 <div class="viewcode-block" id="LogLogistic.var">
-<a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.var">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.LogLogistic.html#relife2.LogLogistic.var">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Variance of the distribution.</span>
@@ -1706,7 +1703,7 @@
 
 
 <div class="viewcode-block" id="LogLogistic.ichf">
-<a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.ichf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.LogLogistic.html#relife2.LogLogistic.ichf">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">ichf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">cumulative_hazard_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
@@ -1729,7 +1726,7 @@
 
 
 <div class="viewcode-block" id="LogLogistic.jac_hf">
-<a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.jac_hf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.LogLogistic.html#relife2.LogLogistic.jac_hf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">jac_hf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the hazard function.</span>
 
@@ -1757,7 +1754,7 @@
 
 
 <div class="viewcode-block" id="LogLogistic.jac_chf">
-<a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.jac_chf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.LogLogistic.html#relife2.LogLogistic.jac_chf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">jac_chf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Jacobian of the cumulative hazard function.</span>
 
@@ -1783,7 +1780,7 @@
 
 
 <div class="viewcode-block" id="LogLogistic.dhf">
-<a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.dhf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.LogLogistic.html#relife2.LogLogistic.dhf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">dhf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Derivative of the hazard function.</span>
 
@@ -1810,7 +1807,7 @@
 
 
 <div class="viewcode-block" id="LogLogistic.mrl">
-<a class="viewcode-back" href="../../api/distribution/relife2.LogLogistic.html#relife2.LogLogistic.mrl">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.LogLogistic.html#relife2.LogLogistic.mrl">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">mrl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Mean residual life.</span>

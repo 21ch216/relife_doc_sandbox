@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=d6b467a0" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=4c74dcfe" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -91,9 +91,6 @@
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
-<aside class="bd-header-announcement" aria-label="Announcement">
-  <div class="bd-header-announcement__content"><em>beta version</em> New ReLife documentation in progress</div>
-</aside>
 
   
     <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
@@ -1011,7 +1008,7 @@
 
 
 <div class="viewcode-block" id="ProportionalHazard">
-<a class="viewcode-back" href="../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.ProportionalHazard.html#relife2.ProportionalHazard">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ProportionalHazard</span><span class="p">(</span><span class="n">Regression</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Proportional Hazard regression model.</span>
@@ -1022,7 +1019,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="ProportionalHazard.hf">
-<a class="viewcode-back" href="../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard.hf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.ProportionalHazard.html#relife2.ProportionalHazard.hf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
@@ -1056,7 +1053,7 @@
 
 
 <div class="viewcode-block" id="ProportionalHazard.chf">
-<a class="viewcode-back" href="../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard.chf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.ProportionalHazard.html#relife2.ProportionalHazard.chf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
@@ -1083,7 +1080,7 @@
 
 
 <div class="viewcode-block" id="ProportionalHazard.ichf">
-<a class="viewcode-back" href="../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard.ichf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.ProportionalHazard.html#relife2.ProportionalHazard.ichf">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">ichf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1113,7 +1110,7 @@
 
 
 <div class="viewcode-block" id="ProportionalHazard.jac_hf">
-<a class="viewcode-back" href="../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard.jac_hf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.ProportionalHazard.html#relife2.ProportionalHazard.jac_hf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">jac_hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
@@ -1129,7 +1126,7 @@
 
 
 <div class="viewcode-block" id="ProportionalHazard.jac_chf">
-<a class="viewcode-back" href="../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard.jac_chf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.ProportionalHazard.html#relife2.ProportionalHazard.jac_chf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">jac_chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
@@ -1145,7 +1142,7 @@
 
 
 <div class="viewcode-block" id="ProportionalHazard.dhf">
-<a class="viewcode-back" href="../../api/regression/relife2.ProportionalHazard.html#relife2.ProportionalHazard.dhf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.ProportionalHazard.html#relife2.ProportionalHazard.dhf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">dhf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
@@ -1158,14 +1155,14 @@
 
 
 <div class="viewcode-block" id="AFT">
-<a class="viewcode-back" href="../../api/regression/relife2.AFT.html#relife2.AFT">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.AFT.html#relife2.AFT">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">AFT</span><span class="p">(</span><span class="n">Regression</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Accelerated failure time regression.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="AFT.hf">
-<a class="viewcode-back" href="../../api/regression/relife2.AFT.html#relife2.AFT.hf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.AFT.html#relife2.AFT.hf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
@@ -1199,7 +1196,7 @@
 
 
 <div class="viewcode-block" id="AFT.chf">
-<a class="viewcode-back" href="../../api/regression/relife2.AFT.html#relife2.AFT.chf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.AFT.html#relife2.AFT.chf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
@@ -1227,7 +1224,7 @@
 
 
 <div class="viewcode-block" id="AFT.ichf">
-<a class="viewcode-back" href="../../api/regression/relife2.AFT.html#relife2.AFT.ichf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.AFT.html#relife2.AFT.ichf">[docs]</a>
     <span class="nd">@override</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">ichf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -1257,7 +1254,7 @@
 
 
 <div class="viewcode-block" id="AFT.jac_hf">
-<a class="viewcode-back" href="../../api/regression/relife2.AFT.html#relife2.AFT.jac_hf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.AFT.html#relife2.AFT.jac_hf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">jac_hf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
@@ -1292,7 +1289,7 @@
 
 
 <div class="viewcode-block" id="AFT.jac_chf">
-<a class="viewcode-back" href="../../api/regression/relife2.AFT.html#relife2.AFT.jac_chf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.AFT.html#relife2.AFT.jac_chf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">jac_chf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
@@ -1328,7 +1325,7 @@
 
 
 <div class="viewcode-block" id="AFT.dhf">
-<a class="viewcode-back" href="../../api/regression/relife2.AFT.html#relife2.AFT.dhf">[docs]</a>
+<a class="viewcode-back" href="../../api/lifetime_models/relife2.AFT.html#relife2.AFT.dhf">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">dhf</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>

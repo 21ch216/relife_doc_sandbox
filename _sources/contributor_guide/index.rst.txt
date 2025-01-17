@@ -10,6 +10,7 @@ you through the process of improving ReLife.
 .. toctree::
     :caption: First time contribution
     :maxdepth: 1
+    :hidden:
 
     your_profile
     development_env
@@ -18,6 +19,7 @@ you through the process of improving ReLife.
 .. toctree::
     :caption: Conception of ReLife2
     :maxdepth: 1
+    :hidden:
 
     about_numpy
     about_lifetime_models
@@ -27,5 +29,6 @@ you through the process of improving ReLife.
 .. toctree::
     :caption: Python resources
     :maxdepth: 1
+    :hidden:
 
     additional_lectures

@@ -1,6 +1,9 @@
 ﻿
 
 
+ParametricLifetimeModel
+=======================
+
 .. currentmodule:: relife2
 
 .. autoclass:: ParametricLifetimeModel

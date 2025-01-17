@@ -1,6 +1,9 @@
 ﻿
 
 
+OneCycleRunToFailure
+====================
+
 .. currentmodule:: relife2
 
 .. autoclass:: OneCycleRunToFailure

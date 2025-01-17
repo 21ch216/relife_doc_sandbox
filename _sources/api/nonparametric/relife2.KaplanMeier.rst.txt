@@ -1,6 +1,9 @@
 ﻿
 
 
+KaplanMeier
+===========
+
 .. currentmodule:: relife2
 
 .. autoclass:: KaplanMeier

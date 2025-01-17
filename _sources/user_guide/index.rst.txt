@@ -3,14 +3,21 @@ User's guide
 
 Practical tutorials that shows how to use ReLife functionalities in-depth.
 
-Base concepts
-~~~~~~~~~~~~~
+.. rubric:: Base concepts
 
-Practical tutorials
-~~~~~~~~~~~~~~~~~~~
+.. rubric:: Pratical tutorials
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
+    :numbered:
+    :hidden:
 
     demo_distribution.ipynb
     demo_nonparametric.ipynb
+
+
+.. nblinkgallery::
+    :name: rst-link-gallery
+
+    demo_distribution
+    demo_nonparametric

@@ -5,9 +5,12 @@
 
 
 
+ProportionalHazard
+==================
+
 .. currentmodule:: relife2
 
-.. autoclass:: Exponential
+.. autoclass:: ProportionalHazard
     :members:
     :inherited-members:
     :exclude-members: __init__, __new__, compose_with, new_params, init_params, params_bounds
@@ -23,46 +26,46 @@
         
         
         
-            ~Exponential.chf
+            ~ProportionalHazard.chf
         
         
         
         
-            ~Exponential.dhf
+            ~ProportionalHazard.dhf
         
         
         
-            ~Exponential.hf
+            ~ProportionalHazard.hf
         
         
-            ~Exponential.ichf
-        
-        
-        
-            ~Exponential.isf
+            ~ProportionalHazard.ichf
         
         
         
-            ~Exponential.jac_chf
-        
-        
-            ~Exponential.jac_hf
+            ~ProportionalHazard.isf
         
         
         
+            ~ProportionalHazard.jac_chf
         
         
-        
-        
-        
-            ~Exponential.mrl
+            ~ProportionalHazard.jac_hf
         
         
         
         
         
         
-            ~Exponential.sf
+        
+        
+            ~ProportionalHazard.mrl
+        
+        
+        
+        
+        
+        
+            ~ProportionalHazard.sf
         
         
 
@@ -72,7 +75,7 @@
     
         
         
-            ~Exponential.cdf
+            ~ProportionalHazard.cdf
         
         
         
@@ -95,10 +98,10 @@
         
         
         
-            ~Exponential.pdf
+            ~ProportionalHazard.pdf
         
         
-            ~Exponential.ppf
+            ~ProportionalHazard.ppf
         
         
         
@@ -128,22 +131,22 @@
         
         
         
-            ~Exponential.mean
+            ~ProportionalHazard.mean
         
         
-            ~Exponential.median
+            ~ProportionalHazard.median
         
         
-            ~Exponential.moment
-        
-        
-        
+            ~ProportionalHazard.moment
         
         
         
         
         
-            ~Exponential.var
+        
+        
+        
+            ~ProportionalHazard.var
         
 
     **Other methods**
@@ -157,39 +160,39 @@
         
         
         
-            ~Exponential.copy
+            ~ProportionalHazard.copy
         
         
         
-            ~Exponential.fit
-        
-        
-        
-        
-        
-        
-            ~Exponential.jac_cdf
-        
-        
-        
-        
-            ~Exponential.jac_pdf
-        
-        
-            ~Exponential.jac_sf
-        
-        
-            ~Exponential.ls_integrate
+            ~ProportionalHazard.fit
         
         
         
         
         
         
+            ~ProportionalHazard.jac_cdf
         
         
         
-            ~Exponential.rvs
+        
+            ~ProportionalHazard.jac_pdf
+        
+        
+            ~ProportionalHazard.jac_sf
+        
+        
+            ~ProportionalHazard.ls_integrate
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            ~ProportionalHazard.rvs
         
         
         
@@ -201,18 +204,18 @@
 
     
         
-            ~Exponential.nb_params
+            ~ProportionalHazard.nb_params
         
         
-            ~Exponential.params
+            ~ProportionalHazard.params
         
         
         
-            ~Exponential.params_names
+            ~ProportionalHazard.params_names
         
         
-            ~Exponential.plot
+            ~ProportionalHazard.plot
         
         
-            ~Exponential.fitting_results
+            ~ProportionalHazard.fitting_results
         

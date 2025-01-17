@@ -1,6 +1,9 @@
 ﻿
 
 
+LifetimeModel
+=============
+
 .. currentmodule:: relife2
 
 .. autoclass:: LifetimeModel

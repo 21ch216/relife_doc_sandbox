@@ -1,6 +1,9 @@
 ﻿
 
 
+LikelihoodFromLifetimes
+=======================
+
 .. currentmodule:: relife2
 
 .. autoclass:: LikelihoodFromLifetimes

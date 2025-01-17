@@ -5,9 +5,12 @@
 
 
 
+Weibull
+=======
+
 .. currentmodule:: relife2
 
-.. autoclass:: Gompertz
+.. autoclass:: Weibull
     :members:
     :inherited-members:
     :exclude-members: __init__, __new__, compose_with, new_params, init_params, params_bounds
@@ -23,46 +26,46 @@
         
         
         
-            ~Gompertz.chf
+            ~Weibull.chf
         
         
         
         
-            ~Gompertz.dhf
+            ~Weibull.dhf
         
         
         
-            ~Gompertz.hf
+            ~Weibull.hf
         
         
-            ~Gompertz.ichf
-        
-        
-        
-            ~Gompertz.isf
+            ~Weibull.ichf
         
         
         
-            ~Gompertz.jac_chf
-        
-        
-            ~Gompertz.jac_hf
+            ~Weibull.isf
         
         
         
+            ~Weibull.jac_chf
         
         
-        
-        
-        
-            ~Gompertz.mrl
+            ~Weibull.jac_hf
         
         
         
         
         
         
-            ~Gompertz.sf
+        
+        
+            ~Weibull.mrl
+        
+        
+        
+        
+        
+        
+            ~Weibull.sf
         
         
 
@@ -72,7 +75,7 @@
     
         
         
-            ~Gompertz.cdf
+            ~Weibull.cdf
         
         
         
@@ -95,10 +98,10 @@
         
         
         
-            ~Gompertz.pdf
+            ~Weibull.pdf
         
         
-            ~Gompertz.ppf
+            ~Weibull.ppf
         
         
         
@@ -128,22 +131,22 @@
         
         
         
-            ~Gompertz.mean
+            ~Weibull.mean
         
         
-            ~Gompertz.median
+            ~Weibull.median
         
         
-            ~Gompertz.moment
-        
-        
-        
+            ~Weibull.moment
         
         
         
         
         
-            ~Gompertz.var
+        
+        
+        
+            ~Weibull.var
         
 
     **Other methods**
@@ -157,39 +160,39 @@
         
         
         
-            ~Gompertz.copy
+            ~Weibull.copy
         
         
         
-            ~Gompertz.fit
-        
-        
-        
-        
-        
-        
-            ~Gompertz.jac_cdf
-        
-        
-        
-        
-            ~Gompertz.jac_pdf
-        
-        
-            ~Gompertz.jac_sf
-        
-        
-            ~Gompertz.ls_integrate
+            ~Weibull.fit
         
         
         
         
         
         
+            ~Weibull.jac_cdf
         
         
         
-            ~Gompertz.rvs
+        
+            ~Weibull.jac_pdf
+        
+        
+            ~Weibull.jac_sf
+        
+        
+            ~Weibull.ls_integrate
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            ~Weibull.rvs
         
         
         
@@ -201,18 +204,18 @@
 
     
         
-            ~Gompertz.nb_params
+            ~Weibull.nb_params
         
         
-            ~Gompertz.params
+            ~Weibull.params
         
         
         
-            ~Gompertz.params_names
+            ~Weibull.params_names
         
         
-            ~Gompertz.plot
+            ~Weibull.plot
         
         
-            ~Gompertz.fitting_results
+            ~Weibull.fitting_results
         

@@ -1,6 +1,9 @@
 ﻿
 
 
+ECDF
+====
+
 .. currentmodule:: relife2
 
 .. autoclass:: ECDF

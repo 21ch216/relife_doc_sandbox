@@ -5,9 +5,12 @@
 
 
 
+Exponential
+===========
+
 .. currentmodule:: relife2
 
-.. autoclass:: AFT
+.. autoclass:: Exponential
     :members:
     :inherited-members:
     :exclude-members: __init__, __new__, compose_with, new_params, init_params, params_bounds
@@ -23,46 +26,46 @@
         
         
         
-            ~AFT.chf
+            ~Exponential.chf
         
         
         
         
-            ~AFT.dhf
+            ~Exponential.dhf
         
         
         
-            ~AFT.hf
+            ~Exponential.hf
         
         
-            ~AFT.ichf
-        
-        
-        
-            ~AFT.isf
+            ~Exponential.ichf
         
         
         
-            ~AFT.jac_chf
-        
-        
-            ~AFT.jac_hf
+            ~Exponential.isf
         
         
         
+            ~Exponential.jac_chf
         
         
-        
-        
-        
-            ~AFT.mrl
+            ~Exponential.jac_hf
         
         
         
         
         
         
-            ~AFT.sf
+        
+        
+            ~Exponential.mrl
+        
+        
+        
+        
+        
+        
+            ~Exponential.sf
         
         
 
@@ -72,7 +75,7 @@
     
         
         
-            ~AFT.cdf
+            ~Exponential.cdf
         
         
         
@@ -95,10 +98,10 @@
         
         
         
-            ~AFT.pdf
+            ~Exponential.pdf
         
         
-            ~AFT.ppf
+            ~Exponential.ppf
         
         
         
@@ -128,22 +131,22 @@
         
         
         
-            ~AFT.mean
+            ~Exponential.mean
         
         
-            ~AFT.median
+            ~Exponential.median
         
         
-            ~AFT.moment
-        
-        
-        
+            ~Exponential.moment
         
         
         
         
         
-            ~AFT.var
+        
+        
+        
+            ~Exponential.var
         
 
     **Other methods**
@@ -157,39 +160,39 @@
         
         
         
-            ~AFT.copy
+            ~Exponential.copy
         
         
         
-            ~AFT.fit
-        
-        
-        
-        
-        
-        
-            ~AFT.jac_cdf
-        
-        
-        
-        
-            ~AFT.jac_pdf
-        
-        
-            ~AFT.jac_sf
-        
-        
-            ~AFT.ls_integrate
+            ~Exponential.fit
         
         
         
         
         
         
+            ~Exponential.jac_cdf
         
         
         
-            ~AFT.rvs
+        
+            ~Exponential.jac_pdf
+        
+        
+            ~Exponential.jac_sf
+        
+        
+            ~Exponential.ls_integrate
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            ~Exponential.rvs
         
         
         
@@ -201,18 +204,18 @@
 
     
         
-            ~AFT.nb_params
+            ~Exponential.nb_params
         
         
-            ~AFT.params
+            ~Exponential.params
         
         
         
-            ~AFT.params_names
+            ~Exponential.params_names
         
         
-            ~AFT.plot
+            ~Exponential.plot
         
         
-            ~AFT.fitting_results
+            ~Exponential.fitting_results
         

@@ -1,6 +1,9 @@
 ﻿
 
 
+AgeReplacementPolicy
+====================
+
 .. currentmodule:: relife2
 
 .. autoclass:: AgeReplacementPolicy
