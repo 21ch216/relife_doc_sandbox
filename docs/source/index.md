@@ -42,7 +42,7 @@ installation/index
 ```{toctree}
 :maxdepth: 2
 :hidden:
-get_started
+get_started.ipynb
 ```
 
 ```{toctree}
