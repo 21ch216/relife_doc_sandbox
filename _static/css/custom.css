@@ -9,6 +9,8 @@
     --pst-font-size-h4: 23px;
     --pst-font-size-h5: 21px;
     --pst-font-size-h6: 19px;
+
+    --pst-color-toc-link-hover: rgb(238 144 64);
 }
 
 /*remove underline links*/
@@ -62,7 +64,6 @@ html[data-theme="light"] {
     // links
     --pst-color-link: var(--pst-color-primary);
     --pst-color-link-hover: var(--pst-color-secondary);
-    --table-row-hover: var(--pst-color-secondary);
 
     // inline code
     --pst-color-inline-code: rgb(232, 62, 140);
@@ -95,6 +96,7 @@ html[data-theme="dark"] {
     --pst-color-text-muted: rgb(192, 192, 192);
     --pst-color-border: rgb(192, 192, 192);
     --pst-color-shadow: var(--pst-color-background);
+
 
     /*****************************************************************************
     * depth colors
