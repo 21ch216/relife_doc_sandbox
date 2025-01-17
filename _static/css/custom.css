@@ -9,13 +9,16 @@
     --pst-font-size-h4: 23px;
     --pst-font-size-h5: 21px;
     --pst-font-size-h6: 19px;
-
-    --pst-color-toc-link-hover: rgb(238 144 64);
 }
 
 /*remove underline links*/
 a {
     text-decoration: none;
+}
+
+/*change hover color of links*/
+a:hover {
+    color: rgb(238 144 64);
 }
 
 /*******************************************************************************
