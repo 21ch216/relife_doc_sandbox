@@ -1,6 +1,8 @@
 {% set exclude_methods = ["__init__", "__new__"] %}
 {% set exclude_members = ", ".join(exclude_methods)  %}
 
+{{ name | escape | underline }}
+
 .. currentmodule:: {{ module }}
 
 .. autoclass:: {{ objname }}

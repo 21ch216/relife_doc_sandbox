@@ -1,20 +1,21 @@
 API
 =============
 
-The content of the exposed ReLife API.
+The content of the exposed ReLife API. It is where one can find details about object interfaces (how many parameters
+are needeed by a function, what are their types, etc.).
 
 .. currentmodule:: relife2
 
-Lifetime models
-~~~~~~~~~~~~~~~
+.. rubric:: Lifetime models
 
-
-.. rubric:: Distribution models
+Lifetime models are objects whose exposed interface can answer basic probility functions of the survival analysis. In
+object-oriented programming, one must not see them as a group of probability functions solely : it also encapsulates
+data like parameters, other nested models, etc.
 
 .. autosummary::
-    :toctree: distribution
+    :toctree: lifetime_models
     :template: parametric-lifetime-model-class.rst
-    :caption: Lifetime distribution models
+    :caption: Lifetime models
     :nosignatures:
 
     Exponential
@@ -22,26 +23,20 @@ Lifetime models
     Gompertz
     Gamma
     LogLogistic
-
-
-.. rubric:: Regression models
-
-.. autosummary::
-    :toctree: regression
-    :template: parametric-lifetime-model-class.rst
-    :caption: Lifetime regression models
-    :nosignatures:
-
     ProportionalHazard
     AFT
 
-Non-parametric estimators
-~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. rubric:: Non-parametric lifetime estimators
+
+Non-parametric lifetime estimators are objects used to compute well-knowns non-parametric estimations of some
+probability functions. Their exposed interface follows the same logic of lifetime models except that they do not store
+parameters but estimations of functions values.
 
 .. autosummary::
     :toctree: nonparametric
     :template: default.rst
-    :caption: Non parametric lifetime estimators
+    :caption: Non-parametric lifetime estimators
     :nosignatures:
 
     ECDF
@@ -50,11 +45,14 @@ Non-parametric estimators
     Turnbull
 
 
-Renewal policies
-~~~~~~~~~~~~~~~~
+.. rubric:: Renewal policies
+
+Renewal policies are objects that are generally composed of one underlying renewal process and one or more lifetime
+model. Their interfaces expose a bunch of statiscal properties like expections and a sample procedure to generate
+data.
 
 .. autosummary::
-    :toctree: renewalpolicy
+    :toctree: renewal_policy
     :template: default.rst
     :caption: Renewal policies
     :nosignatures:
@@ -64,8 +62,7 @@ Renewal policies
     RunToFailure
     AgeReplacementPolicy
 
-Likelihoods
-~~~~~~~~~~~
+.. rubric:: Likelihoods
 
 .. autosummary::
     :toctree: likelihood
@@ -75,8 +72,7 @@ Likelihoods
 
     LikelihoodFromLifetimes
 
-Base class
-~~~~~~~~~~~
+.. rubric:: Base class
 
 What we call `base class` are objects (in Python class are objects) used at the core of ReLife subsystems.
 For beginners, it is not necessary to know them. If you start to inspect ReLife code, you will encounter them regularly
@@ -84,25 +80,13 @@ in inheritance hierarchy. In fact, most objects created for fiability theory inh
 think of them as `engines` that empower objects with special functionalities to make ReLife model creation easier.
 
 
-.. rubric:: Models
-
 .. autosummary::
     :toctree: base_class
     :template: base-class.rst
     :caption: Base class
     :nosignatures:
 
-
-    LifetimeModel
-
-.. rubric:: Parametric models
-
-.. autosummary::
-    :toctree: base_class
-    :template: base-class.rst
-    :nosignatures:
-
-
     Parameters
     ParametricModel
+    LifetimeModel
     ParametricLifetimeModel

@@ -1,6 +1,9 @@
 ﻿
 
 
+NelsonAalen
+===========
+
 .. currentmodule:: relife2
 
 .. autoclass:: NelsonAalen

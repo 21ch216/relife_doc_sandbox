@@ -5,6 +5,8 @@
 {% set exclude_attributes = ["params_bounds"] %}
 {% set exclude_members = ", ".join(exclude_methods + exclude_attributes)  %}
 
+{{ name | escape | underline }}
+
 .. currentmodule:: {{ module }}
 
 .. autoclass:: {{ objname }}

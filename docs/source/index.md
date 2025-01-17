@@ -22,16 +22,15 @@ ReLife is coded in Python and was designed to be accessible for user from any pr
 :::
 ::::
 
-The documentation is organized in the following sections :
-
-* **Installation** : First things firts, how to install ReLife on your machine ?
-* **Get started** : Information about installation and examples of basic functionnalities.
-* **User's guide** : Practical tutorials that shows how to use ReLife functionalities in-depth.
-* **API** : The content of the exposed ReLife API.
-* **Learn** : if you're new to fiability and renewal theory but you have some maths knowledge, try to learn more about this field
-of statistics.
-* **Contributor's guide** : information about the conception of ReLife and how to contribute.
-* **Future improvements** : information about the conception of ReLife and how to contribute.
+|                                                          |                                                                   |
+|----------------------------------------------------------|-------------------------------------------------------------------|
+| [**Installation**](./installation/index.rst)             | Things to know if you want to install ReLife on your machin.      |
+| [**Get started**](get_started.rst)                       | Basic functionnalities to begin with ReLife                       |
+| [**User's guide**](./user_guide/index.rst)               | Detailed examples                                                 |
+| [**API**](./api/index.rst)                               | The content of the exposed ReLife API.                            |
+| [**Learn**](./learn/index.rst)                           | Learn more about fiability and renewal theory                     |
+| [**Contributor's guide**](./contributor_guide/index.rst) | Information about the conception of ReLife and how to contribute. |
+| [**Future improvements**](./future/index.md)             | Works that are in progress                                        |
 
 
 ```{toctree}

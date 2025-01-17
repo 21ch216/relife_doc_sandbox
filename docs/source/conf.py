@@ -82,7 +82,7 @@ html_sidebars = {
 } # apply sidebar-nav template to all pages (including home page)
 
 html_theme_options = {
-    "announcement": "<em>beta version</em> New ReLife documentation in progress",  # annoucement bar
+    # "announcement": "<em>beta version</em> New ReLife documentation in progress",  # annoucement bar
     "navigation_with_keys": False,
     "navbar_align": "left", # align to the left header bar sections
     "header_links_before_dropdown": 4, # control the number of section displayed in the header bar
@@ -107,7 +107,8 @@ html_theme_options = {
         }
     ],
     "secondary_sidebar_items": {
-        "**": ["sourcelink", "page-toc"],
+        # "**": ["sourcelink", "page-toc"], # remove secondary nav bar
+        # "Exponential" : [],
         "index": ["page-toc"],
     }
 }
