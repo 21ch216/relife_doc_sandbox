@@ -476,11 +476,17 @@
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">negative_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Args:</span>
-<span class="sd">            params ():</span>
+<span class="sd">        Negative log likelihood.</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">            Negative log likelihood value given a set a parameters values</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        params : ndarray</span>
+<span class="sd">            Parameters values on which likelihood is evaluated</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            Negative log likelihood value</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">jac_negative_log</span><span class="p">(</span>
@@ -488,11 +494,19 @@
         <span class="n">params</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Args:</span>
-<span class="sd">            params ():</span>
+<span class="sd">        Jacobian of the negative log likelihood.</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">            Negative log likelihood value given a set a parameters values</span>
+<span class="sd">        The jacobian (here gradient) is computed with respect to parameters</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        params : ndarray</span>
+<span class="sd">            Parameters values on which the jacobian is evaluated</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray</span>
+<span class="sd">            Jacobian of the negative log likelihood value</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">raise</span> <span class="ne">NotImplementedError</span>
@@ -501,6 +515,18 @@
 <div class="viewcode-block" id="LikelihoodFromLifetimes">
 <a class="viewcode-back" href="../../../api/likelihood/relife2.LikelihoodFromLifetimes.html#relife2.LikelihoodFromLifetimes">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">LikelihoodFromLifetimes</span><span class="p">(</span><span class="n">Likelihood</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generic likelihood object for parametric lifetime models</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : ParametricLifetimeModel</span>
+<span class="sd">        Underlying model used to compute probability functions</span>
+<span class="sd">    lifetime_data : LifetimeData</span>
+<span class="sd">        Observed lifetime data used one which the likelihood is evaluated</span>
+<span class="sd">    model_args : tuple of zero or more ndarray, default is ()</span>
+<span class="sd">        Variadic arguments required by probability functions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>

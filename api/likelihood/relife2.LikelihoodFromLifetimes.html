@@ -495,14 +495,27 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="relife2.LikelihoodFromLifetimes">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">LikelihoodFromLifetimes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lifetime_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/likelihood.html#LikelihoodFromLifetimes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LikelihoodFromLifetimes" title="Link to this definition">#</a></dt>
-<dd><p class="rubric">Methods</p>
+<dd><p>Generic likelihood object for parametric lifetime models</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>model</strong><span class="classifier">ParametricLifetimeModel</span></dt><dd><p>Underlying model used to compute probability functions</p>
+</dd>
+<dt><strong>lifetime_data</strong><span class="classifier">LifetimeData</span></dt><dd><p>Observed lifetime data used one which the likelihood is evaluated</p>
+</dd>
+<dt><strong>model_args</strong><span class="classifier">tuple of zero or more ndarray, default is ()</span></dt><dd><p>Variadic arguments required by probability functions</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#relife2.LikelihoodFromLifetimes.jac_negative_log" title="relife2.LikelihoodFromLifetimes.jac_negative_log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">jac_negative_log</span></code></a></p></td>
-<td><p>Args:</p></td>
+<td><p>Jacobian of the negative log likelihood.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#relife2.LikelihoodFromLifetimes.negative_log" title="relife2.LikelihoodFromLifetimes.negative_log"><code class="xref py py-obj docutils literal notranslate"><span class="pre">negative_log</span></code></a></p></td>
-<td><p>Args:</p></td>
+<td><p>Negative log likelihood.</p></td>
 </tr>
 </tbody>
 </table>
@@ -525,10 +538,20 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.LikelihoodFromLifetimes.jac_negative_log">
 <span class="sig-name descname"><span class="pre">jac_negative_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/likelihood.html#LikelihoodFromLifetimes.jac_negative_log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LikelihoodFromLifetimes.jac_negative_log" title="Link to this definition">#</a></dt>
-<dd><dl class="simple">
-<dt>Args:</dt><dd><p>params ():</p>
+<dd><p>Jacobian of the negative log likelihood.</p>
+<p>The jacobian (here gradient) is computed with respect to parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">ndarray</span></dt><dd><p>Parameters values on which the jacobian is evaluated</p>
 </dd>
-<dt>Returns:</dt><dd><p>Negative log likelihood value given a set a parameters values</p>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>ndarray</dt><dd><p>Jacobian of the negative log likelihood value</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -536,10 +559,19 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="relife2.LikelihoodFromLifetimes.negative_log">
 <span class="sig-name descname"><span class="pre">negative_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/likelihood.html#LikelihoodFromLifetimes.negative_log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LikelihoodFromLifetimes.negative_log" title="Link to this definition">#</a></dt>
-<dd><dl class="simple">
-<dt>Args:</dt><dd><p>params ():</p>
+<dd><p>Negative log likelihood.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">ndarray</span></dt><dd><p>Parameters values on which likelihood is evaluated</p>
 </dd>
-<dt>Returns:</dt><dd><p>Negative log likelihood value given a set a parameters values</p>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>float</dt><dd><p>Negative log likelihood value</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
