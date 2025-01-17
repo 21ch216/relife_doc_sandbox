@@ -33,6 +33,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=fac127bb" />
   
   <!-- So that users can add custom icons -->
@@ -48,6 +49,8 @@
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/design-tabs.js?v=36754332"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'get_started';</script>
     <script src="_static/custom-icon.js?v=74687d30"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -452,22 +455,244 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="get-started">
-<h1>Get started<a class="headerlink" href="#get-started" title="Link to this heading">#</a></h1>
-<p class="rubric">Objects import</p>
-<p>Launch a Python interpreter. All ReLife objects can be imported from <code class="docutils literal notranslate"><span class="pre">relife</span></code>. Thus, all you have to do is
-<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">relife</span> <span class="pre">import</span> <span class="pre">&lt;an-object&gt;</span></code> (remember that in Python everything is an object, even class). For instance, if you
-want to import Weibull constructor, just write :</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">from relife import Weibull</span>
+  <section id="Get-started">
+<h1>Get started<a class="headerlink" href="#Get-started" title="Link to this heading">#</a></h1>
+<p>The following example shows the steps to develop a preventive maintenance policy by age on circuit breakers:</p>
+<ol class="arabic simple">
+<li><p>Perform a survival analysis on lifetime data,</p></li>
+<li><p>Compute the optimal age of replacement,</p></li>
+<li><p>Compute the expected total discounting costs and number of expected replacements for the next years.</p></li>
+</ol>
+<section id="Survival-analysis">
+<h2>Survival analysis<a class="headerlink" href="#Survival-analysis" title="Link to this heading">#</a></h2>
+<p>The survival analysis is perfomed by computing the Kaplan-Meier estimator and fitting the parameters of a Weibull and a Gompertz distribution with the maximum likelihood estimator.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>One may be tempted to write <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">relife</span> <span class="pre">import</span> <span class="pre">*</span></code>. Of course you can. We prefer the above command as it is more
-explicit</p>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+from relife2.utils.dataset import load_circuit_breaker
+
+time, event, entry = load_circuit_breaker()
+data = pd.DataFrame({
+    &quot;time&quot; : time,
+    &quot;event&quot; : event,
+    &quot;entry&quot; : entry
+})
+display(data.head(n=15))
+</pre></div>
 </div>
-<p class="rubric">New instance</p>
-<p>Once you have imported your deriser</p>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>event</th>
+      <th>entry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>34.0</td>
+      <td>1.0</td>
+      <td>33.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>28.0</td>
+      <td>1.0</td>
+      <td>27.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>12.0</td>
+      <td>1.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>38.0</td>
+      <td>1.0</td>
+      <td>37.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18.0</td>
+      <td>1.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>32.0</td>
+      <td>1.0</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>44.0</td>
+      <td>1.0</td>
+      <td>43.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>49.0</td>
+      <td>1.0</td>
+      <td>48.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>27.0</td>
+      <td>1.0</td>
+      <td>26.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>47.0</td>
+      <td>1.0</td>
+      <td>46.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>44.0</td>
+      <td>1.0</td>
+      <td>43.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>70.0</td>
+      <td>1.0</td>
+      <td>69.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>40.0</td>
+      <td>1.0</td>
+      <td>38.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>37.0</td>
+      <td>1.0</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>26.0</td>
+      <td>1.0</td>
+      <td>24.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from relife2 import KaplanMeier, Weibull, Gompertz
+
+km = KaplanMeier().fit(time,event,entry)
+weibull = Weibull().fit(time,event,entry)
+gompertz = Gompertz().fit(time,event,entry)
+</pre></div>
+</div>
+</div>
+<p>Here are the estimated parameters after fitting the models (note that <code class="docutils literal notranslate"><span class="pre">km</span></code> does note have parameters as it is a non-parametric estimator)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Weibull parameters (shape, rate) :&quot;, weibull.params)
+print(&quot;Gompertz parameters (shape, rate) :&quot;, gompertz.params)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Weibull parameters (shape, rate) : [3.7267452  0.01232326]
+Gompertz parameters (shape, rate) : [0.00390781 0.07579546]
+</pre></div></div>
+</div>
+<p>The results of fitting the Weibull and Gompertz distributions are compared by looking at their AIC. Those values are stored in the <code class="docutils literal notranslate"><span class="pre">fitting_results</span></code> instance created and saved inside your model instance after the fit.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;Weibull AIC :&quot;, weibull.fitting_results.AIC)
+print(&quot;Gompertz AIC :&quot;, gompertz.fitting_results.AIC)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Weibull AIC : 2493.721978543718
+Gompertz AIC : 2485.567310362761
+</pre></div></div>
+</div>
+<p>The Gompertz distribution gives the best fit and will be chosen for the next step of the study. The code below plots the survival function obtained by the Kaplan-Meier estimator and the maximum likelihood estimator for the Weibull and Gompertz distributions.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+
+km.plot.sf()
+weibull.plot.sf()
+gompertz.plot.sf()
+plt.xlabel(&#39;Age [year]&#39;)
+plt.ylabel(&#39;Survival probability&#39;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/get_started_8_0.png" src="_images/get_started_8_0.png" />
+</div>
+</div>
+</section>
+<section id="Optimal-age-replacement">
+<h2>Optimal age replacement<a class="headerlink" href="#Optimal-age-replacement" title="Link to this heading">#</a></h2>
+<p>We consider 3 circuit breakers with the following parameters:</p>
+<ul class="simple">
+<li><p>the current ages of the circuit breakers are 15, 20, and 25 years respectively</p></li>
+<li><p>the preventive costs of replacement are evaluated 10 k€</p></li>
+<li><p>the failure costs (e.g. lost energy) are evaluated 900, 500 and 100 k€ respectively</p></li>
+<li><p>the discount rate is 0.04</p></li>
+</ul>
+<div class="admonition note">
+<p>When you want to pass different parameters for each asset, you generally encode them in a 2D array. The first axis corresponds to each assets and the second axis corresponds to the values.</p>
+</div>
+<p>Current ages are stored in <code class="docutils literal notranslate"><span class="pre">a0</span></code>, preventive costs of replacement in <code class="docutils literal notranslate"><span class="pre">cp</span></code>, failure costs in <code class="docutils literal notranslate"><span class="pre">cf</span></code>. As there are three assets, we must reshape each array in 2D when necessary.</p>
+</section>
 </section>
 
 
