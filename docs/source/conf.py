@@ -77,15 +77,12 @@ html_logo = "_static/logo.png"
 html_js_files = ["custom-icon.js"]
 html_css_files = ['css/custom.css'] # custom css to change some colors
 
-html_sidebars = {
-    "**": ["sidebar-nav-bs.html"],
-} # apply sidebar-nav template to all pages (including home page)
-
 html_theme_options = {
     # "announcement": "<em>beta version</em> New ReLife documentation in progress",  # annoucement bar
     "navigation_with_keys": False,
     "navbar_align": "left", # align to the left header bar sections
     "header_links_before_dropdown": 4, # control the number of section displayed in the header bar
+    "show_prev_next": False, # hide previous and next button
     "icon_links": [
         {
             # Label for this link
@@ -106,9 +103,4 @@ html_theme_options = {
             "icon": "fa-custom fa-pypi",
         }
     ],
-    "secondary_sidebar_items": {
-        # "**": ["sourcelink", "page-toc"], # remove secondary nav bar
-        # "Exponential" : [],
-        "index": ["page-toc"],
-    }
 }

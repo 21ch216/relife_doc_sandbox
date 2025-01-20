@@ -9,6 +9,9 @@
     --pst-font-size-h4: 23px;
     --pst-font-size-h5: 21px;
     --pst-font-size-h6: 19px;
+
+    /*    sphinx-design-color*/
+    --sd-color-primary: rgb(250 51 100);
 }
 
 /*remove underline links*/
