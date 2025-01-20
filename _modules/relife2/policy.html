@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=fac127bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=733aff7d" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -136,14 +136,7 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../installation/index.html">
-    Installation
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../get_started.html">
+  <a class="nav-link nav-internal" href="../../get_started/index.html">
     Get started
   </a>
 </li>
@@ -162,6 +155,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../learn/index.html">
+    Learn
+  </a>
+</li>
+
             <li class="nav-item dropdown">
                 <button class="btn dropdown-toggle nav-item" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false"
@@ -170,13 +170,6 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../learn/index.html">
-    Learn
-  </a>
-</li>
-
-
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../contributor_guide/index.html">
     Contributor’s guide
@@ -293,14 +286,7 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../installation/index.html">
-    Installation
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../get_started.html">
+  <a class="nav-link nav-internal" href="../../get_started/index.html">
     Get started
   </a>
 </li>
@@ -570,6 +556,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model</span><span class="p">:</span> <span class="n">LifetimeModel</span><span class="p">[</span><span class="o">*</span><span class="n">ModelArgs</span><span class="p">],</span>
         <span class="n">cf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="o">*</span><span class="p">,</span>
         <span class="n">discount_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
         <span class="n">model_args</span><span class="p">:</span> <span class="n">ModelArgs</span> <span class="o">=</span> <span class="p">(),</span>
         <span class="n">nb_assets</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
@@ -627,7 +614,7 @@
 <div class="viewcode-block" id="OneCycleRunToFailure.expected_equivalent_annual_cost">
 <a class="viewcode-back" href="../../api/renewal_policy/relife2.OneCycleRunToFailure.html#relife2.OneCycleRunToFailure.expected_equivalent_annual_cost">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">expected_equivalent_annual_cost</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="n">dt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The expected equivalent annual cost.</span>
 
@@ -641,6 +628,7 @@
 <span class="sd">        ndarray</span>
 <span class="sd">            The expected equivalent annual cost until each time point</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="n">f</span> <span class="o">=</span> <span class="p">(</span>
             <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">run_to_failure_cost</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cf</span><span class="p">)</span>
             <span class="o">*</span> <span class="n">exponential_discount</span><span class="o">.</span><span class="n">factor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">discount_rate</span><span class="p">)</span>
@@ -656,7 +644,7 @@
 <div class="viewcode-block" id="OneCycleRunToFailure.asymptotic_expected_equivalent_annual_cost">
 <a class="viewcode-back" href="../../api/renewal_policy/relife2.OneCycleRunToFailure.html#relife2.OneCycleRunToFailure.asymptotic_expected_equivalent_annual_cost">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">asymptotic_expected_equivalent_annual_cost</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The asymptotic expected equivalent annual cost.</span>
@@ -666,7 +654,7 @@
 <span class="sd">        ndarray</span>
 <span class="sd">            The asymptotic expected equivalent annual cost.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">expected_equivalent_annual_cost</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">),</span> <span class="n">dt</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">expected_equivalent_annual_cost</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="OneCycleRunToFailure.sample">
@@ -772,8 +760,8 @@
         <span class="n">model</span><span class="p">:</span> <span class="n">LifetimeModel</span><span class="p">[</span><span class="o">*</span><span class="n">ModelArgs</span><span class="p">],</span>
         <span class="n">cf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">cp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
-        <span class="n">discount_rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
+        <span class="n">discount_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
         <span class="n">ar</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">model_args</span><span class="p">:</span> <span class="n">ModelArgs</span> <span class="o">=</span> <span class="p">(),</span>
         <span class="n">nb_assets</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
@@ -836,7 +824,7 @@
 <a class="viewcode-back" href="../../api/renewal_policy/relife2.OneCycleAgeReplacementPolicy.html#relife2.OneCycleAgeReplacementPolicy.expected_equivalent_annual_cost">[docs]</a>
     <span class="nd">@ifset</span><span class="p">(</span><span class="s2">&quot;ar&quot;</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">expected_equivalent_annual_cost</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span> <span class="n">dt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">timeline</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The expected equivalent annual cost.</span>
 
@@ -850,6 +838,7 @@
 <span class="sd">        ndarray</span>
 <span class="sd">            The expected equivalent annual cost until each time point</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="n">f</span> <span class="o">=</span> <span class="p">(</span>
             <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">age_replacement_cost</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ar</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="p">)</span>
             <span class="o">*</span> <span class="n">exponential_discount</span><span class="o">.</span><span class="n">factor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">discount_rate</span><span class="p">)</span>
@@ -982,7 +971,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">baseline</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">cf</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">discount_rate</span><span class="p">,</span>
+                <span class="n">discount_rate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">discount_rate</span><span class="p">,</span>
                 <span class="n">ar</span><span class="o">=</span><span class="n">ar</span><span class="p">,</span>
                 <span class="n">model_args</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_args</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
                 <span class="n">nb_assets</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_assets</span><span class="p">,</span>
@@ -1005,7 +994,7 @@
 <span class="sd">        The lifetime model of the assets.</span>
 <span class="sd">    cf : np.ndarray</span>
 <span class="sd">        The cost of failure for each asset.</span>
-<span class="sd">    rate : float, default is 0.</span>
+<span class="sd">    discount_rate : float, default is 0.</span>
 <span class="sd">        The discount rate.</span>
 <span class="sd">    model_args : ModelArgs, optional</span>
 <span class="sd">        ModelArgs is a tuple of zero or more ndarray required by the underlying</span>
@@ -1038,7 +1027,8 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model</span><span class="p">:</span> <span class="n">LifetimeModel</span><span class="p">[</span><span class="o">*</span><span class="n">ModelArgs</span><span class="p">],</span>
         <span class="n">cf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
-        <span class="n">rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">discount_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
         <span class="n">model_args</span><span class="p">:</span> <span class="n">ModelArgs</span> <span class="o">=</span> <span class="p">(),</span>
         <span class="n">nb_assets</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
         <span class="n">a0</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1057,22 +1047,26 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">model_args</span> <span class="o">=</span> <span class="n">model_args</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cf</span> <span class="o">=</span> <span class="n">cf</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">=</span> <span class="n">rate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">discount_rate</span> <span class="o">=</span> <span class="n">discount_rate</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">model_args</span> <span class="o">=</span> <span class="n">model_args</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model1_args</span> <span class="o">=</span> <span class="n">model1_args</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">nb_assets</span> <span class="o">=</span> <span class="n">nb_assets</span>
 
+        <span class="c1"># if Policy is parametrized, set the underlying renewal reward process</span>
+        <span class="c1"># note the rewards are the same for the first cycle and the rest of the process</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rrp</span> <span class="o">=</span> <span class="n">RenewalRewardProcess</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-            <span class="n">run_to_failure_cost</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span>
             <span class="n">nb_assets</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_assets</span><span class="p">,</span>
             <span class="n">model_args</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_args</span><span class="p">,</span>
             <span class="n">reward_args</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cf</span><span class="p">,),</span>
-            <span class="n">discount_rate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="p">,</span>
+            <span class="n">discount_rate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">discount_rate</span><span class="p">,</span>
             <span class="n">model1</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model1</span><span class="p">,</span>
             <span class="n">model1_args</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model1_args</span><span class="p">,</span>
+            <span class="n">reward1</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span>
+            <span class="n">reward1_args</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cf</span><span class="p">,),</span>
         <span class="p">)</span>
 
 <div class="viewcode-block" id="RunToFailure.expected_total_cost">
@@ -1238,9 +1232,10 @@
         <span class="n">model</span><span class="p">:</span> <span class="n">LifetimeModel</span><span class="p">[</span><span class="o">*</span><span class="n">ModelArgs</span><span class="p">],</span>
         <span class="n">cf</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
         <span class="n">cp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">discount_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
         <span class="n">ar</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">ar1</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">discount_rate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
         <span class="n">model_args</span><span class="p">:</span> <span class="n">ModelArgs</span> <span class="o">=</span> <span class="p">(),</span>
         <span class="n">nb_assets</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
         <span class="n">a0</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span> <span class="o">|</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1268,6 +1263,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">discount_rate</span> <span class="o">=</span> <span class="n">discount_rate</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">model_args</span> <span class="o">=</span> <span class="p">(</span><span class="n">ar</span><span class="p">,)</span> <span class="o">+</span> <span class="n">model_args</span>
+
+        <span class="c1"># (None, ...) or (ar1, ...)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model1_args</span> <span class="o">=</span> <span class="p">(</span><span class="n">ar1</span><span class="p">,)</span> <span class="o">+</span> <span class="n">model1_args</span> <span class="k">if</span> <span class="n">model1_args</span> <span class="k">else</span> <span class="kc">None</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">nb_assets</span> <span class="o">=</span> <span class="n">nb_assets</span>
@@ -1280,16 +1277,20 @@
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ar1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">parametrized</span> <span class="o">=</span> <span class="kc">False</span>
 
+        <span class="c1"># if Policy is parametrized, set the underlying renewal reward process</span>
+        <span class="c1"># note the rewards are the same for the first cycle and the rest of the process</span>
         <span class="k">if</span> <span class="n">parametrized</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">rrp</span> <span class="o">=</span> <span class="n">RenewalRewardProcess</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-                <span class="n">age_replacement_cost</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span>
                 <span class="n">nb_assets</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_assets</span><span class="p">,</span>
                 <span class="n">model_args</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_args</span><span class="p">,</span>
                 <span class="n">reward_args</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ar</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="p">),</span>
                 <span class="n">discount_rate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">discount_rate</span><span class="p">,</span>
                 <span class="n">model1</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model1</span><span class="p">,</span>
                 <span class="n">model1_args</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model1_args</span><span class="p">,</span>
+                <span class="n">reward1</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span>
+                <span class="n">reward1_args</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ar1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="p">),</span>
             <span class="p">)</span>
 
 <div class="viewcode-block" id="AgeReplacementPolicy.expected_total_cost">
@@ -1443,7 +1444,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">model1</span><span class="o">.</span><span class="n">baseline</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">cf</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">discount_rate</span><span class="p">,</span>
+                <span class="n">discount_rate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">discount_rate</span><span class="p">,</span>
                 <span class="n">model_args</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model1_args</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
             <span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
             <span class="n">ar1</span> <span class="o">=</span> <span class="n">onecycle</span><span class="o">.</span><span class="n">ar</span>
@@ -1455,22 +1456,24 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">model1_args</span> <span class="o">=</span> <span class="p">(</span><span class="n">ar1</span><span class="p">,)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">model1_args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model1</span> <span class="k">else</span> <span class="kc">None</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">rrp</span> <span class="o">=</span> <span class="n">RenewalRewardProcess</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
-                <span class="n">age_replacement_cost</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span>
                 <span class="n">nb_assets</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nb_assets</span><span class="p">,</span>
                 <span class="n">model_args</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_args</span><span class="p">,</span>
                 <span class="n">reward_args</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ar</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="p">),</span>
                 <span class="n">discount_rate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">discount_rate</span><span class="p">,</span>
                 <span class="n">model1</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model1</span><span class="p">,</span>
                 <span class="n">model1_args</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model1_args</span><span class="p">,</span>
+                <span class="n">reward1</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">reward</span><span class="p">,</span>
+                <span class="n">reward1_args</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ar1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="p">),</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">AgeReplacementPolicy</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">baseline</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">cf</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="p">,</span>
+                <span class="n">discount_rate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">discount_rate</span><span class="p">,</span>
                 <span class="n">ar</span><span class="o">=</span><span class="n">ar</span><span class="p">,</span>
                 <span class="n">ar1</span><span class="o">=</span><span class="n">ar1</span><span class="p">,</span>
-                <span class="n">discount_rate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">discount_rate</span><span class="p">,</span>
                 <span class="n">model_args</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_args</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
                 <span class="n">model1</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model1</span><span class="o">.</span><span class="n">baseline</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model1</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
                 <span class="n">model1_args</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model1_args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model1</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
@@ -1611,12 +1614,6 @@
               
               
               
-              
-                <footer class="prev-next-footer d-print-none">
-                  
-<div class="prev-next-area">
-</div>
-                </footer>
               
             </div>
             

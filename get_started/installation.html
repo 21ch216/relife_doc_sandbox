@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=fac127bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=733aff7d" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -48,12 +48,12 @@
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'installation/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'get_started/installation';</script>
     <script src="../_static/custom-icon.js?v=74687d30"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Get started" href="../get_started.html" />
-    <link rel="prev" title="ReLife" href="../index.html" />
+    <link rel="next" title="First example" href="get_started_example.html" />
+    <link rel="prev" title="Get started" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -139,14 +139,7 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
-    Installation
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../get_started.html">
+  <a class="nav-link nav-internal" href="index.html">
     Get started
   </a>
 </li>
@@ -165,6 +158,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../learn/index.html">
+    Learn
+  </a>
+</li>
+
             <li class="nav-item dropdown">
                 <button class="btn dropdown-toggle nav-item" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false"
@@ -173,13 +173,6 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../learn/index.html">
-    Learn
-  </a>
-</li>
-
-
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../contributor_guide/index.html">
     Contributor’s guide
@@ -267,6 +260,10 @@
   
 
   
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
 </div>
 
     </header>
@@ -294,14 +291,7 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item current active">
-  <a class="nav-link nav-internal" href="#">
-    Installation
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../get_started.html">
+  <a class="nav-link nav-internal" href="index.html">
     Get started
   </a>
 </li>
@@ -396,7 +386,11 @@
 <nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"></div>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started_example.html">First example</a></li>
+</ul>
+</div>
 </nav></div>
     </div>
   
@@ -435,6 +429,9 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Get started</a></li>
+    
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Installation</span></li>
   </ul>
 </nav>
@@ -454,20 +451,8 @@
                   
   <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h1>
-<p>First things firts, how to install ReLife on your machine ?</p>
-<dl class="field-list simple">
-<dt class="field-odd">fieldname<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Field content</p>
-</dd>
-<dt class="field-even">fieldname<span class="colon">:</span></dt>
-<dd class="field-even"><p>Field content</p>
-</dd>
-<dt class="field-odd">fieldname<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Field content</p>
-</dd>
-</dl>
-<section id="pip">
-<h2>Pip<a class="headerlink" href="#pip" title="Link to this heading">#</a></h2>
+<section id="pip-recommended">
+<h2>Pip (recommended)<a class="headerlink" href="#pip-recommended" title="Link to this heading">#</a></h2>
 <p>To install ReLife with pip:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install .</span>
 </pre></div>
@@ -475,6 +460,15 @@
 </section>
 <section id="conda">
 <h2>Conda<a class="headerlink" href="#conda" title="Link to this heading">#</a></h2>
+</section>
+<section id="for-linux-users">
+<h2>For Linux users<a class="headerlink" href="#for-linux-users" title="Link to this heading">#</a></h2>
+</section>
+<section id="for-windows-users">
+<h2>For windows users<a class="headerlink" href="#for-windows-users" title="Link to this heading">#</a></h2>
+</section>
+<section id="for-macos-users">
+<h2>For macOS users<a class="headerlink" href="#for-macos-users" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -485,33 +479,40 @@
               
               
               
-                <footer class="prev-next-footer d-print-none">
-                  
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="../index.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">ReLife</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../get_started.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Get started</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
-</div>
-                </footer>
-              
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-recommended">Pip (recommended)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conda">Conda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-linux-users">For Linux users</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-windows-users">For windows users</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-macos-users">For macOS users</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/get_started/installation.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
               
             
           </div>

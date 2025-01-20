@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=fac127bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=733aff7d" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -139,14 +139,7 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../installation/index.html">
-    Installation
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../get_started.html">
+  <a class="nav-link nav-internal" href="../../get_started/index.html">
     Get started
   </a>
 </li>
@@ -165,6 +158,13 @@
   </a>
 </li>
 
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../learn/index.html">
+    Learn
+  </a>
+</li>
+
             <li class="nav-item dropdown">
                 <button class="btn dropdown-toggle nav-item" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false"
@@ -173,13 +173,6 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
-<li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../learn/index.html">
-    Learn
-  </a>
-</li>
-
-
 <li class=" ">
   <a class="nav-link dropdown-item nav-internal" href="../../contributor_guide/index.html">
     Contributor’s guide
@@ -267,6 +260,10 @@
   
 
   
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
 </div>
 
     </header>
@@ -294,14 +291,7 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../installation/index.html">
-    Installation
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../get_started.html">
+  <a class="nav-link nav-internal" href="../../get_started/index.html">
     Get started
   </a>
 </li>
@@ -1181,33 +1171,65 @@ pass an array of shape (m, n).</p>
               
               
               
-                <footer class="prev-next-footer d-print-none">
-                  
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="../index.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">API</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="relife2.Weibull.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Weibull</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
-</div>
-                </footer>
-              
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential"><code class="docutils literal notranslate"><span class="pre">Exponential</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.cdf"><code class="docutils literal notranslate"><span class="pre">Exponential.cdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.chf"><code class="docutils literal notranslate"><span class="pre">Exponential.chf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.copy"><code class="docutils literal notranslate"><span class="pre">Exponential.copy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.dhf"><code class="docutils literal notranslate"><span class="pre">Exponential.dhf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.fit"><code class="docutils literal notranslate"><span class="pre">Exponential.fit()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.hf"><code class="docutils literal notranslate"><span class="pre">Exponential.hf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.ichf"><code class="docutils literal notranslate"><span class="pre">Exponential.ichf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.isf"><code class="docutils literal notranslate"><span class="pre">Exponential.isf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.jac_cdf"><code class="docutils literal notranslate"><span class="pre">Exponential.jac_cdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.jac_chf"><code class="docutils literal notranslate"><span class="pre">Exponential.jac_chf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.jac_hf"><code class="docutils literal notranslate"><span class="pre">Exponential.jac_hf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.jac_pdf"><code class="docutils literal notranslate"><span class="pre">Exponential.jac_pdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.jac_sf"><code class="docutils literal notranslate"><span class="pre">Exponential.jac_sf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.ls_integrate"><code class="docutils literal notranslate"><span class="pre">Exponential.ls_integrate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.mean"><code class="docutils literal notranslate"><span class="pre">Exponential.mean()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.median"><code class="docutils literal notranslate"><span class="pre">Exponential.median()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.moment"><code class="docutils literal notranslate"><span class="pre">Exponential.moment()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.mrl"><code class="docutils literal notranslate"><span class="pre">Exponential.mrl()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.nb_params"><code class="docutils literal notranslate"><span class="pre">Exponential.nb_params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.params"><code class="docutils literal notranslate"><span class="pre">Exponential.params</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.params_names"><code class="docutils literal notranslate"><span class="pre">Exponential.params_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.pdf"><code class="docutils literal notranslate"><span class="pre">Exponential.pdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.plot"><code class="docutils literal notranslate"><span class="pre">Exponential.plot</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.ppf"><code class="docutils literal notranslate"><span class="pre">Exponential.ppf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.rvs"><code class="docutils literal notranslate"><span class="pre">Exponential.rvs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.sf"><code class="docutils literal notranslate"><span class="pre">Exponential.sf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.Exponential.var"><code class="docutils literal notranslate"><span class="pre">Exponential.var()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/api/lifetime_models/relife2.Exponential.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
               
             
           </div>
