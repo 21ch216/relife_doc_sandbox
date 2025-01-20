@@ -474,11 +474,7 @@
 from relife2.utils.dataset import load_circuit_breaker
 
 time, event, entry = load_circuit_breaker()
-data = pd.DataFrame({
-    &quot;time&quot; : time,
-    &quot;event&quot; : event,
-    &quot;entry&quot; : entry
-})
+data = pd.DataFrame({&quot;time&quot;: time, &quot;event&quot;: event, &quot;entry&quot;: entry})
 display(data.head(n=15))
 </pre></div>
 </div>
@@ -611,9 +607,9 @@ display(data.head(n=15))
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from relife2 import KaplanMeier, Weibull, Gompertz
 
-km = KaplanMeier().fit(time,event,entry)
-weibull = Weibull().fit(time,event,entry)
-gompertz = Gompertz().fit(time,event,entry)
+km = KaplanMeier().fit(time, event, entry)
+weibull = Weibull().fit(time, event, entry)
+gompertz = Gompertz().fit(time, event, entry)
 </pre></div>
 </div>
 </div>
@@ -665,8 +661,8 @@ Gompertz AIC : 2485.567310362761
 km.plot.sf()
 weibull.plot.sf()
 gompertz.plot.sf()
-plt.xlabel(&#39;Age [year]&#39;)
-plt.ylabel(&#39;Survival probability&#39;)
+plt.xlabel(&quot;Age [year]&quot;)
+plt.ylabel(&quot;Survival probability&quot;)
 plt.show()
 </pre></div>
 </div>
@@ -692,6 +688,203 @@ plt.show()
 <p>When you want to pass different parameters for each asset, you generally encode them in a 2D array. The first axis corresponds to each assets and the second axis corresponds to the values.</p>
 </div>
 <p>Current ages are stored in <code class="docutils literal notranslate"><span class="pre">a0</span></code>, preventive costs of replacement in <code class="docutils literal notranslate"><span class="pre">cp</span></code>, failure costs in <code class="docutils literal notranslate"><span class="pre">cf</span></code>. As there are three assets, we must reshape each array in 2D when necessary.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+
+cp = 10  # BE CAREFULL ARRAY MUST HAVE THE SAME SHAPE
+# shape is (3, 1) meaning 3 assets and 1 parameter value per asset
+a0 = np.array([15, 20, 25]).reshape(-1, 1)
+cf = np.array([900, 500, 100]).reshape(-1, 1)
+
+discount_rate = 0.04
+</pre></div>
+</div>
+</div>
+<p>Then, you can instanciate an <code class="docutils literal notranslate"><span class="pre">AgeReplacementPolicy</span></code> object as follow :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from relife2 import AgeReplacementPolicy
+
+policy = AgeReplacementPolicy(gompertz, cf, cp, discount_rate=discount_rate, a0=a0)
+</pre></div>
+</div>
+</div>
+<p>This policy object as an attribute called <code class="docutils literal notranslate"><span class="pre">ar</span></code> corresponding to the ages of preventive replacement. That’s the parameter we want to optimize. For now, it is set to <code class="docutils literal notranslate"><span class="pre">None</span></code>. After fitting the policy, its value will be set to the optimal age given the costs and survival behaviour of the assets</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(policy.ar)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+None
+</pre></div></div>
+</div>
+<p>Actually, <code class="docutils literal notranslate"><span class="pre">AgeReplacementPolicy</span></code> has an extra attribute called <code class="docutils literal notranslate"><span class="pre">ar1</span></code> corresponding to the ages of the first replacements. In this case, they won’t correspond to <code class="docutils literal notranslate"><span class="pre">ar</span></code> because assets were not new, their current ages were set to <code class="docutils literal notranslate"><span class="pre">a0</span></code>. Thus, <code class="docutils literal notranslate"><span class="pre">ar1</span></code> are the time left until the first replacement, whereas <code class="docutils literal notranslate"><span class="pre">ar</span></code> is the optimal age of replacement for the next replacements. For more details about the difference between <code class="docutils literal notranslate"><span class="pre">ar1</span></code> and <code class="docutils literal notranslate"><span class="pre">ar</span></code> see … . Otherwise, <code class="docutils literal notranslate"><span class="pre">ar1</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>policy.fit(inplace=True)
+ar1 = policy.ar1
+ar = policy.ar
+
+print(&quot;optimal ar1&quot;, ar1.squeeze())
+print(&quot;\noptimal ar&quot;, ar.squeeze())
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+optimal ar1 [ 7.83000887  9.07149393 19.03498074]
+
+optimal ar [20.91858994 25.54939328 41.60855399]
+</pre></div></div>
+</div>
+<p>The optimal age of replacement minimizes the asymptotic expected equivalent annual cost (EEAC). It represents the best compromise between replacement costs and the cost of the consequences of failure. The obtained minimal EEAC are :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>min_asymptotic_EEAC = policy.asymptotic_expected_equivalent_annual_cost()
+print(min_asymptotic_EEAC)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[1.23799524]
+ [0.98338559]
+ [0.48701708]]
+</pre></div></div>
+</div>
+<p>One can better visualize it through a graph that represents asymptotic EEAC for different age of replacement values per assets. The obtained min asymptotic EEAC above are in the minimum valley of each curve</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>range_ar = np.arange(1, 100, 0.1)
+range_asymptotic_EEAC = AgeReplacementPolicy(
+    gompertz, cf, cp, discount_rate=discount_rate, a0=a0, ar=range_ar, ar1=ar1
+).asymptotic_expected_equivalent_annual_cost()
+
+for asset_i in range(ar.shape[0]):
+    plt.plot(range_ar, range_asymptotic_EEAC[asset_i])
+    plt.scatter(
+        ar[asset_i],
+        min_asymptotic_EEAC[asset_i],
+        c=f&quot;C{asset_i}&quot;,
+        label=f&quot; cf={cf[asset_i,0]} k€, ar={ar[asset_i][0]:0.1f} years&quot;,
+    )
+plt.xlabel(&quot;Age of preventive replacement [years]&quot;)
+plt.ylabel(&quot;Asymptotic expected equivalent annual cost [k€]&quot;)
+plt.legend()
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/get_started_21_0.png" src="_images/get_started_21_0.png" />
+</div>
+</div>
+</section>
+<section id="Budget-and-operations-planning">
+<h2>Budget and operations planning<a class="headerlink" href="#Budget-and-operations-planning" title="Link to this heading">#</a></h2>
+<p>For budgeting, the expected total discounted costs for the 3 circuit breakers are computed and we can plot the total annual discounted costs for the next 30 years, including costs of failures and costs of preventive replacements.</p>
+<p>Then the total number of replacements are projected for the next 30 years. Failure replacements are counted separately in order to prevent and prepare the workload of the maintenance teams.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dt = 0.5
+step = int(1 / dt)
+timeline = np.arange(0, 30 + dt, dt)
+z = policy.expected_total_cost(timeline).sum(axis=0)
+y = timeline[::step][1:]
+q = np.diff(z[::step])
+plt.bar(2020 + y, q, align=&quot;edge&quot;, width=-0.8, alpha=0.8)
+plt.xlabel(&quot;Year&quot;)
+plt.ylabel(&quot;Expected discounted annual cost in k€&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/get_started_24_0.png" src="_images/get_started_24_0.png" />
+</div>
+</div>
+<p>The figure shows the expected replacements for the very small sample of 3 circuit breakers. When the population of assets is large, the expected failure replacements is a useful information to build up a stock of materials.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mt = (
+    AgeReplacementPolicy(gompertz, cf=1, cp=1, discount_rate=0, ar=ar, ar1=ar1, a0=a0)
+    .expected_total_cost(timeline)
+    .sum(axis=0)
+)
+mf = (
+    AgeReplacementPolicy(gompertz, cf=1, cp=0, discount_rate=0, ar=ar, ar1=ar1, a0=a0)
+    .expected_total_cost(timeline)
+    .sum(axis=0)
+)
+qt = np.diff(mt[::step])
+qf = np.diff(mf[::step])
+plt.bar(
+    y + 2020,
+    qt,
+    align=&quot;edge&quot;,
+    width=-0.8,
+    alpha=0.8,
+    color=&quot;C1&quot;,
+    label=&quot;all replacements&quot;,
+)
+plt.bar(
+    y + 2020,
+    qf,
+    align=&quot;edge&quot;,
+    width=-0.8,
+    alpha=0.8,
+    color=&quot;C0&quot;,
+    label=&quot;failure replacements only&quot;,
+)
+plt.xlabel(&quot;Years&quot;)
+plt.ylabel(&quot;Expected number of annual replacements&quot;)
+plt.legend()
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/get_started_26_0.png" src="_images/get_started_26_0.png" />
+</div>
+</div>
 </section>
 </section>
 
