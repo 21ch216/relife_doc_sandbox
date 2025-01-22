@@ -72,6 +72,23 @@ data.
 
     LikelihoodFromLifetimes
 
+.. rubric:: Decorator models
+
+A decorator model is basically a `LifetimeModel` object that wraps another `LifetimeModel` object set as a baseline.
+Those models mainly deserves to some functionnalities in `Policy` object but advanced users can clearly use them for a
+specific purpose. For instance `LeftTruncatedModel` wraps a baseline model by overriding some of its probibability function
+in order to take into account the time condition imposed by a left trunctation `a0`.
+
+.. autosummary::
+    :toctree: decorator_models
+    :template: parametric-lifetime-model-class.rst
+    :caption: Decorator models
+    :nosignatures:
+
+    fiability.AgeReplacementModel
+    fiability.LeftTruncatedModel
+    fiability.EquilibriumDistribution
+
 .. rubric:: Base class
 
 What we call `base class` are objects (in Python class are objects) used at the core of ReLife subsystems.
