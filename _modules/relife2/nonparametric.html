@@ -861,16 +861,23 @@
         <span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">left_censored</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;NelsonAalen does not take left censored lifetimes&quot;</span><span class="p">)</span>
-        <span class="n">timeline</span><span class="p">,</span> <span class="n">timeline_indexes</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span>
-            <span class="n">lifetime_data</span><span class="o">.</span><span class="n">rlc</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;NelsonAalen does not accept left censored or interval censored lifetimes&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">timeline</span><span class="p">,</span> <span class="n">unique_indices</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span>
+            <span class="n">lifetime_data</span><span class="o">.</span><span class="n">rc</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">)</span>
-        <span class="n">death_set</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">timeline</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>  <span class="c1"># death at each timeline step</span>
+        <span class="n">death_set</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span>
+            <span class="n">timeline</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span>
+        <span class="p">)</span>  <span class="c1"># death at each timeline step</span>
+
         <span class="n">complete_observation_indic</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span>
-            <span class="n">lifetime_data</span><span class="o">.</span><span class="n">rlc</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">lifetime_data</span><span class="o">.</span><span class="n">rc</span><span class="o">.</span><span class="n">values</span>
         <span class="p">)</span>  <span class="c1"># just creating an array to fill it next line</span>
         <span class="n">complete_observation_indic</span><span class="p">[</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">complete</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">death_set</span><span class="p">,</span> <span class="n">timeline_indexes</span><span class="p">,</span> <span class="n">complete_observation_indic</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+
+        <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">death_set</span><span class="p">,</span> <span class="n">unique_indices</span><span class="p">,</span> <span class="n">complete_observation_indic</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
         <span class="n">x_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span>
             <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
                 <span class="p">(</span>
@@ -879,7 +886,7 @@
                         <span class="p">[</span>
                             <span class="mi">0</span>
                             <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span>
-                                <span class="nb">len</span><span class="p">(</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">rlc</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+                                <span class="nb">len</span><span class="p">(</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">rc</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
                                 <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">lifetime_data</span><span class="o">.</span><span class="n">left_truncated</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
                             <span class="p">)</span>
                         <span class="p">]</span>

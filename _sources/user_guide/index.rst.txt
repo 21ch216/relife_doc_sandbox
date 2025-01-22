@@ -14,6 +14,9 @@ Practical tutorials that shows how to use ReLife functionalities in-depth.
 
     demo_distribution.ipynb
     demo_nonparametric.ipynb
+    demo_regression.ipynb
+    demo_financial_analysis.ipynb
+    demo_renewal_theory.ipynb
 
 
 .. nblinkgallery::
@@ -21,3 +24,6 @@ Practical tutorials that shows how to use ReLife functionalities in-depth.
 
     demo_distribution
     demo_nonparametric
+    demo_regression
+    demo_financial_analysis
+    demo_renewal_theory

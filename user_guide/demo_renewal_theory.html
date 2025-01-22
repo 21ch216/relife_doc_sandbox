@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Distribution model &#8212; ReLife</title>
+    <title>4. Renewal theory &#8212; ReLife</title>
   
   
   
@@ -51,12 +51,12 @@
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/demo_distribution';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'user_guide/demo_renewal_theory';</script>
     <script src="../_static/custom-icon.js?v=74687d30"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Non parametric estimators" href="demo_nonparametric.html" />
-    <link rel="prev" title="User’s guide" href="index.html" />
+    <link rel="next" title="API" href="../api/index.html" />
+    <link rel="prev" title="3. Financial analysis" href="demo_financial_analysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -390,10 +390,10 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Distribution model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demo_distribution.html">1. Distribution model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demo_nonparametric.html">2. Non parametric estimators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demo_financial_analysis.html">3. Financial analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="demo_renewal_theory.html">4. Renewal theory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Renewal theory</a></li>
 </ul>
 </div>
 </nav></div>
@@ -437,7 +437,7 @@
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">User’s guide</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">1. </span>Distribution model</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><span class="section-number">4. </span>Renewal theory</span></li>
   </ul>
 </nav>
 </div>
@@ -454,173 +454,79 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="Distribution-model">
-<h1><span class="section-number">1. </span>Distribution model<a class="headerlink" href="#Distribution-model" title="Link to this heading">#</a></h1>
-<p>Import the necessary functionalities from Relife</p>
+  <section id="Renewal-theory">
+<h1><span class="section-number">4. </span>Renewal theory<a class="headerlink" href="#Renewal-theory" title="Link to this heading">#</a></h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
-import matplotlib.pyplot as plt
-from relife2 import Weibull, Gompertz
-from relife2.utils.dataset import load_circuit_breaker
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+import numpy as np
+from relife2 import Weibull, RenewalProcess
 </pre></div>
 </div>
 </div>
-<p>Here is a toy datasets that contains the following 15 first data</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Choix de la distribution des temps inter-arrivées
+distrib = Weibull(5, 0.03)
 
-time, event, entry = load_circuit_breaker()
-data = pd.DataFrame({&quot;time&quot;: time, &quot;event&quot;: event, &quot;entry&quot;: entry})
-display(data.head(n=15))
+# Création du processus de renouvellement associé
+rp = RenewalProcess(distrib)
+
+# Plot de la fonction de renouvellement qui correspond au nombre moyen de défaillance au cours du temps, ici dans une stratégie run to failure
+t = np.linspace(0, 150, num=5000)
+plt.plot(t, rp.renewal_function(t), label=&quot;Fonction de renouvellement&quot;)
+plt.xlabel(&quot;t&quot;)
+plt.legend()
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>time</th>
-      <th>event</th>
-      <th>entry</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>34.0</td>
-      <td>1.0</td>
-      <td>33.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>28.0</td>
-      <td>1.0</td>
-      <td>27.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>12.0</td>
-      <td>1.0</td>
-      <td>11.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>38.0</td>
-      <td>1.0</td>
-      <td>37.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>18.0</td>
-      <td>1.0</td>
-      <td>17.0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>32.0</td>
-      <td>1.0</td>
-      <td>31.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>44.0</td>
-      <td>1.0</td>
-      <td>43.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>49.0</td>
-      <td>1.0</td>
-      <td>48.0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>27.0</td>
-      <td>1.0</td>
-      <td>26.0</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>47.0</td>
-      <td>1.0</td>
-      <td>46.0</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>44.0</td>
-      <td>1.0</td>
-      <td>43.0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>70.0</td>
-      <td>1.0</td>
-      <td>69.0</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>40.0</td>
-      <td>1.0</td>
-      <td>38.0</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>37.0</td>
-      <td>1.0</td>
-      <td>35.0</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>26.0</td>
-      <td>1.0</td>
-      <td>24.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<div class="output_area docutils container">
+<img alt="../_images/user_guide_demo_renewal_theory_2_0.png" src="../_images/user_guide_demo_renewal_theory_2_0.png" />
 </div>
-<section id="Basics">
-<h2><span class="section-number">1.1. </span>Basics<a class="headerlink" href="#Basics" title="Link to this heading">#</a></h2>
-<p>One can instanciate a Weibull distribution model as follow</p>
-<div class="nbinput nblast docutils container">
+</div>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>weibull = Weibull()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from relife2.renewal import renewal_equation_solver
+
+
+def f(x):
+    return distrib.cdf(x)
+
+
+t = np.linspace(0, 150, num=100)
+tm = (t[1:] + t[:-1]) / 2
+m = renewal_equation_solver(t, distrib, f)
+plt.plot(t, m)
+plt.show()
 </pre></div>
 </div>
 </div>
-<p>From now, the model parameters are unknow, thus set to <code class="docutils literal notranslate"><span class="pre">np.nan</span></code></p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/user_guide_demo_renewal_theory_3_0.png" src="../_images/user_guide_demo_renewal_theory_3_0.png" />
+</div>
+</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(weibull.params_names)
-print(weibull.params)
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Plot de la densité de renouvellement qui correspond au nombre moyen de défaillance par unité de temps, au cours du temps.
+plt.plot(t, rp.renewal_density(t), label=&quot;Densité de renouvellement&quot;)
+plt.xlabel(&quot;t&quot;)
+plt.legend()
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -628,21 +534,28 @@ print(weibull.params)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-[&#39;shape&#39;, &#39;rate&#39;]
-[nan nan]
-</pre></div></div>
+<img alt="../_images/user_guide_demo_renewal_theory_4_0.png" src="../_images/user_guide_demo_renewal_theory_4_0.png" />
 </div>
-</section>
-<section id="Parameters-estimations">
-<h2><span class="section-number">1.2. </span>Parameters estimations<a class="headerlink" href="#Parameters-estimations" title="Link to this heading">#</a></h2>
-<p>One can fit the model. You can either return a new fitted instance or fit the model inplace</p>
+</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>weibull.fit(time, event, entry, inplace=True)
-print(&quot;Estimated parameters are :&quot;, weibull.params)
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Calcul de la distribution des âges à l&#39;équilibre. A temps suffisament long, la varariance des durées de vie &quot;étale&quot; les défaillance dans le temps
+# ce qui aboutit à une stabilisation du rythme d&#39;apparition des défaillances au cours du temps. Lorsque ce régime stationnaire est atteint,
+# la population d&#39;actifs a une distribution d&#39;âge qui ne varie plus au cours du temps : c&#39;est la distribution d&#39;âges à l&#39;équilibre.
+from relife2.fiability import EquilibriumDistribution
+
+eq_distrib = EquilibriumDistribution(distrib)
+
+t = np.linspace(0, 75, num=1000)
+plt.plot(t, eq_distrib.pdf(t), label=&quot;Distribution des âges des actifs à l&#39;équilibre&quot;)
+plt.plot(t, distrib.pdf(t), label=&quot;Distribution des durées de vie des actifs&quot;)
+plt.xlabel(&quot;t&quot;)
+plt.ylabel(&quot;Densité&quot;)
+plt.legend(loc=&quot;upper right&quot;)
+plt.ylim(0, 0.07)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -650,39 +563,73 @@ print(&quot;Estimated parameters are :&quot;, weibull.params)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<div class="highlight"><pre>
-Estimated parameters are : [3.7267452  0.01232326]
-</pre></div></div>
+<img alt="../_images/user_guide_demo_renewal_theory_5_0.png" src="../_images/user_guide_demo_renewal_theory_5_0.png" />
 </div>
-</section>
-<section id="Plots">
-<h2><span class="section-number">1.3. </span>Plots<a class="headerlink" href="#Plots" title="Link to this heading">#</a></h2>
-<p>To plot the survival function, do the following</p>
+</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>weibull.plot.sf()
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>end_time = 1000
+nb_samples = 5000
+
+renewal_sample = rp.sample(nb_samples, end_time)
+age_eq = np.zeros(nb_samples)
+
+for i in range(nb_samples):
+    age_eq[i] = (
+        end_time - renewal_sample.event_times[renewal_sample.samples_index == i][-1]
+    )
+
+t = np.linspace(0, np.max(age_eq), num=1000)
+plt.hist(age_eq, density=True, label=&quot;Histogramme des âges des actifs à temps long&quot;)
+plt.plot(t, eq_distrib.pdf(t), label=&quot;Distribution théorique des âges à l&#39;équilibre&quot;)
+plt.xlabel(&quot;Ages&quot;)
+plt.ylabel(&quot;Densité&quot;)
+plt.ylim((0, 0.04))
+plt.legend(loc=&quot;upper right&quot;)
+plt.show()
 </pre></div>
 </div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;Axes: &gt;
-</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/user_guide_demo_distribution_15_1.png" src="../_images/user_guide_demo_distribution_15_1.png" />
+<img alt="../_images/user_guide_demo_renewal_theory_6_0.png" src="../_images/user_guide_demo_renewal_theory_6_0.png" />
 </div>
 </div>
-</section>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>end_time = 1000
+nb_samples = 5000
+
+renewal_sample = rp.sample(nb_samples, end_time)
+age_eq = np.zeros(nb_samples)
+
+for sample, asset, event_times, lifetimes, events in renewal_sample.iter():
+    age_eq[sample] = end_time - event_times[-1]
+
+t = np.linspace(0, np.max(age_eq), num=1000)
+plt.hist(age_eq, density=True, label=&quot;Histogramme des âges des actifs à temps long&quot;)
+plt.plot(t, eq_distrib.pdf(t), label=&quot;Distribution théorique des âges à l&#39;équilibre&quot;)
+plt.xlabel(&quot;Ages&quot;)
+plt.ylabel(&quot;Densité&quot;)
+plt.ylim((0, 0.04))
+plt.legend(loc=&quot;upper right&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/user_guide_demo_renewal_theory_7_0.png" src="../_images/user_guide_demo_renewal_theory_7_0.png" />
+</div>
+</div>
 </section>
 
 
@@ -701,24 +648,10 @@ Estimated parameters are : [3.7267452  0.01232326]
 
 
   <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Basics">1.1. Basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Parameters-estimations">1.2. Parameters estimations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Plots">1.3. Plots</a></li>
-</ul>
-  </nav></div>
-
-  <div class="sidebar-secondary-item">
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/user_guide/demo_distribution.ipynb.txt"
+      <li><a href="../_sources/user_guide/demo_renewal_theory.ipynb.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>
