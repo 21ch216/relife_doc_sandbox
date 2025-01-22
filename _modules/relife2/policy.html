@@ -539,13 +539,6 @@
 <span class="sd">        Current ages of the assets (default is None). Setting ``a0`` will add</span>
 <span class="sd">        left truncations.</span>
 
-
-<span class="sd">    References</span>
-<span class="sd">    ----------</span>
-<span class="sd">    .. [1] Coolen-Schrijner, P., &amp; Coolen, F. P. A. (2006). On optimality</span>
-<span class="sd">        criteria for age replacement. Proceedings of the Institution of</span>
-<span class="sd">        Mechanical Engineers, Part O: Journal of Risk and Reliability,</span>
-<span class="sd">        220(1), 21-29</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">reward</span> <span class="o">=</span> <span class="n">run_to_failure_cost</span>
@@ -722,8 +715,8 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">OneCycleAgeReplacementPolicy</span><span class="p">(</span><span class="n">Policy</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;One-cyle age replacement policy.</span>
 
-<span class="sd">    The asset is disposed at a fixed age `ar` with costs `cp` or upon failure</span>
-<span class="sd">    with costs `cf` if earlier.</span>
+<span class="sd">    The asset is disposed at a fixed age :math:`a_r` with costs :math:`c_p` or upon failure</span>
+<span class="sd">    with costs :math:`c_f` if earlier.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -735,6 +728,9 @@
 <span class="sd">        The cost of preventive replacements for each asset.</span>
 <span class="sd">    discount_rate : float, default is 0.</span>
 <span class="sd">        The discount rate.</span>
+<span class="sd">    ar : np.ndarray, optional</span>
+<span class="sd">        Times until preventive replacements. This parameter can be optimized</span>
+<span class="sd">        with ``fit``</span>
 <span class="sd">    model_args : ModelArgs, optional</span>
 <span class="sd">        ModelArgs is a tuple of zero or more ndarray required by the underlying</span>
 <span class="sd">        lifetime model of the process.</span>
@@ -996,7 +992,7 @@
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Run-to-failure renewal policy.</span>
 
 <span class="sd">    Renewal reward process where assets are replaced on failure with costs</span>
-<span class="sd">    `cf`.</span>
+<span class="sd">    :math:`c_f`.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1190,8 +1186,8 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">AgeReplacementPolicy</span><span class="p">(</span><span class="n">Policy</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Time based replacement policy.</span>
 
-<span class="sd">    Renewal reward process where assets are replaced at a fixed age ``ar``</span>
-<span class="sd">    with costs ``cp`` or upon failure with costs ``cf`` if earlier.</span>
+<span class="sd">    Renewal reward process where assets are replaced at a fixed age :math:`a_r`</span>
+<span class="sd">    with costs :math:`c_p` or upon failure with costs :math:`c_f` if earlier.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1202,10 +1198,10 @@
 <span class="sd">    cp : np.ndarray</span>
 <span class="sd">        The cost of preventive replacements for each asset.</span>
 <span class="sd">    ar : np.ndarray, optional</span>
-<span class="sd">        Ages of preventive replacements. This parameter can be optimized</span>
+<span class="sd">        Times until preventive replacements. This parameter can be optimized</span>
 <span class="sd">        with ``fit``</span>
 <span class="sd">    ar1 : np.ndarray, optional</span>
-<span class="sd">        Ages of preventive replacements for the first cycle. This parameter can be optimized</span>
+<span class="sd">        Times until preventive replacements for the first cycle. This parameter can be optimized</span>
 <span class="sd">        with ``fit``</span>
 <span class="sd">    discount_rate : float, default is 0.</span>
 <span class="sd">        The discount rate.</span>

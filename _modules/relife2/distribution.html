@@ -651,8 +651,20 @@
 <div class="viewcode-block" id="Exponential">
 <a class="viewcode-back" href="../../api/lifetime_models/relife2.Exponential.html#relife2.Exponential">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Exponential</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Exponential lifetime distribution.</span>
+
+<span class="sd">    The exponential distribution is a 1-parameter distribution with</span>
+<span class="sd">    :math:`(\lambda)`. The probability density function is:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        f(t) = \lambda e^{-\lambda t}</span>
+
+<span class="sd">    where:</span>
+
+<span class="sd">        - :math:`\lambda &gt; 0`, the rate parameter,</span>
+<span class="sd">        - :math:`t\geq 0`, the operating time, age, cycles, etc.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -879,8 +891,21 @@
 <div class="viewcode-block" id="Weibull">
 <a class="viewcode-back" href="../../api/lifetime_models/relife2.Weibull.html#relife2.Weibull">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Weibull</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Weibull lifetime distribution.</span>
+
+<span class="sd">    The Weibull distribution is a 2-parameter distribution with</span>
+<span class="sd">    :math:`(c,\lambda)`. The probability density function is:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        f(t) = c \lambda (\lambda t)^{c-1} e^{-(\lambda t)^c}</span>
+
+<span class="sd">    where:</span>
+
+<span class="sd">        - :math:`c &gt; 0`, the shape parameter,</span>
+<span class="sd">        - :math:`\lambda &gt; 0`, the rate parameter,</span>
+<span class="sd">        - :math:`t\geq 0`, the operating time, age, cycles, etc.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1111,8 +1136,21 @@
 <div class="viewcode-block" id="Gompertz">
 <a class="viewcode-back" href="../../api/lifetime_models/relife2.Gompertz.html#relife2.Gompertz">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Gompertz</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gompertz lifetime distribution.</span>
+
+<span class="sd">    The Gompertz distribution is a 2-parameter distribution with</span>
+<span class="sd">    :math:`(c,\lambda)`. The probability density function is:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        f(t) = c \lambda e^{\lambda t} e^{ -c \left( e^{\lambda t}-1 \right) }</span>
+
+<span class="sd">    where:</span>
+
+<span class="sd">        - :math:`c &gt; 0`, the shape parameter,</span>
+<span class="sd">        - :math:`\lambda &gt; 0`, the rate parameter,</span>
+<span class="sd">        - :math:`t\geq 0`, the operating time, age, cycles, etc.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1335,8 +1373,21 @@
 <div class="viewcode-block" id="Gamma">
 <a class="viewcode-back" href="../../api/lifetime_models/relife2.Gamma.html#relife2.Gamma">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Gamma</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Gamma lifetime distribution.</span>
+
+<span class="sd">    The Gamma distribution is a 2-parameter distribution with</span>
+<span class="sd">    :math:`(c,\lambda)`. The probability density function is:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        f(t) = \frac{\lambda^c t^{c-1} e^{-\lambda t}}{\Gamma(c)}</span>
+
+<span class="sd">    where:</span>
+
+<span class="sd">        - :math:`c &gt; 0`, the shape parameter,</span>
+<span class="sd">        - :math:`\lambda &gt; 0`, the rate parameter,</span>
+<span class="sd">        - :math:`t\geq 0`, the operating time, age, cycles, etc.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1582,8 +1633,21 @@
 <div class="viewcode-block" id="LogLogistic">
 <a class="viewcode-back" href="../../api/lifetime_models/relife2.LogLogistic.html#relife2.LogLogistic">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">LogLogistic</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Log-logistic probability distribution.</span>
+
+<span class="sd">    The Log-logistic distribution is defined as a 2-parameter distribution</span>
+<span class="sd">    :math:`(c, \lambda)`. The probability density function is:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        f(t) = \frac{c \lambda^c t^{c-1}}{(1+(\lambda t)^{c})^2}</span>
+
+<span class="sd">    where:</span>
+
+<span class="sd">        - :math:`c &gt; 0`, the shape parameter,</span>
+<span class="sd">        - :math:`\lambda &gt; 0`, the rate parameter,</span>
+<span class="sd">        - :math:`t\geq 0`, the operating time, age, cycles, etc.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>

@@ -1003,13 +1003,43 @@
 <div class="viewcode-block" id="ProportionalHazard">
 <a class="viewcode-back" href="../../api/lifetime_models/relife2.ProportionalHazard.html#relife2.ProportionalHazard">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ProportionalHazard</span><span class="p">(</span><span class="n">Regression</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Proportional Hazard regression model.</span>
+
+<span class="sd">    The cumulative hazard function :math:`H` is linked to the multiplier</span>
+<span class="sd">    function :math:`g` by the relation:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        H(t, x) = g(\beta, x) H_0(t) = e^{\beta \cdot x} H_0(t)</span>
+
+<span class="sd">    where :math:`x` is a vector of covariates, :math:`\beta` is the coefficient</span>
+<span class="sd">    vector of the effect of covariates, :math:`H_0` is the baseline cumulative</span>
+<span class="sd">    hazard function.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    baseline : ParametricLifetimeModel</span>
+<span class="sd">        Any parametric lifetime model to serve as the baseline.</span>
+<span class="sd">    coef : tuple of floats (values can be None), optional</span>
+<span class="sd">        Coefficients values of the covariate effects.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Sun, J. (2006). The statistical analysis of interval-censored failure</span>
+<span class="sd">        time data (Vol. 3, No. 1). New York: springer.</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    regression.AFT : AFT regression</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">baseline</span><span class="p">:</span> <span class="n">ParametricLifetimeModel</span><span class="p">[</span><span class="o">*</span><span class="n">ModelArgs</span><span class="p">],</span>
+        <span class="n">coef</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,),</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">coef</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ProportionalHazard.hf">
 <a class="viewcode-back" href="../../api/lifetime_models/relife2.ProportionalHazard.html#relife2.ProportionalHazard.hf">[docs]</a>
@@ -1150,9 +1180,40 @@
 <div class="viewcode-block" id="AFT">
 <a class="viewcode-back" href="../../api/lifetime_models/relife2.AFT.html#relife2.AFT">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">AFT</span><span class="p">(</span><span class="n">Regression</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Accelerated failure time regression.</span>
+
+<span class="sd">    The cumulative hazard function :math:`H` is linked to the multiplier</span>
+<span class="sd">    function :math:`g` by the relation:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        H(t, x) = H_0\left(\dfrac{t}{g(\beta, x)}\right) = H_0(t e^{- \beta</span>
+<span class="sd">        \cdot x})</span>
+
+<span class="sd">    where :math:`x` is a vector of covariates, :math:`\beta` is the coefficient</span>
+<span class="sd">    vector of the effect of covariates, :math:`H_0` is the baseline cumulative</span>
+<span class="sd">    hazard function.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    baseline : ParametricLifetimeModel</span>
+<span class="sd">        Any parametric lifetime model to serve as the baseline.</span>
+<span class="sd">    coef : tuple of floats (values can be None), optional</span>
+<span class="sd">        Coefficients values of the covariate effects.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Kalbfleisch, J. D., &amp; Prentice, R. L. (2011). The statistical</span>
+<span class="sd">        analysis of failure time data. John Wiley &amp; Sons.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">baseline</span><span class="p">:</span> <span class="n">ParametricLifetimeModel</span><span class="p">[</span><span class="o">*</span><span class="n">ModelArgs</span><span class="p">],</span>
+        <span class="n">coef</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,),</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">coef</span><span class="p">)</span>
 
 <div class="viewcode-block" id="AFT.hf">
 <a class="viewcode-back" href="../../api/lifetime_models/relife2.AFT.html#relife2.AFT.hf">[docs]</a>

@@ -48,6 +48,8 @@
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/renewal_policy/relife2.OneCycleAgeReplacementPolicy';</script>
     <script src="../../_static/custom-icon.js?v=74687d30"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -414,6 +416,12 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../likelihood/relife2.LikelihoodFromLifetimes.html">LikelihoodFromLifetimes</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Decorator models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../decorator_models/relife2.fiability.AgeReplacementModel.html">AgeReplacementModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../decorator_models/relife2.fiability.LeftTruncatedModel.html">LeftTruncatedModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../decorator_models/relife2.fiability.EquilibriumDistribution.html">EquilibriumDistribution</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Base class</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../base_class/relife2.Parameters.html">Parameters</a></li>
@@ -486,8 +494,8 @@
 <dt class="sig sig-object py" id="relife2.OneCycleAgeReplacementPolicy">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">OneCycleAgeReplacementPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cp</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discount_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nb_assets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/policy.html#OneCycleAgeReplacementPolicy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.OneCycleAgeReplacementPolicy" title="Link to this definition">#</a></dt>
 <dd><p>One-cyle age replacement policy.</p>
-<p>The asset is disposed at a fixed age <cite>ar</cite> with costs <cite>cp</cite> or upon failure
-with costs <cite>cf</cite> if earlier.</p>
+<p>The asset is disposed at a fixed age <span class="math notranslate nohighlight">\(a_r\)</span> with costs <span class="math notranslate nohighlight">\(c_p\)</span> or upon failure
+with costs <span class="math notranslate nohighlight">\(c_f\)</span> if earlier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -498,6 +506,9 @@ with costs <cite>cf</cite> if earlier.</p>
 <dt><strong>cp</strong><span class="classifier">np.ndarray</span></dt><dd><p>The cost of preventive replacements for each asset.</p>
 </dd>
 <dt><strong>discount_rate</strong><span class="classifier">float, default is 0.</span></dt><dd><p>The discount rate.</p>
+</dd>
+<dt><strong>ar</strong><span class="classifier">np.ndarray, optional</span></dt><dd><p>Times until preventive replacements. This parameter can be optimized
+with <code class="docutils literal notranslate"><span class="pre">fit</span></code></p>
 </dd>
 <dt><strong>model_args</strong><span class="classifier">ModelArgs, optional</span></dt><dd><p>ModelArgs is a tuple of zero or more ndarray required by the underlying
 lifetime model of the process.</p>

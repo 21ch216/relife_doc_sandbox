@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>LifetimeModel &#8212; ReLife</title>
+    <title>AgeReplacementModel &#8212; ReLife</title>
   
   
   
@@ -48,12 +48,14 @@
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api/base_class/relife2.LifetimeModel';</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/decorator_models/relife2.fiability.AgeReplacementModel';</script>
     <script src="../../_static/custom-icon.js?v=74687d30"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="ParametricLifetimeModel" href="relife2.ParametricLifetimeModel.html" />
-    <link rel="prev" title="ParametricModel" href="relife2.ParametricModel.html" />
+    <link rel="next" title="LeftTruncatedModel" href="relife2.fiability.LeftTruncatedModel.html" />
+    <link rel="prev" title="LikelihoodFromLifetimes" href="../likelihood/relife2.LikelihoodFromLifetimes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -415,17 +417,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../likelihood/relife2.LikelihoodFromLifetimes.html">LikelihoodFromLifetimes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Decorator models</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../decorator_models/relife2.fiability.AgeReplacementModel.html">AgeReplacementModel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../decorator_models/relife2.fiability.LeftTruncatedModel.html">LeftTruncatedModel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../decorator_models/relife2.fiability.EquilibriumDistribution.html">EquilibriumDistribution</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">AgeReplacementModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relife2.fiability.LeftTruncatedModel.html">LeftTruncatedModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relife2.fiability.EquilibriumDistribution.html">EquilibriumDistribution</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Base class</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="relife2.Parameters.html">Parameters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relife2.ParametricModel.html">ParametricModel</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">LifetimeModel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="relife2.ParametricLifetimeModel.html">ParametricLifetimeModel</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../base_class/relife2.Parameters.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../base_class/relife2.ParametricModel.html">ParametricModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../base_class/relife2.LifetimeModel.html">LifetimeModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../base_class/relife2.ParametricLifetimeModel.html">ParametricLifetimeModel</a></li>
 </ul>
 </div>
 </nav></div>
@@ -469,7 +471,7 @@
     
     <li class="breadcrumb-item"><a href="../index.html" class="nav-link">API</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">LifetimeModel</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">AgeReplacementModel</span></li>
   </ul>
 </nav>
 </div>
@@ -486,62 +488,89 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="lifetimemodel">
-<h1>LifetimeModel<a class="headerlink" href="#lifetimemodel" title="Link to this heading">#</a></h1>
+  <section id="agereplacementmodel">
+<h1>AgeReplacementModel<a class="headerlink" href="#agereplacementmodel" title="Link to this heading">#</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="relife2.LifetimeModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.</span></span><span class="sig-name descname"><span class="pre">LifetimeModel</span></span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel" title="Link to this definition">#</a></dt>
-<dd><p>Base class to create a lifetime model.</p>
-<p>A lifetime model is an object that can answer to traditional lifetime probability
-functions (<code class="docutils literal notranslate"><span class="pre">sf</span></code>, <code class="docutils literal notranslate"><span class="pre">hf</span></code> etc.) and other common probabilitu functions (<code class="docutils literal notranslate"><span class="pre">pdf</span></code>,
-<code class="docutils literal notranslate"><span class="pre">cdf</span></code>, etc.).</p>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relife2.fiability.</span></span><span class="sig-name descname"><span class="pre">AgeReplacementModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">baseline</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/extramodel.html#AgeReplacementModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.fiability.AgeReplacementModel" title="Link to this definition">#</a></dt>
+<dd><p>Age replacement model.</p>
+<p>Lifetime model where the asset is replaced at age <span class="math notranslate nohighlight">\(a_r\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>baseline</strong><span class="classifier">LifetimeModel</span></dt><dd><p>Underlying lifetime model.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This is equivalent to the distribution of <span class="math notranslate nohighlight">\(\min(X,a_r)\)</span> where
+<span class="math notranslate nohighlight">\(X\)</span> is a baseline lifetime model and ar the age of replacement.</p>
 <p class="rubric">Methods</p>
+<p><strong>Survival functions</strong></p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.LifetimeModel.cdf" title="relife2.LifetimeModel.cdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></a></p></td>
-<td><p>Cumulative distribution function.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#relife2.LifetimeModel.chf" title="relife2.LifetimeModel.chf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chf</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.chf" title="relife2.fiability.AgeReplacementModel.chf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chf</span></code></a></p></td>
 <td><p>Cumulative hazard function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.LifetimeModel.hf" title="relife2.LifetimeModel.hf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hf</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.hf" title="relife2.fiability.AgeReplacementModel.hf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hf</span></code></a></p></td>
 <td><p>Hazard function.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#relife2.LifetimeModel.ichf" title="relife2.LifetimeModel.ichf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ichf</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.ichf" title="relife2.fiability.AgeReplacementModel.ichf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ichf</span></code></a></p></td>
 <td><p>Inverse cumulative hazard function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.LifetimeModel.isf" title="relife2.LifetimeModel.isf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isf</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.isf" title="relife2.fiability.AgeReplacementModel.isf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isf</span></code></a></p></td>
 <td><p>Inverse survival function.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#relife2.LifetimeModel.ls_integrate" title="relife2.LifetimeModel.ls_integrate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></a></p></td>
-<td><p>Lebesgue-Stieltjes integration.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.LifetimeModel.mean" title="relife2.LifetimeModel.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a></p></td>
-<td><p>Mean.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#relife2.LifetimeModel.median" title="relife2.LifetimeModel.median"><code class="xref py py-obj docutils literal notranslate"><span class="pre">median</span></code></a></p></td>
-<td><p>Median</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.LifetimeModel.moment" title="relife2.LifetimeModel.moment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moment</span></code></a></p></td>
-<td><p>n-th order moment</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#relife2.LifetimeModel.mrl" title="relife2.LifetimeModel.mrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mrl</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.mrl" title="relife2.fiability.AgeReplacementModel.mrl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mrl</span></code></a></p></td>
 <td><p>Mean residual life.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.LifetimeModel.pdf" title="relife2.LifetimeModel.pdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdf</span></code></a></p></td>
-<td><p>Probability density function.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#relife2.LifetimeModel.ppf" title="relife2.LifetimeModel.ppf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ppf</span></code></a></p></td>
-<td><p>Percent point function.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.LifetimeModel.rvs" title="relife2.LifetimeModel.rvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rvs</span></code></a></p></td>
-<td><p>Random variable sampling.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#relife2.LifetimeModel.sf" title="relife2.LifetimeModel.sf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sf</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.sf" title="relife2.fiability.AgeReplacementModel.sf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sf</span></code></a></p></td>
 <td><p>Survival function.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.LifetimeModel.var" title="relife2.LifetimeModel.var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">var</span></code></a></p></td>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.cdf" title="relife2.fiability.AgeReplacementModel.cdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cdf</span></code></a></p></td>
+<td><p>Cumulative distribution function.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.pdf" title="relife2.fiability.AgeReplacementModel.pdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdf</span></code></a></p></td>
+<td><p>Probability density function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.ppf" title="relife2.fiability.AgeReplacementModel.ppf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ppf</span></code></a></p></td>
+<td><p>Percent point function.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Statistics</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.mean" title="relife2.fiability.AgeReplacementModel.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a></p></td>
+<td><p>Mean.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.median" title="relife2.fiability.AgeReplacementModel.median"><code class="xref py py-obj docutils literal notranslate"><span class="pre">median</span></code></a></p></td>
+<td><p>Median</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.moment" title="relife2.fiability.AgeReplacementModel.moment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">moment</span></code></a></p></td>
+<td><p>n-th order moment</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.var" title="relife2.fiability.AgeReplacementModel.var"><code class="xref py py-obj docutils literal notranslate"><span class="pre">var</span></code></a></p></td>
 <td><p>Variance.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Other methods</strong></p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.ls_integrate" title="relife2.fiability.AgeReplacementModel.ls_integrate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ls_integrate</span></code></a></p></td>
+<td><p>Lebesgue-Stieltjes integration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.rvs" title="relife2.fiability.AgeReplacementModel.rvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rvs</span></code></a></p></td>
+<td><p>Random variable sampling.</p></td>
 </tr>
 </tbody>
 </table>
@@ -549,15 +578,15 @@ functions (<code class="docutils literal notranslate"><span class="pre">sf</span
 <p class="rubric">Attributes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.LifetimeModel.plot" title="relife2.LifetimeModel.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#relife2.fiability.AgeReplacementModel.plot" title="relife2.fiability.AgeReplacementModel.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a></p></td>
 <td><p>Plot</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.cdf">
-<span class="sig-name descname"><span class="pre">cdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel.cdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel.cdf" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.cdf">
+<span class="sig-name descname"><span class="pre">cdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.cdf" title="Link to this definition">#</a></dt>
 <dd><p>Cumulative distribution function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -576,8 +605,8 @@ functions (<code class="docutils literal notranslate"><span class="pre">sf</span
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.chf">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel.chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel.chf" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.chf">
+<span class="sig-name descname"><span class="pre">chf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/extramodel.html#AgeReplacementModel.chf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.chf" title="Link to this definition">#</a></dt>
 <dd><p>Cumulative hazard function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -597,8 +626,8 @@ functions (<code class="docutils literal notranslate"><span class="pre">sf</span
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.hf">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel.hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel.hf" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.hf">
+<span class="sig-name descname"><span class="pre">hf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/extramodel.html#AgeReplacementModel.hf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.hf" title="Link to this definition">#</a></dt>
 <dd><p>Hazard function.</p>
 <p>The hazard function of the distribution</p>
 <dl class="field-list simple">
@@ -619,8 +648,8 @@ functions (<code class="docutils literal notranslate"><span class="pre">sf</span
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.ichf">
-<span class="sig-name descname"><span class="pre">ichf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cumulative_hazard_rate</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel.ichf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel.ichf" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.ichf">
+<span class="sig-name descname"><span class="pre">ichf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cumulative_hazard_rate</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.ichf" title="Link to this definition">#</a></dt>
 <dd><p>Inverse cumulative hazard function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -639,8 +668,8 @@ functions (<code class="docutils literal notranslate"><span class="pre">sf</span
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.isf">
-<span class="sig-name descname"><span class="pre">isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel.isf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel.isf" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.isf">
+<span class="sig-name descname"><span class="pre">isf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/extramodel.html#AgeReplacementModel.isf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.isf" title="Link to this definition">#</a></dt>
 <dd><p>Inverse survival function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -659,8 +688,8 @@ functions (<code class="docutils literal notranslate"><span class="pre">sf</span
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.ls_integrate">
-<span class="sig-name descname"><span class="pre">ls_integrate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel.ls_integrate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel.ls_integrate" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.ls_integrate">
+<span class="sig-name descname"><span class="pre">ls_integrate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/extramodel.html#AgeReplacementModel.ls_integrate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.ls_integrate" title="Link to this definition">#</a></dt>
 <dd><p>Lebesgue-Stieltjes integration.</p>
 <p>The Lebesgue-Stieljes intregration of a function with respect to the lifetime model
 taking into account the probability density function and jumps</p>
@@ -694,8 +723,8 @@ Currently, the second option is prefered. That’s why, returns are always 2d-ar
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.mean">
-<span class="sig-name descname"><span class="pre">mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel.mean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel.mean" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.mean">
+<span class="sig-name descname"><span class="pre">mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.mean" title="Link to this definition">#</a></dt>
 <dd><p>Mean.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -713,8 +742,8 @@ Currently, the second option is prefered. That’s why, returns are always 2d-ar
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.median">
-<span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel.median"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel.median" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.median">
+<span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.median" title="Link to this definition">#</a></dt>
 <dd><p>Median</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -732,8 +761,8 @@ Currently, the second option is prefered. That’s why, returns are always 2d-ar
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.moment">
-<span class="sig-name descname"><span class="pre">moment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel.moment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel.moment" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.moment">
+<span class="sig-name descname"><span class="pre">moment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/extramodel.html#AgeReplacementModel.moment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.moment" title="Link to this definition">#</a></dt>
 <dd><p>n-th order moment</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -752,8 +781,8 @@ Currently, the second option is prefered. That’s why, returns are always 2d-ar
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.mrl">
-<span class="sig-name descname"><span class="pre">mrl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel.mrl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel.mrl" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.mrl">
+<span class="sig-name descname"><span class="pre">mrl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/extramodel.html#AgeReplacementModel.mrl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.mrl" title="Link to this definition">#</a></dt>
 <dd><p>Mean residual life.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -773,8 +802,8 @@ Currently, the second option is prefered. That’s why, returns are always 2d-ar
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.pdf">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel.pdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel.pdf" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.pdf">
+<span class="sig-name descname"><span class="pre">pdf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/extramodel.html#AgeReplacementModel.pdf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.pdf" title="Link to this definition">#</a></dt>
 <dd><p>Probability density function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -794,14 +823,14 @@ Currently, the second option is prefered. That’s why, returns are always 2d-ar
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.plot">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">plot</span></span><a class="headerlink" href="#relife2.LifetimeModel.plot" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.plot">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">plot</span></span><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.plot" title="Link to this definition">#</a></dt>
 <dd><p>Plot</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.ppf">
-<span class="sig-name descname"><span class="pre">ppf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel.ppf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel.ppf" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.ppf">
+<span class="sig-name descname"><span class="pre">ppf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.ppf" title="Link to this definition">#</a></dt>
 <dd><p>Percent point function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -820,8 +849,8 @@ Currently, the second option is prefered. That’s why, returns are always 2d-ar
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.rvs">
-<span class="sig-name descname"><span class="pre">rvs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel.rvs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel.rvs" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.rvs">
+<span class="sig-name descname"><span class="pre">rvs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.rvs" title="Link to this definition">#</a></dt>
 <dd><p>Random variable sampling.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -843,8 +872,8 @@ Currently, the second option is prefered. That’s why, returns are always 2d-ar
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.sf">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel.sf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel.sf" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.sf">
+<span class="sig-name descname"><span class="pre">sf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ar</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/extramodel.html#AgeReplacementModel.sf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.sf" title="Link to this definition">#</a></dt>
 <dd><p>Survival function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -864,8 +893,8 @@ Currently, the second option is prefered. That’s why, returns are always 2d-ar
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="relife2.LifetimeModel.var">
-<span class="sig-name descname"><span class="pre">var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/relife2/fiability/model.html#LifetimeModel.var"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#relife2.LifetimeModel.var" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py" id="relife2.fiability.AgeReplacementModel.var">
+<span class="sig-name descname"><span class="pre">var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relife2.fiability.AgeReplacementModel.var" title="Link to this definition">#</a></dt>
 <dd><p>Variance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -909,23 +938,23 @@ Currently, the second option is prefered. That’s why, returns are always 2d-ar
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel"><code class="docutils literal notranslate"><span class="pre">LifetimeModel</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.cdf"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.cdf()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.chf"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.chf()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.hf"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.hf()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.ichf"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.ichf()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.isf"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.isf()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.ls_integrate"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.ls_integrate()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.mean"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.mean()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.median"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.median()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.moment"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.moment()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.mrl"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.mrl()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.pdf"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.pdf()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.plot"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.plot</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.ppf"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.ppf()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.rvs"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.rvs()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.sf"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.sf()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.LifetimeModel.var"><code class="docutils literal notranslate"><span class="pre">LifetimeModel.var()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.cdf"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.cdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.chf"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.chf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.hf"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.hf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.ichf"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.ichf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.isf"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.isf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.ls_integrate"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.ls_integrate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.mean"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.mean()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.median"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.median()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.moment"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.moment()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.mrl"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.mrl()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.pdf"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.pdf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.plot"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.plot</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.ppf"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.ppf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.rvs"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.rvs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.sf"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.sf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relife2.fiability.AgeReplacementModel.var"><code class="docutils literal notranslate"><span class="pre">AgeReplacementModel.var()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -935,7 +964,7 @@ Currently, the second option is prefered. That’s why, returns are always 2d-ar
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/api/base_class/relife2.LifetimeModel.rst.txt"
+      <li><a href="../../_sources/api/decorator_models/relife2.fiability.AgeReplacementModel.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>

@@ -53,7 +53,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Exponential" href="lifetime_models/relife2.Exponential.html" />
-    <link rel="prev" title="4. Renewal theory" href="../user_guide/demo_renewal_theory.html" />
+    <link rel="prev" title="5. Renewal theory" href="../user_guide/demo_renewal_theory.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -414,6 +414,12 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="likelihood/relife2.LikelihoodFromLifetimes.html">LikelihoodFromLifetimes</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Decorator models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="decorator_models/relife2.fiability.AgeReplacementModel.html">AgeReplacementModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorator_models/relife2.fiability.LeftTruncatedModel.html">LeftTruncatedModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decorator_models/relife2.fiability.EquilibriumDistribution.html">EquilibriumDistribution</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Base class</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="base_class/relife2.Parameters.html">Parameters</a></li>
@@ -558,6 +564,25 @@ data.</p>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="likelihood/relife2.LikelihoodFromLifetimes.html#relife2.LikelihoodFromLifetimes" title="relife2.LikelihoodFromLifetimes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LikelihoodFromLifetimes</span></code></a></p></td>
 <td><p>Generic likelihood object for parametric lifetime models</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Decorator models</p>
+<p>A decorator model is basically a <cite>LifetimeModel</cite> object that wraps another <cite>LifetimeModel</cite> object set as a baseline.
+Those models mainly deserves to some functionnalities in <cite>Policy</cite> object but advanced users can clearly use them for a
+specific purpose. For instance <cite>LeftTruncatedModel</cite> wraps a baseline model by overriding some of its probibability function
+in order to take into account the time condition imposed by a left trunctation <cite>a0</cite>.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="decorator_models/relife2.fiability.AgeReplacementModel.html#relife2.fiability.AgeReplacementModel" title="relife2.fiability.AgeReplacementModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fiability.AgeReplacementModel</span></code></a></p></td>
+<td><p>Age replacement model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="decorator_models/relife2.fiability.LeftTruncatedModel.html#relife2.fiability.LeftTruncatedModel" title="relife2.fiability.LeftTruncatedModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fiability.LeftTruncatedModel</span></code></a></p></td>
+<td><p>Left truncated model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="decorator_models/relife2.fiability.EquilibriumDistribution.html#relife2.fiability.EquilibriumDistribution" title="relife2.fiability.EquilibriumDistribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fiability.EquilibriumDistribution</span></code></a></p></td>
+<td><p>Equilibrium distribution.</p></td>
 </tr>
 </tbody>
 </table>
