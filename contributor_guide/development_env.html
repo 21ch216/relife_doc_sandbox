@@ -122,8 +122,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="ReLife - Home"/>
-    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="ReLife - Home"/>
+    <img src="../_static/relife_icon_mini.svg" class="logo__image only-light" alt="ReLife - Home"/>
+    <img src="../_static/relife_icon_mini.svg" class="logo__image only-dark pst-js-only" alt="ReLife - Home"/>
   
   
 </a></div>
@@ -464,6 +464,37 @@
   <section id="developement-environment">
 <h1>Developement environment<a class="headerlink" href="#developement-environment" title="Link to this heading">#</a></h1>
 <p>Advices about development environments, set ups to do before contributing to ReLife</p>
+<section id="build-system">
+<h2>Build system<a class="headerlink" href="#build-system" title="Link to this heading">#</a></h2>
+<p>According to this <a class="reference external" href="https://packaging.python.org/en/latest/guides/tool-recommendations/#build-backends">https://packaging.python.org/en/latest/guides/tool-recommendations/#build-backends</a>, we chose
+Setuptools to be our build system. Poetry is another popular project but does support C/C++ backend natively and
+does not use standard project.toml template.</p>
+</section>
+<section id="ci">
+<h2>CI<a class="headerlink" href="#ci" title="Link to this heading">#</a></h2>
+<p>Our CI tool is Nox.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-l</span></code></p></td>
+<td><p>List available nox sessions</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nox</span></code></p></td>
+<td><p>Run all nox sessions at once and install specific venv in <code class="docutils literal notranslate"><span class="pre">.nox/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-rR</span></code></p></td>
+<td><p>Same as <code class="docutils literal notranslate"><span class="pre">nox</span></code> but without installing venv. It assumes that <code class="docutils literal notranslate"><span class="pre">.nox/</span></code> was already created and filled</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-t</span> <span class="pre">NAME</span></code></p></td>
+<td><p>Run only the session called <code class="docutils literal notranslate"><span class="pre">NAME</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 </section>
 
 
@@ -480,6 +511,19 @@
                 <dialog id="pst-secondary-sidebar-modal"></dialog>
                 <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-system">Build system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ci">CI</a></li>
+</ul>
+  </nav></div>
 
   <div class="sidebar-secondary-item">
   <div role="note" aria-label="source link">

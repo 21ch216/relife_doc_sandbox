@@ -125,8 +125,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="ReLife - Home"/>
-    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="ReLife - Home"/>
+    <img src="../_static/relife_icon_mini.svg" class="logo__image only-light" alt="ReLife - Home"/>
+    <img src="../_static/relife_icon_mini.svg" class="logo__image only-dark pst-js-only" alt="ReLife - Home"/>
   
   
 </a></div>
@@ -463,7 +463,7 @@
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
 import numpy as np
-from relife2 import Weibull, RenewalProcess
+from relife import Weibull, RenewalProcess
 </pre></div>
 </div>
 </div>
@@ -497,7 +497,7 @@ plt.show()
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from relife2.renewal import renewal_equation_solver
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from relife.renewal import renewal_equation_solver
 
 
 def f(x):
@@ -545,7 +545,7 @@ plt.show()
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Calcul de la distribution des âges à l&#39;équilibre. A temps suffisament long, la varariance des durées de vie &quot;étale&quot; les défaillance dans le temps
 # ce qui aboutit à une stabilisation du rythme d&#39;apparition des défaillances au cours du temps. Lorsque ce régime stationnaire est atteint,
 # la population d&#39;actifs a une distribution d&#39;âge qui ne varie plus au cours du temps : c&#39;est la distribution d&#39;âges à l&#39;équilibre.
-from relife2.fiability import EquilibriumDistribution
+from relife.fiability import EquilibriumDistribution
 
 eq_distrib = EquilibriumDistribution(distrib)
 
