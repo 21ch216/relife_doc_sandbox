@@ -31,7 +31,7 @@ jobs:
         run: |
           pip3 install -r requirements.txt # install sphinx (and extensions)
           cd relife
-          pip3 install . # install relife2
+          pip3 install . # install relife
 
       - name: Build Sphinx Doc
         working-directory: ./docs
