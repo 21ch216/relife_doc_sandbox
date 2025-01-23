@@ -8,7 +8,6 @@
 # theme used : https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/index.html
 
 import os
-import sys
 
 # # for local use only
 # PATH_TO_LIBRARY = "../code/refife/src/"
@@ -75,14 +74,14 @@ html_static_path = ['_static']
 html_title = "ReLife"  # sidebar title
 html_logo = "_static/relife_icon_mini.svg"
 html_js_files = ["custom-icon.js"]
-html_css_files = ['css/custom.css'] # custom css to change some colors
+html_css_files = ['css/custom.css']  # custom css to change some colors
 
 html_theme_options = {
     # "announcement": "<em>beta version</em> New ReLife documentation in progress",  # annoucement bar
     "navigation_with_keys": False,
-    "navbar_align": "left", # align to the left header bar sections
-    "header_links_before_dropdown": 4, # control the number of section displayed in the header bar
-    "show_prev_next": False, # hide previous and next button
+    "navbar_align": "left",  # align to the left header bar sections
+    "header_links_before_dropdown": 4,  # control the number of section displayed in the header bar
+    "show_prev_next": False,  # hide previous and next button
     "icon_links": [
         {
             # Label for this link
