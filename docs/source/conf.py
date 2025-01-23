@@ -11,7 +11,7 @@ import os
 import sys
 
 # for local use only
-PATH_TO_LIBRARY = "../code/refife"
+PATH_TO_LIBRARY = "../code/refife/src/"
 sys.path.insert(0, os.path.abspath(PATH_TO_LIBRARY))
 
 project = 'doc_example'
@@ -73,7 +73,7 @@ templates_path = ['_templates', '_templates/autosummary']
 html_theme = "pydata_sphinx_theme"
 html_static_path = ['_static']
 html_title = "ReLife"  # sidebar title
-html_logo = "_static/logo.png"
+html_logo = "_static/relife_icon_mini.svg"
 html_js_files = ["custom-icon.js"]
 html_css_files = ['css/custom.css'] # custom css to change some colors
 
