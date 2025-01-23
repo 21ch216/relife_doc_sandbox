@@ -4,7 +4,7 @@ API
 The content of the exposed ReLife API. It is where one can find details about object interfaces (how many parameters
 are needeed by a function, what are their types, etc.).
 
-.. currentmodule:: relife2
+.. currentmodule:: relife
 
 .. rubric:: Lifetime models
 
